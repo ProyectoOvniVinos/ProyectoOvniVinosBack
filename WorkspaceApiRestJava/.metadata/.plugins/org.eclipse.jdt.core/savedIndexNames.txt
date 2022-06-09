@@ -49,6 +49,7 @@ INDEX VERSION 1.131+C:\Users\Cristian\OneDrive\Documentos\sena\Tareas\trim5\PROY
 2873665728.index
 3328239590.index
 2029172581.index
+225793664.index
 2246238883.index
 2411662462.index
 3725255007.index
@@ -62,6 +63,7 @@ INDEX VERSION 1.131+C:\Users\Cristian\OneDrive\Documentos\sena\Tareas\trim5\PROY
 3874903819.index
 18068297.index
 192996492.index
+1865797976.index
 726925370.index
 4180356747.index
 814047826.index

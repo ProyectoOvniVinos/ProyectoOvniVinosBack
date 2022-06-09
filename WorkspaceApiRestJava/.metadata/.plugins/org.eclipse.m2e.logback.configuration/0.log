@@ -1590,3 +1590,4 @@
 2022-06-08 22:01:15,765 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2022-06-08 22:01:15,769 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2022-06-08 22:01:15,769 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-06-08 22:01:15,770 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Cristian\OneDrive\Documentos\sena\Tareas\trim5\PROYECTOdev\Back\WorkspaceApiRestJava\OvniVinosAPIRest\src\test\resources
