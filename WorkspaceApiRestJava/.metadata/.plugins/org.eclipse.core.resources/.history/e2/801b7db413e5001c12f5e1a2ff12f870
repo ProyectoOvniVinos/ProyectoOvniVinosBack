@@ -1,0 +1,20 @@
+package com.grupo2.springboot.backend.apirest.services.administrador;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.grupo2.springboot.backend.apirest.dao.IAdministradorDao;
+import com.grupo2.springboot.backend.apirest.entity.AdministradorVo;
+
+public class AdministradorServiceImpl implements IAdministradorService{
+
+	@Autowired
+	private IAdministradorDao administradorDao;
+	@Override
+	public List<AdministradorVo> findAll() {
+		
+		return null;
+	}
+
+}

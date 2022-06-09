@@ -1,0 +1,11 @@
+package com.grupo2.springboot.backend.apirest.entity;
+
+public class AdministradorVo {
+
+	private String correoAdmin;
+	private String nombreAdmin;
+	private String apellidoAdmin; 
+	private String direccionAdmin; 
+	private String telefonoAdmin; 
+	private String passwordAdmin; 
+}
