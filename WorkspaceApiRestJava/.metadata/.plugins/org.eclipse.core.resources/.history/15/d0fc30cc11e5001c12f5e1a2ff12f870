@@ -1,2 +1,0 @@
-/* Populate tabla clientes */
-INSERT INTO administrador values ("crissis2004@gmail.com", "Cristian", "Amador", "OvniVinos", "3233827738","1234")

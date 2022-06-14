@@ -1,0 +1,34 @@
+package com.grupo2.springboot.backend.apirest.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cliente")
+public class ClienteVo implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	private String correo_cliente;
+	
+	@Column(name="nombre_cliente")
+	private String nombre_cliente;
+	
+	@Column(name="apellido_cliente")
+	private String apellido_cliente;
+	
+	@Column(name="direccion_cliente")
+	private String direccion_cliente;
+	
+	@Column(name="telefono_cliente")
+	private String telefono_cliente;
+	
+	@Column(name="password_cliente")
+	private String password_cliente;
+	
+	
+}

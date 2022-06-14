@@ -1,0 +1,30 @@
+package com.grupo2.springboot.backend.apirest.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="compra_admin")
+public class CompraAdminVo implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id_puente;
+	
+	@Column(name="codigo_compra")
+	private int codigo_compra;
+	
+	@Column(name="codigo_producto")
+	private int codigo_producto;
+	
+	@Column(name="cantidad_producto")
+	private int cantidad_producto;
+	
+	@Column(name="id_registro_contabilidad_fisica")
+	private int id_registro_contabilidad_fisica
+	
+	
+}
