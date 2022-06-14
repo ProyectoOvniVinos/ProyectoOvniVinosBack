@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "administrador")
 public class AdministradorVo implements Serializable {
-
+	
+	private static final long serialVersionUID = 1L;
+	
 	@Id
-
 	// Al no ser autogenerado no se le coloca la anotacion
 	// @GeneratedValue(strategy=GenerationType=?)
 	private String correo_admin;
@@ -81,5 +81,5 @@ public class AdministradorVo implements Serializable {
 		this.password_admin = password_admin;
 	}
 
-	private static final long serialVersionUID = 1L;
+
 }

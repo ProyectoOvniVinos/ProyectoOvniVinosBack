@@ -1,0 +1,9 @@
+package com.grupo2.springboot.backend.apirest.entity;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="venta")
+public class VentaVo {
+
+}

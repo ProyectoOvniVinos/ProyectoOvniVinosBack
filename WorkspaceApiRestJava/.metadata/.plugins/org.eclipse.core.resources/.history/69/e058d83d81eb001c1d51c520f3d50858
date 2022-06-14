@@ -1,0 +1,19 @@
+package com.grupo2.springboot.backend.apirest.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+id_puente int primary key not null auto_increment,
+codigo_compra int not null,
+codigo_producto int not null,
+cantidad_producto int,
+id_registro_contabilidad_diaria int not null
+
+@Entity
+@Table(name="compra_admin")
+public class CompraAdminVo implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
+}

@@ -1,0 +1,22 @@
+package com.grupo2.springboot.backend.apirest.entity;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="venta")
+public class VentaVo {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int codigo_venta;
+	
+	@Column(name="correo_cliente")
+	private String correo_cliente;
+	
+	@Column(name="precio_venta")
+	private double precio_venta;
+	
+	@Column(name="fecha")
+	private String fecha;
+	
+}
