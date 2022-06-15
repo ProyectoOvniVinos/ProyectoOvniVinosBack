@@ -17,7 +17,7 @@ create table compra
 	precio_compra double, 
 	cantidad_compra int, 
 	fecha_compra date,
-  correo_admin char(30) not null
+	correo_admin char(30) not null
 );
 
 
@@ -28,14 +28,28 @@ create table cliente
 	apellido_cliente char(30),
 	direccion_cliente char(40),
 	telefono_cliente char(12),
-  password_cliente char(20)
+	password_cliente char(20),
+    id_carrito int
 );
+
+create table carrito_cliente
+(
+	id_registro int auto_increment primary key,
+	id_carrito int,
+    codigo_producto int,
+    nombre_producto char(25),
+    cantidad_producto int,
+    precio_producto double
+);
+
+
+
 create table venta 
 (
 	codigo_venta int primary key not null auto_increment,
-  correo_cliente char(30) not null,
-  precio_venta double,
-  fecha_venta date
+	correo_cliente char(30) not null,
+	precio_venta double,
+	fecha_venta date
 );
 
 
@@ -60,11 +74,11 @@ create table venta_cliente
 create table contabilidad_diaria 
 (
 	id_registro_contabilidad_diaria int primary key not null auto_increment,
-  ventas_contabilidad_diaria double,
-  egresos_contabilidad_diaria double,
+	ventas_contabilidad_diaria double,
+	egresos_contabilidad_diaria double,
 	ingresos_contabilidad_diaria double,
-  id_registro_contabilidad_mensual int,
-  fecha date
+	id_registro_contabilidad_mensual int,
+	fecha date
 );
 create table contabilidad_mensual 
 (
@@ -127,7 +141,6 @@ ADD CONSTRAINT `fk_compra_admin_codigo_producto`
   REFERENCES `basededatos_ovni_vinos`.`producto` (`codigo_producto`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
-
 
 ALTER TABLE `basededatos_ovni_vinos`.`compra_admin` 
 ADD INDEX `fk_compra_admin_codigo_compra_idx` (`codigo_compra` ASC) ;
