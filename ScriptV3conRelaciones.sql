@@ -28,18 +28,18 @@ create table cliente
 	apellido_cliente char(30),
 	direccion_cliente char(40),
 	telefono_cliente char(12),
-	password_cliente char(20),
-    id_carrito int
+	password_cliente char(20)
 );
 
 create table carrito_cliente
 (
-	id_registro int auto_increment primary key,
-	id_carrito int,
-    codigo_producto int,
-    nombre_producto char(25),
-    cantidad_producto int,
-    precio_producto double
+  id_registro int auto_increment primary key,
+  cliente char(30),
+  codigo_producto int,
+  nombre_producto char(25),
+  cantidad_producto int,
+  precio_producto double,
+  FOREIGN KEY (cliente) REFERENCES cliente(correo_cliente)
 );
 
 
@@ -237,4 +237,5 @@ ADD CONSTRAINT `fk_contabilidad_mensual_id_registro_contabilidad_anual`
   REFERENCES `basededatos_ovni_vinos`.`contabilidad_anual` (`id_registro_contabilidad_anual`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
 
