@@ -1,0 +1,31 @@
+package com.grupo2.springboot.backend.apirest.entity;
+
+import javax.persistence.*;
+
+public class CarritoClienteVo {
+
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id_registro;
+	
+	@Column(name="id_carrito")
+	private int id_carrito;
+	
+	
+	@Column(name="codigo_producto")
+	private int codigo_producto;
+	
+	
+	@Column(name="nombre_producto")
+	private String nombre_producto;
+	
+	
+	@Column(name="cantidad_producto")
+	private int cantidad_producto;
+	
+	
+	@Column(name="precio_producto")
+	private double precio_producto;
+}
