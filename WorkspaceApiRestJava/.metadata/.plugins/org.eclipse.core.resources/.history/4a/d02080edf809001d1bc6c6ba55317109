@@ -1,0 +1,32 @@
+package com.grupo2.springboot.backend.apirest.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.grupo2.springboot.backend.apirest.entity.ProductoVo;
+import com.grupo2.springboot.backend.apirest.services.producto.IProductoService;
+
+@RestController
+@RequestMapping("/apiProd")
+public class ProductoRestController {
+	
+	@Autowired
+	private IProductoService productoService;
+	
+	// http://localhost:8080/apiProd/productos
+	@GetMapping("/productos")
+	public List<ProductoVo> getProductos(){
+		return productoService.findAll();
+	}
+	
+	// http://localhost:8080/apiProd/productos
+		@GetMapping("/productos")
+		public List<ProductoVo> getProducto(@){
+			return productoService.findAll();
+		}
+
+}

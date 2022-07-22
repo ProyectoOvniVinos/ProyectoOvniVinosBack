@@ -1,6 +1,7 @@
 package com.grupo2.springboot.backend.apirest.services.administrador;
 
-import java.util.List;
+
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,10 @@ public class AdministradorServiceImpl implements IAdministradorService{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<AdministradorVo> findAll() {
-		return (List<AdministradorVo>) administradorDao.findAll();
+	public AdministradorVo findByCorreo(String correo) {
+		
+		return administradorDao.findById(correo).orElse(null);
 	}
+
 
 }

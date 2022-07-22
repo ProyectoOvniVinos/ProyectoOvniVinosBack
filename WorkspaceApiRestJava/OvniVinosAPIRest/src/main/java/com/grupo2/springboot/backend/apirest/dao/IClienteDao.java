@@ -1,5 +1,9 @@
 package com.grupo2.springboot.backend.apirest.dao;
 
-public interface IClienteDao {
+import org.springframework.data.repository.CrudRepository;
+
+import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
+
+public interface IClienteDao extends CrudRepository<ClienteVo, String>{
 
 }

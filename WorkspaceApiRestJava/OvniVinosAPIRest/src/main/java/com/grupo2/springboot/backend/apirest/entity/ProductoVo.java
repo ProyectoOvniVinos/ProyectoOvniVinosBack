@@ -19,7 +19,7 @@ public class ProductoVo {
 	private double precio_producto;
 	
 	@Column(name="precio_productoProveedor")
-	private double precio_productoProveedor;
+	private double precio_producto_proveedor;
 	
 	@Column(name="descripcion_producto")
 	private String descripcion_producto;
@@ -48,12 +48,12 @@ public class ProductoVo {
 		this.precio_producto = precio_producto;
 	}
 
-	public double getPrecio_productoProveedor() {
-		return precio_productoProveedor;
+	public double getPrecio_producto_proveedor() {
+		return precio_producto_proveedor;
 	}
 
-	public void setPrecio_productoProveedor(double precio_productoProveedor) {
-		this.precio_productoProveedor = precio_productoProveedor;
+	public void setPrecio_producto_proveedor(double precio_producto_proveedor) {
+		this.precio_producto_proveedor = precio_producto_proveedor;
 	}
 
 	public String getDescripcion_producto() {
