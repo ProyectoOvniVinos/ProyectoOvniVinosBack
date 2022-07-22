@@ -2,6 +2,10 @@ package com.grupo2.springboot.backend.apirest.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name="carrito_cliente")
 public class CarritoClienteVo {
 
 	private static final long serialVersionUID = 1L;
@@ -10,9 +14,9 @@ public class CarritoClienteVo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_registro;
 	
-	@Column(name="id_carrito")
-	private int id_carrito;
-	
+	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JsonIgnoreProperties(value={"carrito","hibernateLazyInitializer","handler"},allowSetters=true)
+	private ClienteVo cliente;
 	
 	@Column(name="codigo_producto")
 	private int codigo_producto;
@@ -40,13 +44,13 @@ public class CarritoClienteVo {
 	}
 
 
-	public int getId_carrito() {
-		return id_carrito;
+	public ClienteVo getId_carrito() {
+		return cliente;
 	}
 
 
-	public void setId_carrito(int id_carrito) {
-		this.id_carrito = id_carrito;
+	public void setId_carrito(ClienteVo cliente) {
+		this.cliente = cliente;
 	}
 
 

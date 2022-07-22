@@ -2,6 +2,8 @@ package com.grupo2.springboot.backend.apirest.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="venta_cliente")
 public class VentaClienteVo {
@@ -12,16 +14,61 @@ public class VentaClienteVo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_puente;
 	
-	@Column(name="codigo_venta")
-	private int codigo_venta;
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private VentaVo codigo_venta;
 	
-	@Column(name="codigo_producto")
-	private int codigo_producto;
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private ProductoVo codigo_producto;
 	
 	@Column(name="cantidad_producto")
 	private int cantidad_producto;
 	
-	@Column(name="id_registro_contabilidad_diaria")
-	private int id_registro_contabilidad_diaria;
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
+
+	public int getId_puente() {
+		return id_puente;
+	}
+
+	public void setId_puente(int id_puente) {
+		this.id_puente = id_puente;
+	}
+
+	public VentaVo getCodigo_venta() {
+		return codigo_venta;
+	}
+
+	public void setCodigo_venta(VentaVo codigo_venta) {
+		this.codigo_venta = codigo_venta;
+	}
+
+	public ProductoVo getCodigo_producto() {
+		return codigo_producto;
+	}
+
+	public void setCodigo_producto(ProductoVo codigo_producto) {
+		this.codigo_producto = codigo_producto;
+	}
+
+	public int getCantidad_producto() {
+		return cantidad_producto;
+	}
+
+	public void setCantidad_producto(int cantidad_producto) {
+		this.cantidad_producto = cantidad_producto;
+	}
+
+	public ContabilidadDiariaVo getId_registro_contabilidad_diaria() {
+		return id_registro_contabilidad_diaria;
+	}
+
+	public void setId_registro_contabilidad_diaria(ContabilidadDiariaVo id_registro_contabilidad_diaria) {
+		this.id_registro_contabilidad_diaria = id_registro_contabilidad_diaria;
+	}
+	
+	
 	
 }
