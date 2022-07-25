@@ -83,34 +83,6 @@ public class ClienteRestController {
 		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.CREATED);
 	}
 	
-	
-	/**
-	 * // http://localhost:8080/apiProd/producto
-		@PutMapping("/producto")
-		public ResponseEntity<?> update(@RequestBody ProductoVo producto,  @PathVariable int codigo){
-			ProductoVo productoActual = productoService.findByCodigo_producto(codigo);
-			ProductoVo productoUpdated = null;
-			Map<String, Object> response = new HashMap<>();
-			
-			try {
-				productoActual.setNombre_producto(producto.getNombre_producto());
-				productoActual.setPrecio_producto(producto.getPrecio_producto());
-				productoActual.setPrecio_producto_proveedor(producto.getPrecio_producto_proveedor());
-				productoActual.setDescripcion_producto(producto.getDescripcion_producto());
-				
-				productoUpdated = productoService.save(productoActual);
-			}catch(DataAccessException e) {
-				response.put("mensaje","Error al actualizar en la base de datos");
-				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-				return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
-			}
-			
-			response.put("mensaje","el producto ha sido actualizado con exito");
-			response.put("producto", productoUpdated);
-			
-			return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
-		}
-	 */
 	// http://localhost:8080/apiCliente/cliente
 	@PutMapping("/cliente")
 	public ResponseEntity<?> update(@RequestBody ClienteVo cliente, @PathVariable String correo){
