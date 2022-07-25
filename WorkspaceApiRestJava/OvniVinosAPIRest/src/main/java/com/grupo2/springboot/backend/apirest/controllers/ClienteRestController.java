@@ -46,9 +46,6 @@ public class ClienteRestController {
 		
 		return new ResponseEntity<List<ClienteVo>>(clientes,HttpStatus.OK);
 	}
-
-	@Autowired
-	private IClienteService clienteService;
 	
 	// http://localhost:8080/apiCliente/cliente
 	@GetMapping("/cliente")
@@ -57,7 +54,7 @@ public class ClienteRestController {
 		
 		Map<String,Object>response = new HashMap<>();
 		try {
-			cliente = clienteService.findByCorreo(correo);
+			cliente = clienteService.findById(correo);
 		} catch(DataAccessException e) {
 			response.put("mensaje","error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -117,7 +114,7 @@ public class ClienteRestController {
 	// http://localhost:8080/apiCliente/cliente
 	@PutMapping("/cliente")
 	public ResponseEntity<?> update(@RequestBody ClienteVo cliente, @PathVariable String correo){
-		ClienteVo clienteActual = clienteService.findByCorreo(correo);
+		ClienteVo clienteActual = clienteService.findById(correo);
 		ClienteVo clienteUpdated = null;
 		Map<String, Object> response = new HashMap<>();
 		

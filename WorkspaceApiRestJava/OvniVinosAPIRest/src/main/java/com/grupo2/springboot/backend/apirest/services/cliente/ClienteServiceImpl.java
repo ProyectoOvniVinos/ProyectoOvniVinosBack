@@ -23,9 +23,6 @@ public class ClienteServiceImpl implements IClienteService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public ClienteVo findByCorreo(String correo) {
-		
-		return clienteDao.findById(correo).orElse(null);
 	public ClienteVo findById(String correoId) {
 		return clienteDao.findById(correoId).orElse(null);
 	}
