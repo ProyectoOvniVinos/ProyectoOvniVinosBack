@@ -3,6 +3,7 @@ package com.grupo2.springboot.backend.apirest.services.cliente;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.grupo2.springboot.backend.apirest.dao.IAdministradorDao;
@@ -10,6 +11,7 @@ import com.grupo2.springboot.backend.apirest.dao.IClienteDao;
 import com.grupo2.springboot.backend.apirest.entity.AdministradorVo;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
 
+@Service
 public class ClienteServiceImpl implements IClienteService{
 
 	@Autowired
@@ -17,8 +19,16 @@ public class ClienteServiceImpl implements IClienteService{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<ClienteVo> findByCorreo(String correo) {
+	public ClienteVo findByCorreo(String correo) {
 		
-		return clienteDao.findById(correo);
+		return clienteDao.findById(correo).orElse(null);
 	}
+
+	@Override
+	@Transactional
+	public ClienteVo save(ClienteVo cliente) {
+		return clienteDao.save(cliente);
+	}
+	
+	
 }

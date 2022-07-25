@@ -6,5 +6,8 @@ import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
 
 public interface IClienteService {
 
-	public Optional<ClienteVo> findByCorreo(String correo);
+	public ClienteVo findByCorreo(String correo);
+	
+	
+	public ClienteVo save(ClienteVo cliente);
 }
