@@ -1,11 +1,18 @@
 package com.grupo2.springboot.backend.apirest.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "administrador")
@@ -32,6 +39,18 @@ public class AdministradorVo implements Serializable {
 
 	@Column(name = "password_admin")
 	private String password_admin;
+	
+	@JsonIgnoreProperties(value={"correo_admin","hibernateLazyInitializer","handler"},allowSetters = true)
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="correo_admin", cascade=CascadeType.ALL)
+	private List<CompraVo> compra;
+
+	public List<CompraVo> getCompra() {
+		return compra;
+	}
+
+	public void setCompra(List<CompraVo> compra) {
+		this.compra = compra;
+	}
 
 	public String getCorreoAdmin() {
 		return correo_admin;

@@ -34,7 +34,7 @@ public class ProductoRestController {
 	}
 	
 	// http://localhost:8080/apiProd/productos
-	@GetMapping("/productos")
+	@GetMapping("/producto")
 	public ResponseEntity<?>  getProducto(@PathVariable int codigo){
 		ProductoVo producto=null;
 		

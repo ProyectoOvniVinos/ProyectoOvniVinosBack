@@ -1,5 +1,9 @@
 package com.grupo2.springboot.backend.apirest.dao;
 
-public interface ICarritoClienteDao {
+import org.springframework.data.repository.CrudRepository;
+
+import com.grupo2.springboot.backend.apirest.entity.CarritoClienteVo;
+
+public interface ICarritoClienteDao extends CrudRepository<CarritoClienteVo, Integer>{
 
 }
