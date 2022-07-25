@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -37,6 +38,7 @@ public class ContabilidadMensualVo {
 	
 	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_registro_contabilidad_anual")
 	private ContabilidadAnualVo id_registro_contabilidad_anual;
 	
 	@Column(name="fecha")

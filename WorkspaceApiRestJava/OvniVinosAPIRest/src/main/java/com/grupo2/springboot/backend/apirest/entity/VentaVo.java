@@ -18,6 +18,7 @@ public class VentaVo {
 	
 	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="correo_cliente")
 	private ClienteVo correo_cliente;
 	
 	@Column(name="precio_venta")

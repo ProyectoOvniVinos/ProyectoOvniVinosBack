@@ -25,6 +25,7 @@ public class ContabilidadDiariaVo {
 	
 	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_registro_contabilidad_mensual")
 	private ContabilidadMensualVo id_registro_contabilidad_mensual;
 	
 	@Column(name="fecha")

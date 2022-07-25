@@ -18,12 +18,12 @@ public class CompraAdminVo implements Serializable{
 	
 	@JsonIgnoreProperties(value={"compras","hibernateLazyInitializer","handler"})
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="fk_compra_admin_codigo_compra")
+	@JoinColumn(name="codigo_compra")
 	private CompraVo codigo_compra;
 	
 	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="fk_compra_admin_codigo_producto")
+	@JoinColumn(name="codigo_producto")
 	private ProductoVo codigo_producto;
 	
 	@Column(name="cantidad_producto")
@@ -31,7 +31,7 @@ public class CompraAdminVo implements Serializable{
 	
 	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="fk_compra_admin_id_registro_contabilidad_diaria")
+	@JoinColumn(name="id_registro_contabilidad_diaria")
 	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
 
 	public int getId_puente() {

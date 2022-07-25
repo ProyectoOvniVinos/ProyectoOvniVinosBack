@@ -19,7 +19,7 @@ import com.grupo2.springboot.backend.apirest.services.cliente.IClienteService;
 
 @CrossOrigin(origins= {"http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089"})
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/apiCliente")
 public class ClienteRestController {
 	
 	@Autowired

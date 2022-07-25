@@ -16,10 +16,12 @@ public class VentaClienteVo {
 	
 	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="codigo_venta")
 	private VentaVo codigo_venta;
 	
 	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="codigo_producto")
 	private ProductoVo codigo_producto;
 	
 	@Column(name="cantidad_producto")
@@ -27,6 +29,7 @@ public class VentaClienteVo {
 	
 	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_registro_contabilidad_diaria")
 	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
 
 	public int getId_puente() {

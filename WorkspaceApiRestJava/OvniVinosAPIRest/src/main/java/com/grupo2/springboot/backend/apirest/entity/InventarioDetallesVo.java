@@ -18,6 +18,7 @@ public class InventarioDetallesVo implements Serializable{
 	
 	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_registro")
 	private InventarioGeneralVo id_registro;
 	
 	@Column(name="codigo_producto")

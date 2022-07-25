@@ -2,6 +2,8 @@ package com.grupo2.springboot.backend.apirest.entity;
 
 import javax.persistence.*;
 
+import org.springframework.boot.jackson.JsonComponent;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -16,6 +18,7 @@ public class CarritoClienteVo {
 	
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JsonIgnoreProperties(value={"carrito","hibernateLazyInitializer","handler"},allowSetters=true)
+	@JoinColumn(name="cliente")
 	private ClienteVo cliente;
 	
 	@Column(name="codigo_producto")
