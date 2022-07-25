@@ -28,7 +28,7 @@ public class UsuarioRestController {
 	public AdministradorVo logueo(@PathVariable String correo){
 		Object obj = null;
 		obj = administradorService.findByCorreo(correo);
-		obj = clienteService.findByCorreo(correo);
+		obj = clienteService.findById(correo);
 		return administradorService.findByCorreo(correo);
 	}
 
