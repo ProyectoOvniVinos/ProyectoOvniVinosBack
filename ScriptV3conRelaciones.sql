@@ -56,7 +56,7 @@ create table producto
 	codigo_producto int primary key not null auto_increment,
 	nombre_producto char(25),
 	precio_producto double,
-	precio_productoProveedor double,
+	precio_producto_proveedor double,
 	descripcion_producto varchar(60)
 );
 
