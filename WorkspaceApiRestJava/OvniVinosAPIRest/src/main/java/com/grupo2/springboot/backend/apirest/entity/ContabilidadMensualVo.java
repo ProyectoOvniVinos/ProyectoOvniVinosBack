@@ -1,10 +1,24 @@
 package com.grupo2.springboot.backend.apirest.entity;
 
+import java.sql.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name="contabilidad_mensual")
 public class ContabilidadMensualVo {
 	
 	private static final long serialVersionUID = 1L;
@@ -22,11 +36,13 @@ public class ContabilidadMensualVo {
 	@Column(name="ingresos_contabilidad_mensual")
 	private double ingresos_contabilidad_mensual;
 	
-	@Column(name="id_registro_contabilidad_anual")
-	private int id_registro_contabilidad_anual;
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_registro_contabilidad_anual")
+	private ContabilidadAnualVo id_registro_contabilidad_anual;
 	
 	@Column(name="fecha")
-	private String fecha;
+	private Date fecha;
 
 	public int getId_registro_contabilidad_mensual() {
 		return id_registro_contabilidad_mensual;
@@ -60,19 +76,19 @@ public class ContabilidadMensualVo {
 		this.ingresos_contabilidad_mensual = ingresos_contabilidad_mensual;
 	}
 
-	public int getId_registro_contabilidad_anual() {
+	public ContabilidadAnualVo getId_registro_contabilidad_anual() {
 		return id_registro_contabilidad_anual;
 	}
 
-	public void setId_registro_contabilidad_anual(int id_registro_contabilidad_anual) {
+	public void setId_registro_contabilidad_anual(ContabilidadAnualVo id_registro_contabilidad_anual) {
 		this.id_registro_contabilidad_anual = id_registro_contabilidad_anual;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

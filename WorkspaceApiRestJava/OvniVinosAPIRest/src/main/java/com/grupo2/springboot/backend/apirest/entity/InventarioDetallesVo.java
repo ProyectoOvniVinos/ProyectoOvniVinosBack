@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="inventario_detalles")
 public class InventarioDetallesVo implements Serializable{
@@ -12,10 +14,12 @@ public class InventarioDetallesVo implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idDetalles;
+	private int id_detalles;
 	
-	@Column(name="id_registro")
-	private int id_registro;
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_registro")
+	private InventarioGeneralVo id_registro;
 	
 	@Column(name="codigo_producto")
 	private int codigo_producto;
@@ -24,18 +28,18 @@ public class InventarioDetallesVo implements Serializable{
 	private int cantidad_producto;
 
 	public int getIdDetalles() {
-		return idDetalles;
+		return id_detalles;
 	}
 
 	public void setIdDetalles(int idDetalles) {
-		this.idDetalles = idDetalles;
+		this.id_detalles = idDetalles;
 	}
 
-	public int getId_registro() {
+	public InventarioGeneralVo getId_registro() {
 		return id_registro;
 	}
 
-	public void setId_registro(int id_registro) {
+	public void setId_registro(InventarioGeneralVo id_registro) {
 		this.id_registro = id_registro;
 	}
 

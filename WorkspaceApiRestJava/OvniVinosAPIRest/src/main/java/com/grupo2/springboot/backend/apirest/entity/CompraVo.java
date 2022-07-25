@@ -1,13 +1,16 @@
 package com.grupo2.springboot.backend.apirest.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@Entity
+@Table(name="compra")
 public class CompraVo implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -20,10 +23,23 @@ public class CompraVo implements Serializable {
 	private int cantidad_compra;
 	
 	@Column(name="fecha_compra")
-	private String fecha_compra;
+	private Date fecha_compra;
 	
-	@Column(name="correo_admin")
-	private String correo_admin;
+	@JsonIgnoreProperties(value={"compra","hibernateLazyInitializer","handler"})
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private AdministradorVo correo_admin;
+	
+	@JsonIgnoreProperties(value={"codigo_compra","hibernateLazyInitializer","handler"},allowSetters = true)
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="codigo_compra", cascade=CascadeType.ALL)
+	private List<CompraAdminVo> compras;
+
+	public List<CompraAdminVo> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(List<CompraAdminVo> compras) {
+		this.compras = compras;
+	}
 
 	public int getCodigo_compra() {
 		return codigo_compra;
@@ -49,22 +65,23 @@ public class CompraVo implements Serializable {
 		this.cantidad_compra = cantidad_compra;
 	}
 
-	public String getFecha_compra() {
+	public Date getFecha_compra() {
 		return fecha_compra;
 	}
 
-	public void setFecha_compra(String fecha_compra) {
+	public void setFecha_compra(Date fecha_compra) {
 		this.fecha_compra = fecha_compra;
 	}
 
-	public String getCorreo_admin() {
+	public AdministradorVo getCorreo_admin() {
 		return correo_admin;
 	}
 
-	public void setCorreo_admin(String correo_admin) {
+	public void setCorreo_admin(AdministradorVo correo_admin) {
 		this.correo_admin = correo_admin;
 	}
 	
+	private static final long serialVersionUID = 1L;
 	
 	
 }

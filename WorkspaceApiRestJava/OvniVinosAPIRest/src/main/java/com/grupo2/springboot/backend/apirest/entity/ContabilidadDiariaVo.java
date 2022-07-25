@@ -2,6 +2,8 @@ package com.grupo2.springboot.backend.apirest.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="contabilidad_diaria")
 public class ContabilidadDiariaVo {
@@ -21,8 +23,10 @@ public class ContabilidadDiariaVo {
 	@Column(name="ingresos_contabilidad_diaria")
 	private double ingresos_contabilidad_diaria;
 	
-	@Column(name="id_registro_contabilidad_mensual")
-	private int id_registro_contabilidad_mensual;
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="id_registro_contabilidad_mensual")
+	private ContabilidadMensualVo id_registro_contabilidad_mensual;
 	
 	@Column(name="fecha")
 	private String fecha;
@@ -59,11 +63,11 @@ public class ContabilidadDiariaVo {
 		this.ingresos_contabilidad_diaria = ingresos_contabilidad_diaria;
 	}
 
-	public int getId_registro_contabilidad_mensual() {
+	public ContabilidadMensualVo getId_registro_contabilidad_mensual() {
 		return id_registro_contabilidad_mensual;
 	}
 
-	public void setId_registro_contabilidad_mensual(int id_registro_contabilidad_mensual) {
+	public void setId_registro_contabilidad_mensual(ContabilidadMensualVo id_registro_contabilidad_mensual) {
 		this.id_registro_contabilidad_mensual = id_registro_contabilidad_mensual;
 	}
 
