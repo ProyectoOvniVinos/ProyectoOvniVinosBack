@@ -48,7 +48,7 @@ public class ClienteRestController {
 	}
 	
 	// http://localhost:8080/apiCliente/cliente
-	@GetMapping("/cliente")
+	@GetMapping("/cliente/{correo}")
 	public ResponseEntity<?>  getCliente(@PathVariable String correo){
 		ClienteVo cliente=null;
 		
@@ -104,7 +104,7 @@ public class ClienteRestController {
 			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje","el cliente ha sido actualizado con exito");
-		response.put("producto", clienteUpdated);
+		response.put("cliente", clienteUpdated);
 		
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 	}
