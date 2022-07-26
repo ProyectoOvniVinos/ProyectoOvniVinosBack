@@ -3,13 +3,14 @@ package com.grupo2.springboot.backend.apirest.services.cliente;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.grupo2.springboot.backend.apirest.dao.IAdministradorDao;
 import com.grupo2.springboot.backend.apirest.dao.IClienteDao;
 import com.grupo2.springboot.backend.apirest.entity.AdministradorVo;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
-
+@Service
 public class ClienteServiceImpl implements IClienteService{
 
 	@Autowired

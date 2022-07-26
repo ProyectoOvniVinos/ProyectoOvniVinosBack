@@ -1,7 +1,6 @@
 package com.grupo2.springboot.backend.apirest.controllers;
 
 
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +27,15 @@ public class UsuarioRestController {
 	public AdministradorVo logueo(@PathVariable String correo){
 		Object obj = null;
 		obj = administradorService.findByCorreo(correo);
+		if(obj!=null) {
+			return administradorService.findByCorreo(correo);
+		}
+		
 		obj = clienteService.findByCorreo(correo);
-		return administradorService.findByCorreo(correo);
+		if(obj!=null) {
+			return administradorService.findByCorreo(correo);
+		}
+		return null;
 	}
 
 }

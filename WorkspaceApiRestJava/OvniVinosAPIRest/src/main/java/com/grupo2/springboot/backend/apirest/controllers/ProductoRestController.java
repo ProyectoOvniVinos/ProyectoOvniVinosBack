@@ -33,8 +33,8 @@ public class ProductoRestController {
 		return productoService.findAll();
 	}
 	
-	// http://localhost:8080/apiProd/productos
-	@GetMapping("/productos")
+	// http://localhost:8080/apiProd/producto
+	@GetMapping("/producto")
 	public ResponseEntity<?>  getProducto(@PathVariable int codigo){
 		ProductoVo producto=null;
 		
