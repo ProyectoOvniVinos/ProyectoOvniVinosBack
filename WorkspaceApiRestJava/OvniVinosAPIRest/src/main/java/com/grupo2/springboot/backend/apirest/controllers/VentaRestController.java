@@ -53,7 +53,7 @@ public class VentaRestController {
 		return new ResponseEntity<VentaVo>(venta,HttpStatus.OK);
 	}
 	
-	// http://localhost:8080/apiProd/venta
+	// http://localhost:8080/apiProd/venta/objeto
 	@PostMapping("/venta")
 	public ResponseEntity<?> create(@RequestBody VentaVo venta){
 		VentaVo ventaNew = null;
