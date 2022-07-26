@@ -10,8 +10,8 @@ import com.grupo2.springboot.backend.apirest.dao.IClienteDao;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
 
 @Service
-public class ClienteServiceImpl implements IClienteService{
-	
+public class ClienteServiceImpl implements IClienteService {
+
 	@Autowired
 	private IClienteDao clienteDao;
 
@@ -44,6 +44,5 @@ public class ClienteServiceImpl implements IClienteService{
 	public ClienteVo update(ClienteVo cliente) {
 		return clienteDao.save(cliente);
 	}
-	
 
 }
