@@ -1,5 +1,6 @@
 package com.grupo2.springboot.backend.apirest.services.producto;
 
+import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 

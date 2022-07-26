@@ -1,6 +1,10 @@
 package com.grupo2.springboot.backend.apirest.entity;
 
+import java.sql.Date;
+
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="venta")
@@ -12,14 +16,16 @@ public class VentaVo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo_venta;
 	
-	@Column(name="correo_cliente")
-	private String correo_cliente;
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="correo_cliente")
+	private ClienteVo correo_cliente;
 	
 	@Column(name="precio_venta")
 	private double precio_venta;
 	
 	@Column(name="fecha")
-	private String fecha;
+	private Date fecha;
 
 	public int getCodigo_venta() {
 		return codigo_venta;
@@ -29,19 +35,19 @@ public class VentaVo {
 		this.codigo_venta = codigo_venta;
 	}
 
-	public String getCorreo_cliente() {
+	public ClienteVo getCorreo_cliente() {
 		return correo_cliente;
 	}
 
-	public void setCorreo_cliente(String correo_cliente) {
+	public void setCorreo_cliente(ClienteVo correo_cliente) {
 		this.correo_cliente = correo_cliente;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 	

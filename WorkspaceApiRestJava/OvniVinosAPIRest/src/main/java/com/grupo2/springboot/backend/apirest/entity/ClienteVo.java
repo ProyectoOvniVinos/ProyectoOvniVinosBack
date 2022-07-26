@@ -1,10 +1,13 @@
 package com.grupo2.springboot.backend.apirest.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="cliente")
@@ -29,6 +32,10 @@ public class ClienteVo implements Serializable{
 	
 	@Column(name="password_cliente")
 	private String password_cliente;
+	
+	@JsonIgnoreProperties(value={"cliente","hibernateLazyInitializer","handler"},allowSetters = true)
+	@OneToOne(fetch=FetchType.LAZY, mappedBy="cliente", cascade=CascadeType.ALL)
+	private CarritoClienteVo carrito;
 
 	public String getCorreo_cliente() {
 		return correo_cliente;

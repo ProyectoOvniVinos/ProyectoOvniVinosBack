@@ -1,4 +1,4 @@
-Create schema basededatos_ovni_vinos;
+create schema basededatos_ovni_vinos;
 use basededatos_ovni_vinos;
 
 create table administrador
@@ -38,10 +38,8 @@ create table carrito_cliente
   codigo_producto int,
   nombre_producto char(25),
   cantidad_producto int,
-  precio_producto double,
-  FOREIGN KEY (cliente) REFERENCES cliente(correo_cliente)
+  precio_producto double
 );
-
 
 
 create table venta 
@@ -108,7 +106,7 @@ create table inventario_general
 );
 create table inventario_detalles
 (
-	idDetalles int primary key not null auto_increment,
+	id_detalles int primary key not null auto_increment,
   id_registro int,
   codigo_producto int,
   cantidad_producto int
@@ -121,9 +119,18 @@ create table compra_admin
   cantidad_producto int,
   id_registro_contabilidad_diaria int not null
 );
+
+ALTER TABLE `basededatos_ovni_vinos`.`carrito_cliente` 
+ADD CONSTRAINT `fk_carrito_cliente_cliente`
+  FOREIGN KEY (`cliente`)
+  REFERENCES `basededatos_ovni_vinos`.`cliente` (`correo_cliente`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
 ALTER TABLE `basededatos_ovni_vinos`.`compra_admin` 
 ADD INDEX `fk_compra_admin_id_registro_contabilidad_diaria_idx` (`id_registro_contabilidad_diaria` ASC) ;
 ;
+
 ALTER TABLE `basededatos_ovni_vinos`.`compra_admin` 
 ADD CONSTRAINT `fk_compra_admin_id_registro_contabilidad_diaria`
   FOREIGN KEY (`id_registro_contabilidad_diaria`)
@@ -131,6 +138,9 @@ ADD CONSTRAINT `fk_compra_admin_id_registro_contabilidad_diaria`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
+/*
+drop schema basededatos_ovni_vinos
+*/
 
 ALTER TABLE `basededatos_ovni_vinos`.`compra_admin` 
 ADD INDEX `fk_compra_admin_codigo_producto_idx` (`codigo_producto` ASC) ;
