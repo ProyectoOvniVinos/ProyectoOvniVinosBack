@@ -25,12 +25,14 @@ public class CompraVo implements Serializable {
 	@Column(name="fecha_compra")
 	private Date fecha_compra;
 	
-	@JsonIgnoreProperties(value={"compra","hibernateLazyInitializer","handler"})
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters = true)
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="correo_admin")
 	private AdministradorVo correo_admin;
 	
-	@JsonIgnoreProperties(value={"codigo_compra","hibernateLazyInitializer","handler"},allowSetters = true)
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="codigo_compra", cascade=CascadeType.ALL)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="compra")
 	private List<CompraAdminVo> compras;
 
 	public List<CompraAdminVo> getCompras() {
@@ -82,6 +84,12 @@ public class CompraVo implements Serializable {
 	}
 	
 	private static final long serialVersionUID = 1L;
-	
+
+	@Override
+	public String toString() {
+		return "CompraVo [codigo_compra=" + codigo_compra + ", precio_compra=" + precio_compra + ", cantidad_compra="
+				+ cantidad_compra + ", fecha_compra=" + fecha_compra + ", correo_admin=" + correo_admin + ", compras="
+				+ compras + "]";
+	}
 	
 }

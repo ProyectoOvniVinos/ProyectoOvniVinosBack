@@ -63,5 +63,15 @@ public class ContabilidadAnualVo {
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+
+	@Override
+	public String toString() {
+		return "ContabilidadAnualVo [id_registro_contabilidad_anual=" + id_registro_contabilidad_anual
+				+ ", ventas_contabilidad_anual=" + ventas_contabilidad_anual + ", egresos_contabilidad_anual="
+				+ egresos_contabilidad_anual + ", ingresos_contabilidad_anual=" + ingresos_contabilidad_anual
+				+ ", fecha=" + fecha + "]";
+	}
+	
+	
 	
 }

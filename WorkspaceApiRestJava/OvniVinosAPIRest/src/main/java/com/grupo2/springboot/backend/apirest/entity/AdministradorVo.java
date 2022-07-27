@@ -40,16 +40,16 @@ public class AdministradorVo implements Serializable {
 	@Column(name = "password_admin")
 	private String password_admin;
 	
-	@JsonIgnoreProperties(value={"correo_admin","hibernateLazyInitializer","handler"},allowSetters = true)
+	@JsonIgnoreProperties(value={"cliente","hibernateLazyInitializer","handler"},allowSetters = true)
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="correo_admin", cascade=CascadeType.ALL)
-	private List<CompraVo> compra;
+	private List<CompraVo> compras;
 
-	public List<CompraVo> getCompra() {
-		return compra;
+	public List<CompraVo> getCompras() {
+		return compras;
 	}
 
-	public void setCompra(List<CompraVo> compra) {
-		this.compra = compra;
+	public void setCompras(List<CompraVo> compras) {
+		this.compras = compras;
 	}
 
 	public String getCorreoAdmin() {
@@ -100,5 +100,13 @@ public class AdministradorVo implements Serializable {
 		this.password_admin = password_admin;
 	}
 
+	@Override
+	public String toString() {
+		return "AdministradorVo [correo_admin=" + correo_admin + ", nombre_admin=" + nombre_admin + ", apellido_admin="
+				+ apellido_admin + ", direccion_admin=" + direccion_admin + ", telefono_admin=" + telefono_admin
+				+ ", password_admin=" + password_admin+"]";
+	}
+
+	
 
 }
