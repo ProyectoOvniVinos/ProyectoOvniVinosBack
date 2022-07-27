@@ -16,21 +16,16 @@ public class CompraAdminVo implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_puente;
 	
-	@JsonIgnoreProperties(value={"compras","hibernateLazyInitializer","handler"})
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="codigo_compra")
-	private CompraVo codigo_compra;
-	
-	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="codigo_producto")
 	private ProductoVo codigo_producto;
 	
 	@Column(name="cantidad_producto")
 	private int cantidad_producto;
 	
-	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_registro_contabilidad_diaria")
 	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
 
@@ -41,15 +36,8 @@ public class CompraAdminVo implements Serializable{
 	public void setId_puente(int id_puente) {
 		this.id_puente = id_puente;
 	}
-
-	public CompraVo getCodigo_compra() {
-		return codigo_compra;
-	}
-
-	public void setCodigo_compra(CompraVo codigo_compra) {
-		this.codigo_compra = codigo_compra;
-	}
-
+	
+	
 	public ProductoVo getCodigo_producto() {
 		return codigo_producto;
 	}
@@ -72,6 +60,13 @@ public class CompraAdminVo implements Serializable{
 
 	public void setId_registro_contabilidad_diaria(ContabilidadDiariaVo id_registro_contabilidad_diaria) {
 		this.id_registro_contabilidad_diaria = id_registro_contabilidad_diaria;
+	}
+
+	@Override
+	public String toString() {
+		return "CompraAdminVo [id_puente=" + id_puente + ", codigo_producto="
+				+ codigo_producto + ", cantidad_producto=" + cantidad_producto + ", id_registro_contabilidad_diaria="
+				+ id_registro_contabilidad_diaria + "]";
 	}
 	
 	
