@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -131,7 +130,7 @@ public class ClienteRestController {
 			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		response.put("mensaje","el cliente ha sido actualizado con exito");
-		response.put("producto", clienteUpdated);
+		response.put("cliente", clienteUpdated);
 		
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 	}

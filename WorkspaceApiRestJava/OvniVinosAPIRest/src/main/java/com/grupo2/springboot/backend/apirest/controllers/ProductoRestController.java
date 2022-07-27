@@ -33,14 +33,18 @@ public class ProductoRestController {
 		return productoService.findAll();
 	}
 	
-	// http://localhost:8080/apiProd/productos
-	@GetMapping("/producto")
+	// http://localhost:8080/apiProd/producto/codigo
+	@GetMapping("/producto/{codigo}")
 	public ResponseEntity<?>  getProducto(@PathVariable int codigo){
 		ProductoVo producto=null;
 		
 		Map<String,Object>response = new HashMap<>();
 		try {
 			producto = productoService.findByCodigo_producto(codigo);
+			if(producto==null) {
+				response.put("mensaje","No se encontro el producto");
+				return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 		} catch(DataAccessException e) {
 			response.put("mensaje","error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
