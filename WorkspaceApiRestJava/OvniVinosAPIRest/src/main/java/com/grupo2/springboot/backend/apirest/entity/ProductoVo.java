@@ -18,7 +18,7 @@ public class ProductoVo {
 	@Column(name="precio_producto")
 	private double precio_producto;
 	
-	@Column(name="precio_productoProveedor")
+	@Column(name="precio_producto_proveedor")
 	private double precio_producto_proveedor;
 	
 	@Column(name="descripcion_producto")
@@ -62,6 +62,13 @@ public class ProductoVo {
 
 	public void setDescripcion_producto(String descripcion_producto) {
 		this.descripcion_producto = descripcion_producto;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductoVo [codigo_producto=" + codigo_producto + ", nombre_producto=" + nombre_producto
+				+ ", precio_producto=" + precio_producto + ", precio_producto_proveedor=" + precio_producto_proveedor
+				+ ", descripcion_producto=" + descripcion_producto + "]";
 	}
 	
 }

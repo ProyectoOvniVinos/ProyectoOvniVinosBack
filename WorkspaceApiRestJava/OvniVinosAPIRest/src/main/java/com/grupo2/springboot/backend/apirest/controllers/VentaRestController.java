@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
+import com.grupo2.springboot.backend.apirest.entity.CompraVo;
 import com.grupo2.springboot.backend.apirest.entity.VentaVo;
 import com.grupo2.springboot.backend.apirest.services.venta.IVentaService;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,12 +30,24 @@ public class VentaRestController {
 	
 	//http://localhost:8080/apiVenta/ventas
 	@GetMapping("/ventas")
-	public List<VentaVo> getVentas(){
-		return ventaService.findAll();
+	public ResponseEntity<?> compras(){
+		List<VentaVo> ventas = null; 
+		Map<String, Object> response = new HashMap<>();
+		try {
+			ventas = ventaService.findAll();
+		}catch(DataAccessException e){
+			response.put("mensaje","error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		System.out.println(ventas);
+		
+		return new ResponseEntity<List<VentaVo>>(ventas,HttpStatus.OK);
 	}
-	//http://localhost:8080/apiVenta/ventas
+	//http://localhost:8080/apiVenta/ventas/id
 	@GetMapping("/venta/{id}")
-	public ResponseEntity<?> getVenta(@PathVariable int id){
+	public ResponseEntity<?> getVenta(@PathVariable Integer id){
 		VentaVo venta = null;
 		
 		Map<String,Object>response = new HashMap<>();
@@ -53,13 +67,28 @@ public class VentaRestController {
 		return new ResponseEntity<VentaVo>(venta,HttpStatus.OK);
 	}
 	
-	// http://localhost:8080/apiProd/venta/objeto
+	// http://localhost:8080/apiProd/venta
 	@PostMapping("/venta")
 	public ResponseEntity<?> create(@RequestBody VentaVo venta){
 		VentaVo ventaNew = null;
+		
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
+			ClienteVo cliente = new ClienteVo();
+			
+			cliente.setCorreoCliente("cristian@gmail.com");
+			cliente.setNombreCliente("Cristian");
+			cliente.setApellidoCliente("Amador");
+			cliente.setDireccionCliente("centenario");
+			cliente.setTelefonoCliente("3000");
+			cliente.setPasswordCliente("david");
+			venta.setCorreo_cliente(cliente);
+			
+			venta.getVentas().get(0).getId_registro_contabilidad_diaria().setId_registro_contabilidad_diaria(1);
+			venta.getVentas().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().setId_registro_contabilidad_mensual(1);
+			venta.getVentas().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
+			System.out.println(venta);
 			ventaNew = ventaService.save(venta);
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al realizar el insert en la base de datos");

@@ -9,28 +9,30 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="compra")
+@Table(name = "compra")
 public class CompraVo implements Serializable {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo_compra;
-	
-	@Column(name="precio_compra")
+
+	@Column(name = "precio_compra")
 	private double precio_compra;
-	
-	@Column(name="cantidad_compra")
+
+	@Column(name = "cantidad_compra")
 	private int cantidad_compra;
-	
-	@Column(name="fecha_compra")
+
+	@Column(name = "fecha_compra")
 	private Date fecha_compra;
-	
-	@JsonIgnoreProperties(value={"compra","hibernateLazyInitializer","handler"})
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+
+	@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" }, allowSetters = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "correo_admin")
 	private AdministradorVo correo_admin;
-	
-	@JsonIgnoreProperties(value={"codigo_compra","hibernateLazyInitializer","handler"},allowSetters = true)
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="codigo_compra", cascade=CascadeType.ALL)
+
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "compra")
 	private List<CompraAdminVo> compras;
 
 	public List<CompraAdminVo> getCompras() {
@@ -80,8 +82,14 @@ public class CompraVo implements Serializable {
 	public void setCorreo_admin(AdministradorVo correo_admin) {
 		this.correo_admin = correo_admin;
 	}
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	
+
+	@Override
+	public String toString() {
+		return "CompraVo [codigo_compra=" + codigo_compra + ", precio_compra=" + precio_compra + ", cantidad_compra="
+				+ cantidad_compra + ", fecha_compra=" + fecha_compra + ", correo_admin=" + correo_admin + ", compras="
+				+ compras + "]";
+	}
+
 }
