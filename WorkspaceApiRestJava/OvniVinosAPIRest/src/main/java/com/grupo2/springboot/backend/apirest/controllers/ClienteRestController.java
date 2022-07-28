@@ -117,11 +117,11 @@ public class ClienteRestController {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			clienteActual.setNombre_cliente(cliente.getNombre_cliente());
-			clienteActual.setApellido_cliente(cliente.getApellido_cliente());
-			clienteActual.setDireccion_cliente(cliente.getDireccion_cliente());
-			clienteActual.setTelefono_cliente(cliente.getTelefono_cliente());
-			clienteActual.setPassword_cliente(cliente.getPassword_cliente());
+			clienteActual.setNombreCliente(cliente.getNombreCliente());
+			clienteActual.setApellidoCliente(cliente.getApellidoCliente());
+			clienteActual.setDireccionCliente(cliente.getDireccionCliente());
+			clienteActual.setTelefonoCliente(cliente.getTelefonoCliente());
+			clienteActual.setPasswordCliente(cliente.getPasswordCliente());
 			
 			clienteUpdated = clienteService.save(clienteActual);
 		}catch(DataAccessException e) {

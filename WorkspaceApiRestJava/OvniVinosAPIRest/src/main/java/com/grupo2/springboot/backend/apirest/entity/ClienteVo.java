@@ -55,52 +55,61 @@ public class ClienteVo implements Serializable{
 		this.ventas = ventas;
 	}
 
-	public String getCorreo_cliente() {
+	public String getCorreoCliente() {
 		return correo_cliente;
 	}
 
-	public void setCorreo_cliente(String correo_cliente) {
+	public void setCorreoCliente(String correo_cliente) {
 		this.correo_cliente = correo_cliente;
 	}
 
-	public String getNombre_cliente() {
+	public String getNombreCliente() {
 		return nombre_cliente;
 	}
 
-	public void setNombre_cliente(String nombre_cliente) {
+	public void setNombreCliente(String nombre_cliente) {
 		this.nombre_cliente = nombre_cliente;
 	}
 
-	public String getApellido_cliente() {
+	public String getApellidoCliente() {
 		return apellido_cliente;
 	}
 
-	public void setApellido_cliente(String apellido_cliente) {
+	public void setApellidoCliente(String apellido_cliente) {
 		this.apellido_cliente = apellido_cliente;
 	}
 
-	public String getDireccion_cliente() {
+	public String getDireccionCliente() {
 		return direccion_cliente;
 	}
 
-	public void setDireccion_cliente(String direccion_cliente) {
+	public void setDireccionCliente(String direccion_cliente) {
 		this.direccion_cliente = direccion_cliente;
 	}
 
-	public String getTelefono_cliente() {
+	public String getTelefonoCliente() {
 		return telefono_cliente;
 	}
 
-	public void setTelefono_cliente(String telefono_cliente) {
+	public void setTelefonoCliente(String telefono_cliente) {
 		this.telefono_cliente = telefono_cliente;
 	}
 
-	public String getPassword_cliente() {
+	public String getPasswordCliente() {
 		return password_cliente;
 	}
 
-	public void setPassword_cliente(String password_cliente) {
+	public void setPasswordCliente(String password_cliente) {
 		this.password_cliente = password_cliente;
 	}
+
+	@Override
+	public String toString() {
+		return "ClienteVo [correo_cliente=" + correo_cliente + ", nombre_cliente=" + nombre_cliente
+				+ ", apellido_cliente=" + apellido_cliente + ", direccion_cliente=" + direccion_cliente
+				+ ", telefono_cliente=" + telefono_cliente + ", password_cliente=" + password_cliente + "]";
+	}
+	
+	
 	
 }

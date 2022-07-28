@@ -45,7 +45,7 @@ public class UsuarioRestController {
 			}
 		}else {
 			if(clienteService.findById(datosUser.get(0))!=null){
-				if(clienteService.findById(datosUser.get(0)).getPassword_cliente().equals(datosUser.get(1))) {
+				if(clienteService.findById(datosUser.get(0)).getPasswordCliente().equals(datosUser.get(1))) {
 					response.put("usuario","cliente");
 					return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
 				}else {

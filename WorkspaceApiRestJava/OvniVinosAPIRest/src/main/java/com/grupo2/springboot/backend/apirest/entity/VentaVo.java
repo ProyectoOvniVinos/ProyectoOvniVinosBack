@@ -1,5 +1,6 @@
 package com.grupo2.springboot.backend.apirest.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
@@ -8,31 +9,32 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="venta")
-public class VentaVo {
-	
-	private static final long serialVersionUID = 1L;
-	
+@Table(name = "venta")
+public class VentaVo implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int codigo_venta;
-	
-	@JsonIgnoreProperties(value={"ventas","hibernateLazyInitializer","handler"},allowSetters=true)
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="correo_cliente")
-	private ClienteVo correo_cliente;
-	
-	@Column(name="precio_venta")
+
+	@Column(name = "precio_venta")
 	private double precio_venta;
-	
-	@Column(name="fecha")
-	private Date fecha;
-	
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+
+	@Column(name = "cantidad_venta")
+	private int cantidad_venta;
+
+	@Column(name = "fecha_venta")
+	private Date fecha_venta;
+
+	@JsonIgnoreProperties(value = { "ventas", "hibernateLazyInitializer", "handler" }, allowSetters = true)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "correo_cliente")
+	private ClienteVo correo_cliente;
+
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="codigo_venta")
+	@JoinColumn(name = "venta")
 	private List<VentaClienteVo> ventas;
-	
+
 	public double getPrecio_venta() {
 		return precio_venta;
 	}
@@ -65,12 +67,22 @@ public class VentaVo {
 		this.correo_cliente = correo_cliente;
 	}
 
-	public Date getFecha() {
-		return fecha;
+	public int getCantidad_venta() {
+		return cantidad_venta;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setCantidad_venta(int cantidad_venta) {
+		this.cantidad_venta = cantidad_venta;
 	}
-	
+
+	public Date getFecha_venta() {
+		return fecha_venta;
+	}
+
+	public void setFecha_venta(Date fecha_venta) {
+		this.fecha_venta = fecha_venta;
+	}
+
+	private static final long serialVersionUID = 1L;
+
 }
