@@ -7,26 +7,26 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="compra_admin")
-public class CompraAdminVo implements Serializable{
-	
+@Table(name = "compra_admin")
+public class CompraAdminVo implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_puente;
-	
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="codigo_producto")
+
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "codigo_producto")
 	private ProductoVo codigo_producto;
-	
-	@Column(name="cantidad_producto")
+
+	@Column(name = "cantidad_producto")
 	private int cantidad_producto;
-	
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_registro_contabilidad_diaria")
+
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_registro_contabilidad_diaria")
 	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
 
 	public int getId_puente() {
@@ -36,8 +36,7 @@ public class CompraAdminVo implements Serializable{
 	public void setId_puente(int id_puente) {
 		this.id_puente = id_puente;
 	}
-	
-	
+
 	public ProductoVo getCodigo_producto() {
 		return codigo_producto;
 	}
@@ -64,11 +63,8 @@ public class CompraAdminVo implements Serializable{
 
 	@Override
 	public String toString() {
-		return "CompraAdminVo [id_puente=" + id_puente + ", codigo_producto="
-				+ codigo_producto + ", cantidad_producto=" + cantidad_producto + ", id_registro_contabilidad_diaria="
-				+ id_registro_contabilidad_diaria + "]";
+		return "CompraAdminVo [id_puente=" + id_puente + ", codigo_producto=" + codigo_producto + ", cantidad_producto="
+				+ cantidad_producto + ", id_registro_contabilidad_diaria=" + id_registro_contabilidad_diaria + "]";
 	}
-	
-	
-	
+
 }

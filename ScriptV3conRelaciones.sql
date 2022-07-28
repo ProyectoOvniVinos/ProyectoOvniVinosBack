@@ -49,6 +49,9 @@ create table venta
 	precio_venta double,
 	fecha_venta date
 );
+ALTER TABLE `basededatos_ovni_vinos`.`venta` 
+ADD COLUMN `cantidad_compra` INT NULL DEFAULT NULL AFTER `fecha_venta`;
+
 
 
 create table producto 
@@ -248,4 +251,17 @@ ADD CONSTRAINT `fk_contabilidad_mensual_id_registro_contabilidad_anual`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
+
+
+/* CAMBIO DE NOMBRE ATRIBUTO de codigo_venta a venta EN TABLA venta_cliente*/
+ALTER TABLE `basededatos_ovni_vinos`.`venta_cliente` 
+DROP FOREIGN KEY `fk_venta_cliente_codigo_venta`;
+ALTER TABLE `basededatos_ovni_vinos`.`venta_cliente` 
+CHANGE COLUMN `codigo_venta` `venta` INT(11) NULL DEFAULT NULL ;
+ALTER TABLE `basededatos_ovni_vinos`.`venta_cliente` 
+ADD CONSTRAINT `fk_venta_cliente_codigo_venta`
+  FOREIGN KEY (`venta`)
+  REFERENCES `basededatos_ovni_vinos`.`venta` (`codigo_venta`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
 
