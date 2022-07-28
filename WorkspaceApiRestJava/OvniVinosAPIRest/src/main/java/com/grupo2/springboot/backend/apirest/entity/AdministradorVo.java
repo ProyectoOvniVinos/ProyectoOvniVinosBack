@@ -40,7 +40,7 @@ public class AdministradorVo implements Serializable {
 	@Column(name = "password_admin")
 	private String password_admin;
 	
-	@JsonIgnoreProperties(value={"cliente","hibernateLazyInitializer","handler"},allowSetters = true)
+	@JsonIgnoreProperties(value={"correo_admin","hibernateLazyInitializer","handler"},allowSetters = true)
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="correo_admin", cascade=CascadeType.ALL)
 	private List<CompraVo> compras;
 

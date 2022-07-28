@@ -86,6 +86,9 @@ public class CompraRestController {
 			compra.getCompras().get(0).getId_registro_contabilidad_diaria().setId_registro_contabilidad_diaria(1);
 			compra.getCompras().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().setId_registro_contabilidad_mensual(1);
 			compra.getCompras().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
+			compra.getCompras().get(1).getId_registro_contabilidad_diaria().setId_registro_contabilidad_diaria(1);
+			compra.getCompras().get(1).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().setId_registro_contabilidad_mensual(1);
+			compra.getCompras().get(1).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
 			System.out.println(compra);
 			compraNew = compraService.save(compra);
 		}catch(DataAccessException e) {
