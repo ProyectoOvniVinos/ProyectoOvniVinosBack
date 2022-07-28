@@ -36,8 +36,8 @@ public class ContabilidadMensualVo {
 	@Column(name="ingresos_contabilidad_mensual")
 	private double ingresos_contabilidad_mensual;
 	
-	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_registro_contabilidad_anual")
 	private ContabilidadAnualVo id_registro_contabilidad_anual;
 	
@@ -91,5 +91,15 @@ public class ContabilidadMensualVo {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+
+	@Override
+	public String toString() {
+		return "ContabilidadMensualVo [id_registro_contabilidad_mensual=" + id_registro_contabilidad_mensual
+				+ ", ventas_contabilidad_mensual=" + ventas_contabilidad_mensual + ", egresos_contabilidad_mensual="
+				+ egresos_contabilidad_mensual + ", ingresos_contabilidad_mensual=" + ingresos_contabilidad_mensual
+				+ ", id_registro_contabilidad_anual=" + id_registro_contabilidad_anual + ", fecha=" + fecha + "]";
+	}
+	
+	
 
 }

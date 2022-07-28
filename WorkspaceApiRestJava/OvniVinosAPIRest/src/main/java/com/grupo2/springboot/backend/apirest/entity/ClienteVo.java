@@ -3,9 +3,7 @@ package com.grupo2.springboot.backend.apirest.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Entity;
 import javax.persistence.*;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -36,6 +34,26 @@ public class ClienteVo implements Serializable{
 	@JsonIgnoreProperties(value={"cliente","hibernateLazyInitializer","handler"},allowSetters = true)
 	@OneToOne(fetch=FetchType.LAZY, mappedBy="cliente", cascade=CascadeType.ALL)
 	private CarritoClienteVo carrito;
+	
+	@JsonIgnoreProperties(value={"cliente","hibernateLazyInitializer","handler"},allowSetters = true)
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="correo_cliente", cascade=CascadeType.ALL)
+	private List<VentaVo> ventas;
+	
+	public CarritoClienteVo getCarrito() {
+		return carrito;
+	}
+
+	public void setCarrito(CarritoClienteVo carrito) {
+		this.carrito = carrito;
+	}
+
+	public List<VentaVo> getVentas() {
+		return ventas;
+	}
+
+	public void setVentas(List<VentaVo> ventas) {
+		this.ventas = ventas;
+	}
 
 	public String getCorreo_cliente() {
 		return correo_cliente;

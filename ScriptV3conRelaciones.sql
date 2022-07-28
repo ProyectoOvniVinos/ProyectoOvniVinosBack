@@ -6,7 +6,7 @@ create table administrador
 	correo_admin char(30) primary key not null,
 	nombre_admin char(30),
 	apellido_admin char(30),
-	direccion_admin char(40),
+	direccion_admin varchar(100),
 	telefono_admin char(12),
 	password_admin char(20)
 );
@@ -26,7 +26,7 @@ create table cliente
 	correo_cliente char(30) primary key not null,
 	nombre_cliente char(30),
 	apellido_cliente char(30),
-	direccion_cliente char(40),
+	direccion_cliente varchar(100),
 	telefono_cliente char(12),
 	password_cliente char(20)
 );
@@ -57,7 +57,7 @@ create table producto
 	nombre_producto char(25),
 	precio_producto double,
 	precio_producto_proveedor double,
-	descripcion_producto varchar(60)
+	descripcion_producto varchar(200)
 );
 
 create table venta_cliente
@@ -114,7 +114,7 @@ create table inventario_detalles
 create table compra_admin
 (
 	id_puente int primary key not null auto_increment,
-  codigo_compra int not null,
+  compra int,
   codigo_producto int not null,
   cantidad_producto int,
   id_registro_contabilidad_diaria int not null
@@ -153,11 +153,11 @@ ADD CONSTRAINT `fk_compra_admin_codigo_producto`
   ON UPDATE NO ACTION;
 
 ALTER TABLE `basededatos_ovni_vinos`.`compra_admin` 
-ADD INDEX `fk_compra_admin_codigo_compra_idx` (`codigo_compra` ASC) ;
+ADD INDEX `fk_compra_admin_codigo_compra_idx` (`compra` ASC) ;
 ;
 ALTER TABLE `basededatos_ovni_vinos`.`compra_admin` 
 ADD CONSTRAINT `fk_compra_admin_codigo_compra`
-  FOREIGN KEY (`codigo_compra`)
+  FOREIGN KEY (`compra`)
   REFERENCES `basededatos_ovni_vinos`.`compra` (`codigo_compra`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;

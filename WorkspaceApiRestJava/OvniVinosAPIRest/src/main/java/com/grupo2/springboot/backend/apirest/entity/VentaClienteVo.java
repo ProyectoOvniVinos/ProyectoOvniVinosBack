@@ -14,21 +14,16 @@ public class VentaClienteVo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_puente;
 	
-	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="codigo_venta")
-	private VentaVo codigo_venta;
-	
-	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="codigo_producto")
 	private ProductoVo codigo_producto;
 	
 	@Column(name="cantidad_producto")
 	private int cantidad_producto;
 	
-	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_registro_contabilidad_diaria")
 	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
 
@@ -38,14 +33,6 @@ public class VentaClienteVo {
 
 	public void setId_puente(int id_puente) {
 		this.id_puente = id_puente;
-	}
-
-	public VentaVo getCodigo_venta() {
-		return codigo_venta;
-	}
-
-	public void setCodigo_venta(VentaVo codigo_venta) {
-		this.codigo_venta = codigo_venta;
 	}
 
 	public ProductoVo getCodigo_producto() {
@@ -71,7 +58,5 @@ public class VentaClienteVo {
 	public void setId_registro_contabilidad_diaria(ContabilidadDiariaVo id_registro_contabilidad_diaria) {
 		this.id_registro_contabilidad_diaria = id_registro_contabilidad_diaria;
 	}
-	
-	
 	
 }
