@@ -1,5 +1,4 @@
 package com.grupo2.springboot.backend.apirest.entity;
-
 import java.io.Serializable;
 import java.util.List;
 

@@ -2,4 +2,5 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.VentaVo"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.hibernate.exception.GenericJDBCException"/>
 </qualifiedTypeNameHistroy>
