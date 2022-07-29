@@ -83,8 +83,9 @@ public class VentaRestController {
 			cliente.setDireccionCliente("centenario");
 			cliente.setTelefonoCliente("3000");
 			cliente.setPasswordCliente("david");
-			venta.setCorreo_cliente(cliente);
 			
+			
+			venta.setCorreo_cliente(cliente);
 			venta.getVentas().get(0).getId_registro_contabilidad_diaria().setId_registro_contabilidad_diaria(1);
 			venta.getVentas().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().setId_registro_contabilidad_mensual(1);
 			venta.getVentas().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
