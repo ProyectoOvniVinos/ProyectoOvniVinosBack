@@ -1,8 +1,41 @@
 package com.grupo2.springboot.backend.apirest.services.inventariogeneral;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.grupo2.springboot.backend.apirest.dao.IInventarioGeneralDao;
+import com.grupo2.springboot.backend.apirest.entity.InventarioGeneralVo;
+
 @Service
-public class InventarioGeneralServiceImpl {
+public class InventarioGeneralServiceImpl implements IinventarioGeneralService{
+
+	@Autowired
+	private IInventarioGeneralDao inventarioGeneralDao;
+	
+	@Override
+	public List<InventarioGeneralVo> findAll() {
+		
+		return (List<InventarioGeneralVo>) inventarioGeneralDao.findAll();
+	}
+
+	@Override
+	public InventarioGeneralVo findById(Integer id) {
+
+		return inventarioGeneralDao.findById(id).orElse(null);
+	}
+
+	@Override
+	public InventarioGeneralVo save(InventarioGeneralVo inventarioRegistrar) {
+
+		return inventarioGeneralDao.save(inventarioRegistrar);
+	}
+
+	@Override
+	public InventarioGeneralVo update(InventarioGeneralVo inventarioMoidficado) {
+
+		return inventarioGeneralDao.save(inventarioMoidficado);
+	}
 
 }

@@ -95,6 +95,15 @@ public class CarritoClienteVo {
 	public void setPrecio_producto(double precio_producto) {
 		this.precio_producto = precio_producto;
 	}
+
+
+	@Override
+	public String toString() {
+		return "CarritoClienteVo [id_registro=" + id_registro + ", cliente=" + cliente + ", codigo_producto="
+				+ codigo_producto + ", nombre_producto=" + nombre_producto + ", cantidad_producto=" + cantidad_producto
+				+ ", precio_producto=" + precio_producto + "]";
+	}
+	
 	
 	
 }

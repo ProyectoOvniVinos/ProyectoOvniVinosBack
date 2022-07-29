@@ -25,12 +25,12 @@ public class CompraVo implements Serializable {
 	@Column(name = "fecha_compra")
 	private Date fecha_compra;
 
-	@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" }, allowSetters = true)
+	@JsonIgnoreProperties(value = {"compras", "hibernateLazyInitializer", "handler" }, allowSetters = true)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "correo_admin")
 	private AdministradorVo correo_admin;
 
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "compra")
 	private List<CompraAdminVo> compras;

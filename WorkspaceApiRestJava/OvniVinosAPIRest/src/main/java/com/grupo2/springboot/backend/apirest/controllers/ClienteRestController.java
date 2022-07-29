@@ -91,13 +91,19 @@ public class ClienteRestController {
 	}
 	
 	
-	// http://localhost:8080/apiCliente/registro
+	//http://localhost:8080/apiCliente/registro
 	@PostMapping("/registro")
 	public ResponseEntity<?> registro(@RequestBody ClienteVo cliente){
 		ClienteVo clienteNew = null;
 		
 		Map<String, Object> response = new HashMap<>();
 		try {
+			System.out.println(cliente);
+			cliente.setCorreoCliente("grajales0@gmail.com");
+			cliente.setNombreCliente("juan");
+			cliente.setApellidoCliente("villa");
+			cliente.setTelefonoCliente("3000");
+			cliente.setPasswordCliente("camilo");
 			clienteNew = clienteService.save(cliente);
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al realizar el insert en la base de datos");

@@ -101,16 +101,15 @@ create table contabilidad_anual
 create table inventario_general
 (
 	id_registro int primary key not null auto_increment,
-  codigo_producto int,
-  cantidad_producto int,
-  fecha_ultimo_ingreso_inventario date
+  cantidad_producto int
 );
 create table inventario_detalles
 (
 	id_detalles int primary key not null auto_increment,
   id_registro int,
   codigo_producto int,
-  cantidad_producto int
+  cantidad_producto int,
+  fecha_ultimo_ingreso_inventario date
 );
 create table compra_admin
 (
@@ -163,16 +162,6 @@ ADD CONSTRAINT `fk_compra_admin_codigo_compra`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
-
-ALTER TABLE `basededatos_ovni_vinos`.`inventario_general` 
-ADD INDEX `fk_inventario_codigo_producto_idx` (`codigo_producto` ASC);
-;
-ALTER TABLE `basededatos_ovni_vinos`.`inventario_general` 
-ADD CONSTRAINT `fk_inventario_codigo_producto`
-  FOREIGN KEY (`codigo_producto`)
-  REFERENCES `basededatos_ovni_vinos`.`producto` (`codigo_producto`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
   
 ALTER TABLE `basededatos_ovni_vinos`.`venta_cliente` 
 ADD INDEX `fk_venta_cliente_codigo_venta_idx` (`codigo_venta` ASC);
@@ -223,6 +212,16 @@ ADD CONSTRAINT `fk_inventario_detalles_id_registro`
   ON UPDATE NO ACTION;
   ALTER TABLE `basededatos_ovni_vinos`.`venta_cliente` 
 ADD INDEX `fk_venta_cliente_id_registro_contabilidad_diaria_idx` (`id_registro_contabilidad_diaria` ASC);
+;
+ALTER TABLE `basededatos_ovni_vinos`.`inventario_detalles` 
+ADD INDEX `fk_inventario_detalles_producto_idx` (`codigo_producto` ASC) ;
+;
+ALTER TABLE `basededatos_ovni_vinos`.`inventario_detalles` 
+ADD CONSTRAINT `fk_inventario_detalles_producto`
+  FOREIGN KEY (`codigo_producto`)
+  REFERENCES `basededatos_ovni_vinos`.`producto` (`codigo_producto`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
 ;
 ALTER TABLE `basededatos_ovni_vinos`.`venta_cliente` 
 ADD CONSTRAINT `fk_venta_cliente_id_registro_contabilidad_diaria`

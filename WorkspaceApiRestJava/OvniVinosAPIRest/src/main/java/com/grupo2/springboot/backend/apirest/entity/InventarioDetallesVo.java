@@ -1,6 +1,7 @@
 package com.grupo2.springboot.backend.apirest.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.*;
 
@@ -18,14 +19,14 @@ public class InventarioDetallesVo implements Serializable{
 	
 	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="id_registro")
-	private InventarioGeneralVo id_registro;
-	
-	@Column(name="codigo_producto")
-	private int codigo_producto;
+	@JoinColumn(name="codigo_producto")
+	private ProductoVo codigo_producto;
 	
 	@Column(name="cantidad_producto")
 	private int cantidad_producto;
+	
+	@Column(name="fecha_ultimo_ingreso_inventario")
+	private Date fecha_ultimo_ingreso_inventario;
 
 	public int getIdDetalles() {
 		return id_detalles;
@@ -35,21 +36,6 @@ public class InventarioDetallesVo implements Serializable{
 		this.id_detalles = idDetalles;
 	}
 
-	public InventarioGeneralVo getId_registro() {
-		return id_registro;
-	}
-
-	public void setId_registro(InventarioGeneralVo id_registro) {
-		this.id_registro = id_registro;
-	}
-
-	public int getCodigo_producto() {
-		return codigo_producto;
-	}
-
-	public void setCodigo_producto(int codigo_producto) {
-		this.codigo_producto = codigo_producto;
-	}
 
 	public int getCantidad_producto() {
 		return cantidad_producto;
@@ -57,6 +43,22 @@ public class InventarioDetallesVo implements Serializable{
 
 	public void setCantidad_producto(int cantidad_producto) {
 		this.cantidad_producto = cantidad_producto;
+	}
+
+	public ProductoVo getCodigo_producto() {
+		return codigo_producto;
+	}
+
+	public void setCodigo_producto(ProductoVo codigo_producto) {
+		this.codigo_producto = codigo_producto;
+	}
+
+	public Date getFecha_ultimo_ingreso_inventario() {
+		return fecha_ultimo_ingreso_inventario;
+	}
+
+	public void setFecha_ultimo_ingreso_inventario(Date fecha_ultimo_ingreso_inventario) {
+		this.fecha_ultimo_ingreso_inventario = fecha_ultimo_ingreso_inventario;
 	}
 
 }

@@ -72,8 +72,8 @@ public class ProductoRestController {
 		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.CREATED);
 	}
 	
-	// http://localhost:8080/apiProd/producto
-	@PutMapping("/producto")
+	// http://localhost:8080/apiProd/producto/{codigo}
+	@PutMapping("/producto/{codigo}")
 	public ResponseEntity<?> update(@RequestBody ProductoVo producto,  @PathVariable int codigo){
 		ProductoVo productoActual = productoService.findByCodigo_producto(codigo);
 		ProductoVo productoUpdated = null;
@@ -98,8 +98,8 @@ public class ProductoRestController {
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 	}
 
-	// http://localhost:8080/apiProd/producto
-	@DeleteMapping("/producto")
+	// http://localhost:8080/apiProd/producto/{codigo}
+	@DeleteMapping("/producto/{codigo}")
 	public ResponseEntity<?> delete(@PathVariable int codigo){
 		Map<String,Object> response = new HashMap<>();
 		try {
