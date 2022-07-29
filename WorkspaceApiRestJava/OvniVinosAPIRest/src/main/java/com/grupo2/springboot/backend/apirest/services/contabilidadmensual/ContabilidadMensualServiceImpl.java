@@ -1,8 +1,50 @@
 package com.grupo2.springboot.backend.apirest.services.contabilidadmensual;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.grupo2.springboot.backend.apirest.dao.IContabilidadAnualDao;
+import com.grupo2.springboot.backend.apirest.dao.IContabilidadMensualDao;
+import com.grupo2.springboot.backend.apirest.entity.ContabilidadAnualVo;
+import com.grupo2.springboot.backend.apirest.entity.ContabilidadMensualVo;
 
 @Service
-public class ContabilidadMensualServiceImpl {
+public class ContabilidadMensualServiceImpl implements IContabilidadMensualService{
 
+	
+	@Autowired
+	private IContabilidadMensualDao contabilidadMensualDao;
+	
+	@Override
+	@Transactional
+	public ContabilidadMensualVo save(ContabilidadMensualVo contabilidadMensual) {
+		return contabilidadMensualDao.save(contabilidadMensual);
+	}
+
+	@Override
+	@Transactional
+	public ContabilidadMensualVo update(ContabilidadMensualVo contabilidadMensual) {
+		return contabilidadMensualDao.save(contabilidadMensual);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<ContabilidadMensualVo> findAll() {
+		return (List<ContabilidadMensualVo>) contabilidadMensualDao.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public ContabilidadMensualVo findById(Integer idContabilidadMen) {
+		return contabilidadMensualDao.findById(idContabilidadMen).orElse(null);
+	}
+
+	@Override
+	public ContabilidadMensualVo findUltima() {
+		return contabilidadMensualDao.findUltima();
+	}
+	
 }
