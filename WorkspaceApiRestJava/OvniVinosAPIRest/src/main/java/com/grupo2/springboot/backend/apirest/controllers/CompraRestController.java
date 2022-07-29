@@ -83,9 +83,11 @@ public class CompraRestController {
 			admin.setTelefonoAdmin("3000");
 			admin.setPasswordAdmin("camilo");
 			compra.setCorreo_admin(admin);
+			
 			compra.getCompras().get(0).getId_registro_contabilidad_diaria().setId_registro_contabilidad_diaria(1);
 			compra.getCompras().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().setId_registro_contabilidad_mensual(1);
 			compra.getCompras().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
+			
 			System.out.println(compra);
 			compraNew = compraService.save(compra);
 		}catch(DataAccessException e) {

@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IContabilidadAnualDao"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.contabilidadanual.IContabilidadAnualService"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.ContabilidadAnualVo"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IContabilidadMensualDao"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.contabilidadmensual.IContabilidadMensualService"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.ContabilidadMensualVo"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IContabilidadDiariaDao"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.contabilidaddiaria.IContabilidadDiariaService"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.ContabilidadDiariaVo"/>
+</qualifiedTypeNameHistroy>
