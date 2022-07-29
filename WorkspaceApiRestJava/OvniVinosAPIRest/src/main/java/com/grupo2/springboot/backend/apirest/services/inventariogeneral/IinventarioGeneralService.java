@@ -1,5 +1,16 @@
 package com.grupo2.springboot.backend.apirest.services.inventariogeneral;
 
-public interface IinventarioGeneralService {
+import java.util.List;
 
+import com.grupo2.springboot.backend.apirest.entity.InventarioGeneralVo;
+
+public interface IinventarioGeneralService {
+	
+	public List<InventarioGeneralVo> findAll();
+	
+	public InventarioGeneralVo findById(Integer id);
+	
+	public InventarioGeneralVo save(InventarioGeneralVo inventarioRegistrar);
+	
+	public InventarioGeneralVo update(InventarioGeneralVo inventarioMoidficado);
 }
