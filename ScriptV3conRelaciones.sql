@@ -252,7 +252,6 @@ ADD CONSTRAINT `fk_contabilidad_mensual_id_registro_contabilidad_anual`
   ON UPDATE NO ACTION;
 
 
-
 /* CAMBIO DE NOMBRE ATRIBUTO de codigo_venta a venta EN TABLA venta_cliente*/
 ALTER TABLE `basededatos_ovni_vinos`.`venta_cliente` 
 DROP FOREIGN KEY `fk_venta_cliente_codigo_venta`;
