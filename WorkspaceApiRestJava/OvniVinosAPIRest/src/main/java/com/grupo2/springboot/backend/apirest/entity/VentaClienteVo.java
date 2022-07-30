@@ -61,4 +61,13 @@ public class VentaClienteVo implements Serializable {
 		this.id_registro_contabilidad_diaria = id_registro_contabilidad_diaria;
 	}
 
+	@Override
+	public String toString() {
+		return "VentaClienteVo [id_puente=" + id_puente + ", codigo_producto=" + codigo_producto
+				+ ", cantidad_producto=" + cantidad_producto + ", id_registro_contabilidad_diaria="
+				+ id_registro_contabilidad_diaria + "]";
+	}
+	
+	
+
 }
