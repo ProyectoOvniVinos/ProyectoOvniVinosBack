@@ -9,13 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.grupo2.springboot.backend.apirest.dao.IContabilidadAnualDao;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadAnualVo;
 
-
 @Service
-public class ContabilidadAnualServiceImpl implements IContabilidadAnualService{
+public class ContabilidadAnualServiceImpl implements IContabilidadAnualService {
 
 	@Autowired
 	private IContabilidadAnualDao contabilidadAnualDao;
-	
+
 	@Override
 	@Transactional
 	public ContabilidadAnualVo save(ContabilidadAnualVo contabilidadAnual) {
@@ -44,8 +43,5 @@ public class ContabilidadAnualServiceImpl implements IContabilidadAnualService{
 	public Integer findUltima() {
 		return contabilidadAnualDao.findUltima();
 	}
-	
-	
-	
 
 }

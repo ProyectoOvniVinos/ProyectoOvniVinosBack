@@ -29,212 +29,224 @@ import com.grupo2.springboot.backend.apirest.services.contabilidaddiaria.IContab
 import com.grupo2.springboot.backend.apirest.services.contabilidadmensual.IContabilidadMensualService;
 import com.grupo2.springboot.backend.apirest.services.venta.IVentaService;
 import org.springframework.web.bind.annotation.PathVariable;
-@CrossOrigin(origins= {"http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089"})
+
+@CrossOrigin(origins = { "http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089" })
 @RestController
 @RequestMapping("/apiVenta")
 public class VentaRestController {
 
 	@Autowired
 	private IVentaService ventaService;
-	
+
 	@Autowired
 	private IContabilidadDiariaService contabilidadDiariaService;
-	
+
 	@Autowired
 	private IContabilidadMensualService contabilidadMensualService;
-	
+
 	@Autowired
 	private IContabilidadAnualService contabilidadAnualService;
-	
-	
-	//http://localhost:8080/apiVenta/ventas
+
+	// http://localhost:8080/apiVenta/ventas
 	@GetMapping("/ventas")
-	public ResponseEntity<?> ventas(){
-		List<VentaVo> ventas = null; 
+	public ResponseEntity<?> ventas() {
+		List<VentaVo> ventas = null;
 		Map<String, Object> response = new HashMap<>();
 		try {
 			ventas = ventaService.findAll();
-		}catch(DataAccessException e){
-			response.put("mensaje","error al realizar la consulta en la base de datos");
+		} catch (DataAccessException e) {
+			response.put("mensaje", "error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		System.out.println(ventas);
-		
-		return new ResponseEntity<List<VentaVo>>(ventas,HttpStatus.OK);
+
+		return new ResponseEntity<List<VentaVo>>(ventas, HttpStatus.OK);
 	}
-	//http://localhost:8080/apiVenta/venta/id
+
+	// http://localhost:8080/apiVenta/venta/id
 	@GetMapping("/venta/{id}")
-	public ResponseEntity<?> getVenta(@PathVariable Integer id){
+	public ResponseEntity<?> getVenta(@PathVariable Integer id) {
 		VentaVo venta = null;
-		
-		Map<String,Object>response = new HashMap<>();
-		
+
+		Map<String, Object> response = new HashMap<>();
+
 		try {
 			venta = ventaService.findById(id);
-			if(venta==null) {
-				response.put("mensaje","No se encontro la venta");
-				return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			if (venta == null) {
+				response.put("mensaje", "No se encontro la venta");
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
-		}catch(DataAccessException e) {
-			response.put("mensaje","error al realizar la consulta en la base de datos");
+		} catch (DataAccessException e) {
+			response.put("mensaje", "error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
-		return new ResponseEntity<VentaVo>(venta,HttpStatus.OK);
+
+		return new ResponseEntity<VentaVo>(venta, HttpStatus.OK);
 	}
-	
+
 	// http://localhost:8080/apiProd/venta
 	@PostMapping("/venta")
-	public ResponseEntity<?> create(@RequestBody VentaVo venta){
+	public ResponseEntity<?> create(@RequestBody VentaVo venta) {
 		VentaVo ventaNew = null;
-		
+
 		Map<String, Object> response = new HashMap<>();
-		
+
 		try {
 			ClienteVo cliente = new ClienteVo();
-			
+
 			cliente.setCorreoCliente("grajales0@gmail.com");
 			cliente.setNombreCliente("juan");
 			cliente.setApellidoCliente("villa");
 			cliente.setDireccionCliente(null);
 			cliente.setTelefonoCliente("3000");
 			cliente.setPasswordCliente("camilo");
-			
+
 			venta.setCorreo_cliente(cliente);
-			
+
 			Integer ultimaDId = contabilidadDiariaService.findUltima();
 			ContabilidadDiariaVo ultimaD = contabilidadDiariaService.findById(ultimaDId);
 
-			if(ultimaD!=null) {
-				if(ultimaD.getFecha().toString()==LocalDate.now().toString()) {
+			if (ultimaD != null) {
+				if (ultimaD.getFecha().toString() == LocalDate.now().toString()) {
 					Integer contaMensualId = contabilidadMensualService.findUltima();
 					ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
-					
-					contaMensual.setIngresos_contabilidad_mensual(contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
-					contaMensual.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() +  1);
+
+					contaMensual.setIngresos_contabilidad_mensual(
+							contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
+					contaMensual.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() + 1);
 					ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
-					
+
 					Integer contaAnualId = contabilidadAnualService.findUltima();
 					ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
-					
-					contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
-					contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() +  1);
+
+					contaAnual.setIngresos_contabilidad_anual(
+							contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
+					contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
 					ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
-					
+
 					ultimaD.setVentas_contabilidad_diaria(ultimaD.getVentas_contabilidad_diaria() + 1);
-					ultimaD.setVentas_contabilidad_diaria(ultimaD.getIngresos_contabilidad_diaria() + venta.getPrecio_venta());
+					ultimaD.setVentas_contabilidad_diaria(
+							ultimaD.getIngresos_contabilidad_diaria() + venta.getPrecio_venta());
 					contabilidadDiariaService.save(ultimaD);
-				}else {
-					if(ultimaD.getFecha().toString().split("-")[0]==LocalDate.now().toString().split("-")[0]) {
-						if(ultimaD.getFecha().toString().split("-")[1]==LocalDate.now().toString().split("-")[1]) {
+				} else {
+					if (ultimaD.getFecha().toString().split("-")[0] == LocalDate.now().toString().split("-")[0]) {
+						if (ultimaD.getFecha().toString().split("-")[1] == LocalDate.now().toString().split("-")[1]) {
 							Integer contaMensualId = contabilidadMensualService.findUltima();
 							ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
-							
-							contaMensual.setIngresos_contabilidad_mensual(contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
-							contaMensual.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() +  1);
+
+							contaMensual.setIngresos_contabilidad_mensual(
+									contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
+							contaMensual
+									.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() + 1);
 							ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
-							
+
 							Integer contaAnualId = contabilidadAnualService.findUltima();
 							ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
-							
-							contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
-							contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() +  1);
+
+							contaAnual.setIngresos_contabilidad_anual(
+									contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
+							contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
 							ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
-							
+
 							ContabilidadDiariaVo contaHoy = new ContabilidadDiariaVo();
 							contaHoy.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
 							contaHoy.setVentas_contabilidad_diaria(1);
-							contaHoy.setFecha(java.sql.Date.valueOf( LocalDate.now() ));
+							contaHoy.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 							contaHoy.setId_registro_contabilidad_mensual(contaMensual);
 							contabilidadDiariaService.save(contaHoy);
-						}else {
+						} else {
 							Integer contaAnualId = contabilidadAnualService.findUltima();
 							ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
-							
-							contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
-							contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() +  1);
+
+							contaAnual.setIngresos_contabilidad_anual(
+									contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
+							contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
 							ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
-							
+
 							ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
 							contaMensual.setIngresos_contabilidad_mensual(venta.getPrecio_venta());
 							contaMensual.setVentas_contabilidad_mensual(1);
-							contaMensual.setFecha(java.sql.Date.valueOf( LocalDate.now() ));
+							contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 							contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
 							ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
-							
-							ContabilidadDiariaVo contaDiaria= new ContabilidadDiariaVo();
+
+							ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
 							contaDiaria.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
 							contaDiaria.setVentas_contabilidad_diaria(1);
-							contaDiaria.setFecha(java.sql.Date.valueOf( LocalDate.now() ));
+							contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 							contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
 							contabilidadDiariaService.save(contaDiaria);
 						}
-					}else {
+					} else {
 						ContabilidadAnualVo contaAnual = new ContabilidadAnualVo();
 						contaAnual.setIngresos_contabilidad_anual(venta.getPrecio_venta());
 						contaAnual.setVentas_contabilidad_anual(1);
-						contaAnual.setFecha(java.sql.Date.valueOf( LocalDate.now() ));
+						contaAnual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 						ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
-						
+
 						ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
 						contaMensual.setIngresos_contabilidad_mensual(venta.getPrecio_venta());
 						contaMensual.setVentas_contabilidad_mensual(1);
-						contaMensual.setFecha(java.sql.Date.valueOf( LocalDate.now() ));
+						contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 						contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
 						ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
-						
-						ContabilidadDiariaVo contaDiaria= new ContabilidadDiariaVo();
+
+						ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
 						contaDiaria.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
 						contaDiaria.setVentas_contabilidad_diaria(1);
-						contaDiaria.setFecha(java.sql.Date.valueOf( LocalDate.now() ));
+						contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 						contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
 						contabilidadDiariaService.save(contaDiaria);
 					}
 				}
-			}else {
+			} else {
 				ContabilidadAnualVo contaAnual = new ContabilidadAnualVo();
 				contaAnual.setIngresos_contabilidad_anual(venta.getPrecio_venta());
 				contaAnual.setVentas_contabilidad_anual(1);
-				contaAnual.setFecha(java.sql.Date.valueOf( LocalDate.now() ));
+				contaAnual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 				ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
-				
+
 				ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
 				contaMensual.setIngresos_contabilidad_mensual(venta.getPrecio_venta());
 				contaMensual.setVentas_contabilidad_mensual(1);
-				contaMensual.setFecha(java.sql.Date.valueOf( LocalDate.now() ));
+				contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 				contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
 				ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
-				
-				ContabilidadDiariaVo contaDiaria= new ContabilidadDiariaVo();
+
+				ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
 				contaDiaria.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
 				contaDiaria.setVentas_contabilidad_diaria(1);
-				contaDiaria.setFecha(java.sql.Date.valueOf( LocalDate.now() ));
+				contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 				contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
 				contabilidadDiariaService.save(contaDiaria);
-				
+
 			}
-			
+
 			venta.getVentas().get(0).getId_registro_contabilidad_diaria().setId_registro_contabilidad_diaria(1);
-			venta.getVentas().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().setId_registro_contabilidad_mensual(1);
-			venta.getVentas().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
+			venta.getVentas().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual()
+					.setId_registro_contabilidad_mensual(1);
+			venta.getVentas().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual()
+					.getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
 			venta.getVentas().get(1).getId_registro_contabilidad_diaria().setId_registro_contabilidad_diaria(1);
-			venta.getVentas().get(1).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().setId_registro_contabilidad_mensual(1);
-			venta.getVentas().get(1).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
+			venta.getVentas().get(1).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual()
+					.setId_registro_contabilidad_mensual(1);
+			venta.getVentas().get(1).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual()
+					.getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
 			System.out.println(venta);
 			ventaNew = ventaService.save(venta);
-		}catch(DataAccessException e) {
-			response.put("mensaje","Error al realizar el insert en la base de datos");
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
-		
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+
 		}
-		response.put("mensaje","la venta se ha registro con exito");
+		response.put("mensaje", "la venta se ha registro con exito");
 		response.put("venta", ventaNew);
-		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.CREATED);
-	
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+
 	}
-	
+
 }

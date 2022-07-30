@@ -12,12 +12,11 @@ import com.grupo2.springboot.backend.apirest.entity.ContabilidadAnualVo;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadMensualVo;
 
 @Service
-public class ContabilidadMensualServiceImpl implements IContabilidadMensualService{
+public class ContabilidadMensualServiceImpl implements IContabilidadMensualService {
 
-	
 	@Autowired
 	private IContabilidadMensualDao contabilidadMensualDao;
-	
+
 	@Override
 	@Transactional
 	public ContabilidadMensualVo save(ContabilidadMensualVo contabilidadMensual) {
@@ -46,5 +45,5 @@ public class ContabilidadMensualServiceImpl implements IContabilidadMensualServi
 	public Integer findUltima() {
 		return contabilidadMensualDao.findUltima();
 	}
-	
+
 }

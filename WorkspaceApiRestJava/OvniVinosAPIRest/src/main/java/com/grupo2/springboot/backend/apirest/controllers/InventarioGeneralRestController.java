@@ -104,5 +104,26 @@ public class InventarioGeneralRestController {
 		
 		return new ResponseEntity<InventarioDetallesVo>(inventarioDetallesIndividual,HttpStatus.OK);
 	}
+	
+	// http://localhost:8080/apiInventario/InvenarioGeneralProducto/producto
+	@GetMapping("/inventarioGeneralProducto/{producto}")
+	public ResponseEntity<?>  getRegistroInvetarioGeneralProducto(@PathVariable Integer producto){
+		InventarioGeneralVo inventarioGeneralIndividual=null;
+		
+		Map<String,Object>response = new HashMap<>();
+		try {
+			inventarioGeneralIndividual = inventarioGeneralService.findByProducto(producto);
+			if(inventarioGeneralIndividual==null) {
+				response.put("mensaje","no se encontro el registro en inventario General");
+				return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} catch(DataAccessException e) {
+			response.put("mensaje","error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<InventarioGeneralVo>(inventarioGeneralIndividual,HttpStatus.OK);
+	}
 
 }

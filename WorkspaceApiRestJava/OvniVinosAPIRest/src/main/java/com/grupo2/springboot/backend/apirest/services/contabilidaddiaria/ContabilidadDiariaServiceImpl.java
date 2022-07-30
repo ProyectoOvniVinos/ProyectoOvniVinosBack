@@ -12,11 +12,11 @@ import com.grupo2.springboot.backend.apirest.entity.ContabilidadAnualVo;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadDiariaVo;
 
 @Service
-public class ContabilidadDiariaServiceImpl implements IContabilidadDiariaService{
+public class ContabilidadDiariaServiceImpl implements IContabilidadDiariaService {
 
 	@Autowired
 	private IContabilidadDiariaDao contabilidadDiariaDao;
-	
+
 	@Override
 	@Transactional
 	public ContabilidadDiariaVo save(ContabilidadDiariaVo contabilidadDiaria) {
@@ -45,6 +45,5 @@ public class ContabilidadDiariaServiceImpl implements IContabilidadDiariaService
 	public Integer findUltima() {
 		return contabilidadDiariaDao.findUltima();
 	}
-	
 
 }

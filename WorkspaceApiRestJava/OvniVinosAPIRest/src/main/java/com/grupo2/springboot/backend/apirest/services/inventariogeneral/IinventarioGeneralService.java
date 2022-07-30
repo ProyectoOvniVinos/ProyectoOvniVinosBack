@@ -13,4 +13,6 @@ public interface IinventarioGeneralService {
 	public InventarioGeneralVo save(InventarioGeneralVo inventarioRegistrar);
 	
 	public InventarioGeneralVo update(InventarioGeneralVo inventarioMoidficado);
+	
+	public InventarioGeneralVo findByProducto(Integer producto);
 }

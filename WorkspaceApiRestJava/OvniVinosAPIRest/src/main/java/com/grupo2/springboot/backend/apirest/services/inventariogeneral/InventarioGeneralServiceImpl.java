@@ -38,4 +38,10 @@ public class InventarioGeneralServiceImpl implements IinventarioGeneralService{
 		return inventarioGeneralDao.save(inventarioMoidficado);
 	}
 
+	@Override
+	public InventarioGeneralVo findByProducto(Integer producto) {
+		
+		return inventarioGeneralDao.findByProducto(producto);
+	}
+
 }
