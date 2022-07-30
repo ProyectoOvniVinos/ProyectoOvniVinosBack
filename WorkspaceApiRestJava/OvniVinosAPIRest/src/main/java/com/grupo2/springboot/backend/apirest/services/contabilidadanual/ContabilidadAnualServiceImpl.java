@@ -39,10 +39,13 @@ public class ContabilidadAnualServiceImpl implements IContabilidadAnualService{
 	public ContabilidadAnualVo findById(Integer idContabilidadAn) {
 		return contabilidadAnualDao.findById(idContabilidadAn).orElse(null);
 	}
-
+	
 	@Override
 	public ContabilidadAnualVo findUltima() {
+		/*
 		return contabilidadAnualDao.findUltima();
+		*/
+		return null;
 	}
 	
 	

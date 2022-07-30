@@ -17,11 +17,6 @@ public class InventarioDetallesVo implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_detalles;
 	
-	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="codigo_producto")
-	private ProductoVo codigo_producto;
-	
 	@Column(name="cantidad_producto")
 	private int cantidad_producto;
 	
@@ -45,14 +40,6 @@ public class InventarioDetallesVo implements Serializable{
 		this.cantidad_producto = cantidad_producto;
 	}
 
-	public ProductoVo getCodigo_producto() {
-		return codigo_producto;
-	}
-
-	public void setCodigo_producto(ProductoVo codigo_producto) {
-		this.codigo_producto = codigo_producto;
-	}
-
 	public Date getFecha_ultimo_ingreso_inventario() {
 		return fecha_ultimo_ingreso_inventario;
 	}
@@ -60,5 +47,5 @@ public class InventarioDetallesVo implements Serializable{
 	public void setFecha_ultimo_ingreso_inventario(Date fecha_ultimo_ingreso_inventario) {
 		this.fecha_ultimo_ingreso_inventario = fecha_ultimo_ingreso_inventario;
 	}
-
+	
 }

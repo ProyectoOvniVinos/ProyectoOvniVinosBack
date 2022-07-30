@@ -29,6 +29,11 @@ public class VentaVo implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "correo_cliente")
 	private ClienteVo correo_cliente;
+	
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_registro_contabilidad_diaria")
+	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -82,6 +87,16 @@ public class VentaVo implements Serializable {
 	public void setFecha_venta(Date fecha_venta) {
 		this.fecha_venta = fecha_venta;
 	}
+
+	public ContabilidadDiariaVo getId_registro_contabilidad_diaria() {
+		return id_registro_contabilidad_diaria;
+	}
+
+	public void setId_registro_contabilidad_diaria(ContabilidadDiariaVo id_registro_contabilidad_diaria) {
+		this.id_registro_contabilidad_diaria = id_registro_contabilidad_diaria;
+	}
+
+
 
 	private static final long serialVersionUID = 1L;
 
