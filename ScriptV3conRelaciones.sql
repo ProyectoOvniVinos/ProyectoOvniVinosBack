@@ -36,9 +36,7 @@ create table carrito_cliente
   id_registro int auto_increment primary key,
   cliente char(30),
   codigo_producto int,
-  nombre_producto char(25),
   cantidad_producto int,
-  precio_producto double
 );
 
 
@@ -50,7 +48,7 @@ create table venta
 	fecha_venta date
 );
 ALTER TABLE `basededatos_ovni_vinos`.`venta` 
-ADD COLUMN `cantidad_compra` INT NULL DEFAULT NULL AFTER `fecha_venta`;
+ADD COLUMN `cantidad_venta` INT NULL DEFAULT NULL AFTER `fecha_venta`;
 
 
 
