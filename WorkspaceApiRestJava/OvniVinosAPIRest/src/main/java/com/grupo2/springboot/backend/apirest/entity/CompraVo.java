@@ -60,16 +60,29 @@ public class CompraVo implements Serializable {
 		return precio_compra;
 	}
 
-	public void setPrecio_compra(double precio_compra) {
-		this.precio_compra = precio_compra;
+	public void setPrecio_compra() {
+		
+		double precio = 0;
+		
+		for(CompraAdminVo detallesCompra : this.getCompras()) {
+			precio += detallesCompra.getPrecio_compra_detalle();
+		}
+		this.precio_compra = precio;
 	}
 
 	public int getCantidad_compra() {
 		return cantidad_compra;
 	}
 
-	public void setCantidad_compra(int cantidad_compra) {
-		this.cantidad_compra = cantidad_compra;
+	public void setCantidad_compra() {
+		
+		int cantidad = 0;
+		
+		for(CompraAdminVo detallesCompra : this.getCompras()) {
+			cantidad += detallesCompra.getCantidad_producto();
+		}
+		
+		this.cantidad_compra = cantidad;
 	}
 
 	public Date getFecha_compra() {

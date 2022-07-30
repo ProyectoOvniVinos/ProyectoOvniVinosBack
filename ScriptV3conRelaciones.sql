@@ -67,6 +67,7 @@ create table venta_cliente
 (
 	id_puente int primary key not null auto_increment,
   codigo_venta int not null,
+  precio_venta_detalle double,
   codigo_producto int not null,
   cantidad_producto int,
   id_registro_contabilidad_diaria int not null
@@ -118,6 +119,7 @@ create table compra_admin
 	id_puente int primary key not null auto_increment,
   compra int,
   codigo_producto int not null,
+  precio_compra_detalle double,
   cantidad_producto int,
   id_registro_contabilidad_diaria int not null
 );

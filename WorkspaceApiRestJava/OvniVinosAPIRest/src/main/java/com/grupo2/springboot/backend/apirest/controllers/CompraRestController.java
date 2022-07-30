@@ -20,6 +20,7 @@ import com.grupo2.springboot.backend.apirest.entity.AdministradorVo;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.CompraVo;
 import com.grupo2.springboot.backend.apirest.services.compra.ICompraService;
+import com.grupo2.springboot.backend.apirest.services.inventariodetalles.IinventarioDetallesService;
 
 @CrossOrigin(origins= {"http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089"})
 @RestController
@@ -28,6 +29,8 @@ public class CompraRestController {
 	
 	@Autowired
 	private ICompraService compraService;
+	
+	private IinventarioDetallesService inventarioService;
 	
 	// http://localhost:8080/apiCompra/compras
 	@GetMapping("/compras")
@@ -91,7 +94,12 @@ public class CompraRestController {
 			compra.getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().setId_registro_contabilidad_mensual(1);
 			compra.getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual().getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
 			System.out.println(compra);
+			
+			compra.setCantidad_compra();
+			compra.setPrecio_compra();
+			
 			compraNew = compraService.save(compra);
+			inventarioService.InsertarInventario(compraNew);
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

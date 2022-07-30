@@ -45,8 +45,8 @@ public class InventarioGeneralVo implements Serializable{
 
 	public void setCantidad_producto() {
 		int cantidadTotal = 0;
-		if(this.detalles.size()>0) {
-			for (InventarioDetallesVo inventarioDetallesVo : this.detalles) {
+		if(this.getDetalles().size()>0) {
+			for (InventarioDetallesVo inventarioDetallesVo : this.getDetalles()) {
 				cantidadTotal += inventarioDetallesVo.getCantidad_producto();
 			}
 		}

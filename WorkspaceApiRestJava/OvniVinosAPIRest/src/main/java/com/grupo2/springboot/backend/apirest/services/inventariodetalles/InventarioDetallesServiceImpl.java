@@ -14,6 +14,7 @@ import com.grupo2.springboot.backend.apirest.entity.CompraVo;
 import com.grupo2.springboot.backend.apirest.entity.InventarioDetallesVo;
 import com.grupo2.springboot.backend.apirest.entity.InventarioGeneralVo;
 import com.grupo2.springboot.backend.apirest.entity.ProductoVo;
+import com.grupo2.springboot.backend.apirest.entity.VentaClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.VentaVo;
 
 @Service
@@ -48,6 +49,7 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 		return inventarioDetallesDao.save(inventarioMoidficado);
 	}
 	
+	@Override
 	public void InsertarInventario(CompraVo compra) {
 		
 		List<CompraAdminVo> listaCompras = compra.getCompras();
@@ -89,10 +91,61 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 		
 	}
 	
-	public void disminuirCantidad(VentaVo venta) {
+	public boolean validacionCantidad(List<VentaClienteVo> detallesVenta) {
 		
-		venta.getVentas().get(0).getCodigo_producto();
+		for(VentaClienteVo venta : detallesVenta) {
+			int codigoProducto = venta.getCodigo_producto().getCodigo_producto();
+			InventarioGeneralVo comprovarIncentario = inventarioGeneralDao.findByProducto(codigoProducto);
+			if(venta.getCantidad_producto()>comprovarIncentario.getCantidad_producto()) {
+				return false;
+			}
+		}
 		
+		return true;
+	}
+	
+	@Override
+	public boolean disminuirCantidad(VentaVo venta) {
+		
+		boolean realizarVenta = this.validacionCantidad(venta.getVentas());
+		
+		if(realizarVenta==true) {
+			for(VentaClienteVo detallesVenta: venta.getVentas()) {
+				int codigoProducto = detallesVenta.getCodigo_producto().getCodigo_producto();
+				InventarioGeneralVo actualizarInventarioG = inventarioGeneralDao.findByProducto(codigoProducto);
+				
+				List<InventarioDetallesVo> actualizarDetalles = actualizarInventarioG.getDetalles();
+				
+				int cantidadVenta = detallesVenta.getCantidad_producto();
+				int contador = 0;
+				
+				for(InventarioDetallesVo detalle : actualizarDetalles) {
+					int cantidadInventario = detalle.getCantidad_producto();
+					
+					if(cantidadInventario>=cantidadVenta) {
+						
+						cantidadInventario -= cantidadVenta;
+						if(cantidadInventario==0) {
+							inventarioDetallesDao.delete(detalle);
+						}else {
+							detalle.setCantidad_producto(cantidadInventario);
+							inventarioDetallesDao.save(detalle);
+						}
+						
+						break;
+						
+					}else {
+						cantidadVenta -= cantidadInventario;
+						inventarioDetallesDao.delete(detalle);
+					}
+					contador += 1;
+				}
+				actualizarInventarioG = inventarioGeneralDao.findByProducto(codigoProducto);
+				actualizarInventarioG.setCantidad_producto();
+				inventarioGeneralDao.save(actualizarInventarioG);
+			}
+		}
+		return realizarVenta;
 	}
 
 }
