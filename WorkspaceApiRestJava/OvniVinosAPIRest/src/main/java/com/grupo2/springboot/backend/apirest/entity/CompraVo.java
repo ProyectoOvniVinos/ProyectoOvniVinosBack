@@ -29,6 +29,11 @@ public class CompraVo implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "correo_admin")
 	private AdministradorVo correo_admin;
+	
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_registro_contabilidad_diaria")
+	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
 
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -81,6 +86,14 @@ public class CompraVo implements Serializable {
 
 	public void setCorreo_admin(AdministradorVo correo_admin) {
 		this.correo_admin = correo_admin;
+	}
+
+	public ContabilidadDiariaVo getId_registro_contabilidad_diaria() {
+		return id_registro_contabilidad_diaria;
+	}
+
+	public void setId_registro_contabilidad_diaria(ContabilidadDiariaVo id_registro_contabilidad_diaria) {
+		this.id_registro_contabilidad_diaria = id_registro_contabilidad_diaria;
 	}
 
 	private static final long serialVersionUID = 1L;

@@ -43,7 +43,10 @@ public class ContabilidadDiariaServiceImpl implements IContabilidadDiariaService
 
 	@Override
 	public ContabilidadDiariaVo findUltima() {
+		/*
 		return contabilidadDiariaDao.findUltima();
+		*/
+		return null;
 	}
 	
 

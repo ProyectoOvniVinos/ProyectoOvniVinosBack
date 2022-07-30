@@ -44,7 +44,10 @@ public class ContabilidadMensualServiceImpl implements IContabilidadMensualServi
 
 	@Override
 	public ContabilidadMensualVo findUltima() {
+		/*
 		return contabilidadMensualDao.findUltima();
+		*/
+		return null;
 	}
 	
 }

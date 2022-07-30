@@ -24,11 +24,6 @@ public class CompraAdminVo implements Serializable {
 	@Column(name = "cantidad_producto")
 	private int cantidad_producto;
 
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_registro_contabilidad_diaria")
-	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
-
 	public int getId_puente() {
 		return id_puente;
 	}
@@ -53,18 +48,10 @@ public class CompraAdminVo implements Serializable {
 		this.cantidad_producto = cantidad_producto;
 	}
 
-	public ContabilidadDiariaVo getId_registro_contabilidad_diaria() {
-		return id_registro_contabilidad_diaria;
-	}
-
-	public void setId_registro_contabilidad_diaria(ContabilidadDiariaVo id_registro_contabilidad_diaria) {
-		this.id_registro_contabilidad_diaria = id_registro_contabilidad_diaria;
-	}
-
 	@Override
 	public String toString() {
 		return "CompraAdminVo [id_puente=" + id_puente + ", codigo_producto=" + codigo_producto + ", cantidad_producto="
-				+ cantidad_producto + ", id_registro_contabilidad_diaria=" + id_registro_contabilidad_diaria + "]";
+				+ cantidad_producto + ", id_registro_contabilidad_diaria=" + "]";
 	}
 
 }
