@@ -9,7 +9,7 @@ import com.grupo2.springboot.backend.apirest.entity.ContabilidadDiariaVo;
 
 public interface IContabilidadDiariaDao extends CrudRepository<ContabilidadDiariaVo, Integer>{
 
-	@Query("SELECT MAX(id_registro_contabilidad_diaria) FROM contabilidad_diaria;")
-	public ContabilidadDiariaVo findUltima();
+	@Query("SELECT MAX(id_registro_contabilidad_diaria) FROM ContabilidadDiariaVo")
+	public Integer findUltima();
 	
 }

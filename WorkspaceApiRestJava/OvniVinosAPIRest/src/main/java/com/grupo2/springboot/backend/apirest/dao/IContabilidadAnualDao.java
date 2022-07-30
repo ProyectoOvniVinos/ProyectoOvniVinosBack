@@ -8,6 +8,6 @@ import com.grupo2.springboot.backend.apirest.entity.ContabilidadMensualVo;
 
 public interface IContabilidadAnualDao extends CrudRepository<ContabilidadAnualVo, Integer>{
 
-	@Query("SELECT MAX(id_registro_contabilidad_anual) FROM contabilidad_anual;")
-	public ContabilidadAnualVo findUltima();
+	@Query("SELECT MAX(id_registro_contabilidad_anual) FROM ContabilidadAnualVo")
+	public Integer findUltima();
 }

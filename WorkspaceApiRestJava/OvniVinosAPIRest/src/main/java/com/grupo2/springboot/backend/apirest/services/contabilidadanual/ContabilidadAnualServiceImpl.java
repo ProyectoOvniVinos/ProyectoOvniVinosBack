@@ -41,7 +41,7 @@ public class ContabilidadAnualServiceImpl implements IContabilidadAnualService{
 	}
 
 	@Override
-	public ContabilidadAnualVo findUltima() {
+	public Integer findUltima() {
 		return contabilidadAnualDao.findUltima();
 	}
 	
