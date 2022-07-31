@@ -18,7 +18,7 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-16">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -27,7 +27,6 @@
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
-<<<<<<< HEAD
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="target/generated-sources/annotations">
@@ -45,8 +44,6 @@
 			<attribute name="ignore_optional_problems" value="true"/>
 			<attribute name="m2e-apt" value="true"/>
 			<attribute name="test" value="true"/>
-=======
->>>>>>> 7a3b75078f1893b2fd8c2659c5746108eca9d497
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>

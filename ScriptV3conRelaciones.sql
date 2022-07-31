@@ -143,6 +143,10 @@ drop schema basededatos_ovni_vinos
 
 
 INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
+
+INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('crissis2004@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
+
+
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('Vino abocado', '13000', '10000', 'delicioso vino dulce');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('Vino tinto', '13000', '10000', 'delicioso vino poco dulce');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('nectar de uva', '10000', '7000', 'delicioso zumo de uva sin alcohol');
