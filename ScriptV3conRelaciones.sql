@@ -46,7 +46,7 @@ create table venta
 	codigo_venta int primary key not null auto_increment,
 	correo_cliente char(30) not null,
 	precio_venta double,
-	fecha_venta date,
+	fecha_venta datetime,
     id_registro_contabilidad_diaria int not null
 );
 ALTER TABLE `basededatos_ovni_vinos`.`venta` 
