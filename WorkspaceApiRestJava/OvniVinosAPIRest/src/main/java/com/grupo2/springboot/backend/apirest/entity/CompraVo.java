@@ -2,6 +2,7 @@ package com.grupo2.springboot.backend.apirest.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.*;

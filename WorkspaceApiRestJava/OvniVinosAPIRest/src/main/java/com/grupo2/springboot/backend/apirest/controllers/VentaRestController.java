@@ -2,6 +2,8 @@ package com.grupo2.springboot.backend.apirest.controllers;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -92,7 +94,7 @@ public class VentaRestController {
 		VentaVo ventaNew = null;
 
 		Map<String, Object> response = new HashMap<>();
-
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 		try {
 			/**
 			 * ClienteVo cliente = new ClienteVo();
@@ -107,20 +109,14 @@ public class VentaRestController {
 
 			venta.setCorreo_cliente(cliente);
 			 */
-			
-
+			venta.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
 			Integer ultimaDId = contabilidadDiariaService.findUltima();
 			if(ultimaDId==null) {
 				ultimaDId = 0;
 			}
 			ContabilidadDiariaVo ultimaD = contabilidadDiariaService.findById(ultimaDId);
 			if (ultimaD != null) {
-				System.out.println("_______________________");
-				System.out.println(venta.getFecha_venta());
-				System.out.println(LocalDate.now().toString());
-				System.out.println("_______________________");
-				if (venta.getFecha_venta().toString().equals(LocalDate.now().toString())) {
-					System.out.println("BBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+				if (dtf.format(LocalDateTime.now()).split("-")[0].equals(venta.getFecha_venta().toString().split("-")[0]) && dtf.format(LocalDateTime.now()).split("-")[1].equals(venta.getFecha_venta().toString().split("-")[1]) && dtf.format(LocalDateTime.now()).split("-")[2].equals(venta.getFecha_venta().toString().split("-")[2].split("T")[0])) {
 					Integer contaMensualId = contabilidadMensualService.findUltima();
 					ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
 					
@@ -132,8 +128,7 @@ public class VentaRestController {
 					Integer contaAnualId = contabilidadAnualService.findUltima();
 					ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 
-					contaAnual.setIngresos_contabilidad_anual(
-							contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
+					contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
 					contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
 					ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
 
@@ -269,7 +264,6 @@ public class VentaRestController {
 			cliente.setPasswordCliente("12345");
 			
 			venta.setCorreo_cliente(cliente);
-			venta.setFecha_venta(java.sql.Date.valueOf(LocalDate.now()));
 			
 			ventaNew = ventaService.save(venta);
 		} catch (DataAccessException e) {
@@ -279,7 +273,7 @@ public class VentaRestController {
 
 		}
 		
-		ventaNew.setFecha_venta(java.sql.Date.valueOf(LocalDate.now()));
+		ventaNew.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
 		response.put("mensaje", "la venta se ha registro con exito");
 		
 		response.put("venta", ventaNew);

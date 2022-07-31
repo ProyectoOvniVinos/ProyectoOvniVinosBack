@@ -2,10 +2,12 @@ package com.grupo2.springboot.backend.apirest.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -23,7 +25,8 @@ public class VentaVo implements Serializable {
 	private int cantidad_venta;
 
 	@Column(name = "fecha_venta")
-	private Date fecha_venta;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd-HH:mm:ss")
+	private LocalDateTime fecha_venta;
 
 	@JsonIgnoreProperties(value = { "ventas", "hibernateLazyInitializer", "handler" }, allowSetters = true)
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -80,11 +83,11 @@ public class VentaVo implements Serializable {
 		this.cantidad_venta = cantidad_venta;
 	}
 
-	public Date getFecha_venta() {
+	public LocalDateTime getFecha_venta() {
 		return fecha_venta;
 	}
 
-	public void setFecha_venta(Date fecha_venta) {
+	public void setFecha_venta(LocalDateTime fecha_venta) {
 		this.fecha_venta = fecha_venta;
 	}
 
