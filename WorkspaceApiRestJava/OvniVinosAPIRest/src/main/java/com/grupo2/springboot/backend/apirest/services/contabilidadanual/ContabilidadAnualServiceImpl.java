@@ -9,13 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.grupo2.springboot.backend.apirest.dao.IContabilidadAnualDao;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadAnualVo;
 
-
 @Service
-public class ContabilidadAnualServiceImpl implements IContabilidadAnualService{
+public class ContabilidadAnualServiceImpl implements IContabilidadAnualService {
 
 	@Autowired
 	private IContabilidadAnualDao contabilidadAnualDao;
-	
+
 	@Override
 	@Transactional
 	public ContabilidadAnualVo save(ContabilidadAnualVo contabilidadAnual) {
@@ -39,16 +38,10 @@ public class ContabilidadAnualServiceImpl implements IContabilidadAnualService{
 	public ContabilidadAnualVo findById(Integer idContabilidadAn) {
 		return contabilidadAnualDao.findById(idContabilidadAn).orElse(null);
 	}
-	
+
 	@Override
-	public ContabilidadAnualVo findUltima() {
-		/*
+	public Integer findUltima() {
 		return contabilidadAnualDao.findUltima();
-		*/
-		return null;
 	}
-	
-	
-	
 
 }

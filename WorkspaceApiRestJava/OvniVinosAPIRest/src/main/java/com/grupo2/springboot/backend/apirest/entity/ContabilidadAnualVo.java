@@ -1,5 +1,7 @@
 package com.grupo2.springboot.backend.apirest.entity;
 
+import java.sql.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,7 +24,7 @@ public class ContabilidadAnualVo {
 	private double ingresos_contabilidad_anual;
 	
 	@Column(name="fecha")
-	private String fecha;
+	private Date fecha;
 
 	public int getId_registro_contabilidad_anual() {
 		return id_registro_contabilidad_anual;
@@ -56,11 +58,11 @@ public class ContabilidadAnualVo {
 		this.ingresos_contabilidad_anual = ingresos_contabilidad_anual;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

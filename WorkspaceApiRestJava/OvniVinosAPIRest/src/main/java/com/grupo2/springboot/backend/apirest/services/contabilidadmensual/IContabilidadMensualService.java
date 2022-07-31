@@ -14,5 +14,5 @@ public interface IContabilidadMensualService {
 	
 	public ContabilidadMensualVo findById(Integer idContabilidadAn);
 	
-	public ContabilidadMensualVo findUltima();
+	public Integer findUltima();
 }

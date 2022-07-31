@@ -68,8 +68,7 @@ create table venta_cliente
 	id_puente int primary key not null auto_increment,
   codigo_venta int not null,
   codigo_producto int not null,
-  cantidad_producto int,
-  id_registro_contabilidad_diaria int not null
+  cantidad_producto int
 );
   
 create table contabilidad_diaria 
@@ -118,8 +117,7 @@ create table compra_admin
 	id_puente int primary key not null auto_increment,
   compra int,
   codigo_producto int not null,
-  cantidad_producto int,
-  id_registro_contabilidad_diaria int not null
+  cantidad_producto int
 );
 
 ALTER TABLE `basededatos_ovni_vinos`.`carrito_cliente` 
@@ -145,6 +143,10 @@ drop schema basededatos_ovni_vinos
 
 
 INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
+
+INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('crissis2004@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
+
+
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('Vino abocado', '13000', '10000', 'delicioso vino dulce');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('Vino tinto', '13000', '10000', 'delicioso vino poco dulce');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('nectar de uva', '10000', '7000', 'delicioso zumo de uva sin alcohol');
@@ -224,7 +226,6 @@ ADD CONSTRAINT `fk_inventario_detalles_id_registro`
   ALTER TABLE `basededatos_ovni_vinos`.`venta` 
 ADD INDEX `fk_venta_id_registro_contabilidad_diaria_idx` (`id_registro_contabilidad_diaria` ASC);
 ;
-
 ALTER TABLE `basededatos_ovni_vinos`.`venta` 
 ADD CONSTRAINT `fk_venta_id_registro_contabilidad_diaria`
   FOREIGN KEY (`id_registro_contabilidad_diaria`)

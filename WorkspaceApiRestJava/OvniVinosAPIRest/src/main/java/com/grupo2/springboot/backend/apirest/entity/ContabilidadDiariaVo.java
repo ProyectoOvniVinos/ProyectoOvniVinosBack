@@ -1,5 +1,7 @@
 package com.grupo2.springboot.backend.apirest.entity;
 
+import java.sql.Date;
+
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -29,7 +31,7 @@ public class ContabilidadDiariaVo {
 	private ContabilidadMensualVo id_registro_contabilidad_mensual;
 	
 	@Column(name="fecha")
-	private String fecha;
+	private Date fecha;
 
 	public int getId_registro_contabilidad_diaria() {
 		return id_registro_contabilidad_diaria;
@@ -71,11 +73,11 @@ public class ContabilidadDiariaVo {
 		this.id_registro_contabilidad_mensual = id_registro_contabilidad_mensual;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
