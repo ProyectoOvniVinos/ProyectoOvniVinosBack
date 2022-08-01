@@ -1,6 +1,5 @@
 package com.grupo2.springboot.backend.apirest.controllers;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,11 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
-import com.grupo2.springboot.backend.apirest.entity.CompraVo;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadAnualVo;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadDiariaVo;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadMensualVo;
-import com.grupo2.springboot.backend.apirest.entity.VentaClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.VentaVo;
 import com.grupo2.springboot.backend.apirest.services.contabilidadanual.IContabilidadAnualService;
 import com.grupo2.springboot.backend.apirest.services.contabilidaddiaria.IContabilidadDiariaService;
@@ -123,14 +120,14 @@ public class VentaRestController {
 
 					contaMensual.setIngresos_contabilidad_mensual(contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
 					contaMensual.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() + 1);
-					ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
+					contabilidadMensualService.save(contaMensual);
 
 					Integer contaAnualId = contabilidadAnualService.findUltima();
 					ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 
 					contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
 					contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
-					ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
+					contabilidadAnualService.save(contaAnual);
 
 					ultimaD.setVentas_contabilidad_diaria(ultimaD.getVentas_contabilidad_diaria() + 1);
 					ultimaD.setIngresos_contabilidad_diaria(ultimaD.getIngresos_contabilidad_diaria() + venta.getPrecio_venta());
@@ -145,19 +142,16 @@ public class VentaRestController {
 							Integer contaMensualId = contabilidadMensualService.findUltima();
 							ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
 
-							contaMensual.setIngresos_contabilidad_mensual(
-									contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
-							contaMensual
-									.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() + 1);
-							ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
+							contaMensual.setIngresos_contabilidad_mensual(contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
+							contaMensual.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() + 1);
+							contabilidadMensualService.save(contaMensual);
 
 							Integer contaAnualId = contabilidadAnualService.findUltima();
 							ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 
-							contaAnual.setIngresos_contabilidad_anual(
-									contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
+							contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
 							contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
-							ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
+							contabilidadAnualService.save(contaAnual);
 
 							ContabilidadDiariaVo contaHoy = new ContabilidadDiariaVo();
 							contaHoy.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
@@ -171,8 +165,7 @@ public class VentaRestController {
 							Integer contaAnualId = contabilidadAnualService.findUltima();
 							ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 
-							contaAnual.setIngresos_contabilidad_anual(
-									contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
+							contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
 							contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
 							ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
 
