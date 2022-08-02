@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.grupo2.springboot.backend.apirest.entity.CarritoClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
+import com.grupo2.springboot.backend.apirest.services.carritocliente.ICarritoClienteService;
 import com.grupo2.springboot.backend.apirest.services.cliente.IClienteService;
 
 
@@ -29,7 +31,8 @@ public class ClienteRestController {
 	@Autowired
 	private IClienteService clienteService;
 	
-	
+	@Autowired
+	private ICarritoClienteService carritoService;
 	// http://localhost:8080/apiCliente/clientes
 	@GetMapping("/clientes")
 	public ResponseEntity<?> clientes(){
@@ -105,6 +108,10 @@ public class ClienteRestController {
 			cliente.setTelefonoCliente("3000");
 			cliente.setPasswordCliente("camilo");
 			clienteNew = clienteService.save(cliente);
+			CarritoClienteVo carrito = new CarritoClienteVo();
+			carrito.setCliente(clienteNew);
+			clienteNew.setCarrito(carrito);
+			carritoService.save(carrito);
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

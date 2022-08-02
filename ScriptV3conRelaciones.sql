@@ -49,27 +49,6 @@ create table item_carrito
   precio_item double
 );
 
-ALTER TABLE `basededatos_ovni_vinos`.`item_carrito` 
-ADD INDEX `fk_item_carrito_codigo_producto_idx` (`codigo_producto` ASC) ;
-;
-ALTER TABLE `basededatos_ovni_vinos`.`item_carrito` 
-ADD CONSTRAINT `fk_item_carrito_codigo_producto`
-  FOREIGN KEY (`codigo_producto`)
-  REFERENCES `basededatos_ovni_vinos`.`producto` (`codigo_producto`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
-
-ALTER TABLE `basededatos_ovni_vinos`.`item_carrito` 
-ADD INDEX `fk_item_carrito_codigo_carrito_idx` (`carrito` ASC) ;
-;
-ALTER TABLE `basededatos_ovni_vinos`.`compra_admin` 
-ADD CONSTRAINT `fk_item_carrito_codigo_carrito`
-  FOREIGN KEY (`compra`)
-  REFERENCES `basededatos_ovni_vinos`.`carrito` (`id_carrito`)
-  ON DELETE NO ACTION
-  ON UPDATE NO ACTION;
-
-
 
 create table venta 
 (
@@ -167,6 +146,30 @@ ADD CONSTRAINT `fk_compra_id_registro_contabilidad_diaria`
   REFERENCES `basededatos_ovni_vinos`.`contabilidad_diaria` (`id_registro_contabilidad_diaria`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+ALTER TABLE `basededatos_ovni_vinos`.`item_carrito` 
+CHANGE COLUMN `codigo_producto` `codigo_producto` INT NULL ,
+ADD INDEX `fk_item_carrito_codigo_producto_idx` (`codigo_producto` ASC) ;
+;
+ALTER TABLE `basededatos_ovni_vinos`.`item_carrito` 
+ADD CONSTRAINT `fk_item_carrito_codigo_producto`
+  FOREIGN KEY (`codigo_producto`)
+  REFERENCES `basededatos_ovni_vinos`.`producto` (`codigo_producto`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+ALTER TABLE `basededatos_ovni_vinos`.`item_carrito` 
+ADD INDEX `fk_item_carrito_carrito_idx` (`carrito` ASC) ;
+;
+ALTER TABLE `basededatos_ovni_vinos`.`item_carrito` 
+ADD CONSTRAINT `fk_item_carrito_carrito`
+  FOREIGN KEY (`carrito`)
+  REFERENCES `basededatos_ovni_vinos`.`carrito_cliente` (`id_carrito`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
 
 /*
 drop schema basededatos_ovni_vinos
