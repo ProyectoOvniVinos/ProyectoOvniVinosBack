@@ -23,6 +23,9 @@ public class CompraAdminVo implements Serializable {
 
 	@Column(name = "cantidad_producto")
 	private int cantidad_producto;
+	
+	@Column(name = "precio_compra_detalle")
+	private double precio_compra_detalle;
 
 	public int getId_puente() {
 		return id_puente;
@@ -48,10 +51,19 @@ public class CompraAdminVo implements Serializable {
 		this.cantidad_producto = cantidad_producto;
 	}
 
+	public double getPrecio_compra_detalle() {
+		return precio_compra_detalle;
+	}
+
+	public void setPrecio_compra_detalle() {
+		double total = this.getCodigo_producto().getPrecio_producto()*this.cantidad_producto;
+		this.precio_compra_detalle = total;
+	}
+
 	@Override
 	public String toString() {
 		return "CompraAdminVo [id_puente=" + id_puente + ", codigo_producto=" + codigo_producto + ", cantidad_producto="
-				+ cantidad_producto + ", id_registro_contabilidad_diaria=" + "]";
+				+ cantidad_producto + "]";
 	}
 
 }

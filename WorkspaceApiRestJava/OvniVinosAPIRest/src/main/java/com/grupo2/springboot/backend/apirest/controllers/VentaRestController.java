@@ -26,6 +26,9 @@ import com.grupo2.springboot.backend.apirest.entity.VentaVo;
 import com.grupo2.springboot.backend.apirest.services.contabilidadanual.IContabilidadAnualService;
 import com.grupo2.springboot.backend.apirest.services.contabilidaddiaria.IContabilidadDiariaService;
 import com.grupo2.springboot.backend.apirest.services.contabilidadmensual.IContabilidadMensualService;
+import com.grupo2.springboot.backend.apirest.services.inventariodetalles.EstadoProducto;
+import com.grupo2.springboot.backend.apirest.services.inventariodetalles.EstadoProductoIndividual;
+import com.grupo2.springboot.backend.apirest.services.inventariodetalles.IinventarioDetallesService;
 import com.grupo2.springboot.backend.apirest.services.venta.IVentaService;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -36,6 +39,9 @@ public class VentaRestController {
 
 	@Autowired
 	private IVentaService ventaService;
+	
+	@Autowired
+	private IinventarioDetallesService inventarioService;
 
 	@Autowired
 	private IContabilidadDiariaService contabilidadDiariaService;
@@ -257,8 +263,23 @@ public class VentaRestController {
 			cliente.setPasswordCliente("12345");
 			
 			venta.setCorreo_cliente(cliente);
+			EstadoProducto estadoProducto=inventarioService.disminuirCantidad(venta);
+			if(estadoProducto.isEstado()==true) {
+				venta.setCantidad_venta();
+				venta.setPrecio_venta();
+				ventaNew = ventaService.save(venta);
+			}else {
+				response.put("mensaje", "cantidad insuficiente");
+				int contador = 0;
+				for(EstadoProductoIndividual estadoProductoI: estadoProducto.getProductos()) {
+					if(estadoProductoI.isEstado()==false) {
+						contador += contador;
+						response.put("producto"+contador, estadoProductoI.getNombre()+" no tiene la cantidad que necesita este producto solo cuenta con "+ estadoProductoI.getCantidad());
+					}
+				}
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
 			
-			ventaNew = ventaService.save(venta);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

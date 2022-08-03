@@ -1,11 +1,13 @@
 package com.grupo2.springboot.backend.apirest.services.inventariodetalles;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.grupo2.springboot.backend.apirest.dao.IInventarioDetallesDao;
 import com.grupo2.springboot.backend.apirest.dao.IInventarioGeneralDao;
@@ -14,6 +16,7 @@ import com.grupo2.springboot.backend.apirest.entity.CompraVo;
 import com.grupo2.springboot.backend.apirest.entity.InventarioDetallesVo;
 import com.grupo2.springboot.backend.apirest.entity.InventarioGeneralVo;
 import com.grupo2.springboot.backend.apirest.entity.ProductoVo;
+import com.grupo2.springboot.backend.apirest.entity.VentaClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.VentaVo;
 
 @Service
@@ -22,56 +25,70 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 	@Autowired
 	private IInventarioDetallesDao inventarioDetallesDao;
 	
+	@Autowired
 	private IInventarioGeneralDao inventarioGeneralDao;
 	
+	@Transactional(readOnly=true)
 	@Override
 	public List<InventarioDetallesVo> findAll() {
 		
 		return (List<InventarioDetallesVo>) inventarioDetallesDao.findAll();
 	}
-
+	
+	@Transactional(readOnly=true)
 	@Override
 	public InventarioDetallesVo findById(Integer id) {
 		
 		return inventarioDetallesDao.findById(id).orElse(null);
 	}
-
+	
+	@Transactional
 	@Override
 	public InventarioDetallesVo save(InventarioDetallesVo inventarioRegistrar) {
 		
 		return inventarioDetallesDao.save(inventarioRegistrar);
 	}
-
+	
+	@Transactional
 	@Override
 	public InventarioDetallesVo update(InventarioDetallesVo inventarioMoidficado) {
 		
 		return inventarioDetallesDao.save(inventarioMoidficado);
 	}
 	
+	@Transactional
+	@Override
 	public void InsertarInventario(CompraVo compra) {
 		
 		List<CompraAdminVo> listaCompras = compra.getCompras();
 		
 		InventarioGeneralVo nuevoInventarioGeneral = null;
 		
-		List<InventarioDetallesVo> detallesAnteriores = new ArrayList<>();
+		
+		//List<InventarioGeneralVo> inventarios = new ArrayList<>();
 		
 		for (CompraAdminVo compraAdminVo : listaCompras) {
 			
+			List<InventarioDetallesVo> detallesAnteriores = new ArrayList<>();
+			
 			ProductoVo producto = compraAdminVo.getCodigo_producto();
 			int cantidad = compraAdminVo.getCantidad_producto();
-			Date fecha = compra.getFecha_compra();
-			 
+			LocalDate fecha = LocalDate.now();
 			InventarioDetallesVo nuevoInventarioDetalle = new InventarioDetallesVo();
 			
 			nuevoInventarioDetalle.setCantidad_producto(cantidad);
-			nuevoInventarioDetalle.setFecha_ultimo_ingreso_inventario(fecha);
+			nuevoInventarioDetalle.setFecha_ultimo_ingreso_inventario(Date.valueOf(fecha));
+			
+			System.out.println(nuevoInventarioDetalle);
 			
 			nuevoInventarioGeneral = inventarioGeneralDao.findByProducto(producto.getCodigo_producto());
+			
+			System.out.println(nuevoInventarioGeneral);
 			
 			if(nuevoInventarioGeneral != null) {
 				detallesAnteriores = nuevoInventarioGeneral.getDetalles();
 			}else {
+				nuevoInventarioGeneral = new InventarioGeneralVo();
 				nuevoInventarioGeneral.setCodigo_producto(producto);
 			}
 			
@@ -81,18 +98,97 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 			
 			nuevoInventarioGeneral.setCantidad_producto();
 			
+			//inventarios.add(nuevoInventarioGeneral);
+			
+			System.out.println(nuevoInventarioGeneral);
+			
 			inventarioGeneralDao.save(nuevoInventarioGeneral);
 			
-			detallesAnteriores.clear();
-			
 		}
-		
+		/*
+		for(InventarioGeneralVo inventario : inventarios) {
+			System.out.println(inventario);
+			inventarioGeneralDao.save(inventario);
+		}
+		*/
 	}
 	
-	public void disminuirCantidad(VentaVo venta) {
+	@Transactional(readOnly=true)
+	public EstadoProducto validacionCantidad(List<VentaClienteVo> detallesVenta) {
 		
-		venta.getVentas().get(0).getCodigo_producto();
+		List<EstadoProductoIndividual> estadoProductoIndividual = new ArrayList<>();
 		
+		for(VentaClienteVo venta : detallesVenta) {
+			int codigoProducto = venta.getCodigo_producto().getCodigo_producto();
+			
+			InventarioGeneralVo comprovarInventario = inventarioGeneralDao.findByProducto(codigoProducto);
+			String nombre = venta.getCodigo_producto().getNombre_producto();
+			int cantidad = venta.getCantidad_producto();
+			EstadoProductoIndividual estadoProductoI = new EstadoProductoIndividual(nombre, true,cantidad);
+			if(cantidad>comprovarInventario.getCantidad_producto()) {
+				
+				estadoProductoI.setEstado(false);
+			}
+			estadoProductoIndividual.add(estadoProductoI);
+		}
+		EstadoProducto estadoProductos = new EstadoProducto(true,estadoProductoIndividual);
+		estadoProductos.setEstado();
+		return estadoProductos;
+	}
+	
+	@Override
+	@Transactional
+	public EstadoProducto disminuirCantidad(VentaVo venta) {
+		
+		EstadoProducto estadoProductos = this.validacionCantidad(venta.getVentas());
+		
+		
+		if(estadoProductos.isEstado()==true) {
+			for(VentaClienteVo detallesVenta: venta.getVentas()) {
+				int codigoProducto = detallesVenta.getCodigo_producto().getCodigo_producto();
+				InventarioGeneralVo actualizarInventarioG = inventarioGeneralDao.findByProducto(codigoProducto);
+				
+				System.out.println(actualizarInventarioG);
+				
+				List<InventarioDetallesVo> actualizarDetalles = actualizarInventarioG.getDetalles();
+				
+				System.out.println(actualizarDetalles);
+				
+				int cantidadVenta = detallesVenta.getCantidad_producto();
+				int contador = 0;
+				
+				for(InventarioDetallesVo detalle : actualizarDetalles) {
+					int cantidadInventario = detalle.getCantidad_producto();
+					
+					if(cantidadInventario>=cantidadVenta) {
+						System.out.println(cantidadInventario);
+						System.out.println(cantidadVenta);
+						cantidadInventario -= cantidadVenta;
+						System.out.println(cantidadInventario);
+						if(cantidadInventario==0) {
+							actualizarDetalles.remove(contador);
+							actualizarInventarioG.setDetalles(actualizarDetalles);
+							inventarioDetallesDao.deleteById(detalle.getIdDetalles());
+							System.out.println(cantidadInventario);
+						}else {
+							detalle.setCantidad_producto(cantidadInventario);
+							inventarioDetallesDao.save(detalle);
+						}
+						
+						break;
+						
+					}else {
+						cantidadVenta -= cantidadInventario;
+						inventarioDetallesDao.delete(detalle);
+					}
+					contador += 1;
+				}
+				actualizarInventarioG = inventarioGeneralDao.findByProducto(codigoProducto);
+				actualizarInventarioG.setCantidad_producto();
+				inventarioGeneralDao.save(actualizarInventarioG);
+			}
+		}
+		return estadoProductos;
 	}
 
 }
