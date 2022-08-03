@@ -1,12 +1,12 @@
 package com.grupo2.springboot.backend.apirest.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -24,7 +24,8 @@ public class CompraVo implements Serializable {
 	private int cantidad_compra;
 
 	@Column(name = "fecha_compra")
-	private Date fecha_compra;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd-HH:mm:ss")
+	private LocalDateTime fecha_compra;
 
 	@JsonIgnoreProperties(value = {"compras", "hibernateLazyInitializer", "handler" }, allowSetters = true)
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -33,7 +34,7 @@ public class CompraVo implements Serializable {
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_registro_contabilidad_diaria")
+	@JoinColumn(name = "id_registro_contabilidad_diaria_compra")
 	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
 
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler" })
@@ -61,23 +62,36 @@ public class CompraVo implements Serializable {
 		return precio_compra;
 	}
 
-	public void setPrecio_compra(double precio_compra) {
-		this.precio_compra = precio_compra;
+	public void setPrecio_compra() {
+		
+		double precio = 0;
+		
+		for(CompraAdminVo detallesCompra : this.getCompras()) {
+			detallesCompra.setPrecio_compra_detalle();
+			precio += detallesCompra.getPrecio_compra_detalle();
+		}
+		this.precio_compra = precio;
 	}
 
 	public int getCantidad_compra() {
 		return cantidad_compra;
 	}
 
-	public void setCantidad_compra(int cantidad_compra) {
-		this.cantidad_compra = cantidad_compra;
+	public void setCantidad_compra() {
+		
+		int cantidad = 0;
+		for(CompraAdminVo detallesCompra : this.getCompras()) {
+			cantidad += detallesCompra.getCantidad_producto();
+		}
+		
+		this.cantidad_compra = cantidad;
 	}
 
-	public Date getFecha_compra() {
+	public LocalDateTime getFecha_compra() {
 		return fecha_compra;
 	}
 
-	public void setFecha_compra(Date fecha_compra) {
+	public void setFecha_compra(LocalDateTime fecha_compra) {
 		this.fecha_compra = fecha_compra;
 	}
 
@@ -102,8 +116,10 @@ public class CompraVo implements Serializable {
 	@Override
 	public String toString() {
 		return "CompraVo [codigo_compra=" + codigo_compra + ", precio_compra=" + precio_compra + ", cantidad_compra="
-				+ cantidad_compra + ", fecha_compra=" + fecha_compra + ", correo_admin=" + correo_admin + ", compras="
-				+ compras + "]";
+				+ cantidad_compra + ", fecha_compra=" + fecha_compra + ", correo_admin=" + correo_admin
+				+ ", id_registro_contabilidad_diaria=" + id_registro_contabilidad_diaria + ", compras=" + compras + "]";
 	}
+
+	
 
 }

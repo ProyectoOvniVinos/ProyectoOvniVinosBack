@@ -47,8 +47,13 @@ public class VentaVo implements Serializable {
 		return precio_venta;
 	}
 
-	public void setPrecio_venta(double precio_venta) {
-		this.precio_venta = precio_venta;
+	public void setPrecio_venta() {
+		double total = 0;
+		for(VentaClienteVo ventas: this.ventas) {
+			ventas.setPrecio_venta_detalle();
+			total += ventas.getPrecio_venta_detalle();
+		}
+		this.precio_venta = total;
 	}
 
 	public List<VentaClienteVo> getVentas() {
@@ -79,8 +84,12 @@ public class VentaVo implements Serializable {
 		return cantidad_venta;
 	}
 
-	public void setCantidad_venta(int cantidad_venta) {
-		this.cantidad_venta = cantidad_venta;
+	public void setCantidad_venta() {
+		int cantidad = 0;
+		for(VentaClienteVo ventas : this.ventas) {
+			cantidad += ventas.getCantidad_producto();
+		}
+		this.cantidad_venta = cantidad;
 	}
 
 	public LocalDateTime getFecha_venta() {

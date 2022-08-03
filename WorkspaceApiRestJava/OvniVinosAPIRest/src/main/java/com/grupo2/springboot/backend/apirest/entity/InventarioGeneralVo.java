@@ -20,9 +20,9 @@ public class InventarioGeneralVo implements Serializable{
 	@Column(name="cantidad_producto")
 	private int cantidad_producto;
 	
-	@JsonIgnoreProperties(value={"hibernateLazyInitializer","handler"},allowSetters=true)
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="codigo_producto")
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "codigo_producto")
 	private ProductoVo codigo_producto;
 	
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler" })
@@ -45,8 +45,8 @@ public class InventarioGeneralVo implements Serializable{
 
 	public void setCantidad_producto() {
 		int cantidadTotal = 0;
-		if(this.detalles.size()>0) {
-			for (InventarioDetallesVo inventarioDetallesVo : this.detalles) {
+		if(this.getDetalles().size()>0) {
+			for (InventarioDetallesVo inventarioDetallesVo : this.getDetalles()) {
 				cantidadTotal += inventarioDetallesVo.getCantidad_producto();
 			}
 		}
@@ -68,5 +68,13 @@ public class InventarioGeneralVo implements Serializable{
 	public void setCodigo_producto(ProductoVo codigo_producto) {
 		this.codigo_producto = codigo_producto;
 	}
+
+	@Override
+	public String toString() {
+		return "InventarioGeneralVo [id_registro=" + id_registro + ", cantidad_producto=" + cantidad_producto
+				+ ", codigo_producto=" + codigo_producto + ", detalles=" + detalles + "]";
+	}
+	
+	
 	
 }

@@ -47,5 +47,13 @@ public class InventarioDetallesVo implements Serializable{
 	public void setFecha_ultimo_ingreso_inventario(Date fecha_ultimo_ingreso_inventario) {
 		this.fecha_ultimo_ingreso_inventario = fecha_ultimo_ingreso_inventario;
 	}
+
+	@Override
+	public String toString() {
+		return "InventarioDetallesVo [id_detalles=" + id_detalles + ", cantidad_producto=" + cantidad_producto
+				+ ", fecha_ultimo_ingreso_inventario=" + fecha_ultimo_ingreso_inventario + "]";
+	}
+	
+	
 	
 }
