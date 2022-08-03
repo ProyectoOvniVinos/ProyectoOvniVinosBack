@@ -18,7 +18,7 @@ create table compra
 	cantidad_compra int, 
 	fecha_compra datetime,
 	correo_admin char(30) not null,
-  id_registro_contabilidad_diaria_compra int not null default 0
+	id_registro_contabilidad_diaria_compra int not null default 0
 );
 
 

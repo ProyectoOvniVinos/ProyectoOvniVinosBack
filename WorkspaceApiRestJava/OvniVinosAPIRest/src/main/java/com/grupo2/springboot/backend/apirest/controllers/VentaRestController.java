@@ -111,13 +111,17 @@ public class VentaRestController {
 			venta.setCorreo_cliente(cliente);
 			venta.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
 			
-			ventaReto = ventaService.save(ventaNew);
+			
 			EstadoProducto estadoProducto=inventarioService.disminuirCantidad(venta);
 			if(estadoProducto.isEstado()==true) {
 				venta.setCantidad_venta();
 				venta.setPrecio_venta();
+				
+				
 				ventaNew = ventaService.save(venta);
 				ventaService.gestorAsignarContabilidad(ventaNew,venta);
+				ventaReto = ventaService.save(ventaNew);
+				
 			}else {
 				response.put("mensaje", "cantidad insuficiente");
 				int contador = 0;
