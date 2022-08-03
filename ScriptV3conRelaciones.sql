@@ -56,7 +56,7 @@ create table venta
 	correo_cliente char(30) not null,
 	precio_venta double,
 	fecha_venta datetime,
-    id_registro_contabilidad_diaria int not null
+    id_registro_contabilidad_diaria int
 );
 ALTER TABLE `basededatos_ovni_vinos`.`venta` 
 ADD COLUMN `cantidad_venta` INT NULL DEFAULT NULL AFTER `fecha_venta`;
@@ -69,7 +69,8 @@ create table producto
 	nombre_producto char(25),
 	precio_producto double,
 	precio_producto_proveedor double,
-	descripcion_producto varchar(200)
+	descripcion_producto varchar(200),
+    foto_producto varchar(200)
 );
 
 create table venta_cliente

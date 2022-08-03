@@ -84,6 +84,7 @@ public class ProductoRestController {
 			productoActual.setPrecio_producto(producto.getPrecio_producto());
 			productoActual.setPrecio_producto_proveedor(producto.getPrecio_producto_proveedor());
 			productoActual.setDescripcion_producto(producto.getDescripcion_producto());
+			productoActual.setFoto_producto(producto.getFoto_producto());
 			
 			productoUpdated = productoService.save(productoActual);
 		}catch(DataAccessException e) {

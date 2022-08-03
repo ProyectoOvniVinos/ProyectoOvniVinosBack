@@ -89,166 +89,12 @@ public class VentaRestController {
 	@PostMapping("/venta")
 	public ResponseEntity<?> create(@RequestBody VentaVo venta) {
 		VentaVo ventaNew = null;
+		VentaVo ventaReto = null;
 
 		Map<String, Object> response = new HashMap<>();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 		try {
-			/**
-			 * ClienteVo cliente = new ClienteVo();
-
-			
-			cliente.setCorreoCliente("grajales0@gmail.com");
-			cliente.setNombreCliente("juan");
-			cliente.setApellidoCliente("villa");
-			cliente.setDireccionCliente(null);
-			cliente.setTelefonoCliente("3000");
-			cliente.setPasswordCliente("camilo");
-
-			venta.setCorreo_cliente(cliente);
-			 */
-			venta.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
-			Integer ultimaDId = contabilidadDiariaService.findUltima();
-			if(ultimaDId==null) {
-				ultimaDId = 0;
-			}
-			ContabilidadDiariaVo ultimaD = contabilidadDiariaService.findById(ultimaDId);
-			if (ultimaD != null) {
-				if (dtf.format(LocalDateTime.now()).split("-")[0].equals(venta.getFecha_venta().toString().split("-")[0]) && dtf.format(LocalDateTime.now()).split("-")[1].equals(venta.getFecha_venta().toString().split("-")[1]) && dtf.format(LocalDateTime.now()).split("-")[2].equals(venta.getFecha_venta().toString().split("-")[2].split("T")[0])) {
-					Integer contaMensualId = contabilidadMensualService.findUltima();
-					ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
-					
-
-					contaMensual.setIngresos_contabilidad_mensual(contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
-					contaMensual.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() + 1);
-					contabilidadMensualService.save(contaMensual);
-
-					Integer contaAnualId = contabilidadAnualService.findUltima();
-					ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
-
-					contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
-					contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
-					contabilidadAnualService.save(contaAnual);
-
-					ultimaD.setVentas_contabilidad_diaria(ultimaD.getVentas_contabilidad_diaria() + 1);
-					ultimaD.setIngresos_contabilidad_diaria(ultimaD.getIngresos_contabilidad_diaria() + venta.getPrecio_venta());
-					ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(ultimaD);
-					
-					venta.setId_registro_contabilidad_diaria(contaDiaGu);
-				} else {
-					if (venta.getFecha_venta().toString().split("-")[0].equals(LocalDate.now().toString().split("-")[0])) {
-						if (venta.getFecha_venta().toString().split("-")[1].equals(LocalDate.now().toString().split("-")[1])) {
-							System.out.println("VVV");
-							
-							Integer contaMensualId = contabilidadMensualService.findUltima();
-							ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
-
-							contaMensual.setIngresos_contabilidad_mensual(contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
-							contaMensual.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() + 1);
-							contabilidadMensualService.save(contaMensual);
-
-							Integer contaAnualId = contabilidadAnualService.findUltima();
-							ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
-
-							contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
-							contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
-							contabilidadAnualService.save(contaAnual);
-
-							ContabilidadDiariaVo contaHoy = new ContabilidadDiariaVo();
-							contaHoy.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
-							contaHoy.setVentas_contabilidad_diaria(1);
-							contaHoy.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-							contaHoy.setId_registro_contabilidad_mensual(contaMensual);
-							ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(contaHoy);
-							
-							venta.setId_registro_contabilidad_diaria(contaDiaGu);
-						} else {
-							Integer contaAnualId = contabilidadAnualService.findUltima();
-							ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
-
-							contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
-							contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
-							ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
-
-							ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
-							contaMensual.setIngresos_contabilidad_mensual(venta.getPrecio_venta());
-							contaMensual.setVentas_contabilidad_mensual(1);
-							contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-							contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
-							ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
-
-							ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
-							contaDiaria.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
-							contaDiaria.setVentas_contabilidad_diaria(1);
-							contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-							contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
-							ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(contaDiaria);
-							
-							venta.setId_registro_contabilidad_diaria(contaDiaGu);
-						}
-					} else {
-						ContabilidadAnualVo contaAnual = new ContabilidadAnualVo();
-						contaAnual.setIngresos_contabilidad_anual(venta.getPrecio_venta());
-						contaAnual.setVentas_contabilidad_anual(1);
-						contaAnual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-						ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
-
-						ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
-						contaMensual.setIngresos_contabilidad_mensual(venta.getPrecio_venta());
-						contaMensual.setVentas_contabilidad_mensual(1);
-						contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-						contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
-						ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
-
-						ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
-						contaDiaria.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
-						contaDiaria.setVentas_contabilidad_diaria(1);
-						contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-						contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
-						ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(contaDiaria);
-						
-						venta.setId_registro_contabilidad_diaria(contaDiaGu);
-					}
-				}
-			} else if(ultimaD==null){
-				ContabilidadAnualVo contaAnual = new ContabilidadAnualVo();
-				contaAnual.setIngresos_contabilidad_anual(venta.getPrecio_venta());
-				contaAnual.setVentas_contabilidad_anual(1);
-				contaAnual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-				ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
-
-				ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
-				contaMensual.setIngresos_contabilidad_mensual(venta.getPrecio_venta());
-				contaMensual.setVentas_contabilidad_mensual(1);
-				contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-				contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
-				ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
-
-				ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
-				contaDiaria.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
-				contaDiaria.setVentas_contabilidad_diaria(1);
-				contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-				contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
-				ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(contaDiaria);
-				
-				venta.setId_registro_contabilidad_diaria(contaDiaGu);
-
-			}
-
-			/**
-			 * venta.getVentas().get(0).getId_registro_contabilidad_diaria().setId_registro_contabilidad_diaria(1);
-			venta.getVentas().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual()
-					.setId_registro_contabilidad_mensual(1);
-			venta.getVentas().get(0).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual()
-					.getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
-			venta.getVentas().get(1).getId_registro_contabilidad_diaria().setId_registro_contabilidad_diaria(1);
-			venta.getVentas().get(1).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual()
-					.setId_registro_contabilidad_mensual(1);
-			venta.getVentas().get(1).getId_registro_contabilidad_diaria().getId_registro_contabilidad_mensual()
-					.getId_registro_contabilidad_anual().setId_registro_contabilidad_anual(1);
-			 */
 			ClienteVo cliente = new ClienteVo();
-
-			
 			cliente.setCorreoCliente("crissis2004@gmail.com");
 			cliente.setNombreCliente("Cristian");
 			cliente.setApellidoCliente("Amador");
@@ -257,8 +103,16 @@ public class VentaRestController {
 			cliente.setPasswordCliente("12345");
 			
 			venta.setCorreo_cliente(cliente);
+			venta.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
+			
 			
 			ventaNew = ventaService.save(venta);
+			
+			ventaService.gestorAsignarContabilidad(ventaNew,venta);
+			
+			
+			
+			ventaReto = ventaService.save(ventaNew);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -266,10 +120,10 @@ public class VentaRestController {
 
 		}
 		
-		ventaNew.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
+		ventaReto.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
 		response.put("mensaje", "la venta se ha registro con exito");
 		
-		response.put("venta", ventaNew);
+		response.put("venta", ventaReto);
 		
 		
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
