@@ -111,12 +111,6 @@ public class VentaRestController {
 			venta.setCorreo_cliente(cliente);
 			venta.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
 			
-			
-			
-			
-			
-			
-			
 			ventaReto = ventaService.save(ventaNew);
 			EstadoProducto estadoProducto=inventarioService.disminuirCantidad(venta);
 			if(estadoProducto.isEstado()==true) {
