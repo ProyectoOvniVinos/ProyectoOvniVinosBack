@@ -23,6 +23,9 @@ public class VentaClienteVo implements Serializable {
 
 	@Column(name = "cantidad_producto")
 	private int cantidad_producto;
+	
+	@Column(name = "precio_venta_detalle")
+	private double precio_venta_detalle;
 
 	public int getId_puente() {
 		return id_puente;
@@ -46,6 +49,16 @@ public class VentaClienteVo implements Serializable {
 
 	public void setCantidad_producto(int cantidad_producto) {
 		this.cantidad_producto = cantidad_producto;
+	}
+
+	public double getPrecio_venta_detalle() {
+		return precio_venta_detalle;
+	}
+
+	public void setPrecio_venta_detalle() {
+		double total;
+		total = this.cantidad_producto * this.codigo_producto.getPrecio_producto();
+		this.precio_venta_detalle = total;
 	}
 
 	@Override

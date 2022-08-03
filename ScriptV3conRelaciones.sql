@@ -16,9 +16,9 @@ create table compra
 	codigo_compra int primary key not null auto_increment,
 	precio_compra double, 
 	cantidad_compra int, 
-	fecha_compra date,
+	fecha_compra datetime,
 	correo_admin char(30) not null,
-    id_registro_contabilidad_diaria int not null
+    id_registro_contabilidad_diaria_compra int not null default 0
 );
 
 
@@ -47,7 +47,7 @@ create table venta
 	correo_cliente char(30) not null,
 	precio_venta double,
 	fecha_venta datetime,
-    id_registro_contabilidad_diaria int not null
+    id_registro_contabilidad_diaria int
 );
 ALTER TABLE `basededatos_ovni_vinos`.`venta` 
 ADD COLUMN `cantidad_venta` INT NULL DEFAULT NULL AFTER `fecha_venta`;
@@ -67,6 +67,7 @@ create table venta_cliente
 (
 	id_puente int primary key not null auto_increment,
   codigo_venta int not null,
+  precio_venta_detalle double,
   codigo_producto int not null,
   cantidad_producto int
 );
@@ -117,6 +118,7 @@ create table compra_admin
 	id_puente int primary key not null auto_increment,
   compra int,
   codigo_producto int not null,
+  precio_compra_detalle double,
   cantidad_producto int
 );
 
@@ -128,12 +130,12 @@ ADD CONSTRAINT `fk_carrito_cliente_cliente`
   ON UPDATE NO ACTION;
 
 ALTER TABLE `basededatos_ovni_vinos`.`compra` 
-ADD INDEX `fk_compra_id_registro_contabilidad_diaria_idx` (`id_registro_contabilidad_diaria` ASC) ;
+ADD INDEX `fk_compra_id_registro_contabilidad_diaria_compra_idx` (`id_registro_contabilidad_diaria_compra` ASC) ;
 ;
 
 ALTER TABLE `basededatos_ovni_vinos`.`compra` 
-ADD CONSTRAINT `fk_compra_id_registro_contabilidad_diaria`
-  FOREIGN KEY (`id_registro_contabilidad_diaria`)
+ADD CONSTRAINT `fk_compra_id_registro_contabilidad_diaria_compra`
+  FOREIGN KEY (`id_registro_contabilidad_diaria_compra`)
   REFERENCES `basededatos_ovni_vinos`.`contabilidad_diaria` (`id_registro_contabilidad_diaria`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
@@ -150,7 +152,7 @@ INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_client
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('Vino abocado', '13000', '10000', 'delicioso vino dulce');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('Vino tinto', '13000', '10000', 'delicioso vino poco dulce');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('nectar de uva', '10000', '7000', 'delicioso zumo de uva sin alcohol');
-
+INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('nectar de manzana', '12000', '8000', 'delicioso zumo de manzana sin alcohol');
 
 
 */
