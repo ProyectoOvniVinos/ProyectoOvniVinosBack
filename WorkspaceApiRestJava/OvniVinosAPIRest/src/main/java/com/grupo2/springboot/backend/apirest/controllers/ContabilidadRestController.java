@@ -20,10 +20,6 @@ import com.grupo2.springboot.backend.apirest.services.contabilidadanual.IContabi
 import com.grupo2.springboot.backend.apirest.services.contabilidaddiaria.IContabilidadDiariaService;
 import com.grupo2.springboot.backend.apirest.services.contabilidadmensual.IContabilidadMensualService;
 
-
-
-
-
 @CrossOrigin(origins= {"http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089"})
 @RestController
 @RequestMapping("/apiContabilidad")
