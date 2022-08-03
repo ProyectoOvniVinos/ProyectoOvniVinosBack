@@ -4,6 +4,7 @@
     <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonFormat"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+<<<<<<< HEAD
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.time.LocalDate"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.InventarioGeneralVo"/>
@@ -14,4 +15,18 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.inventariodetalles.EstadoProducto"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.inventariodetalles.EstadoProductoIndividual"/>
+=======
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IClienteDao"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.ICarritoClienteDao"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.itemcarrito.IitemCarritoService"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.ItemCarritoVo"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IitemCarritoDao"/>
+    <fullyQualifiedTypeName name="javax.transaction.Transactional"/>
+    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.carritocliente.ICarritoClienteService"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.CarritoClienteVo"/>
+>>>>>>> c589531cf9111486080e1278279e6f3e688e9b3a
 </qualifiedTypeNameHistroy>
