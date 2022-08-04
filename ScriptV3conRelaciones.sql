@@ -18,7 +18,7 @@ create table compra
 	cantidad_compra int, 
 	fecha_compra datetime,
 	correo_admin char(30) not null,
-  id_registro_contabilidad_diaria_compra int not null default 0
+	id_registro_contabilidad_diaria_compra int not null default 0
 );
 
 
@@ -69,7 +69,8 @@ create table producto
 	nombre_producto char(25),
 	precio_producto double,
 	precio_producto_proveedor double,
-	descripcion_producto varchar(200)
+	descripcion_producto varchar(200),
+    foto_producto varchar(200)
 );
 
 create table venta_cliente
