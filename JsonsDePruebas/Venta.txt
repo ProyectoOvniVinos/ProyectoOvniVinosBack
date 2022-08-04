@@ -1,0 +1,27 @@
+http://localhost:8080/apiVenta/venta
+
+{
+    "precio_venta": 24000.0,
+    "cantidad_venta": 2,
+    "correo_cliente":{
+        "correo_cliente":"crissis2004@gmail.com",
+        "nombre_cliente":"Cristian",
+        "apellido_cliente":"Amador",
+        "direccion_cliente":"centenario",
+        "telefono_cliente":"323",
+        "password_cliente":"12345"
+    },
+   
+    "ventas": [
+        {
+            "codigo_producto":{
+                "codigo_producto": 4,
+                "nombre_producto": "nectar de manzana",
+                "precio_producto": 12000.0,
+                "precio_producto_proveedor": 8000.0,
+                "descripcion_producto": "delicioso zumo de manzana sin alcohol"
+            },
+            "cantidad_producto":2
+        }
+    ]
+}

@@ -98,7 +98,6 @@ public class CompraRestController {
 		Map<String, Object> response = new HashMap<>();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 		try {
-			System.out.println(compra);
 			
 			AdministradorVo admin = new AdministradorVo();
 			admin.setCorreoAdmin("cristian@gmail.com");
@@ -107,6 +106,7 @@ public class CompraRestController {
 			admin.setDireccionAdmin("centenario");
 			admin.setTelefonoAdmin("323");
 			admin.setPasswordAdmin("12345");
+			
 			compra.setCorreo_admin(admin);
 			
 			compra.setFecha_compra(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
@@ -115,7 +115,9 @@ public class CompraRestController {
 			
 			compra.setCantidad_compra();
 			compra.setPrecio_compra();
+			compra.getCompras().forEach(t -> t.setPrecio_compra_detalle());
 			
+			System.out.println(compra);
 			compraNew = compraService.save(compra);
 			inventarioService.InsertarInventario(compraNew);
 		}catch(DataAccessException e) {
