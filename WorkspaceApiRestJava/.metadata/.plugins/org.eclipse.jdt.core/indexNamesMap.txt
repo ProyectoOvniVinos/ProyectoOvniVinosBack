@@ -1,6 +1,1 @@
 INDEX VERSION 1.131
-<<<<<<< HEAD
-=======
-file:/C:/Users/SENA/Documents/CristianAmadorADSI2/6trimestre/Proyecto/ProyectoOvniVinosBack/WorkspaceApiRestJava/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
-meta_index
->>>>>>> f4d952019f9a2b322932530920b8c5f0713004f0
