@@ -11,4 +11,7 @@ public interface IitemCarritoDao extends CrudRepository<ItemCarritoVo, Integer>{
 
 	@Query("SELECT itemCarritoVo from ItemCarritoVo itemCarritoVo WHERE carrito = ?1")
 	public List<ItemCarritoVo> findByCarrito(Integer term);
+	
+	@Query("DELETE FROM ItemCarritoVo itemCarritoVo WHERE carrito = ?1")
+	public void eliminarByCarrito(Integer term);
 }
