@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadAnualVo;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadDiariaVo;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadMensualVo;
+import com.grupo2.springboot.backend.apirest.entity.InventarioGeneralVo;
 import com.grupo2.springboot.backend.apirest.services.contabilidadanual.IContabilidadAnualService;
 import com.grupo2.springboot.backend.apirest.services.contabilidaddiaria.IContabilidadDiariaService;
 import com.grupo2.springboot.backend.apirest.services.contabilidadmensual.IContabilidadMensualService;
@@ -144,4 +145,23 @@ public class ContabilidadRestController {
 		}
 		return new ResponseEntity<ContabilidadDiariaVo>(contabilidad,HttpStatus.OK);
 	}
+	
+
+	// http://localhost:8080/apiContabilidad/llenar
+	@GetMapping("/llenar")
+	public ResponseEntity<?> llenar(){
+		ContabilidadDiariaVo contabilidad = null;
+		
+		Map<String,Object>response = new HashMap<>();
+		try {
+			contabilidad = contabilidadDiariaService.llenar();
+
+		}catch(DataAccessException e){
+			response.put("mensaje","error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<ContabilidadDiariaVo>(contabilidad,HttpStatus.OK);
+	}
+	
 }

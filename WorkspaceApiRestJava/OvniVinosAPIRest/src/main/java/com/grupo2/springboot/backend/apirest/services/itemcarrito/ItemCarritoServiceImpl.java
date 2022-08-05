@@ -29,13 +29,6 @@ public class ItemCarritoServiceImpl implements IitemCarritoService{
 
 	@Override
 	@Transactional
-	public void eliminarByCarrito(Integer term) {
-		itemCarritoDao.eliminarByCarrito(term);
-		
-	}
-
-	@Override
-	@Transactional
 	public void vaciarCarrito(CarritoClienteVo carritoActual) {
 		carritoActual.getIitem_carrito().clear();
 		

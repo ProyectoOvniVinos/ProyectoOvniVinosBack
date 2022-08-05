@@ -1,6 +1,8 @@
 package com.grupo2.springboot.backend.apirest.controllers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.grupo2.springboot.backend.apirest.entity.CarritoClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
+import com.grupo2.springboot.backend.apirest.entity.ItemCarritoVo;
 import com.grupo2.springboot.backend.apirest.services.carritocliente.ICarritoClienteService;
 import com.grupo2.springboot.backend.apirest.services.itemcarrito.IitemCarritoService;
 
@@ -63,10 +66,6 @@ public class CarritoClienteRestController {
 		
 		
 		try {
-			if(carritoActual.getIitem_carrito().isEmpty()==false) {
-				itemCarritoService.eliminarByCarrito(id);
-				itemCarritoService.vaciarCarrito(carritoActual);
-			}
 			carritoActual.setIitem_carrito(carrito.getIitem_carrito());
 			carritoActual.setPrecio_carrito(0);
 			carritoActual.getIitem_carrito().forEach(t->{
@@ -75,6 +74,33 @@ public class CarritoClienteRestController {
 			});
 			
 			carritoActual.setCantidad_carrito(carrito.getCantidad_carrito());
+			System.out.println(carrito.getCantidad_carrito());
+			carritoUpdated = carritoService.save(carritoActual);
+		}catch(DataAccessException e) {
+			response.put("mensaje","Error al actualizar en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		response.put("mensaje","el carrito ha sido actualizado con exito");
+		response.put("carrito", carritoUpdated);
+		
+		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
+	}
+	
+	//http://localhost:8080/apiCarrito/VaciarCarrito/{id}
+	@PutMapping("/VaciarCarrito/{id}")
+	public ResponseEntity<?> vaciar(@RequestBody CarritoClienteVo carrito, @PathVariable Integer id){
+		CarritoClienteVo carritoActual = carritoService.findById(id);
+		CarritoClienteVo carritoUpdated = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		
+		try {
+			carritoActual.setIitem_carrito(new ArrayList<ItemCarritoVo>());
+			carritoActual.setPrecio_carrito(0);
+			
+			carritoActual.setCantidad_carrito(0);
+			
 			System.out.println(carrito.getCantidad_carrito());
 			carritoUpdated = carritoService.save(carritoActual);
 		}catch(DataAccessException e) {
