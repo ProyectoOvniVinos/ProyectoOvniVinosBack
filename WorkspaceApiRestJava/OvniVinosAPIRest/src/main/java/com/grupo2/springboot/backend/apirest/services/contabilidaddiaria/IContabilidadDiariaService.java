@@ -2,7 +2,9 @@ package com.grupo2.springboot.backend.apirest.services.contabilidaddiaria;
 
 import java.util.List;
 
-import com.grupo2.springboot.backend.apirest.entity.CompraVo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadDiariaVo;
 
 public interface IContabilidadDiariaService {
@@ -12,6 +14,8 @@ public interface IContabilidadDiariaService {
 	public ContabilidadDiariaVo update(ContabilidadDiariaVo contabilidadDiaria);
 	
 	public List<ContabilidadDiariaVo> findAll();
+	
+	public Page<ContabilidadDiariaVo> findAll(Pageable pageable);
 	
 	public ContabilidadDiariaVo findById(Integer idContabilidadDia);
 	

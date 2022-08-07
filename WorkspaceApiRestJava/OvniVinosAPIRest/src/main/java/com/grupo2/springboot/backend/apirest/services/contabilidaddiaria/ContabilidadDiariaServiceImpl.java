@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,6 +48,12 @@ public class ContabilidadDiariaServiceImpl implements IContabilidadDiariaService
 	@Transactional(readOnly = true)
 	public List<ContabilidadDiariaVo> findAll() {
 		return (List<ContabilidadDiariaVo>) contabilidadDiariaDao.findAll();
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Page<ContabilidadDiariaVo> findAll(Pageable pageable) {
+		return contabilidadDiariaDao.findAll(pageable);
 	}
 
 	@Override
@@ -143,6 +151,8 @@ public class ContabilidadDiariaServiceImpl implements IContabilidadDiariaService
 
 
 	}
+
+	
 	
 	
 

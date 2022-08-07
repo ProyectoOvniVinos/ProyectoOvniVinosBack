@@ -3,12 +3,15 @@ package com.grupo2.springboot.backend.apirest.services.contabilidadmensual;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.grupo2.springboot.backend.apirest.dao.IContabilidadAnualDao;
 import com.grupo2.springboot.backend.apirest.dao.IContabilidadMensualDao;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadAnualVo;
+import com.grupo2.springboot.backend.apirest.entity.ContabilidadDiariaVo;
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadMensualVo;
 
 @Service
@@ -34,6 +37,8 @@ public class ContabilidadMensualServiceImpl implements IContabilidadMensualServi
 	public List<ContabilidadMensualVo> findAll() {
 		return (List<ContabilidadMensualVo>) contabilidadMensualDao.findAll();
 	}
+	
+
 
 	@Override
 	@Transactional(readOnly = true)
@@ -42,8 +47,15 @@ public class ContabilidadMensualServiceImpl implements IContabilidadMensualServi
 	}
 
 	@Override
+	@Transactional(readOnly = true)
 	public Integer findUltima() {
 		return contabilidadMensualDao.findUltima();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Page<ContabilidadMensualVo> findAll(Pageable pageable) {
+		return contabilidadMensualDao.findAll(pageable);
 	}
 
 }
