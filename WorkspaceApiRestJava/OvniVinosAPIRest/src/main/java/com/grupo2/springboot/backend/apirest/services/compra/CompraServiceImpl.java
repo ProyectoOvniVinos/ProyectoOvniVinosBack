@@ -146,18 +146,20 @@ public class CompraServiceImpl implements ICompraService{
 	
 	@Override
 	public void gestorAsignarContabilidad(CompraVo compraNew, CompraVo compra) {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 		Integer ultimaDId = contabilidadDiariaService.findUltima();
 		if(ultimaDId==null) {
 			ultimaDId = 0;
 		}
 		ContabilidadDiariaVo ultimaD = contabilidadDiariaService.findById(ultimaDId);
+		
 		if (ultimaD != null) {
-			if (dtf.format(LocalDateTime.now()).split("-")[0].equals(compra.getFecha_compra().toString().split("-")[0]) && dtf.format(LocalDateTime.now()).split("-")[1].equals(compra.getFecha_compra().toString().split("-")[1]) && dtf.format(LocalDateTime.now()).split("-")[2].equals(compra.getFecha_compra().toString().split("-")[2].split("T")[0])) {
+			if (ultimaD.getFecha().toString().split("-")[0].equals(compra.getFecha_compra().toString().split("-")[0]) && ultimaD.getFecha().toString().split("-")[1].equals(compra.getFecha_compra().toString().split("-")[1]) && ultimaD.getFecha().toString().split("-")[2].equals(compra.getFecha_compra().toString().split("-")[2].split("T")[0])) {
+				System.out.println("AAAAAAAAa");
+				
 				this.asignarContabilidadDiaHoy(ultimaD, compraNew, compra);
 			} else {
-				if (compra.getFecha_compra().toString().split("-")[0].equals(LocalDate.now().toString().split("-")[0])) {
-					if (compra.getFecha_compra().toString().split("-")[1].equals(LocalDate.now().toString().split("-")[1])) {
+				if (compra.getFecha_compra().toString().split("-")[0].equals(ultimaD.getFecha().toString().split("-")[0])) {
+					if (compra.getFecha_compra().toString().split("-")[1].equals(ultimaD.getFecha().toString().split("-")[1])) {
 						
 						this.asignarContabilidadMesMalo(compraNew, compra);
 					} else {

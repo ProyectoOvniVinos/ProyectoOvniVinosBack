@@ -156,7 +156,6 @@ public class VentaServiceImpl implements IVentaService{
 
 	@Override
 	public void gestorAsignarContabilidad(VentaVo ventaNew, VentaVo venta) {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 		
 		Integer ultimaDId = contabilidadDiariaService.findUltima();
 		if(ultimaDId==null) {
@@ -164,12 +163,12 @@ public class VentaServiceImpl implements IVentaService{
 		}
 		
 		ContabilidadDiariaVo ultimaD = contabilidadDiariaService.findById(ultimaDId);
-		if (dtf.format(LocalDateTime.now()).split("-")[0].equals(ventaNew.getFecha_venta().toString().split("-")[0]) && dtf.format(LocalDateTime.now()).split("-")[1].equals(ventaNew.getFecha_venta().toString().split("-")[1]) && dtf.format(LocalDateTime.now()).split("-")[2].equals(ventaNew.getFecha_venta().toString().split("-")[2].split("T")[0])) {
+		if (ultimaD.getFecha().toString().split("-")[0].equals(ventaNew.getFecha_venta().toString().split("-")[0]) && ultimaD.getFecha().toString().split("-")[1].equals(ventaNew.getFecha_venta().toString().split("-")[1]) && ultimaD.getFecha().toString().split("-")[2].equals(ventaNew.getFecha_venta().toString().split("-")[2].split("T")[0])) {
 			
 			this.asignarContabilidadDiaHoy(ultimaD, ventaNew, venta);
 		} else {
-			if (ventaNew.getFecha_venta().toString().split("-")[0].equals(LocalDate.now().toString().split("-")[0])) {
-				if (ventaNew.getFecha_venta().toString().split("-")[1].equals(LocalDate.now().toString().split("-")[1])) {
+			if (ventaNew.getFecha_venta().toString().split("-")[0].equals(ultimaD.getFecha().toString().split("-")[0])) {
+				if (ventaNew.getFecha_venta().toString().split("-")[1].equals(ultimaD.getFecha().toString().split("-")[1])) {
 					this.asignarContabilidadMesMalo(ventaNew, venta);
 					
 				} else {

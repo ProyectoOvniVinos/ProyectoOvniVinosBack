@@ -52,8 +52,8 @@ public class ContabilidadRestController {
 		return new ResponseEntity<List<ContabilidadAnualVo>>(contabilidades,HttpStatus.OK);
 	}
 	
-	// http://localhost:8080/apiContabilidad/contabilidadAnuales
-	@GetMapping("/contabilidadAnuales/{id}")
+	// http://localhost:8080/apiContabilidad/contabilidadAnual
+	@GetMapping("/contabilidadAnual/{id}")
 	public ResponseEntity<?> contabilidadAnuales(Integer id){
 		ContabilidadAnualVo contabilidad = null;
 		
@@ -89,7 +89,7 @@ public class ContabilidadRestController {
 		return new ResponseEntity<List<ContabilidadMensualVo>>(contabilidades,HttpStatus.OK);
 	}
 	
-	// http://localhost:8080/apiContabilidad/contabilidadMensual
+	// http://localhost:8080/apiContabilidad/contabilidadMensual/{id}
 	@GetMapping("/contabilidadMensual/{id}")
 	public ResponseEntity<?> contabilidadMensual(Integer id){
 		ContabilidadMensualVo contabilidad = null;
@@ -126,7 +126,7 @@ public class ContabilidadRestController {
 		return new ResponseEntity<List<ContabilidadDiariaVo>>(contabilidades,HttpStatus.OK);
 	}
 	
-	// http://localhost:8080/apiContabilidad/contabilidadDiaria
+	// http://localhost:8080/apiContabilidad/contabilidadDiaria/{id}
 	@GetMapping("/contabilidadDiaria/{id}")
 	public ResponseEntity<?> contabilidadDiaria(Integer id){
 		ContabilidadDiariaVo contabilidad = null;
