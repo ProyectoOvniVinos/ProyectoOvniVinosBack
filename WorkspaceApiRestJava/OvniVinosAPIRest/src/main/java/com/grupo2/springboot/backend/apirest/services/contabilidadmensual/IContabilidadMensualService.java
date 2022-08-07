@@ -2,6 +2,9 @@ package com.grupo2.springboot.backend.apirest.services.contabilidadmensual;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.grupo2.springboot.backend.apirest.entity.ContabilidadMensualVo;
 
 public interface IContabilidadMensualService {
@@ -11,6 +14,8 @@ public interface IContabilidadMensualService {
 	public ContabilidadMensualVo update(ContabilidadMensualVo contabilidadMensual);
 	
 	public List<ContabilidadMensualVo> findAll();
+	
+	public Page<ContabilidadMensualVo> findAll(Pageable pageable);
 	
 	public ContabilidadMensualVo findById(Integer idContabilidadAn);
 	
