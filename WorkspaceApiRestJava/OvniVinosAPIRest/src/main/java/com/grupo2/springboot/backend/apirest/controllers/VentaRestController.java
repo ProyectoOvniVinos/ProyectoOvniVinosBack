@@ -30,6 +30,8 @@ import com.grupo2.springboot.backend.apirest.services.inventariodetalles.EstadoP
 import com.grupo2.springboot.backend.apirest.services.inventariodetalles.EstadoProductoIndividual;
 import com.grupo2.springboot.backend.apirest.services.inventariodetalles.IinventarioDetallesService;
 import com.grupo2.springboot.backend.apirest.services.venta.IVentaService;
+import com.grupo2.springboot.backend.apirest.util.service.IEnviosCorreo;
+
 import org.springframework.web.bind.annotation.PathVariable;
 
 @CrossOrigin(origins = { "http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089" })
@@ -51,6 +53,9 @@ public class VentaRestController {
 
 	@Autowired
 	private IContabilidadAnualService contabilidadAnualService;
+	
+	@Autowired
+	private IEnviosCorreo envioCorreo;
 
 	// http://localhost:8080/apiVenta/ventas
 	@GetMapping("/ventas")
@@ -279,6 +284,9 @@ public class VentaRestController {
 				}
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
+			
+			envioCorreo.enviarCorreo(cliente);
+			
 			
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
