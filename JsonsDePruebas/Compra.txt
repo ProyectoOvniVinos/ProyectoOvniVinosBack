@@ -1,0 +1,27 @@
+http://localhost:8080/apiCompra/registro
+
+{
+    "precio_compra": 12000.0,
+    "cantidad_compra": 1,
+    "correo_admin":{
+        "correo_admin":"cristian@gmail.com",
+        "nombre_admin":"Cristian",
+        "apellido_admin":"Amador",
+        "direccion_admin":"centenario",
+        "telefono_admin":"323",
+        "password_admin":"12345"
+    },
+   
+    "compras": [
+        {
+            "codigo_producto":{
+                "codigo_producto": 4,
+                "nombre_producto": "nectar de manzana",
+                "precio_producto": 12000.0,
+                "precio_producto_proveedor": 8000.0,
+                "descripcion_producto": "delicioso zumo de manzana sin alcohol"
+            },
+            "cantidad_producto":1
+        }
+    ]
+}

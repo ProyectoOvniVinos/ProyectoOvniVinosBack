@@ -79,12 +79,10 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 			nuevoInventarioDetalle.setCantidad_producto(cantidad);
 			nuevoInventarioDetalle.setFecha_ultimo_ingreso_inventario(Date.valueOf(fecha));
 			
-			System.out.println(nuevoInventarioDetalle);
 			
 			nuevoInventarioGeneral = inventarioGeneralDao.findByProducto(producto.getCodigo_producto());
 			
-			System.out.println(nuevoInventarioGeneral);
-			
+
 			if(nuevoInventarioGeneral != null) {
 				detallesAnteriores = nuevoInventarioGeneral.getDetalles();
 			}else {
@@ -100,7 +98,6 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 			
 			//inventarios.add(nuevoInventarioGeneral);
 			
-			System.out.println(nuevoInventarioGeneral);
 			
 			inventarioGeneralDao.save(nuevoInventarioGeneral);
 			
@@ -124,7 +121,7 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 			InventarioGeneralVo comprovarInventario = inventarioGeneralDao.findByProducto(codigoProducto);
 			String nombre = venta.getCodigo_producto().getNombre_producto();
 			int cantidad = venta.getCantidad_producto();
-			EstadoProductoIndividual estadoProductoI = new EstadoProductoIndividual(nombre, true,cantidad);
+			EstadoProductoIndividual estadoProductoI = new EstadoProductoIndividual(nombre, true,comprovarInventario.getCantidad_producto());
 			if(cantidad>comprovarInventario.getCantidad_producto()) {
 				
 				estadoProductoI.setEstado(false);
@@ -148,37 +145,40 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 				int codigoProducto = detallesVenta.getCodigo_producto().getCodigo_producto();
 				InventarioGeneralVo actualizarInventarioG = inventarioGeneralDao.findByProducto(codigoProducto);
 				
-				System.out.println(actualizarInventarioG);
-				
 				List<InventarioDetallesVo> actualizarDetalles = actualizarInventarioG.getDetalles();
-				
-				System.out.println(actualizarDetalles);
+				List<InventarioDetallesVo> actualizarDetalles2 = actualizarInventarioG.getDetalles();
 				
 				int cantidadVenta = detallesVenta.getCantidad_producto();
 				int contador = 0;
 				
 				for(InventarioDetallesVo detalle : actualizarDetalles) {
+					System.out.println(detalle);
+					System.out.println("10");
 					int cantidadInventario = detalle.getCantidad_producto();
-					
 					if(cantidadInventario>=cantidadVenta) {
-						System.out.println(cantidadInventario);
-						System.out.println(cantidadVenta);
 						cantidadInventario -= cantidadVenta;
-						System.out.println(cantidadInventario);
 						if(cantidadInventario==0) {
+							System.out.println("1");
+							System.out.println(contador);
+							System.out.println(actualizarDetalles.size());
 							actualizarDetalles.remove(contador);
+							contador = contador-1;
+						
 							actualizarInventarioG.setDetalles(actualizarDetalles);
 							inventarioDetallesDao.deleteById(detalle.getIdDetalles());
-							System.out.println(cantidadInventario);
+
 						}else {
+							System.out.println("2");
 							detalle.setCantidad_producto(cantidadInventario);
 							inventarioDetallesDao.save(detalle);
+							break;
 						}
-						
-						break;
-						
 					}else {
 						cantidadVenta -= cantidadInventario;
+						System.out.println(cantidadVenta+"-");
+						System.out.println("3");
+						actualizarDetalles.remove(contador);
+						actualizarInventarioG.setDetalles(actualizarDetalles);
 						inventarioDetallesDao.delete(detalle);
 					}
 					contador += 1;

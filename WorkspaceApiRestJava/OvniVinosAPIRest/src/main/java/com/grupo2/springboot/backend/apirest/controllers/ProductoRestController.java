@@ -83,6 +83,7 @@ public class ProductoRestController {
 	public ResponseEntity<?> create(@RequestBody ProductoVo producto){
 		ProductoVo productoNew = null;
 		Map<String, Object> response = new HashMap<>();
+		producto.setEstado("1");
 		
 		try {
 			productoNew = productoService.save(producto);
@@ -108,6 +109,7 @@ public class ProductoRestController {
 			productoActual.setPrecio_producto(producto.getPrecio_producto());
 			productoActual.setPrecio_producto_proveedor(producto.getPrecio_producto_proveedor());
 			productoActual.setDescripcion_producto(producto.getDescripcion_producto());
+			productoActual.setFoto_producto(producto.getFoto_producto());
 			
 			productoUpdated = productoService.save(productoActual);
 		}catch(DataAccessException e) {
@@ -123,18 +125,31 @@ public class ProductoRestController {
 	}
 
 	// http://localhost:8080/apiProd/producto/{codigo}
-	@DeleteMapping("/producto/{codigo}")
-	public ResponseEntity<?> delete(@PathVariable int codigo){
+	@PutMapping("/producto/estado/{codigo}")
+	public ResponseEntity<?> updateEstado(@PathVariable int codigo){
 		Map<String,Object> response = new HashMap<>();
+		String estado = "";
 		try {
 			ProductoVo producto = productoService.findByCodigo_producto(codigo);
-			productoService.delete(producto);
+			estado = producto.getEstado();
+			if(estado.equals("1")) {
+				producto.setEstado("0");
+			}else {
+				producto.setEstado("1");
+			}
+			productoService.save(producto);
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al eliminar en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje", "el producto fue eliminado con exito");
+		
+		if(estado.equals("1")) {
+			response.put("mensaje", "el producto fue deshabilitado");
+		}else {
+			response.put("mensaje", "el producto fue habilitado");
+		}
+		
 		
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.OK);
 	}

@@ -63,8 +63,10 @@ public class ItemCarritoVo implements Serializable{
 		return precio_item;
 	}
 
-	public void setPrecio_item(double precio_item) {
-		this.precio_item = precio_item;
+	public void setPrecio_item() {
+		double total;
+		total = this.cantidad_producto * this.codigo_producto.getPrecio_producto();
+		this.precio_item = total;
 	}
 	
 	

@@ -23,6 +23,20 @@ public class ProductoVo {
 	
 	@Column(name="descripcion_producto")
 	private String descripcion_producto;
+	
+	@Column(name="foto_producto")
+	private String foto_producto;
+	
+	@Column(name="estado")
+	private String estado;
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
 	public int getCodigo_producto() {
 		return codigo_producto;
@@ -62,6 +76,16 @@ public class ProductoVo {
 
 	public void setDescripcion_producto(String descripcion_producto) {
 		this.descripcion_producto = descripcion_producto;
+	}
+	
+	
+
+	public String getFoto_producto() {
+		return foto_producto;
+	}
+
+	public void setFoto_producto(String foto_producto) {
+		this.foto_producto = foto_producto;
 	}
 
 	@Override

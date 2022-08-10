@@ -1,0 +1,9 @@
+http://localhost:8080/apiCliente/registro
+
+{
+    "apellidoCliente": "villa",
+    "correoCliente": "grajales0@gmail.com",
+    "nombreCliente": "juan",
+    "telefonoCliente": "3000",
+    "passwordCliente": "camilo"
+}

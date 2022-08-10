@@ -1,0 +1,29 @@
+http://localhost:8080/apiCarrito/carrito/1
+
+{
+    "id_carrito": 1,
+    "precio_carrito": 12000.0,
+    "cantidad_carrito": 1,
+    "cliente": {
+        "ventas": [],
+        "apellidoCliente": "villa",
+        "nombreCliente": "juan",
+        "correoCliente": "grajales0@gmail.com",
+        "telefonoCliente": "3000",
+        "passwordCliente": "camilo",
+        "direccionCliente": "centenario"
+    },
+    "iitem_carrito": [
+        {
+            "codigo_producto":{
+                "codigo_producto": 4,
+                "nombre_producto": "nectar de manzana",
+                "precio_producto": 12000.0,
+                "precio_producto_proveedor": 8000.0,
+                "descripcion_producto": "delicioso zumo de manzana sin alcohol"
+            },
+            "cantidad_producto":1
+        }
+        
+    ]
+}

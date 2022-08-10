@@ -13,7 +13,5 @@ public interface IProductoService {
 	
 	public ProductoVo save(ProductoVo producto);
 	
-	public void delete(ProductoVo producto);
-	
 	public List<ProductoVo> findByNombre(String nombre);
 }

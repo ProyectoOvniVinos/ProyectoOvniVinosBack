@@ -18,7 +18,7 @@ create table compra
 	cantidad_compra int, 
 	fecha_compra datetime,
 	correo_admin char(30) not null,
-  id_registro_contabilidad_diaria_compra int not null default 0
+	id_registro_contabilidad_diaria_compra int not null default 0
 );
 
 
@@ -69,7 +69,9 @@ create table producto
 	nombre_producto char(25),
 	precio_producto double,
 	precio_producto_proveedor double,
-	descripcion_producto varchar(200)
+	descripcion_producto varchar(200),
+    foto_producto varchar(200),
+    estado char(1)
 );
 
 create table venta_cliente
@@ -182,10 +184,10 @@ INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_ad
 INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('crissis2004@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
 
 
-INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('Vino abocado', '13000', '10000', 'delicioso vino dulce');
-INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('Vino tinto', '13000', '10000', 'delicioso vino poco dulce');
-INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('nectar de uva', '10000', '7000', 'delicioso zumo de uva sin alcohol');
-INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`) VALUES ('nectar de manzana', '12000', '8000', 'delicioso zumo de manzana sin alcohol');
+INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('Vino abocado', '13000', '10000', 'delicioso vino dulce', '1');
+INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('Vino tinto', '13000', '10000', 'delicioso vino poco dulce', '1');
+INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('nectar de uva', '10000', '7000', 'delicioso zumo de uva sin alcohol', '1');
+INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('nectar de manzana', '12000', '8000', 'delicioso zumo de manzana sin alcohol', '1');
 
 
 */
