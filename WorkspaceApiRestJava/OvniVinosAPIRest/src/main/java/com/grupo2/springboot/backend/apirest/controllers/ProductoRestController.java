@@ -174,4 +174,25 @@ public class ProductoRestController {
 		
 		return new ResponseEntity<List<ProductoVo>>(productos,HttpStatus.OK);
 	}
+	
+	// http://localhost:8080/apiProd/producto/estadoFiltro/{filtro}
+		@GetMapping("/producto/estadoFiltro/{filtro}")
+		public ResponseEntity<?>  getProductoEstadoFiltro(@PathVariable String filtro){
+			List<ProductoVo> productos = new ArrayList<ProductoVo>();
+			
+			Map<String,Object>response = new HashMap<>();
+			try {
+				productos = productoService.findByEstadoFiltro(filtro);
+				if(productos.size()<1) {
+					response.put("mensaje","No hay productos con esta descripcion");
+					return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+				}
+			} catch(DataAccessException e) {
+				response.put("mensaje","error al realizar la consulta en la base de datos");
+				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+				return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			
+			return new ResponseEntity<List<ProductoVo>>(productos,HttpStatus.OK);
+		}
 }

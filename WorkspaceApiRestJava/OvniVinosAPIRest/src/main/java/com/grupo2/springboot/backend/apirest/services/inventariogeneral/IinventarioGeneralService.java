@@ -15,4 +15,6 @@ public interface IinventarioGeneralService {
 	public InventarioGeneralVo update(InventarioGeneralVo inventarioMoidficado);
 	
 	public InventarioGeneralVo findByProducto(Integer producto);
+	
+	public List<InventarioGeneralVo> findAllorden();
 }

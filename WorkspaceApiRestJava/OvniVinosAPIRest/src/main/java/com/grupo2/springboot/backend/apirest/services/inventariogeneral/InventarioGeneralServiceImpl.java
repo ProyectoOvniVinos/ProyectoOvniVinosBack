@@ -44,4 +44,9 @@ public class InventarioGeneralServiceImpl implements IinventarioGeneralService{
 		return inventarioGeneralDao.findByProducto(producto);
 	}
 
+	@Override
+	public List<InventarioGeneralVo> findAllorden() {
+		return inventarioGeneralDao.findByCantidad();
+	}
+
 }

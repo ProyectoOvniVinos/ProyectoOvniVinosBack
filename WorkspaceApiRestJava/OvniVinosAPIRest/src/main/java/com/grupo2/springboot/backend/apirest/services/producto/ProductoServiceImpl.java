@@ -44,4 +44,9 @@ public class ProductoServiceImpl implements IProductoService{
 	public List<ProductoVo> findByEstado() {
 		return productoDao.findByEstado();
 	}
+
+	@Override
+	public List<ProductoVo> findByEstadoFiltro(String filtro) {
+		return productoDao.findByEstadoFiltro(filtro);
+	}
 }
