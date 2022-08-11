@@ -14,4 +14,6 @@ public interface IProductoService {
 	public ProductoVo save(ProductoVo producto);
 	
 	public List<ProductoVo> findByNombre(String nombre);
+	
+	public List<ProductoVo> findByEstado();
 }

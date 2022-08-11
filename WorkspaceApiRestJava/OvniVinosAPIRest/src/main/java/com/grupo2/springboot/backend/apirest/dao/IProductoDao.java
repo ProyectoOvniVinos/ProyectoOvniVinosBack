@@ -14,4 +14,7 @@ public interface IProductoDao extends CrudRepository<ProductoVo, Integer>{
 	@Query("select producto from ProductoVo producto where producto.nombre_producto like %?1%")
 	public List<ProductoVo> findByNombre(String term);
 	
+	@Query("select producto from ProductoVo producto where producto.estado = 1")
+	public List<ProductoVo> findByEstado();
+	
 }
