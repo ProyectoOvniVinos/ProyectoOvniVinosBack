@@ -36,13 +36,12 @@ public class ProductoServiceImpl implements IProductoService{
 	}
 
 	@Override
-	public void delete(ProductoVo producto) {
-		productoDao.delete(producto);
-	
+	public List<ProductoVo> findByNombre(String nombre) {
+		return productoDao.findByNombre(nombre);
 	}
 
 	@Override
-	public List<ProductoVo> findByNombre(String nombre) {
-		return productoDao.findByNombre(nombre);
+	public List<ProductoVo> findByEstado() {
+		return productoDao.findByEstado();
 	}
 }
