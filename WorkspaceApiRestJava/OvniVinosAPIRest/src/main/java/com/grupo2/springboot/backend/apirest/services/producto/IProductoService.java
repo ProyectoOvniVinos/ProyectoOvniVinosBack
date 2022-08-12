@@ -16,4 +16,6 @@ public interface IProductoService {
 	public List<ProductoVo> findByNombre(String nombre);
 	
 	public List<ProductoVo> findByEstado();
+	
+	public List<ProductoVo> findByEstadoFiltro(String filtro);
 }
