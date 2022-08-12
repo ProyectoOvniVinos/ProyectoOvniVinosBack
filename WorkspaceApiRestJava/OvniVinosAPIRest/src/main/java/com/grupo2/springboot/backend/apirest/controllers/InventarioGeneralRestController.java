@@ -141,5 +141,21 @@ public class InventarioGeneralRestController {
 		
 		return new ResponseEntity<List<InventarioGeneralVo>>(inventarioGeneral,HttpStatus.OK);
 	}
+	
+	//http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo
+	@GetMapping("/inventarioGeneralCompleto/positvo")
+	public ResponseEntity<?>inventarioGeneralPositivo(){
+		List<InventarioGeneralVo> inventarioGeneral = null; 
+		Map<String, Object> response = new HashMap<>();
+		try {
+			inventarioGeneral = inventarioGeneralService.findAllPositvos();
+		}catch(DataAccessException e){
+			response.put("mensaje","error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<List<InventarioGeneralVo>>(inventarioGeneral,HttpStatus.OK);
+	}
 
 }

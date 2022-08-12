@@ -17,4 +17,6 @@ public interface IinventarioGeneralService {
 	public InventarioGeneralVo findByProducto(Integer producto);
 	
 	public List<InventarioGeneralVo> findAllorden();
+	
+	public List<InventarioGeneralVo> findAllPositvos();
 }

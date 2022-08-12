@@ -49,4 +49,9 @@ public class InventarioGeneralServiceImpl implements IinventarioGeneralService{
 		return inventarioGeneralDao.findByCantidad();
 	}
 
+	@Override
+	public List<InventarioGeneralVo> findAllPositvos() {
+		return inventarioGeneralDao.findByCantidadPositiva();
+	}
+
 }

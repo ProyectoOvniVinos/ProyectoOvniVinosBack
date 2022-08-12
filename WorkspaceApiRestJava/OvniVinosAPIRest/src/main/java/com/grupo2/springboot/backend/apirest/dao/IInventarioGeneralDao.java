@@ -15,4 +15,7 @@ public interface IInventarioGeneralDao extends CrudRepository<InventarioGeneralV
 	@Query("select inventario from InventarioGeneralVo inventario ORDER BY inventario.cantidad_producto asc")
 	public List<InventarioGeneralVo> findByCantidad();
 	
+	@Query("select inventario from InventarioGeneralVo inventario where inventario.cantidad_producto > 0 and inventario.codigo_producto.estado = 1")
+	public List<InventarioGeneralVo> findByCantidadPositiva();
+	
 }
