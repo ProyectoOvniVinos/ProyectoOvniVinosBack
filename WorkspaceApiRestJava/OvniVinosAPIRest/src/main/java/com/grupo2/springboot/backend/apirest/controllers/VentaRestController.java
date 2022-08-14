@@ -1,11 +1,17 @@
 package com.grupo2.springboot.backend.apirest.controllers;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -29,6 +35,7 @@ import com.grupo2.springboot.backend.apirest.services.contabilidadmensual.IConta
 import com.grupo2.springboot.backend.apirest.services.inventariodetalles.EstadoProducto;
 import com.grupo2.springboot.backend.apirest.services.inventariodetalles.EstadoProductoIndividual;
 import com.grupo2.springboot.backend.apirest.services.inventariodetalles.IinventarioDetallesService;
+import com.grupo2.springboot.backend.apirest.services.pdf.IPdfService;
 import com.grupo2.springboot.backend.apirest.services.venta.IVentaService;
 import com.grupo2.springboot.backend.apirest.util.service.IEnviosCorreo;
 
@@ -41,7 +48,7 @@ public class VentaRestController {
 
 	@Autowired
 	private IVentaService ventaService;
-	
+
 	@Autowired
 	private IinventarioDetallesService inventarioService;
 
@@ -53,9 +60,12 @@ public class VentaRestController {
 
 	@Autowired
 	private IContabilidadAnualService contabilidadAnualService;
-	
+
 	@Autowired
 	private IEnviosCorreo envioCorreo;
+
+	@Autowired
+	private IPdfService pdfService;
 
 	// http://localhost:8080/apiVenta/ventas
 	@GetMapping("/ventas")
@@ -69,7 +79,6 @@ public class VentaRestController {
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-
 
 		return new ResponseEntity<List<VentaVo>>(ventas, HttpStatus.OK);
 	}
@@ -106,7 +115,6 @@ public class VentaRestController {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 		try {
 			
-			
 			venta.setFechaVenta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
 			
 			
@@ -114,42 +122,58 @@ public class VentaRestController {
 			if(estadoProducto.isEstado()==true) {
 				venta.setCantidadVenta();
 				venta.setPrecioVenta();
-				
-				
 				ventaNew = ventaService.save(venta);
-				ventaService.gestorAsignarContabilidad(ventaNew,venta);
+				ventaService.gestorAsignarContabilidad(ventaNew, venta);
 				ventaReto = ventaService.save(ventaNew);
-				
-			}else {
+
+			} else {
 				response.put("mensaje", "cantidad insuficiente");
 				int contador = 0;
-				for(EstadoProductoIndividual estadoProductoI: estadoProducto.getProductos()) {
-					if(estadoProductoI.isEstado()==false) {
+				for (EstadoProductoIndividual estadoProductoI : estadoProducto.getProductos()) {
+					if (estadoProductoI.isEstado() == false) {
 						contador += 1;
-						response.put("producto "+contador, estadoProductoI.getNombre()+" no tiene la cantidad que necesita este producto solo cuenta con "+ estadoProductoI.getCantidad());
+						response.put("producto " + contador,
+								estadoProductoI.getNombre()
+										+ " no tiene la cantidad que necesita este producto solo cuenta con "
+										+ estadoProductoI.getCantidad());
 					}
 				}
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
-			
-			envioCorreo.enviarCorreo(ventaReto.getCorreoCliente());
-			
-			
+
+			ventaReto.setFechaVenta(LocalDateTime.parse(dtf.format(LocalDateTime.now()), dtf));
+			envioCorreo.enviarCorreo(ventaReto.getCorreoCliente(), ventaReto);
+
+
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 
 		}
-		
-		ventaReto.setFechaVenta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
+
 		response.put("mensaje", "la venta se ha registro con exito");
-		
+
 		response.put("venta", ventaReto);
-		
-		
+
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 
+	}
+
+	// http://localhost:8080/apiVenta/factura/id
+	@GetMapping("/factura/{id}")
+	public void generatePDF(@PathVariable Integer id, HttpServletResponse response) {
+		VentaVo venta = ventaService.findById(id);
+
+		response.setContentType("application/pdf");
+		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:mm:ss");
+		String currentDateTime = dateFormatter.format(new Date());
+
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
+		response.setHeader(headerKey, headerValue);
+
+		pdfService.crearFactura(venta, response);
 	}
 
 }

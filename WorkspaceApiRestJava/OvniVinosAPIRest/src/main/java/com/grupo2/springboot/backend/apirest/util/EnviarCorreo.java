@@ -1,11 +1,19 @@
 package com.grupo2.springboot.backend.apirest.util;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.InputStream;
+
+import java.io.File;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
+
+import javax.activation.DataSource;
+
 import javax.activation.FileDataSource;
 import javax.mail.Authenticator;
 import javax.mail.BodyPart;
@@ -20,17 +28,21 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-public class EnviarCorreo extends Thread implements Serializable{
-	
+import com.lowagie.text.Document;
+import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.parser.PdfTextExtractor;
+
+public class EnviarCorreo extends Thread implements Serializable {
+
 	private CorreoDTO dto;
 	private String username = "cridamador@misena.edu.co";
 	private String password = "Cristian20045@";
-	
+
 	public EnviarCorreo(CorreoDTO argo) {
 		super("procesoEnvioEmail");
 		dto = argo;
 	}
-	
+
 	private Session connectServer() {
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", true);
@@ -38,16 +50,16 @@ public class EnviarCorreo extends Thread implements Serializable{
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "25");
 		props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-		
+
 		return Session.getInstance(props, new Authenticator() {
-		
+
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(username, password);
 			}
 		});
 	}
-	
+
 	private String getDirecciones(CorreoDTO dto) {
 		StringBuilder direcciones = new StringBuilder();
 		boolean primero = true;
@@ -62,11 +74,12 @@ public class EnviarCorreo extends Thread implements Serializable{
 		}
 		return direcciones.toString();
 	}
+
 	/*
-	private String getDirecciones(CorreoDTO dto) {
-		return dto.getDireccionCorreo().stream().collect(Collectors.joining(","));
-	}
-	*/
+	 * private String getDirecciones(CorreoDTO dto) {
+	 * return dto.getDireccionCorreo().stream().collect(Collectors.joining(","));
+	 * }
+	 */
 	private void sendEmail(CorreoDTO dto) {
 		// Obtenemos las direcciones/destinatarios
 		String direcciones = getDirecciones(dto);
@@ -74,7 +87,7 @@ public class EnviarCorreo extends Thread implements Serializable{
 		Session session = connectServer();
 		try {
 			MimeMessage msg = new MimeMessage(session);
-			//Agregamos los headers necesarios
+			// Agregamos los headers necesarios
 			msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
 			msg.addHeader("format", "flowed");
 			msg.addHeader("Content-Transfer-Encoding", "8bit");
@@ -84,15 +97,15 @@ public class EnviarCorreo extends Thread implements Serializable{
 			msg.setSentDate(new Date());
 
 			Multipart multiparte = new MimeMultipart();
-		
-			//Creamos el cuerpo del mensaje
+
+			// Creamos el cuerpo del mensaje
 			BodyPart cuerpoMensaje = new MimeBodyPart();
 			cuerpoMensaje.setContent(dto.getContenido(), "text/html");
 			multiparte.addBodyPart(cuerpoMensaje);
-			
-			//Validamos si tenemos adjuntos
+
+			// Validamos si tenemos adjuntos
 			if (dto.getAdjuntos() == null ? false : !dto.getAdjuntos().isEmpty()) {
-			// Si tenemos adjuntos los agregamos al mensaje
+				// Si tenemos adjuntos los agregamos al mensaje
 				for (File file : dto.getAdjuntos()) {
 					cuerpoMensaje = new MimeBodyPart();
 					cuerpoMensaje.setDataHandler(new DataHandler(new FileDataSource(file)));
@@ -102,17 +115,17 @@ public class EnviarCorreo extends Thread implements Serializable{
 			}
 			msg.setContent(multiparte);
 			msg.setRecipients(Message.RecipientType.BCC, InternetAddress.parse(direcciones));
-			
-			//Agregamos el origen del mensaje (nuestro email)
+
+			// Agregamos el origen del mensaje (nuestro email)
 			msg.setFrom(new InternetAddress(username));
-			
-			//Enviamos el mensaje
+
+			// Enviamos el mensaje
 			Transport.send(msg);
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void run() {
 		sendEmail(dto);
 	}

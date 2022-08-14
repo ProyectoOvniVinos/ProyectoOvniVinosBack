@@ -149,6 +149,8 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 				
 				int cantidadVenta = detallesVenta.getCantidadProducto();
 				
+				System.out.println(cantidadVenta + actualizarDetalles.size());
+				
 				for(InventarioDetallesVo detalle : actualizarDetalles) {
 					int cantidadInventario = detalle.getCantidadProducto();
 					if(cantidadInventario>=cantidadVenta) {
