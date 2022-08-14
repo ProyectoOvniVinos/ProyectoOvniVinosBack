@@ -26,6 +26,17 @@ public class ProductoVo {
 	
 	@Column(name="foto_producto")
 	private String foto_producto;
+	
+	@Column(name="estado")
+	private String estado;
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
 	public int getCodigo_producto() {
 		return codigo_producto;

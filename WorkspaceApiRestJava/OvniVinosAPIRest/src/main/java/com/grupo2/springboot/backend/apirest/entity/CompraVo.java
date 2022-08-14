@@ -1,4 +1,4 @@
-package com.grupo2.springboot.backend.apirest.entity;
+        package com.grupo2.springboot.backend.apirest.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

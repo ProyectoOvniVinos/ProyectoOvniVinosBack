@@ -30,5 +30,12 @@ public class EstadoProductoIndividual {
 		this.cantidad = cantidad;
 	}
 	
+	@Override
+	public String toString() {
+		return "EstadoProductoIndividual [nombre=" + nombre + ", estado=" + estado + ", cantidad=" + cantidad + "]";
+	}
+	
+	
+	
 	
 }

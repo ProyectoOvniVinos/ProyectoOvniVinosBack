@@ -83,6 +83,7 @@ public class ProductoRestController {
 	public ResponseEntity<?> create(@RequestBody ProductoVo producto){
 		ProductoVo productoNew = null;
 		Map<String, Object> response = new HashMap<>();
+		producto.setEstado("1");
 		
 		try {
 			productoNew = productoService.save(producto);
@@ -124,19 +125,74 @@ public class ProductoRestController {
 	}
 
 	// http://localhost:8080/apiProd/producto/{codigo}
-	@DeleteMapping("/producto/{codigo}")
-	public ResponseEntity<?> delete(@PathVariable int codigo){
+	@PutMapping("/producto/estado/{codigo}")
+	public ResponseEntity<?> updateEstado(@PathVariable int codigo){
 		Map<String,Object> response = new HashMap<>();
+		String estado = "";
 		try {
 			ProductoVo producto = productoService.findByCodigo_producto(codigo);
-			productoService.delete(producto);
+			estado = producto.getEstado();
+			if(estado.equals("1")) {
+				producto.setEstado("0");
+			}else {
+				producto.setEstado("1");
+			}
+			productoService.save(producto);
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al eliminar en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		response.put("mensaje", "el producto fue eliminado con exito");
+		
+		if(estado.equals("1")) {
+			response.put("mensaje", "el producto fue deshabilitado");
+		}else {
+			response.put("mensaje", "el producto fue habilitado");
+		}
+		
 		
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.OK);
 	}
+	
+	// http://localhost:8080/apiProd/producto/estado
+	@GetMapping("/producto/estado")
+	public ResponseEntity<?>  getProductoEstado(){
+		List<ProductoVo> productos = new ArrayList<ProductoVo>();
+		
+		Map<String,Object>response = new HashMap<>();
+		try {
+			productos = productoService.findByEstado();
+			if(productos.size()<1) {
+				response.put("mensaje","No hay productos habilitados");
+				return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} catch(DataAccessException e) {
+			response.put("mensaje","error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<List<ProductoVo>>(productos,HttpStatus.OK);
+	}
+	
+	// http://localhost:8080/apiProd/producto/estadoFiltro/{filtro}
+		@GetMapping("/producto/estadoFiltro/{filtro}")
+		public ResponseEntity<?>  getProductoEstadoFiltro(@PathVariable String filtro){
+			List<ProductoVo> productos = new ArrayList<ProductoVo>();
+			
+			Map<String,Object>response = new HashMap<>();
+			try {
+				productos = productoService.findByEstadoFiltro(filtro);
+				if(productos.size()<1) {
+					response.put("mensaje","No hay productos con esta descripcion");
+					return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+				}
+			} catch(DataAccessException e) {
+				response.put("mensaje","error al realizar la consulta en la base de datos");
+				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+				return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			
+			return new ResponseEntity<List<ProductoVo>>(productos,HttpStatus.OK);
+		}
 }

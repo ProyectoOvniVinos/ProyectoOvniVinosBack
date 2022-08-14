@@ -93,6 +93,7 @@ public class CompraRestController {
 	// http://localhost:8080/apiCompra/registro
 	@PostMapping("/registro")
 	public ResponseEntity<?> registro(@RequestBody CompraVo compra){
+		
 		CompraVo compraNew=null;
 		
 		Map<String, Object> response = new HashMap<>();
