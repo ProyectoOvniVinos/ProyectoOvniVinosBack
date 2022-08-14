@@ -60,6 +60,12 @@ public class VentaClienteVo implements Serializable {
 		total = this.cantidad_producto * this.codigo_producto.getPrecio_producto();
 		this.precio_venta_detalle = total;
 	}
+	
+	
+
+	public void setPrecio_venta_detalle(double precio_venta_detalle) {
+		this.precio_venta_detalle = precio_venta_detalle;
+	}
 
 	@Override
 	public String toString() {
