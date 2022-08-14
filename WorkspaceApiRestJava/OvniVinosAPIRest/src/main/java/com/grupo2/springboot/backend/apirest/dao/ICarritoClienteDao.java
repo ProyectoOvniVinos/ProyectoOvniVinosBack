@@ -8,6 +8,6 @@ import com.grupo2.springboot.backend.apirest.entity.CarritoClienteVo;
 
 public interface ICarritoClienteDao extends CrudRepository<CarritoClienteVo, Integer>{
 	
-	@Query("SELECT id_carrito from CarritoClienteVo WHERE cliente =?1")
+	@Query("SELECT idCarrito from CarritoClienteVo WHERE cliente =?1")
 	public Integer findIdByCliente(String correoCliente);
 }

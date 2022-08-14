@@ -18,57 +18,55 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "item_carrito")
 public class ItemCarritoVo implements Serializable{
 
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_puente;
+	@Column(name = "id_puente")
+	private int idPuente;
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "codigo_producto")
-	private ProductoVo codigo_producto;
+	private ProductoVo codigoProducto;
 	
 	@Column(name = "cantidad_producto")
-	private int cantidad_producto;
+	private int cantidadProducto;
 	
 	@Column(name="precio_item")
-	private double precio_item;
-
-	public int getId_puente() {
-		return id_puente;
+	private double precioItem;
+	
+	public int getIdPuente() {
+		return idPuente;
 	}
 
-	public void setId_puente(int id_puente) {
-		this.id_puente = id_puente;
+	public void setIdPuente(int idPuente) {
+		this.idPuente = idPuente;
 	}
 
-	public ProductoVo getCodigo_producto() {
-		return codigo_producto;
+	public ProductoVo getCodigoProducto() {
+		return codigoProducto;
 	}
 
-	public void setCodigo_producto(ProductoVo codigo_producto) {
-		this.codigo_producto = codigo_producto;
+	public void setCodigoProducto(ProductoVo codigoProducto) {
+		this.codigoProducto = codigoProducto;
 	}
 
-	public int getCantidad_producto() {
-		return cantidad_producto;
+	public int getCantidadProducto() {
+		return cantidadProducto;
 	}
 
-	public void setCantidad_producto(int cantidad_producto) {
-		this.cantidad_producto = cantidad_producto;
+	public void setCantidadProducto(int cantidadProducto) {
+		this.cantidadProducto = cantidadProducto;
 	}
 
-	public double getPrecio_item() {
-		return precio_item;
+	public double getPrecioItem() {
+		return precioItem;
 	}
 
-	public void setPrecio_item() {
+	public void setPrecioItem() {
 		double total;
-		total = this.cantidad_producto * this.codigo_producto.getPrecio_producto();
-		this.precio_item = total;
+		total = this.cantidadProducto * this.codigoProducto.getPrecioProducto();
+		this.precioItem = total;
 	}
-	
-	
 
+	private static final long serialVersionUID = 1L;
 }

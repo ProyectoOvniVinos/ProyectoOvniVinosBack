@@ -105,11 +105,11 @@ public class ProductoRestController {
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			productoActual.setNombre_producto(producto.getNombre_producto());
-			productoActual.setPrecio_producto(producto.getPrecio_producto());
-			productoActual.setPrecio_producto_proveedor(producto.getPrecio_producto_proveedor());
-			productoActual.setDescripcion_producto(producto.getDescripcion_producto());
-			productoActual.setFoto_producto(producto.getFoto_producto());
+			productoActual.setNombreProducto(producto.getNombreProducto());
+			productoActual.setPrecioProducto(producto.getPrecioProducto());
+			productoActual.setPrecioProductoProveedor(producto.getPrecioProductoProveedor());
+			productoActual.setDescripcionProducto(producto.getDescripcionProducto());
+			productoActual.setFotoProducto(producto.getFotoProducto());
 			
 			productoUpdated = productoService.save(productoActual);
 		}catch(DataAccessException e) {

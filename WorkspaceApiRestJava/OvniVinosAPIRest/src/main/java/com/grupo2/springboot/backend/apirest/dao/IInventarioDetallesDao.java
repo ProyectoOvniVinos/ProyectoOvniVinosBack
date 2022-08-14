@@ -9,6 +9,6 @@ import com.grupo2.springboot.backend.apirest.entity.InventarioDetallesVo;
 public interface IInventarioDetallesDao extends CrudRepository<InventarioDetallesVo, Integer>{
 	
 	@Modifying
-	@Query("delete from InventarioDetallesVo inventario where inventario.cantidad_producto = ?1")
+	@Query("delete from InventarioDetallesVo inventario where inventario.cantidadProducto = ?1")
 	public void deleteCantida(Integer cantidad);
 }

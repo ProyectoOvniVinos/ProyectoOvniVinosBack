@@ -17,7 +17,7 @@ create table compra
 	precio_compra double, 
 	cantidad_compra int, 
 	fecha_compra datetime,
-	correo_admin char(30) not null,
+	administrador_compra char(30) not null,
 	id_registro_contabilidad_diaria_compra int not null default 0
 );
 
@@ -182,7 +182,7 @@ drop schema basededatos_ovni_vinos
 INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
 
 INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('crissis2004@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
-
+http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg
 
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('Vino abocado', '13000', '10000', 'delicioso vino dulce', '1');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('Vino tinto', '13000', '10000', 'delicioso vino poco dulce', '1');
@@ -243,11 +243,11 @@ ADD CONSTRAINT `fk_venta_correo_cliente`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
   ALTER TABLE `basededatos_ovni_vinos`.`compra` 
-ADD INDEX `fk_compra_correo_admin_idx` (`correo_admin` ASC);
+ADD INDEX `fk_compra_administrador_compra_idx` (`administrador_compra` ASC);
 ;
 ALTER TABLE `basededatos_ovni_vinos`.`compra` 
-ADD CONSTRAINT `fk_compra_correo_admin`
-  FOREIGN KEY (`correo_admin`)
+ADD CONSTRAINT `fk_compra_administrador_compra`
+  FOREIGN KEY (`administrador_compra`)
   REFERENCES `basededatos_ovni_vinos`.`administrador` (`correo_admin`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;

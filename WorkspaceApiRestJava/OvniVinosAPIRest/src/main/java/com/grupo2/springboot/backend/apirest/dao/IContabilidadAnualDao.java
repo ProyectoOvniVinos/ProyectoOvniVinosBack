@@ -8,6 +8,6 @@ import com.grupo2.springboot.backend.apirest.entity.ContabilidadAnualVo;
 
 public interface IContabilidadAnualDao extends JpaRepository<ContabilidadAnualVo, Integer> {
 
-	@Query("SELECT MAX(id_registro_contabilidad_anual) FROM ContabilidadAnualVo")
+	@Query("SELECT MAX(idRegistroContabilidadAnual) FROM ContabilidadAnualVo")
 	public Integer findUltima();
 }

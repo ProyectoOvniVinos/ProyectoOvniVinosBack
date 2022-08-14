@@ -15,13 +15,14 @@ public class CarritoClienteVo implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_carrito;
+	@Column(name="id_carrito")
+	private int idCarrito;
 	
 	@Column(name="precio_carrito")
-	private double precio_carrito;
+	private double precioCarrito;
 	
 	@Column(name="cantidad_producto")
-	private int cantidad_carrito;
+	private int cantidadCarrito;
 	
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JsonIgnoreProperties(value={"carrito","hibernateLazyInitializer","handler"},allowSetters=true)
@@ -31,30 +32,30 @@ public class CarritoClienteVo implements Serializable {
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "carrito")
-	private List<ItemCarritoVo> iitem_carrito;
+	private List<ItemCarritoVo> itemCarrito;
 
-	public int getId_carrito() {
-		return id_carrito;
+	public int getIdCarrito() {
+		return idCarrito;
 	}
 
-	public void setId_carrito(int id_carrito) {
-		this.id_carrito = id_carrito;
+	public void setIdCarrito(int idCarrito) {
+		this.idCarrito = idCarrito;
 	}
 
-	public double getPrecio_carrito() {
-		return precio_carrito;
+	public double getPrecioCarrito() {
+		return precioCarrito;
 	}
 
-	public void setPrecio_carrito(double precio_carrito) {
-		this.precio_carrito = precio_carrito;
+	public void setPrecioCarrito(double precioCarrito) {
+		this.precioCarrito = precioCarrito;
 	}
 
-	public int getCantidad_carrito() {
-		return cantidad_carrito;
+	public int getCantidadCarrito() {
+		return cantidadCarrito;
 	}
 
-	public void setCantidad_carrito(int cantidad_carrito) {
-		this.cantidad_carrito = cantidad_carrito;
+	public void setCantidadCarrito(int cantidadCarrito) {
+		this.cantidadCarrito = cantidadCarrito;
 	}
 
 	public ClienteVo getCliente() {
@@ -65,14 +66,12 @@ public class CarritoClienteVo implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public List<ItemCarritoVo> getIitem_carrito() {
-		return iitem_carrito;
+	public List<ItemCarritoVo> getItemCarrito() {
+		return itemCarrito;
 	}
 
-	public void setIitem_carrito(List<ItemCarritoVo> iitem_carrito) {
-		this.iitem_carrito = iitem_carrito;
+	public void setItemCarrito(List<ItemCarritoVo> itemCarrito) {
+		this.itemCarrito = itemCarrito;
 	}
-	
-	
 	
 }

@@ -58,23 +58,23 @@ public class VentaServiceImpl implements IVentaService{
 		ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
 		
 
-		contaMensual.setIngresos_contabilidad_mensual(contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
-		contaMensual.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() + 1);
+		contaMensual.setIngresosContabilidadMensual(contaMensual.getIngresosContabilidadMensual() + venta.getPrecioVenta());
+		contaMensual.setVentasContabilidadMensual(contaMensual.getVentasContabilidadMensual() + 1);
 		contabilidadMensualService.save(contaMensual);
 
 		Integer contaAnualId = contabilidadAnualService.findUltima();
 		ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 
-		contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
-		contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
+		contaAnual.setIngresosContabilidadAnual(contaAnual.getIngresosContabilidadAnual() + venta.getPrecioVenta());
+		contaAnual.setVentasContabilidadAnual(contaAnual.getVentasContabilidadAnual() + 1);
 		contabilidadAnualService.save(contaAnual);
 
-		ultimaD.setVentas_contabilidad_diaria(ultimaD.getVentas_contabilidad_diaria() + 1);
-		ultimaD.setIngresos_contabilidad_diaria(ultimaD.getIngresos_contabilidad_diaria() + venta.getPrecio_venta());
+		ultimaD.setVentasContabilidadDiaria(ultimaD.getVentasContabilidadDiaria() + 1);
+		ultimaD.setIngresosContabilidadDiaria(ultimaD.getIngresosContabilidadDiaria() + venta.getPrecioVenta());
 		ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(ultimaD);
 		
 		
-		ventaNew.setId_registro_contabilidad_diaria(contaDiaGu);
+		ventaNew.setIdRegistroContabilidadDiaria(contaDiaGu);
 	}
 
 	@Override
@@ -82,25 +82,25 @@ public class VentaServiceImpl implements IVentaService{
 		Integer contaMensualId = contabilidadMensualService.findUltima();
 		ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
 
-		contaMensual.setIngresos_contabilidad_mensual(contaMensual.getIngresos_contabilidad_mensual() + venta.getPrecio_venta());
-		contaMensual.setVentas_contabilidad_mensual(contaMensual.getVentas_contabilidad_mensual() + 1);
+		contaMensual.setIngresosContabilidadMensual(contaMensual.getIngresosContabilidadMensual() + venta.getPrecioVenta());
+		contaMensual.setVentasContabilidadMensual(contaMensual.getVentasContabilidadMensual() + 1);
 		contabilidadMensualService.save(contaMensual);
 
 		Integer contaAnualId = contabilidadAnualService.findUltima();
 		ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 
-		contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
-		contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
+		contaAnual.setIngresosContabilidadAnual(contaAnual.getIngresosContabilidadAnual() + venta.getPrecioVenta());
+		contaAnual.setVentasContabilidadAnual(contaAnual.getVentasContabilidadAnual() + 1);
 		contabilidadAnualService.save(contaAnual);
 
 		ContabilidadDiariaVo contaHoy = new ContabilidadDiariaVo();
-		contaHoy.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
-		contaHoy.setVentas_contabilidad_diaria(1);
+		contaHoy.setIngresosContabilidadDiaria(venta.getPrecioVenta());
+		contaHoy.setVentasContabilidadDiaria(1);
 		contaHoy.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaHoy.setId_registro_contabilidad_mensual(contaMensual);
+		contaHoy.setIdRegistroContabilidadMensual(contaMensual);
 		ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(contaHoy);
 		
-		ventaNew.setId_registro_contabilidad_diaria(contaDiaGu);
+		ventaNew.setIdRegistroContabilidadDiaria(contaDiaGu);
 	}
 
 	@Override
@@ -108,50 +108,50 @@ public class VentaServiceImpl implements IVentaService{
 		Integer contaAnualId = contabilidadAnualService.findUltima();
 		ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 
-		contaAnual.setIngresos_contabilidad_anual(contaAnual.getIngresos_contabilidad_anual() + venta.getPrecio_venta());
-		contaAnual.setVentas_contabilidad_anual(contaAnual.getVentas_contabilidad_anual() + 1);
+		contaAnual.setIngresosContabilidadAnual(contaAnual.getIngresosContabilidadAnual() + venta.getPrecioVenta());
+		contaAnual.setVentasContabilidadAnual(contaAnual.getVentasContabilidadAnual() + 1);
 		ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
 
 		ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
-		contaMensual.setIngresos_contabilidad_mensual(venta.getPrecio_venta());
-		contaMensual.setVentas_contabilidad_mensual(1);
+		contaMensual.setIngresosContabilidadMensual(venta.getPrecioVenta());
+		contaMensual.setVentasContabilidadMensual(1);
 		contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
+		contaMensual.setIdRegistroContabilidadAnual(contaAnualGu);
 		ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
 
 		ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
-		contaDiaria.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
-		contaDiaria.setVentas_contabilidad_diaria(1);
+		contaDiaria.setIngresosContabilidadDiaria(venta.getPrecioVenta());
+		contaDiaria.setVentasContabilidadDiaria(1);
 		contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
+		contaDiaria.setIdRegistroContabilidadMensual(contaMensualGu);
 		ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(contaDiaria);
 		
-		ventaNew.setId_registro_contabilidad_diaria(contaDiaGu);
+		ventaNew.setIdRegistroContabilidadDiaria(contaDiaGu);
 	}
 
 	@Override
 	public void asignarContabilidadCrearTodo(VentaVo ventaNew, VentaVo venta) {
 		ContabilidadAnualVo contaAnual = new ContabilidadAnualVo();
-		contaAnual.setIngresos_contabilidad_anual(venta.getPrecio_venta());
-		contaAnual.setVentas_contabilidad_anual(1);
+		contaAnual.setIngresosContabilidadAnual(venta.getPrecioVenta());
+		contaAnual.setVentasContabilidadAnual(1);
 		contaAnual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 		ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
 
 		ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
-		contaMensual.setIngresos_contabilidad_mensual(venta.getPrecio_venta());
-		contaMensual.setVentas_contabilidad_mensual(1);
+		contaMensual.setIngresosContabilidadMensual(venta.getPrecioVenta());
+		contaMensual.setVentasContabilidadMensual(1);
 		contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
+		contaMensual.setIdRegistroContabilidadAnual(contaAnualGu);
 		ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
 
 		ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
-		contaDiaria.setIngresos_contabilidad_diaria(venta.getPrecio_venta());
-		contaDiaria.setVentas_contabilidad_diaria(1);
+		contaDiaria.setIngresosContabilidadDiaria(venta.getPrecioVenta());
+		contaDiaria.setVentasContabilidadDiaria(1);
 		contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
+		contaDiaria.setIdRegistroContabilidadMensual(contaMensualGu);
 		ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(contaDiaria);
 		
-		ventaNew.setId_registro_contabilidad_diaria(contaDiaGu);
+		ventaNew.setIdRegistroContabilidadDiaria(contaDiaGu);
 	}
 
 	@Override
@@ -163,12 +163,12 @@ public class VentaServiceImpl implements IVentaService{
 		}
 		
 		ContabilidadDiariaVo ultimaD = contabilidadDiariaService.findById(ultimaDId);
-		if (ultimaD.getFecha().toString().split("-")[0].equals(ventaNew.getFecha_venta().toString().split("-")[0]) && ultimaD.getFecha().toString().split("-")[1].equals(ventaNew.getFecha_venta().toString().split("-")[1]) && ultimaD.getFecha().toString().split("-")[2].equals(ventaNew.getFecha_venta().toString().split("-")[2].split("T")[0])) {
+		if (ultimaD.getFecha().toString().split("-")[0].equals(ventaNew.getFechaVenta().toString().split("-")[0]) && ultimaD.getFecha().toString().split("-")[1].equals(ventaNew.getFechaVenta().toString().split("-")[1]) && ultimaD.getFecha().toString().split("-")[2].equals(ventaNew.getFechaVenta().toString().split("-")[2].split("T")[0])) {
 			
 			this.asignarContabilidadDiaHoy(ultimaD, ventaNew, venta);
 		} else {
-			if (ventaNew.getFecha_venta().toString().split("-")[0].equals(ultimaD.getFecha().toString().split("-")[0])) {
-				if (ventaNew.getFecha_venta().toString().split("-")[1].equals(ultimaD.getFecha().toString().split("-")[1])) {
+			if (ventaNew.getFechaVenta().toString().split("-")[0].equals(ultimaD.getFecha().toString().split("-")[0])) {
+				if (ventaNew.getFechaVenta().toString().split("-")[1].equals(ultimaD.getFecha().toString().split("-")[1])) {
 					this.asignarContabilidadMesMalo(ventaNew, venta);
 					
 				} else {

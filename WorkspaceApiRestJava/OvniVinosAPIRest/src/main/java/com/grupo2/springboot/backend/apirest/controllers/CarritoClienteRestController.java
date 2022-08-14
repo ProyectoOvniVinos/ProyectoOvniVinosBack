@@ -66,15 +66,15 @@ public class CarritoClienteRestController {
 		
 		
 		try {
-			carritoActual.setIitem_carrito(carrito.getIitem_carrito());
-			carritoActual.setPrecio_carrito(0);
-			carritoActual.getIitem_carrito().forEach(t->{
-				t.setPrecio_item();
-				carritoActual.setPrecio_carrito(carritoActual.getPrecio_carrito() + t.getPrecio_item());
+			carritoActual.setItemCarrito(carrito.getItemCarrito());
+			carritoActual.setPrecioCarrito(0);
+			carritoActual.getItemCarrito().forEach(t->{
+				t.setPrecioItem();
+				carritoActual.setPrecioCarrito(carritoActual.getPrecioCarrito() + t.getPrecioItem());
 			});
 			
-			carritoActual.setCantidad_carrito(carrito.getCantidad_carrito());
-			System.out.println(carrito.getCantidad_carrito());
+			carritoActual.setCantidadCarrito(carrito.getCantidadCarrito());
+			System.out.println(carrito.getCantidadCarrito());
 			carritoUpdated = carritoService.save(carritoActual);
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al actualizar en la base de datos");
@@ -96,12 +96,12 @@ public class CarritoClienteRestController {
 		
 		
 		try {
-			carritoActual.setIitem_carrito(new ArrayList<ItemCarritoVo>());
-			carritoActual.setPrecio_carrito(0);
+			carritoActual.setItemCarrito(new ArrayList<ItemCarritoVo>());
+			carritoActual.setPrecioCarrito(0);
 			
-			carritoActual.setCantidad_carrito(0);
+			carritoActual.setCantidadCarrito(0);
 			
-			System.out.println(carrito.getCantidad_carrito());
+			System.out.println(carrito.getCantidadCarrito());
 			carritoUpdated = carritoService.save(carritoActual);
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al actualizar en la base de datos");

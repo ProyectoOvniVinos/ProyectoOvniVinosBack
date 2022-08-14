@@ -21,67 +21,66 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name="contabilidad_mensual")
 public class ContabilidadMensualVo {
 	
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_registro_contabilidad_mensual;
+	@Column(name="id_registro_contabilidad_mensual")
+	private int idRegistroContabilidadMensual;
 	
 	@Column(name="ventas_contabilidad_mensual")
-	private double ventas_contabilidad_mensual;
+	private double ventasContabilidadMensual;
 	
 	@Column(name="egresos_contabilidad_mensual")
-	private double egresos_contabilidad_mensual;
+	private double egresosContabilidadMensual;
 	
 	@Column(name="ingresos_contabilidad_mensual")
-	private double ingresos_contabilidad_mensual;
+	private double ingresosContabilidadMensual;
 	
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_registro_contabilidad_anual")
-	private ContabilidadAnualVo id_registro_contabilidad_anual;
+	private ContabilidadAnualVo idRegistroContabilidadAnual;
 	
 	@Column(name="fecha")
 	private Date fecha;
 
-	public int getId_registro_contabilidad_mensual() {
-		return id_registro_contabilidad_mensual;
+	public int getIdRegistroContabilidadMensual() {
+		return idRegistroContabilidadMensual;
 	}
 
-	public void setId_registro_contabilidad_mensual(int id_registro_contabilidad_mensual) {
-		this.id_registro_contabilidad_mensual = id_registro_contabilidad_mensual;
+	public void setIdRegistroContabilidadMensual(int idRegistroContabilidadMensual) {
+		this.idRegistroContabilidadMensual = idRegistroContabilidadMensual;
 	}
 
-	public double getVentas_contabilidad_mensual() {
-		return ventas_contabilidad_mensual;
+	public double getVentasContabilidadMensual() {
+		return ventasContabilidadMensual;
 	}
 
-	public void setVentas_contabilidad_mensual(double ventas_contabilidad_mensual) {
-		this.ventas_contabilidad_mensual = ventas_contabilidad_mensual;
+	public void setVentasContabilidadMensual(double ventasContabilidadMensual) {
+		this.ventasContabilidadMensual = ventasContabilidadMensual;
 	}
 
-	public double getEgresos_contabilidad_mensual() {
-		return egresos_contabilidad_mensual;
+	public double getEgresosContabilidadMensual() {
+		return egresosContabilidadMensual;
 	}
 
-	public void setEgresos_contabilidad_mensual(double egresos_contabilidad_mensual) {
-		this.egresos_contabilidad_mensual = egresos_contabilidad_mensual;
+	public void setEgresosContabilidadMensual(double egresosContabilidadMensual) {
+		this.egresosContabilidadMensual = egresosContabilidadMensual;
 	}
 
-	public double getIngresos_contabilidad_mensual() {
-		return ingresos_contabilidad_mensual;
+	public double getIngresosContabilidadMensual() {
+		return ingresosContabilidadMensual;
 	}
 
-	public void setIngresos_contabilidad_mensual(double ingresos_contabilidad_mensual) {
-		this.ingresos_contabilidad_mensual = ingresos_contabilidad_mensual;
+	public void setIngresosContabilidadMensual(double ingresosContabilidadMensual) {
+		this.ingresosContabilidadMensual = ingresosContabilidadMensual;
 	}
 
-	public ContabilidadAnualVo getId_registro_contabilidad_anual() {
-		return id_registro_contabilidad_anual;
+	public ContabilidadAnualVo getIdRegistroContabilidadAnual() {
+		return idRegistroContabilidadAnual;
 	}
 
-	public void setId_registro_contabilidad_anual(ContabilidadAnualVo id_registro_contabilidad_anual) {
-		this.id_registro_contabilidad_anual = id_registro_contabilidad_anual;
+	public void setIdRegistroContabilidadAnual(ContabilidadAnualVo idRegistroContabilidadAnual) {
+		this.idRegistroContabilidadAnual = idRegistroContabilidadAnual;
 	}
 
 	public Date getFecha() {
@@ -92,14 +91,6 @@ public class ContabilidadMensualVo {
 		this.fecha = fecha;
 	}
 
-	@Override
-	public String toString() {
-		return "ContabilidadMensualVo [id_registro_contabilidad_mensual=" + id_registro_contabilidad_mensual
-				+ ", ventas_contabilidad_mensual=" + ventas_contabilidad_mensual + ", egresos_contabilidad_mensual="
-				+ egresos_contabilidad_mensual + ", ingresos_contabilidad_mensual=" + ingresos_contabilidad_mensual
-				+ ", id_registro_contabilidad_anual=" + id_registro_contabilidad_anual + ", fecha=" + fecha + "]";
-	}
-	
-	
+	private static final long serialVersionUID = 1L;
 
 }

@@ -30,6 +30,7 @@ import com.grupo2.springboot.backend.apirest.services.contabilidadanual.IContabi
 import com.grupo2.springboot.backend.apirest.services.contabilidaddiaria.IContabilidadDiariaService;
 import com.grupo2.springboot.backend.apirest.services.contabilidadmensual.IContabilidadMensualService;
 import com.grupo2.springboot.backend.apirest.services.inventariodetalles.IinventarioDetallesService;
+import com.grupo2.springboot.backend.apirest.services.producto.IProductoService;
 
 @CrossOrigin(origins= {"http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089"})
 @RestController
@@ -41,6 +42,9 @@ public class CompraRestController {
 	
 	@Autowired
 	private IinventarioDetallesService inventarioService;
+	
+	@Autowired
+	private IProductoService productoService;	
 	
 	@Autowired
 	private IContabilidadDiariaService contabilidadDiariaService;
@@ -99,28 +103,18 @@ public class CompraRestController {
 		Map<String, Object> response = new HashMap<>();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 		try {
-			
-			AdministradorVo admin = new AdministradorVo();
-			admin.setCorreoAdmin("cristian@gmail.com");
-			admin.setNombreAdmin("Cristian");
-			admin.setApellidoAdmin("Amador");
-			admin.setDireccionAdmin("centenario");
-			admin.setTelefonoAdmin("323");
-			admin.setPasswordAdmin("12345");
-			
-			compra.setCorreo_admin(admin);
-			
-			compra.setFecha_compra(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
+			compra.setFechaCompra(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
 			
 			compraService.gestorAsignarContabilidad(compraNew, compra);
 			
-			compra.setCantidad_compra();
-			compra.setPrecio_compra();
-			compra.getCompras().forEach(t -> t.setPrecio_compra_detalle());
+			compra.setCantidadCompra();
+			compra.setPrecioCompra();
+			compra.getCompras().forEach(t -> t.setPrecioCompraDetalle());
 			
 			System.out.println(compra);
 			compraNew = compraService.save(compra);
 			inventarioService.InsertarInventario(compraNew);
+			productoService.actualizarProductos(compra.getCompras());
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

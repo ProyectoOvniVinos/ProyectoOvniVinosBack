@@ -71,13 +71,13 @@ public class PdfServiceImpl implements IPdfService{
             			datatable.addCell(contador + "");
             		}
             		else if(x == 1) {
-            			datatable.addCell(i.getCodigo_producto().getNombre_producto());
+            			datatable.addCell(i.getCodigoProducto().getNombreProducto());
             		}
             		else if(x == 2) {
-            			datatable.addCell(i.getCantidad_producto() + "");
+            			datatable.addCell(i.getCantidadProducto() + "");
             		}
             		else if(x == 3) {
-            			datatable.addCell(i.getPrecio_venta_detalle() + "");
+            			datatable.addCell(i.getPrecioVentaDetalle() + "");
             		}
             		
             	}
@@ -87,20 +87,20 @@ public class PdfServiceImpl implements IPdfService{
 			}
             document.add(datatable);
             
-            Paragraph p2 = new Paragraph("                                                                              Total: " + venta.getPrecio_venta(),FontFactory.getFont(FontFactory.TIMES_BOLD, 24));
+            Paragraph p2 = new Paragraph("                                                                              Total: " + venta.getPrecioVenta(),FontFactory.getFont(FontFactory.TIMES_BOLD, 24));
             p2.setSpacingAfter((float) 40.0);
             document.add(p2);
             
-            Paragraph p3 = new Paragraph("                                        Cliente: "+ venta.getCorreo_cliente().getNombreCliente() +"                                                   Fecha:   "+venta.getFecha_venta().toString().split("T")[0],FontFactory.getFont(FontFactory.HELVETICA, 14));
+            Paragraph p3 = new Paragraph("                                        Cliente: "+ venta.getCorreoCliente().getNombreCliente() +"                                                   Fecha:   "+venta.getFechaVenta().toString().split("T")[0],FontFactory.getFont(FontFactory.HELVETICA, 14));
             p3.setSpacingBefore((float) 40.0);
             document.add(p3);
-            Paragraph p4 = new Paragraph("                                        Direccion: "+ venta.getCorreo_cliente().getDireccionCliente() +"                                              Hora: "+venta.getFecha_venta().toString().split("T")[1],FontFactory.getFont(FontFactory.HELVETICA, 14));
+            Paragraph p4 = new Paragraph("                                        Direccion: "+ venta.getCorreoCliente().getDireccionCliente() +"                                              Hora: "+venta.getFechaVenta().toString().split("T")[1],FontFactory.getFont(FontFactory.HELVETICA, 14));
             document.add(p4);
             
-            Paragraph p5 = new Paragraph("                                        Telefono: " + venta.getCorreo_cliente().getTelefonoCliente(),FontFactory.getFont(FontFactory.HELVETICA, 14));
+            Paragraph p5 = new Paragraph("                                        Telefono: " + venta.getCorreoCliente().getTelefonoCliente(),FontFactory.getFont(FontFactory.HELVETICA, 14));
             document.add(p5);
             
-            Paragraph p6 = new Paragraph("                                        Correo: " + venta.getCorreo_cliente().getCorreoCliente(),FontFactory.getFont(FontFactory.HELVETICA, 14));
+            Paragraph p6 = new Paragraph("                                        Correo: " + venta.getCorreoCliente().getCorreoCliente(),FontFactory.getFont(FontFactory.HELVETICA, 14));
             document.add(p6);
         } catch (DocumentException de) {
             System.err.println(de.getMessage());
