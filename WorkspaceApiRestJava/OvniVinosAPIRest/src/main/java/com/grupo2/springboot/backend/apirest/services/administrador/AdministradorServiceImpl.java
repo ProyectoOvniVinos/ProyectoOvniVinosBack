@@ -23,5 +23,11 @@ public class AdministradorServiceImpl implements IAdministradorService{
 		return administradorDao.findById(correo).orElse(null);
 	}
 
+	@Override
+	@Transactional
+	public AdministradorVo save(AdministradorVo adminActual) {
+		return administradorDao.save(adminActual);
+	}
+
 
 }
