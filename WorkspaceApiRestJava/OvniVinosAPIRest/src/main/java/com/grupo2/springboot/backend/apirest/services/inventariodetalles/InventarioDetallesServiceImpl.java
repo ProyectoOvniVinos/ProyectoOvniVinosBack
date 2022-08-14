@@ -71,30 +71,30 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 			
 			List<InventarioDetallesVo> detallesAnteriores = new ArrayList<>();
 			
-			ProductoVo producto = compraAdminVo.getCodigo_producto();
-			int cantidad = compraAdminVo.getCantidad_producto();
+			ProductoVo producto = compraAdminVo.getCodigoProducto();
+			int cantidad = compraAdminVo.getCantidadProducto();
 			LocalDate fecha = LocalDate.now();
 			InventarioDetallesVo nuevoInventarioDetalle = new InventarioDetallesVo();
 			
-			nuevoInventarioDetalle.setCantidad_producto(cantidad);
-			nuevoInventarioDetalle.setFecha_ultimo_ingreso_inventario(Date.valueOf(fecha));
+			nuevoInventarioDetalle.setCantidadProducto(cantidad);
+			nuevoInventarioDetalle.setFechaUltimoIngresoInventario(Date.valueOf(fecha));
 			
 			
-			nuevoInventarioGeneral = inventarioGeneralDao.findByProducto(producto.getCodigo_producto());
+			nuevoInventarioGeneral = inventarioGeneralDao.findByProducto(producto.getCodigoProducto());
 			
 
 			if(nuevoInventarioGeneral != null) {
 				detallesAnteriores = nuevoInventarioGeneral.getDetalles();
 			}else {
 				nuevoInventarioGeneral = new InventarioGeneralVo();
-				nuevoInventarioGeneral.setCodigo_producto(producto);
+				nuevoInventarioGeneral.setCodigoProducto(producto);
 			}
 			
 			 
 			detallesAnteriores.add(nuevoInventarioDetalle);
 			nuevoInventarioGeneral.setDetalles(detallesAnteriores);
 			
-			nuevoInventarioGeneral.setCantidad_producto();
+			nuevoInventarioGeneral.setCantidadProducto();
 			
 			//inventarios.add(nuevoInventarioGeneral);
 			
@@ -116,13 +116,13 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 		List<EstadoProductoIndividual> estadoProductoIndividual = new ArrayList<>();
 		
 		for(VentaClienteVo venta : detallesVenta) {
-			int codigoProducto = venta.getCodigo_producto().getCodigo_producto();
+			int codigoProducto = venta.getCodigoProducto().getCodigoProducto();
 			
 			InventarioGeneralVo comprovarInventario = inventarioGeneralDao.findByProducto(codigoProducto);
-			String nombre = venta.getCodigo_producto().getNombre_producto();
-			int cantidad = venta.getCantidad_producto();
-			EstadoProductoIndividual estadoProductoI = new EstadoProductoIndividual(nombre, true,comprovarInventario.getCantidad_producto());
-			if(cantidad>comprovarInventario.getCantidad_producto()) {
+			String nombre = venta.getCodigoProducto().getNombreProducto();
+			int cantidad = venta.getCantidadProducto();
+			EstadoProductoIndividual estadoProductoI = new EstadoProductoIndividual(nombre, true,comprovarInventario.getCantidadProducto());
+			if(cantidad>comprovarInventario.getCantidadProducto()) {
 				
 				estadoProductoI.setEstado(false);
 			}
@@ -142,32 +142,30 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 		
 		if(estadoProductos.isEstado()==true) {
 			for(VentaClienteVo detallesVenta: venta.getVentas()) {
-				int codigoProducto = detallesVenta.getCodigo_producto().getCodigo_producto();
+				int codigoProducto = detallesVenta.getCodigoProducto().getCodigoProducto();
 				InventarioGeneralVo actualizarInventarioG = inventarioGeneralDao.findByProducto(codigoProducto);
 				
 				List<InventarioDetallesVo> actualizarDetalles = actualizarInventarioG.getDetalles();
 				
-				int cantidadVenta = detallesVenta.getCantidad_producto();
-				int contador = 0;
+				int cantidadVenta = detallesVenta.getCantidadProducto();
 				
 				for(InventarioDetallesVo detalle : actualizarDetalles) {
-					int cantidadInventario = detalle.getCantidad_producto();
+					int cantidadInventario = detalle.getCantidadProducto();
 					if(cantidadInventario>=cantidadVenta) {
 						cantidadInventario -= cantidadVenta;
 						if(cantidadInventario==0) {
-							detalle.setCantidad_producto(0);
+							detalle.setCantidadProducto(0);
 							break;
 						}else {
-							detalle.setCantidad_producto(cantidadInventario);
+							detalle.setCantidadProducto(cantidadInventario);
 							break;
 						}
 					}else {
 						cantidadVenta -= cantidadInventario;
-						detalle.setCantidad_producto(0);
+						detalle.setCantidadProducto(0);
 					}
-					contador += 1;
 				}
-				actualizarInventarioG.setCantidad_producto();
+				actualizarInventarioG.setCantidadProducto();
 				inventarioGeneralDao.save(actualizarInventarioG);
 			}
 		}

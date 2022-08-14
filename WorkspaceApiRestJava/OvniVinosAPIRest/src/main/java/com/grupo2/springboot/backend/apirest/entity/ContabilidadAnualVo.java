@@ -8,54 +8,53 @@ import javax.persistence.*;
 @Table(name="contabilidad_anual")
 public class ContabilidadAnualVo {
 	
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_registro_contabilidad_anual;
+	@Column(name="id_registro_contabilidad_anual")
+	private int idRegistroContabilidadAnual;
 	
 	@Column(name="ventas_contabilidad_anual")
-	private double ventas_contabilidad_anual;
+	private double ventasContabilidadAnual;
 	
 	@Column(name="egresos_contabilidad_anual")
-	private double egresos_contabilidad_anual;
+	private double egresosContabilidadAnual;
 	
 	@Column(name="ingresos_contabilidad_anual")
-	private double ingresos_contabilidad_anual;
+	private double ingresosContabilidadAnual;
 	
 	@Column(name="fecha")
 	private Date fecha;
 
-	public int getId_registro_contabilidad_anual() {
-		return id_registro_contabilidad_anual;
+	public int getIdRegistroContabilidadAnual() {
+		return idRegistroContabilidadAnual;
 	}
 
-	public void setId_registro_contabilidad_anual(int id_registro_contabilidad_anual) {
-		this.id_registro_contabilidad_anual = id_registro_contabilidad_anual;
+	public void setIdRegistroContabilidadAnual(int idRegistroContabilidadAnual) {
+		this.idRegistroContabilidadAnual = idRegistroContabilidadAnual;
 	}
 
-	public double getVentas_contabilidad_anual() {
-		return ventas_contabilidad_anual;
+	public double getVentasContabilidadAnual() {
+		return ventasContabilidadAnual;
 	}
 
-	public void setVentas_contabilidad_anual(double ventas_contabilidad_anual) {
-		this.ventas_contabilidad_anual = ventas_contabilidad_anual;
+	public void setVentasContabilidadAnual(double ventasContabilidadAnual) {
+		this.ventasContabilidadAnual = ventasContabilidadAnual;
 	}
 
-	public double getEgresos_contabilidad_anual() {
-		return egresos_contabilidad_anual;
+	public double getEgresosContabilidadAnual() {
+		return egresosContabilidadAnual;
 	}
 
-	public void setEgresos_contabilidad_anual(double egresos_contabilidad_anual) {
-		this.egresos_contabilidad_anual = egresos_contabilidad_anual;
+	public void setEgresosContabilidadAnual(double egresosContabilidadAnual) {
+		this.egresosContabilidadAnual = egresosContabilidadAnual;
 	}
 
-	public double getIngresos_contabilidad_anual() {
-		return ingresos_contabilidad_anual;
+	public double getIngresosContabilidadAnual() {
+		return ingresosContabilidadAnual;
 	}
 
-	public void setIngresos_contabilidad_anual(double ingresos_contabilidad_anual) {
-		this.ingresos_contabilidad_anual = ingresos_contabilidad_anual;
+	public void setIngresosContabilidadAnual(double ingresosContabilidadAnual) {
+		this.ingresosContabilidadAnual = ingresosContabilidadAnual;
 	}
 
 	public Date getFecha() {
@@ -66,14 +65,6 @@ public class ContabilidadAnualVo {
 		this.fecha = fecha;
 	}
 
-	@Override
-	public String toString() {
-		return "ContabilidadAnualVo [id_registro_contabilidad_anual=" + id_registro_contabilidad_anual
-				+ ", ventas_contabilidad_anual=" + ventas_contabilidad_anual + ", egresos_contabilidad_anual="
-				+ egresos_contabilidad_anual + ", ingresos_contabilidad_anual=" + ingresos_contabilidad_anual
-				+ ", fecha=" + fecha + "]";
-	}
-	
-	
+	private static final long serialVersionUID = 1L;
 	
 }

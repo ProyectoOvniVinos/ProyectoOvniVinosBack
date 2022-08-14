@@ -14,56 +14,51 @@ public class CompraAdminVo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_puente;
+	@JoinColumn(name = "id_puente")
+	private int idPuente;
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "codigo_producto")
-	private ProductoVo codigo_producto;
+	private ProductoVo codigoProducto;
 
 	@Column(name = "cantidad_producto")
-	private int cantidad_producto;
+	private int cantidadProducto;
 	
 	@Column(name = "precio_compra_detalle")
-	private double precio_compra_detalle;
+	private double precioCompraDetalle;
 
-	public int getId_puente() {
-		return id_puente;
+	public int getIdPuente() {
+		return idPuente;
 	}
 
-	public void setId_puente(int id_puente) {
-		this.id_puente = id_puente;
+	public void setIdPuente(int idPuente) {
+		this.idPuente = idPuente;
 	}
 
-	public ProductoVo getCodigo_producto() {
-		return codigo_producto;
+	public ProductoVo getCodigoProducto() {
+		return codigoProducto;
 	}
 
-	public void setCodigo_producto(ProductoVo codigo_producto) {
-		this.codigo_producto = codigo_producto;
+	public void setCodigoProducto(ProductoVo codigoProducto) {
+		this.codigoProducto = codigoProducto;
 	}
 
-	public int getCantidad_producto() {
-		return cantidad_producto;
+	public int getCantidadProducto() {
+		return cantidadProducto;
 	}
 
-	public void setCantidad_producto(int cantidad_producto) {
-		this.cantidad_producto = cantidad_producto;
+	public void setCantidadProducto(int cantidadProducto) {
+		this.cantidadProducto = cantidadProducto;
 	}
 
-	public double getPrecio_compra_detalle() {
-		return precio_compra_detalle;
+	public double getPrecioCompraDetalle() {
+		return precioCompraDetalle;
 	}
 
-	public void setPrecio_compra_detalle() {
-		double total = this.getCodigo_producto().getPrecio_producto()*this.cantidad_producto;
-		this.precio_compra_detalle = total;
-	}
-
-	@Override
-	public String toString() {
-		return "CompraAdminVo [id_puente=" + id_puente + ", codigo_producto=" + codigo_producto + ", cantidad_producto="
-				+ cantidad_producto + "]";
+	public void setPrecioCompraDetalle() {
+		double total = this.getCodigoProducto().getPrecioProductoProveedor()*this.cantidadProducto;
+		this.precioCompraDetalle = total;
 	}
 
 }

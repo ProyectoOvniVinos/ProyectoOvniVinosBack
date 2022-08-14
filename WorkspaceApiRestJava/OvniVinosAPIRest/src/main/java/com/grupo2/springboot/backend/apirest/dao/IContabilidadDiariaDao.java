@@ -7,7 +7,7 @@ import com.grupo2.springboot.backend.apirest.entity.ContabilidadDiariaVo;
 
 public interface IContabilidadDiariaDao extends JpaRepository<ContabilidadDiariaVo, Integer> {
 
-	@Query("SELECT MAX(id_registro_contabilidad_diaria) FROM ContabilidadDiariaVo")
+	@Query("SELECT MAX(idRegistroContabilidadDiaria) FROM ContabilidadDiariaVo")
 	public Integer findUltima();
 
 }

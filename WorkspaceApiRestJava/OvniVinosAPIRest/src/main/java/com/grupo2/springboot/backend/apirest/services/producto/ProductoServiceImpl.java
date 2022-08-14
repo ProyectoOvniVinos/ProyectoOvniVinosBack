@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.grupo2.springboot.backend.apirest.dao.IProductoDao;
+import com.grupo2.springboot.backend.apirest.entity.CompraAdminVo;
 import com.grupo2.springboot.backend.apirest.entity.ProductoVo;
 
 @Service
@@ -48,5 +49,15 @@ public class ProductoServiceImpl implements IProductoService{
 	@Override
 	public List<ProductoVo> findByEstadoFiltro(String filtro) {
 		return productoDao.findByEstadoFiltro(filtro);
+	}
+
+	@Override
+	public void actualizarProductos(List<CompraAdminVo> detallesCompra) {
+		
+		for(CompraAdminVo detalle: detallesCompra) {
+			productoDao.save(detalle.getCodigoProducto());
+			
+		}
+		
 	}
 }

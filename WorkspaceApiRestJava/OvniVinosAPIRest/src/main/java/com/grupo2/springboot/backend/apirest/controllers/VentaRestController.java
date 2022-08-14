@@ -105,22 +105,15 @@ public class VentaRestController {
 		Map<String, Object> response = new HashMap<>();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 		try {
-			ClienteVo cliente = new ClienteVo();
-			cliente.setCorreoCliente("crissis2004@gmail.com");
-			cliente.setNombreCliente("Cristian");
-			cliente.setApellidoCliente("Amador");
-			cliente.setDireccionCliente("centenario");
-			cliente.setTelefonoCliente("323");
-			cliente.setPasswordCliente("12345");
 			
-			venta.setCorreo_cliente(cliente);
-			venta.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
+			
+			venta.setFechaVenta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
 			
 			
 			EstadoProducto estadoProducto=inventarioService.disminuirCantidad(venta);
 			if(estadoProducto.isEstado()==true) {
-				venta.setCantidad_venta();
-				venta.setPrecio_venta();
+				venta.setCantidadVenta();
+				venta.setPrecioVenta();
 				
 				
 				ventaNew = ventaService.save(venta);
@@ -139,7 +132,7 @@ public class VentaRestController {
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 			
-			envioCorreo.enviarCorreo(cliente);
+			envioCorreo.enviarCorreo(ventaReto.getCorreoCliente());
 			
 			
 		} catch (DataAccessException e) {
@@ -149,7 +142,7 @@ public class VentaRestController {
 
 		}
 		
-		ventaReto.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
+		ventaReto.setFechaVenta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
 		response.put("mensaje", "la venta se ha registro con exito");
 		
 		response.put("venta", ventaReto);

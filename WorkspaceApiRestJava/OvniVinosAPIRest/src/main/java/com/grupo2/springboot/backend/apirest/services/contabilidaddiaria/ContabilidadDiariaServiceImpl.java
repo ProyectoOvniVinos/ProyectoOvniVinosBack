@@ -73,15 +73,15 @@ public class ContabilidadDiariaServiceImpl implements IContabilidadDiariaService
 		ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 		
 		ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
-		contaMensual.setEgresos_contabilidad_mensual(0);
+		contaMensual.setEgresosContabilidadMensual(0);
 		contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaMensual.setId_registro_contabilidad_anual(contaAnual);
+		contaMensual.setIdRegistroContabilidadAnual(contaAnual);
 		ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
 
 		ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
-		contaDiaria.setEgresos_contabilidad_diaria(0);
+		contaDiaria.setEgresosContabilidadDiaria(0);
 		contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
+		contaDiaria.setIdRegistroContabilidadMensual(contaMensualGu);
 		return this.save(contaDiaria);
 		
 	}
@@ -92,9 +92,9 @@ public class ContabilidadDiariaServiceImpl implements IContabilidadDiariaService
 		ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
 
 		ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
-		contaDiaria.setEgresos_contabilidad_diaria(0);
+		contaDiaria.setEgresosContabilidadDiaria(0);
 		contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaDiaria.setId_registro_contabilidad_mensual(contaMensual);
+		contaDiaria.setIdRegistroContabilidadMensual(contaMensual);
 		return this.save(contaDiaria);
 
 		
@@ -103,20 +103,20 @@ public class ContabilidadDiariaServiceImpl implements IContabilidadDiariaService
 	@Override
 	public ContabilidadDiariaVo asignarContabilidadCrearTodo(ContabilidadDiariaVo guardada) {
 		ContabilidadAnualVo contaAnual = new ContabilidadAnualVo();
-		contaAnual.setEgresos_contabilidad_anual(0);
+		contaAnual.setEgresosContabilidadAnual(0);
 		contaAnual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 		ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
 
 		ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
-		contaMensual.setEgresos_contabilidad_mensual(0);
+		contaMensual.setEgresosContabilidadMensual(0);
 		contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
+		contaMensual.setIdRegistroContabilidadAnual(contaAnualGu);
 		ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
 
 		ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
-		contaDiaria.setEgresos_contabilidad_diaria(0);
+		contaDiaria.setEgresosContabilidadDiaria(0);
 		contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
+		contaDiaria.setIdRegistroContabilidadMensual(contaMensualGu);
 		return this.save(contaDiaria);
 		
 		

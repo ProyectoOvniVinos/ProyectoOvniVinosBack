@@ -52,19 +52,19 @@ public class CompraServiceImpl implements ICompraService{
 		Integer contaMensualId = contabilidadMensualService.findUltima();
 		ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
 		
-		contaMensual.setEgresos_contabilidad_mensual(contaMensual.getEgresos_contabilidad_mensual()+compra.getPrecio_compra());
+		contaMensual.setEgresosContabilidadMensual(contaMensual.getEgresosContabilidadMensual()+compra.getPrecioCompra());
 		ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
 
 		Integer contaAnualId = contabilidadAnualService.findUltima();
 		ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 
-		contaAnual.setEgresos_contabilidad_anual(contaAnual.getEgresos_contabilidad_anual() + compra.getPrecio_compra());
+		contaAnual.setEgresosContabilidadAnual(contaAnual.getEgresosContabilidadAnual() + compra.getPrecioCompra());
 		ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
 
-		ultimaD.setEgresos_contabilidad_diaria(ultimaD.getEgresos_contabilidad_diaria() + compra.getPrecio_compra());
+		ultimaD.setEgresosContabilidadDiaria(ultimaD.getEgresosContabilidadDiaria() + compra.getPrecioCompra());
 		ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(ultimaD);
 		
-		compra.setId_registro_contabilidad_diaria(contaDiaGu);
+		compra.setIdRegistroContabilidadDiaria(contaDiaGu);
 		
 	}
 
@@ -75,24 +75,24 @@ public class CompraServiceImpl implements ICompraService{
 		Integer contaMensualId = contabilidadMensualService.findUltima();
 		ContabilidadMensualVo contaMensual = contabilidadMensualService.findById(contaMensualId);
 
-		contaMensual.setEgresos_contabilidad_mensual(
-				contaMensual.getEgresos_contabilidad_mensual() + compra.getPrecio_compra());
+		contaMensual.setEgresosContabilidadMensual(
+				contaMensual.getEgresosContabilidadMensual() + compra.getPrecioCompra());
 		ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
 
 		Integer contaAnualId = contabilidadAnualService.findUltima();
 		ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 
-		contaAnual.setEgresos_contabilidad_anual(
-				contaAnual.getEgresos_contabilidad_anual() + compra.getPrecio_compra());
+		contaAnual.setEgresosContabilidadAnual(
+				contaAnual.getEgresosContabilidadAnual() + compra.getPrecioCompra());
 		ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
 
 		ContabilidadDiariaVo contaHoy = new ContabilidadDiariaVo();
-		contaHoy.setEgresos_contabilidad_diaria(compra.getPrecio_compra());
+		contaHoy.setEgresosContabilidadDiaria(compra.getPrecioCompra());
 		contaHoy.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaHoy.setId_registro_contabilidad_mensual(contaMensual);
+		contaHoy.setIdRegistroContabilidadMensual(contaMensual);
 		ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(contaHoy);
 		
-		compra.setId_registro_contabilidad_diaria(contaDiaGu);
+		compra.setIdRegistroContabilidadDiaria(contaDiaGu);
 		
 	}
 
@@ -101,46 +101,46 @@ public class CompraServiceImpl implements ICompraService{
 		Integer contaAnualId = contabilidadAnualService.findUltima();
 		ContabilidadAnualVo contaAnual = contabilidadAnualService.findById(contaAnualId);
 
-		contaAnual.setEgresos_contabilidad_anual(
-				contaAnual.getEgresos_contabilidad_anual() + compra.getPrecio_compra());
+		contaAnual.setEgresosContabilidadAnual(
+				contaAnual.getEgresosContabilidadAnual() + compra.getPrecioCompra());
 		ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
 
 		ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
-		contaMensual.setEgresos_contabilidad_mensual(compra.getPrecio_compra());
+		contaMensual.setEgresosContabilidadMensual(compra.getPrecioCompra());
 		contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
+		contaMensual.setIdRegistroContabilidadAnual(contaAnualGu);
 		ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
 
 		ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
-		contaDiaria.setEgresos_contabilidad_diaria(compra.getPrecio_compra());
+		contaDiaria.setEgresosContabilidadDiaria(compra.getPrecioCompra());
 		contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
+		contaDiaria.setIdRegistroContabilidadMensual(contaMensualGu);
 		ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(contaDiaria);
 		
-		compra.setId_registro_contabilidad_diaria(contaDiaGu);
+		compra.setIdRegistroContabilidadDiaria(contaDiaGu);
 		
 	}
 
 	@Override
 	public void asignarContabilidadCrearTodo(CompraVo compraNew, CompraVo compra) {
 		ContabilidadAnualVo contaAnual = new ContabilidadAnualVo();
-		contaAnual.setEgresos_contabilidad_anual(compra.getPrecio_compra());
+		contaAnual.setEgresosContabilidadAnual(compra.getPrecioCompra());
 		contaAnual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
 		ContabilidadAnualVo contaAnualGu = contabilidadAnualService.save(contaAnual);
 
 		ContabilidadMensualVo contaMensual = new ContabilidadMensualVo();
-		contaMensual.setEgresos_contabilidad_mensual(compra.getPrecio_compra());
+		contaMensual.setEgresosContabilidadMensual(compra.getPrecioCompra());
 		contaMensual.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaMensual.setId_registro_contabilidad_anual(contaAnualGu);
+		contaMensual.setIdRegistroContabilidadAnual(contaAnualGu);
 		ContabilidadMensualVo contaMensualGu = contabilidadMensualService.save(contaMensual);
 
 		ContabilidadDiariaVo contaDiaria = new ContabilidadDiariaVo();
-		contaDiaria.setEgresos_contabilidad_diaria(compra.getPrecio_compra());
+		contaDiaria.setEgresosContabilidadDiaria(compra.getPrecioCompra());
 		contaDiaria.setFecha(java.sql.Date.valueOf(LocalDate.now()));
-		contaDiaria.setId_registro_contabilidad_mensual(contaMensualGu);
+		contaDiaria.setIdRegistroContabilidadMensual(contaMensualGu);
 		ContabilidadDiariaVo contaDiaGu=contabilidadDiariaService.save(contaDiaria);
 		
-		compra.setId_registro_contabilidad_diaria(contaDiaGu);
+		compra.setIdRegistroContabilidadDiaria(contaDiaGu);
 		
 	}
 	
@@ -153,13 +153,13 @@ public class CompraServiceImpl implements ICompraService{
 		ContabilidadDiariaVo ultimaD = contabilidadDiariaService.findById(ultimaDId);
 		
 		if (ultimaD != null) {
-			if (ultimaD.getFecha().toString().split("-")[0].equals(compra.getFecha_compra().toString().split("-")[0]) && ultimaD.getFecha().toString().split("-")[1].equals(compra.getFecha_compra().toString().split("-")[1]) && ultimaD.getFecha().toString().split("-")[2].equals(compra.getFecha_compra().toString().split("-")[2].split("T")[0])) {
+			if (ultimaD.getFecha().toString().split("-")[0].equals(compra.getFechaCompra().toString().split("-")[0]) && ultimaD.getFecha().toString().split("-")[1].equals(compra.getFechaCompra().toString().split("-")[1]) && ultimaD.getFecha().toString().split("-")[2].equals(compra.getFechaCompra().toString().split("-")[2].split("T")[0])) {
 				System.out.println("AAAAAAAAa");
 				
 				this.asignarContabilidadDiaHoy(ultimaD, compraNew, compra);
 			} else {
-				if (compra.getFecha_compra().toString().split("-")[0].equals(ultimaD.getFecha().toString().split("-")[0])) {
-					if (compra.getFecha_compra().toString().split("-")[1].equals(ultimaD.getFecha().toString().split("-")[1])) {
+				if (compra.getFechaCompra().toString().split("-")[0].equals(ultimaD.getFecha().toString().split("-")[0])) {
+					if (compra.getFechaCompra().toString().split("-")[1].equals(ultimaD.getFecha().toString().split("-")[1])) {
 						
 						this.asignarContabilidadMesMalo(compraNew, compra);
 					} else {

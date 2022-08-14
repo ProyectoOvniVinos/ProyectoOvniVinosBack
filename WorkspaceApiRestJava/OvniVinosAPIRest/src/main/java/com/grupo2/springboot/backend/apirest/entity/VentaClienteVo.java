@@ -10,64 +10,56 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "venta_cliente")
 public class VentaClienteVo implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_puente;
+	@Column(name = "id_puente")
+	private int idPuente;
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "codigo_producto")
-	private ProductoVo codigo_producto;
+	private ProductoVo codigoProducto;
 
 	@Column(name = "cantidad_producto")
-	private int cantidad_producto;
+	private int cantidadProducto;
 	
 	@Column(name = "precio_venta_detalle")
-	private double precio_venta_detalle;
+	private double precioVentaDetalle;
 
-	public int getId_puente() {
-		return id_puente;
+	public int getIdPuente() {
+		return idPuente;
 	}
 
-	public void setId_puente(int id_puente) {
-		this.id_puente = id_puente;
+	public void setIdPuente(int idPuente) {
+		this.idPuente = idPuente;
 	}
 
-	public ProductoVo getCodigo_producto() {
-		return codigo_producto;
+	public ProductoVo getCodigoProducto() {
+		return codigoProducto;
 	}
 
-	public void setCodigo_producto(ProductoVo codigo_producto) {
-		this.codigo_producto = codigo_producto;
+	public void setCodigoProducto(ProductoVo codigoProducto) {
+		this.codigoProducto = codigoProducto;
 	}
 
-	public int getCantidad_producto() {
-		return cantidad_producto;
+	public int getCantidadProducto() {
+		return cantidadProducto;
 	}
 
-	public void setCantidad_producto(int cantidad_producto) {
-		this.cantidad_producto = cantidad_producto;
+	public void setCantidadProducto(int cantidadProducto) {
+		this.cantidadProducto = cantidadProducto;
 	}
 
-	public double getPrecio_venta_detalle() {
-		return precio_venta_detalle;
+	public double getPrecioVentaDetalle() {
+		return precioVentaDetalle;
 	}
 
-	public void setPrecio_venta_detalle() {
+	public void setPrecioVentaDetalle() {
 		double total;
-		total = this.cantidad_producto * this.codigo_producto.getPrecio_producto();
-		this.precio_venta_detalle = total;
+		total = this.cantidadProducto * this.codigoProducto.getPrecioProducto();
+		this.precioVentaDetalle = total;
 	}
 
-	@Override
-	public String toString() {
-		return "VentaClienteVo [id_puente=" + id_puente + ", codigo_producto=" + codigo_producto
-				+ ", cantidad_producto=" + cantidad_producto + ", id_registro_contabilidad_diaria="
-				+ "]";
-	}
-	
-	
+	private static final long serialVersionUID = 1L;
 
 }

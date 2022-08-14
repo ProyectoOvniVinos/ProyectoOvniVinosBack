@@ -16,44 +16,89 @@ public class VentaVo implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int codigo_venta;
+	@Column(name = "codigo_venta")
+	private int codigoVenta;
 
 	@Column(name = "precio_venta")
-	private double precio_venta;
+	private double precioVenta;
 
 	@Column(name = "cantidad_venta")
-	private int cantidad_venta;
+	private int cantidadVenta;
 
 	@Column(name = "fecha_venta")
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd-HH:mm:ss")
-	private LocalDateTime fecha_venta;
+	private LocalDateTime fechaVenta;
 
 	@JsonIgnoreProperties(value = { "ventas", "hibernateLazyInitializer", "handler" }, allowSetters = true)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "correo_cliente")
-	private ClienteVo correo_cliente;
+	private ClienteVo correoCliente;
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_registro_contabilidad_diaria")
-	private ContabilidadDiariaVo id_registro_contabilidad_diaria;
+	private ContabilidadDiariaVo idRegistroContabilidadDiaria;
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "venta")
 	private List<VentaClienteVo> ventas;
 
-	public double getPrecio_venta() {
-		return precio_venta;
+	public int getCodigoVenta() {
+		return codigoVenta;
 	}
 
-	public void setPrecio_venta() {
+	public void setCodigoVenta(int codigoVenta) {
+		this.codigoVenta = codigoVenta;
+	}
+
+	public double getPrecioVenta() {
+		return precioVenta;
+	}
+
+	public void setPrecioVenta() {
 		double total = 0;
 		for(VentaClienteVo ventas: this.ventas) {
-			ventas.setPrecio_venta_detalle();
-			total += ventas.getPrecio_venta_detalle();
+			ventas.setPrecioVentaDetalle();
+			total += ventas.getPrecioVentaDetalle();
 		}
-		this.precio_venta = total;
+		this.precioVenta = total;
+	}
+
+	public int getCantidadVenta() {
+		return cantidadVenta;
+	}
+
+	public void setCantidadVenta() {
+		int cantidad = 0;
+		for(VentaClienteVo ventas : this.ventas) {
+			cantidad += ventas.getCantidadProducto();
+		}
+		this.cantidadVenta = cantidad;
+	}
+
+	public LocalDateTime getFechaVenta() {
+		return fechaVenta;
+	}
+
+	public void setFechaVenta(LocalDateTime fechaVenta) {
+		this.fechaVenta = fechaVenta;
+	}
+
+	public ClienteVo getCorreoCliente() {
+		return correoCliente;
+	}
+
+	public void setCorreoCliente(ClienteVo correoCliente) {
+		this.correoCliente = correoCliente;
+	}
+
+	public ContabilidadDiariaVo getIdRegistroContabilidadDiaria() {
+		return idRegistroContabilidadDiaria;
+	}
+
+	public void setIdRegistroContabilidadDiaria(ContabilidadDiariaVo idRegistroContabilidadDiaria) {
+		this.idRegistroContabilidadDiaria = idRegistroContabilidadDiaria;
 	}
 
 	public List<VentaClienteVo> getVentas() {
@@ -63,53 +108,7 @@ public class VentaVo implements Serializable {
 	public void setVentas(List<VentaClienteVo> ventas) {
 		this.ventas = ventas;
 	}
-
-	public int getCodigo_venta() {
-		return codigo_venta;
-	}
-
-	public void setCodigo_venta(int codigo_venta) {
-		this.codigo_venta = codigo_venta;
-	}
-
-	public ClienteVo getCorreo_cliente() {
-		return correo_cliente;
-	}
-
-	public void setCorreo_cliente(ClienteVo correo_cliente) {
-		this.correo_cliente = correo_cliente;
-	}
-
-	public int getCantidad_venta() {
-		return cantidad_venta;
-	}
-
-	public void setCantidad_venta() {
-		int cantidad = 0;
-		for(VentaClienteVo ventas : this.ventas) {
-			cantidad += ventas.getCantidad_producto();
-		}
-		this.cantidad_venta = cantidad;
-	}
-
-	public LocalDateTime getFecha_venta() {
-		return fecha_venta;
-	}
-
-	public void setFecha_venta(LocalDateTime fecha_venta) {
-		this.fecha_venta = fecha_venta;
-	}
-
-	public ContabilidadDiariaVo getId_registro_contabilidad_diaria() {
-		return id_registro_contabilidad_diaria;
-	}
-
-	public void setId_registro_contabilidad_diaria(ContabilidadDiariaVo id_registro_contabilidad_diaria) {
-		this.id_registro_contabilidad_diaria = id_registro_contabilidad_diaria;
-	}
-
-
-
+	
 	private static final long serialVersionUID = 1L;
 
 }

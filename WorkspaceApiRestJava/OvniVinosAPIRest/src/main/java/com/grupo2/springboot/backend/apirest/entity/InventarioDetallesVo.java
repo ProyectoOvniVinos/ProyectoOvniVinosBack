@@ -11,49 +11,43 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name="inventario_detalles")
 public class InventarioDetallesVo implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_detalles;
+	@Column(name="id_detalles")
+	private int idDetalles;
 	
 	@Column(name="cantidad_producto")
-	private int cantidad_producto;
+	private int cantidadProducto;
 	
 	@Column(name="fecha_ultimo_ingreso_inventario")
-	private Date fecha_ultimo_ingreso_inventario;
-
+	private Date fechaUltimoIngresoInventario;	
+	
 	public int getIdDetalles() {
-		return id_detalles;
+		return idDetalles;
 	}
 
 	public void setIdDetalles(int idDetalles) {
-		this.id_detalles = idDetalles;
+		this.idDetalles = idDetalles;
 	}
 
-
-	public int getCantidad_producto() {
-		return cantidad_producto;
+	public int getCantidadProducto() {
+		return cantidadProducto;
 	}
 
-	public void setCantidad_producto(int cantidad_producto) {
-		this.cantidad_producto = cantidad_producto;
+	public void setCantidadProducto(int cantidadProducto) {
+		this.cantidadProducto = cantidadProducto;
 	}
 
-	public Date getFecha_ultimo_ingreso_inventario() {
-		return fecha_ultimo_ingreso_inventario;
+	public Date getFechaUltimoIngresoInventario() {
+		return fechaUltimoIngresoInventario;
 	}
 
-	public void setFecha_ultimo_ingreso_inventario(Date fecha_ultimo_ingreso_inventario) {
-		this.fecha_ultimo_ingreso_inventario = fecha_ultimo_ingreso_inventario;
-	}
-
-	@Override
-	public String toString() {
-		return "InventarioDetallesVo [id_detalles=" + id_detalles + ", cantidad_producto=" + cantidad_producto
-				+ ", fecha_ultimo_ingreso_inventario=" + fecha_ultimo_ingreso_inventario + "]";
+	public void setFechaUltimoIngresoInventario(Date fechaUltimoIngresoInventario) {
+		this.fechaUltimoIngresoInventario = fechaUltimoIngresoInventario;
 	}
 	
-	
+	private static final long serialVersionUID = 1L;
 	
 }

@@ -2,4 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Modifying"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.producto.IProductoService"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.CompraAdminVo"/>
 </qualifiedTypeNameHistroy>

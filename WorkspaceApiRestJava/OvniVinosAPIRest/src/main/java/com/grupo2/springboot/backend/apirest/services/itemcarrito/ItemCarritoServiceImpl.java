@@ -30,7 +30,7 @@ public class ItemCarritoServiceImpl implements IitemCarritoService{
 	@Override
 	@Transactional
 	public void vaciarCarrito(CarritoClienteVo carritoActual) {
-		carritoActual.getIitem_carrito().clear();
+		carritoActual.getItemCarrito().clear();
 		
 	}
 

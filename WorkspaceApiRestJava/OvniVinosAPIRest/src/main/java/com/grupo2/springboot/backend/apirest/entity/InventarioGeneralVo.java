@@ -11,46 +11,52 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name="inventario_general")
 public class InventarioGeneralVo implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id_registro; 
+	@Column(name="id_registro")
+	private int idRegistro; 
 	
 	@Column(name="cantidad_producto")
-	private int cantidad_producto;
+	private int cantidadProducto;
 	
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "codigo_producto")
-	private ProductoVo codigo_producto;
+	private ProductoVo codigoProducto;
 	
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler" })
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_registro")
 	private List<InventarioDetallesVo> detalles;
 
-	public int getId_registro() {
-		return id_registro;
+	public int getIdRegistro() {
+		return idRegistro;
 	}
 
-	public void setId_registro(int id_registro) {
-		this.id_registro = id_registro;
+	public void setIdRegistro(int idRegistro) {
+		this.idRegistro = idRegistro;
 	}
 
-
-	public int getCantidad_producto() {
-		return cantidad_producto;
+	public int getCantidadProducto() {
+		return cantidadProducto;
 	}
 
-	public void setCantidad_producto() {
+	public void setCantidadProducto() {
 		int cantidadTotal = 0;
 		if(this.getDetalles().size()>0) {
 			for (InventarioDetallesVo inventarioDetallesVo : this.getDetalles()) {
-				cantidadTotal += inventarioDetallesVo.getCantidad_producto();
+				cantidadTotal += inventarioDetallesVo.getCantidadProducto();
 			}
 		}
-		this.cantidad_producto = cantidadTotal;
+		this.cantidadProducto = cantidadTotal;
+	}
+
+	public ProductoVo getCodigoProducto() {
+		return codigoProducto;
+	}
+
+	public void setCodigoProducto(ProductoVo codigoProducto) {
+		this.codigoProducto = codigoProducto;
 	}
 
 	public List<InventarioDetallesVo> getDetalles() {
@@ -60,21 +66,6 @@ public class InventarioGeneralVo implements Serializable{
 	public void setDetalles(List<InventarioDetallesVo> detalles) {
 		this.detalles = detalles;
 	}
-
-	public ProductoVo getCodigo_producto() {
-		return codigo_producto;
-	}
-
-	public void setCodigo_producto(ProductoVo codigo_producto) {
-		this.codigo_producto = codigo_producto;
-	}
-
-	@Override
-	public String toString() {
-		return "InventarioGeneralVo [id_registro=" + id_registro + ", cantidad_producto=" + cantidad_producto
-				+ ", codigo_producto=" + codigo_producto + ", detalles=" + detalles + "]";
-	}
 	
-	
-	
+	private static final long serialVersionUID = 1L;
 }
