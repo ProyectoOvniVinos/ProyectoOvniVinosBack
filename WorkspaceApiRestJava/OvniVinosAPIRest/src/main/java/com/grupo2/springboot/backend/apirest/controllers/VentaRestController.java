@@ -48,7 +48,7 @@ public class VentaRestController {
 
 	@Autowired
 	private IVentaService ventaService;
-	
+
 	@Autowired
 	private IinventarioDetallesService inventarioService;
 
@@ -60,10 +60,10 @@ public class VentaRestController {
 
 	@Autowired
 	private IContabilidadAnualService contabilidadAnualService;
-	
+
 	@Autowired
 	private IEnviosCorreo envioCorreo;
-	
+
 	@Autowired
 	private IPdfService pdfService;
 
@@ -79,7 +79,6 @@ public class VentaRestController {
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-
 
 		return new ResponseEntity<List<VentaVo>>(ventas, HttpStatus.OK);
 	}
@@ -122,65 +121,64 @@ public class VentaRestController {
 			cliente.setDireccionCliente("centenario");
 			cliente.setTelefonoCliente("323");
 			cliente.setPasswordCliente("12345");
-			
+
 			venta.setCorreo_cliente(cliente);
-			venta.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
-			
-			
-			EstadoProducto estadoProducto=inventarioService.disminuirCantidad(venta);
-			if(estadoProducto.isEstado()==true) {
+			venta.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()), dtf));
+
+			EstadoProducto estadoProducto = inventarioService.disminuirCantidad(venta);
+			if (estadoProducto.isEstado() == true) {
 				venta.setCantidad_venta();
 				venta.setPrecio_venta();
-				
-				
+
 				ventaNew = ventaService.save(venta);
-				ventaService.gestorAsignarContabilidad(ventaNew,venta);
+				ventaService.gestorAsignarContabilidad(ventaNew, venta);
 				ventaReto = ventaService.save(ventaNew);
-				
-			}else {
+
+			} else {
 				response.put("mensaje", "cantidad insuficiente");
 				int contador = 0;
-				for(EstadoProductoIndividual estadoProductoI: estadoProducto.getProductos()) {
-					if(estadoProductoI.isEstado()==false) {
+				for (EstadoProductoIndividual estadoProductoI : estadoProducto.getProductos()) {
+					if (estadoProductoI.isEstado() == false) {
 						contador += 1;
-						response.put("producto "+contador, estadoProductoI.getNombre()+" no tiene la cantidad que necesita este producto solo cuenta con "+ estadoProductoI.getCantidad());
+						response.put("producto " + contador,
+								estadoProductoI.getNombre()
+										+ " no tiene la cantidad que necesita este producto solo cuenta con "
+										+ estadoProductoI.getCantidad());
 					}
 				}
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
-			ventaReto.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
+			ventaReto.setFecha_venta(LocalDateTime.parse(dtf.format(LocalDateTime.now()), dtf));
 			envioCorreo.enviarCorreo(cliente, ventaReto);
-			
-			
+
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 
 		}
-		
-		
+
 		response.put("mensaje", "la venta se ha registro con exito");
-		
+
 		response.put("venta", ventaReto);
-		
-		
+
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 
 	}
+
 	// http://localhost:8080/apiVenta/factura/id
 	@GetMapping("/factura/{id}")
 	public void generatePDF(@PathVariable Integer id, HttpServletResponse response) {
 		VentaVo venta = ventaService.findById(id);
-		
+
 		response.setContentType("application/pdf");
 		DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:mm:ss");
 		String currentDateTime = dateFormatter.format(new Date());
-		
-		String headerKey="Content-Disposition";
-		String headerValue = "attachment; filename=pdf_"+currentDateTime + ".pdf";
+
+		String headerKey = "Content-Disposition";
+		String headerValue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
 		response.setHeader(headerKey, headerValue);
-		
+
 		pdfService.crearFactura(venta, response);
 	}
 

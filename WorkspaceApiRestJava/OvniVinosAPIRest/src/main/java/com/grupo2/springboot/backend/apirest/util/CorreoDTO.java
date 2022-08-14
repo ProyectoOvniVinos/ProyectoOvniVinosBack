@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CorreoDTO {
-	
-	private List<String> destinatarios;
+
+    private List<String> destinatarios;
     private String titulo;
     private String contenido;
     private List<File> adjuntos;
@@ -47,5 +47,5 @@ public class CorreoDTO {
     public void setAdjuntos(List<File> adjuntos) {
         this.adjuntos = adjuntos;
     }
-	
+
 }

@@ -15,31 +15,33 @@ import com.grupo2.springboot.backend.apirest.util.CorreoDTO;
 import com.grupo2.springboot.backend.apirest.util.EnviarCorreo;
 
 @Service
-public class EnvioCorreoImpl implements IEnviosCorreo{
+public class EnvioCorreoImpl implements IEnviosCorreo {
 
 	@Override
 	public void enviarCorreo(ClienteVo cliente, VentaVo venta) {
-		
+
 		CorreoDTO dto = new CorreoDTO();
-		
+
 		String subject = "Compra ovnivinos";
-		String body = "Hola "+cliente.getNombreCliente()+" "+cliente.getApellidoCliente() +" su compra se realizo con exito \n" + " para descargar su factura ingrese a http://localhost:8080/apiVenta/factura/" + venta.getCodigo_venta(); 
-		//List<File> adjuntos =  Collections.singletonList(new File("PATH_TO_FILE"));
+		String body = "Hola " + cliente.getNombreCliente() + " " + cliente.getApellidoCliente()
+				+ " su compra se realizo con exito \n"
+				+ " para descargar su factura ingrese a http://localhost:8080/apiVenta/factura/"
+				+ venta.getCodigo_venta();
+		// List<File> adjuntos = Collections.singletonList(new File("PATH_TO_FILE"));
 		List<File> adjuntos = null;
 		try {
-			
+
 			dto.getDestinatarios().add(cliente.getCorreoCliente());
 			dto.setContenido(body);
 			dto.setTitulo(subject);
-			if(adjuntos != null && !adjuntos.isEmpty())
+			if (adjuntos != null && !adjuntos.isEmpty())
 				dto.setAdjuntos(adjuntos);
-			
+
 			EnviarCorreo enviarCorreo = new EnviarCorreo(dto);
 			enviarCorreo.start();
 		} catch (Exception e) {
 			System.out.println("hola");
 		}
-		
-	}
 
+	}
 }
