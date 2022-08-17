@@ -102,11 +102,6 @@ public class ClienteRestController {
 		Map<String, Object> response = new HashMap<>();
 		try {
 			System.out.println(cliente);
-			cliente.setCorreoCliente("grajales0@gmail.com");
-			cliente.setNombreCliente("juan");
-			cliente.setApellidoCliente("villa");
-			cliente.setTelefonoCliente("3000");
-			cliente.setPasswordCliente("camilo");
 			clienteNew = clienteService.save(cliente);
 			CarritoClienteVo carrito = new CarritoClienteVo();
 			carrito.setCliente(clienteNew);
