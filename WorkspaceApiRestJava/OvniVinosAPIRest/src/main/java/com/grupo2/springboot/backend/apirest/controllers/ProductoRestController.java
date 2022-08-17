@@ -124,7 +124,7 @@ public class ProductoRestController {
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 	}
 
-	// http://localhost:8080/apiProd/producto/{codigo}
+	// http://localhost:8080/apiProd/producto/estado/{codigo}
 	@PutMapping("/producto/estado/{codigo}")
 	public ResponseEntity<?> updateEstado(@PathVariable int codigo){
 		Map<String,Object> response = new HashMap<>();
