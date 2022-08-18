@@ -1,5 +1,6 @@
 package com.grupo2.springboot.backend.apirest.controllers;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -216,5 +217,56 @@ public class ContabilidadRestController {
 		}
 		return new ResponseEntity<ContabilidadDiariaVo>(contabilidad,HttpStatus.OK);
 	}
+	
+	
+	// http://localhost:8080/apiContabilidad/contabilidadesAnuales/fecha/{term}
+	@GetMapping("/contabilidadesAnuales/fecha/{term}")
+	public ResponseEntity<?> contabilidadesAnualesFecha(@PathVariable String term){
+		List<ContabilidadAnualVo> contabilidades = null;
+		
+		Map<String, Object> response = new HashMap<>();
+		try {
+			contabilidades = contabilidadAnualService.findByFecha(term);
+		}catch(DataAccessException e){
+			response.put("mensaje","error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<List<ContabilidadAnualVo>>(contabilidades,HttpStatus.OK);
+	}
+	
+	// http://localhost:8080/apiContabilidad/contabilidadesMensuales/fecha/{term}
+	@GetMapping("/contabilidadesMensuales/fecha/{term}")
+	public ResponseEntity<?> contabilidadesMensualesFecha(@PathVariable String term){
+		List<ContabilidadMensualVo> contabilidades = null;
+		System.out.println(term);
+		Map<String, Object> response = new HashMap<>();
+		try {
+			contabilidades = contabilidadMensualService.findByFecha(term);
+		}catch(DataAccessException e){
+			response.put("mensaje","error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<List<ContabilidadMensualVo>>(contabilidades,HttpStatus.OK);
+	}
+		
+	// http://localhost:8080/apiContabilidad/contabilidadesDiarias/fecha/{term}
+	@GetMapping("/contabilidadesDiarias/fecha/{term}")
+	public ResponseEntity<?> contabilidadesDiariasFecha(@PathVariable String term){
+		List<ContabilidadDiariaVo> contabilidades = null;
+		
+		Map<String, Object> response = new HashMap<>();
+		try {
+			contabilidades = contabilidadDiariaService.findByFecha(term);
+		}catch(DataAccessException e){
+			response.put("mensaje","error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<List<ContabilidadDiariaVo>>(contabilidades,HttpStatus.OK);
+	}
+	
+	
 	
 }

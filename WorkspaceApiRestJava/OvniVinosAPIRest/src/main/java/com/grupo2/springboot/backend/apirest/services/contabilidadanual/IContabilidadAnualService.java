@@ -20,4 +20,6 @@ public interface IContabilidadAnualService {
 	public ContabilidadAnualVo findById(Integer idContabilidadAn);
 	
 	public Integer findUltima();
+	
+	public List<ContabilidadAnualVo> findByFecha(String term);
 }

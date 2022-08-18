@@ -1,5 +1,6 @@
 package com.grupo2.springboot.backend.apirest.services.contabilidadmensual;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,11 @@ public class ContabilidadMensualServiceImpl implements IContabilidadMensualServi
 	@Transactional(readOnly = true)
 	public Page<ContabilidadMensualVo> findAll(Pageable pageable) {
 		return contabilidadMensualDao.findAll(pageable);
+	}
+
+	@Override
+	public List<ContabilidadMensualVo> findByFecha(String term) {
+		return contabilidadMensualDao.buscarFecha(term);
 	}
 
 }

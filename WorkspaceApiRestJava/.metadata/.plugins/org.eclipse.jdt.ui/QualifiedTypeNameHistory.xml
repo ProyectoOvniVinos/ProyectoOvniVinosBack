@@ -1,2 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="antlr.collections.List"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.ContabilidadMensualVo"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="javax.persistence.Embeddable"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
+    <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
+    <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
+    <fullyQualifiedTypeName name="net.bytebuddy.asm.Advice.This"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="org.aspectj.weaver.NewConstructorTypeMunger"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.ContabilidadDiariaVo"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IContabilidadDiariaSQLDao"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param"/>
+    <fullyQualifiedTypeName name="org.springframework.data.repository.query.Param"/>
+</qualifiedTypeNameHistroy>

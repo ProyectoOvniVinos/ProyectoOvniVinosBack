@@ -152,6 +152,11 @@ public class ContabilidadDiariaServiceImpl implements IContabilidadDiariaService
 
 	}
 
+	@Override
+	public List<ContabilidadDiariaVo> findByFecha(String term) {
+		return contabilidadDiariaDao.buscarFecha(term);
+	}
+
 	
 	
 	
