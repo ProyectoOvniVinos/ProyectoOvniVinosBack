@@ -9,8 +9,8 @@ INDEX VERSION 1.131+C:\Users\SENA\Documents\2278879_2\proyectoFinal\ProyectoOvni
 2018533370.index
 1596424923.index
 1532176201.index
-1351204432.index
 2174456382.index
+1351204432.index
 3662153582.index
 267245901.index
 3217972435.index
@@ -21,9 +21,9 @@ INDEX VERSION 1.131+C:\Users\SENA\Documents\2278879_2\proyectoFinal\ProyectoOvni
 1040198778.index
 470779625.index
 863015796.index
-2603375677.index
-1577604826.index
 1599803017.index
+1577604826.index
+2603375677.index
 1057302185.index
 2277812792.index
 1694808724.index

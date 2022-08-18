@@ -28,6 +28,8 @@ public interface IContabilidadDiariaService {
 	public ContabilidadDiariaVo asignarContabilidadCrearDia(ContabilidadDiariaVo guardada);
 
 	public ContabilidadDiariaVo asignarContabilidadCrearTodo(ContabilidadDiariaVo guardada);
+	
+	public List<ContabilidadDiariaVo> findByFecha(String term);
 
 
 }

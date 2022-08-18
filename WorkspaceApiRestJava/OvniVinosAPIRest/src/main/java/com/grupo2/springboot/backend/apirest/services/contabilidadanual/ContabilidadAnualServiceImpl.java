@@ -51,4 +51,9 @@ public class ContabilidadAnualServiceImpl implements IContabilidadAnualService {
 		return contabilidadAnualDao.findAll(pageable);
 	}
 
+	@Override
+	public List<ContabilidadAnualVo> findByFecha(String term) {
+		return contabilidadAnualDao.buscarFecha(term);
+	}
+
 }
