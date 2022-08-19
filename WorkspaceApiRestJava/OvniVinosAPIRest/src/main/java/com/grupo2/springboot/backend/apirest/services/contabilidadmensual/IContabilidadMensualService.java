@@ -1,5 +1,6 @@
 package com.grupo2.springboot.backend.apirest.services.contabilidadmensual;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -20,4 +21,6 @@ public interface IContabilidadMensualService {
 	public ContabilidadMensualVo findById(Integer idContabilidadAn);
 	
 	public Integer findUltima();
+	
+	public List<ContabilidadMensualVo> findByFecha(String term);
 }
