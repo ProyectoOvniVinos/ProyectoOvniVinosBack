@@ -21,7 +21,7 @@ public class CarritoClienteVo implements Serializable {
 	@Column(name="precio_carrito")
 	private double precioCarrito;
 	
-	@Column(name="cantidad_producto")
+	@Column(name="cantidad_carrito")
 	private int cantidadCarrito;
 	
 	@OneToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)

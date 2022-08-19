@@ -48,4 +48,6 @@ public class CorreoDTO {
         this.adjuntos = adjuntos;
     }
 
+
 }
+

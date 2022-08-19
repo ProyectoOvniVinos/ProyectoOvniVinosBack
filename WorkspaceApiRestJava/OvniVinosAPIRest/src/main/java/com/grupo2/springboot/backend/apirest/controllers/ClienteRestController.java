@@ -97,10 +97,12 @@ public class ClienteRestController {
 	//http://localhost:8080/apiCliente/registro
 	@PostMapping("/registro")
 	public ResponseEntity<?> registro(@RequestBody ClienteVo cliente){
+		System.out.println("KKKKKKKKKKKKK");
 		ClienteVo clienteNew = null;
 		
 		Map<String, Object> response = new HashMap<>();
 		try {
+
 			System.out.println(cliente);
 			clienteNew = clienteService.save(cliente);
 			CarritoClienteVo carrito = new CarritoClienteVo();
