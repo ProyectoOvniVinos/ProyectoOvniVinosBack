@@ -182,12 +182,16 @@ drop schema basededatos_ovni_vinos
 INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
 
 INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('crissis2004@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
+INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('correoClienteOvni@gmail.com', 'cliente', 'cliente', 'cliente', '323', '12345');
+
 http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg
 
-INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('Vino abocado', '13000', '10000', 'delicioso vino dulce', '1');
+
+INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino abocado', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('Vino tinto', '13000', '10000', 'delicioso vino poco dulce', '1');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('nectar de uva', '10000', '7000', 'delicioso zumo de uva sin alcohol', '1');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('nectar de manzana', '12000', '8000', 'delicioso zumo de manzana sin alcohol', '1');
+
 
 
 */

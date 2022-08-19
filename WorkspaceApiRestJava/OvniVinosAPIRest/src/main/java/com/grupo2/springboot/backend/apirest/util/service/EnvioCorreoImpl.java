@@ -19,7 +19,6 @@ public class EnvioCorreoImpl implements IEnviosCorreo {
 
 	@Override
 	public void enviarCorreo(ClienteVo cliente, VentaVo venta) {
-
 		CorreoDTO dto = new CorreoDTO();
 
 		String subject = "Compra ovnivinos";
