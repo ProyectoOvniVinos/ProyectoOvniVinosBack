@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
+<<<<<<< HEAD
     <typeInfo handle="=OvniVinosAPIRest/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.grupo2.springboot.backend.apirest.dao{IContabilidadDiariaDao.java[IContabilidadDiariaDao" modifiers="513" timestamp="1660930081573"/>
+=======
+    <typeInfo handle="=OvniVinosAPIRest/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.grupo2.springboot.backend.apirest.dao{IContabilidadDiariaDao.java[IContabilidadDiariaDao" modifiers="513" timestamp="1660938852000"/>
+>>>>>>> fbfa91f4094b8c4551a44687f0122a8e644a1107
 </typeInfoHistroy>
