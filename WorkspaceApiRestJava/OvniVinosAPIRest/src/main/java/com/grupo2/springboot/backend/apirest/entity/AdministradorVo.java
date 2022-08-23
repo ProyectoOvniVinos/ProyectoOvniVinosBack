@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -39,6 +40,12 @@ public class AdministradorVo implements Serializable {
 
 	@Column(name = "password_admin")
 	private String passwordAdmin;
+	
+	@ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Rol> roles;
+	
+	@Column(name = "estado")
+	private String estado;
 	
 	@JsonIgnoreProperties(value={"administradorCompra","hibernateLazyInitializer","handler"},allowSetters = true)
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="administradorCompra", cascade=CascadeType.ALL)
@@ -100,4 +107,20 @@ public class AdministradorVo implements Serializable {
 		this.comprasAdmin = comprasAdmin;
 	}
 
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
 }
