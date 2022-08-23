@@ -12,4 +12,6 @@ public interface IitemCarritoService {
 	public List<ItemCarritoVo> findByCarrito(Integer term);
 	
 	public void vaciarCarrito(CarritoClienteVo carritoActual);
+	
+	public void deleteNull();
 }

@@ -34,4 +34,9 @@ public class ItemCarritoServiceImpl implements IitemCarritoService{
 		
 	}
 
+	@Override
+	public void deleteNull() {
+		itemCarritoDao.deleteNull();
+	}
+
 }
