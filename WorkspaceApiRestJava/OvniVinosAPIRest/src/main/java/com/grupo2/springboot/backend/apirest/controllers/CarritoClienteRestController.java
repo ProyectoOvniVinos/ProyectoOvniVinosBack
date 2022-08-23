@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -76,6 +78,7 @@ public class CarritoClienteRestController {
 			carritoActual.setCantidadCarrito(carrito.getCantidadCarrito());
 			System.out.println(carrito.getCantidadCarrito());
 			carritoUpdated = carritoService.save(carritoActual);
+			itemCarritoService.deleteNull();
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al actualizar en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -103,6 +106,7 @@ public class CarritoClienteRestController {
 			
 			System.out.println(carrito.getCantidadCarrito());
 			carritoUpdated = carritoService.save(carritoActual);
+			itemCarritoService.deleteNull();
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al actualizar en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -113,4 +117,20 @@ public class CarritoClienteRestController {
 		
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 	}
+	
+	@DeleteMapping("/delete")
+	public ResponseEntity<?> delete(){
+		Map<String, Object> response = new HashMap<>();
+		try {
+			itemCarritoService.deleteNull();
+		} catch (DataAccessException e) {
+			response.put("Error", "se produjo un error");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		response.put("mensaje", "se borro con exito");
+		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
+	}
+	
 }
