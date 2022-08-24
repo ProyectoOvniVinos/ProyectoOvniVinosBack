@@ -46,11 +46,13 @@ public class AdministradorVo implements Serializable {
 	@Column(name = "estado")
 	private String estado;
 	
+
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user")
 	private Usuario user;
 	
+
 	@JsonIgnoreProperties(value={"administradorCompra","hibernateLazyInitializer","handler"},allowSetters = true)
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="administradorCompra", cascade=CascadeType.ALL)
 	private List<CompraVo> comprasAdmin;
@@ -103,20 +105,20 @@ public class AdministradorVo implements Serializable {
 		this.passwordAdmin = passwordAdmin;
 	}
 
-	public List<CompraVo> getComprasAdmin() {
-		return comprasAdmin;
-	}
-
-	public void setComprasAdmin(List<CompraVo> comprasAdmin) {
-		this.comprasAdmin = comprasAdmin;
-	}
-
 	public String getEstado() {
 		return estado;
 	}
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public List<CompraVo> getComprasAdmin() {
+		return comprasAdmin;
+	}
+
+	public void setComprasAdmin(List<CompraVo> comprasAdmin) {
+		this.comprasAdmin = comprasAdmin;
 	}
 
 	public Usuario getUser() {
