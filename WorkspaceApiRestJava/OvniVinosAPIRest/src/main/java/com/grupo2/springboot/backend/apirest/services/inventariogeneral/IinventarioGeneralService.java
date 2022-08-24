@@ -19,4 +19,6 @@ public interface IinventarioGeneralService {
 	public List<InventarioGeneralVo> findAllorden();
 	
 	public List<InventarioGeneralVo> findAllPositvos();
+	
+	public List<InventarioGeneralVo> findAllPositvosFiltrado(String term);
 }

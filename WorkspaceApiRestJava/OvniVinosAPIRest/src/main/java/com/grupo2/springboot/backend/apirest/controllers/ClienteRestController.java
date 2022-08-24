@@ -21,6 +21,8 @@ import com.grupo2.springboot.backend.apirest.entity.CarritoClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
 import com.grupo2.springboot.backend.apirest.services.carritocliente.ICarritoClienteService;
 import com.grupo2.springboot.backend.apirest.services.cliente.IClienteService;
+import com.grupo2.springboot.backend.apirest.util.service.IEnviosCorreo;
+import com.grupo2.springboot.backend.apirest.util.service.RecuperarClass;
 
 
 @CrossOrigin(origins= {"http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089"})
@@ -33,6 +35,10 @@ public class ClienteRestController {
 	
 	@Autowired
 	private ICarritoClienteService carritoService;
+	
+	@Autowired
+	private IEnviosCorreo envioCorreo;
+	
 	// http://localhost:8080/apiCliente/clientes
 	@GetMapping("/clientes")
 	public ResponseEntity<?> clientes(){
@@ -97,16 +103,13 @@ public class ClienteRestController {
 	//http://localhost:8080/apiCliente/registro
 	@PostMapping("/registro")
 	public ResponseEntity<?> registro(@RequestBody ClienteVo cliente){
+		System.out.println("KKKKKKKKKKKKK");
 		ClienteVo clienteNew = null;
 		
 		Map<String, Object> response = new HashMap<>();
 		try {
+
 			System.out.println(cliente);
-			cliente.setCorreoCliente("grajales0@gmail.com");
-			cliente.setNombreCliente("juan");
-			cliente.setApellidoCliente("villa");
-			cliente.setTelefonoCliente("3000");
-			cliente.setPasswordCliente("camilo");
 			clienteNew = clienteService.save(cliente);
 			CarritoClienteVo carrito = new CarritoClienteVo();
 			carrito.setCliente(clienteNew);
@@ -147,5 +150,13 @@ public class ClienteRestController {
 		
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 	}
+	
+	// http://localhost:8080/apiCliente/recuperar/{data}
+	@PostMapping("/recuperar")
+	public void mandarCorreo( @RequestBody RecuperarClass data) {
+		System.out.println("AAAAAAAAAAAAAAAAAAA");
+		envioCorreo.enviarVerificacion( data);
+	}
+	
 	
 }

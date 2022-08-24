@@ -10,6 +10,4 @@ public interface ICarritoClienteService {
 	public Integer findIdByCliente(String correoCliente);
 	
 	public CarritoClienteVo save(CarritoClienteVo carrito);
-	
-	
 }

@@ -71,6 +71,7 @@ public class PdfServiceImpl implements IPdfService{
             			datatable.addCell(contador + "");
             		}
             		else if(x == 1) {
+
             			datatable.addCell(i.getCodigoProducto().getNombreProducto());
             		}
             		else if(x == 2) {
@@ -86,7 +87,6 @@ public class PdfServiceImpl implements IPdfService{
                 }
 			}
             document.add(datatable);
-            
             Paragraph p2 = new Paragraph("                                                                              Total: " + venta.getPrecioVenta(),FontFactory.getFont(FontFactory.TIMES_BOLD, 24));
             p2.setSpacingAfter((float) 40.0);
             document.add(p2);

@@ -3,9 +3,6 @@ package com.grupo2.springboot.backend.apirest.util;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
-
-import java.io.File;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Properties;
@@ -33,7 +30,6 @@ import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.parser.PdfTextExtractor;
 
 public class EnviarCorreo extends Thread implements Serializable {
-
 	private CorreoDTO dto;
 	private String username = "cridamador@misena.edu.co";
 	private String password = "Cristian20045@";
@@ -48,9 +44,14 @@ public class EnviarCorreo extends Thread implements Serializable {
 		props.put("mail.smtp.auth", true);
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.host", "smtp.gmail.com");
-		props.put("mail.smtp.port", "25");
+		props.put("mail.smtp.port", "465");
 		props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-
+		
+		
+		
+		props.put("mail.smtp.socketFactory.port", "465");
+	    props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+	    props.put("mail.smtp.socketFactory.fallback", "false");
 		return Session.getInstance(props, new Authenticator() {
 
 			@Override

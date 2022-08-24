@@ -62,7 +62,7 @@ public class VentaRestController {
 	private IContabilidadAnualService contabilidadAnualService;
 
 	@Autowired
-	private IEnviosCorreo envioCorreo;
+	private IEnviosCorreo envioCorreo; 
 
 	@Autowired
 	private IPdfService pdfService;
@@ -112,6 +112,7 @@ public class VentaRestController {
 		VentaVo ventaReto = null;
 
 		Map<String, Object> response = new HashMap<>();
+		System.out.println(venta.getCorreoCliente().getCorreoCliente());
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 		try {
 			
@@ -144,14 +145,12 @@ public class VentaRestController {
 			ventaReto.setFechaVenta(LocalDateTime.parse(dtf.format(LocalDateTime.now()), dtf));
 			envioCorreo.enviarCorreo(ventaReto.getCorreoCliente(), ventaReto);
 
-
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 
 		}
-
 		response.put("mensaje", "la venta se ha registro con exito");
 
 		response.put("venta", ventaReto);
