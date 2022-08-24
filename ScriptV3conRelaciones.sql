@@ -8,8 +8,9 @@ create table administrador
 	apellido_admin char(30),
 	direccion_admin varchar(100),
 	telefono_admin char(12),
-	password_admin char(20),
-    estado char(1)
+	password_admin varchar(250),
+    estado char(1),
+    user int
 );
 
 create table compra
@@ -30,7 +31,8 @@ create table cliente
 	apellido_cliente char(30),
 	direccion_cliente varchar(100),
 	telefono_cliente char(12),
-	password_cliente char(20)
+	password_cliente varchar(250),
+    user int
 );
 
 create table carrito_cliente
@@ -103,6 +105,13 @@ create table contabilidad_mensual
   fecha date
 );
 
+create table usuario(
+	id int primary key not null auto_increment,
+    username char(30),
+    password varchar(250),
+    rol char(20)
+);
+
 create table contabilidad_anual
 (
 	id_registro_contabilidad_anual int primary key not null auto_increment, 
@@ -138,6 +147,20 @@ ALTER TABLE `basededatos_ovni_vinos`.`carrito_cliente`
 ADD CONSTRAINT `fk_carrito_cliente_cliente`
   FOREIGN KEY (`cliente`)
   REFERENCES `basededatos_ovni_vinos`.`cliente` (`correo_cliente`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `basededatos_ovni_vinos`.`administrador` 
+ADD CONSTRAINT `fk_administrador_id`
+  FOREIGN KEY (`user`)
+  REFERENCES `basededatos_ovni_vinos`.`usuario` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+ALTER TABLE `basededatos_ovni_vinos`.`cliente` 
+ADD CONSTRAINT `fk_cliente_id`
+  FOREIGN KEY (`user`)
+  REFERENCES `basededatos_ovni_vinos`.`usuario` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 

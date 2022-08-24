@@ -30,8 +30,10 @@ public class ClienteVo implements Serializable{
 	@Column(name="password_cliente")
 	private String passwordCliente;
 	
-	@ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Rol> roles;
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user")
+	private Usuario user;
 	
 	@JsonIgnoreProperties(value={"cliente","hibernateLazyInitializer","handler"},allowSetters = true)
 	@OneToOne(fetch=FetchType.LAZY, mappedBy="cliente", cascade=CascadeType.ALL)
@@ -105,12 +107,12 @@ public class ClienteVo implements Serializable{
 		this.ventas = ventas;
 	}
 	
-	public List<Rol> getRoles() {
-		return roles;
+	public Usuario getUser() {
+		return user;
 	}
 
-	public void setRoles(List<Rol> roles) {
-		this.roles = roles;
+	public void setUser(Usuario user) {
+		this.user = user;
 	}
 
 	private static final long serialVersionUID = 1L;

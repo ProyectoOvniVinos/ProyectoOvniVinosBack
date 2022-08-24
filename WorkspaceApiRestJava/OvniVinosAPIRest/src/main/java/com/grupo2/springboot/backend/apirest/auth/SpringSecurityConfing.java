@@ -12,12 +12,14 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.grupo2.springboot.backend.apirest.services.usuarios.UserDetailsServiceImpl;
+
 @EnableGlobalMethodSecurity(securedEnabled = true)
 @Configuration
 public class SpringSecurityConfing extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
-	private UserDetailsService usuarioService;
+	private UserDetailsServiceImpl usuarioService;
 	
 	@Bean
 	public static BCryptPasswordEncoder passwordEncoder() {

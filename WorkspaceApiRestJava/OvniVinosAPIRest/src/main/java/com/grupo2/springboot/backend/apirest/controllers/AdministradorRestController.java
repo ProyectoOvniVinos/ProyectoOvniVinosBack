@@ -60,7 +60,6 @@ public class AdministradorRestController {
 			adminActual.setApellidoAdmin(admin.getApellidoAdmin());
 			adminActual.setDireccionAdmin(admin.getDireccionAdmin());
 			adminActual.setTelefonoAdmin(admin.getTelefonoAdmin());
-			adminActual.setPasswordAdmin(admin.getPasswordAdmin());
 			
 			adminUpdated = adminService.save(adminActual);
 		}catch(DataAccessException e) {

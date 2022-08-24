@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.grupo2.springboot.backend.apirest.entity.CarritoClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
+import com.grupo2.springboot.backend.apirest.entity.Rol;
+import com.grupo2.springboot.backend.apirest.entity.Usuario;
 import com.grupo2.springboot.backend.apirest.services.carritocliente.ICarritoClienteService;
 import com.grupo2.springboot.backend.apirest.services.cliente.IClienteService;
+import com.grupo2.springboot.backend.apirest.services.usuarios.IUsuarioCrud;
 
 
 @CrossOrigin(origins= {"http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089"})
@@ -32,8 +38,16 @@ public class ClienteRestController {
 	private IClienteService clienteService;
 	
 	@Autowired
+	private IUsuarioCrud usuarioCrud;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	
+	@Autowired
 	private ICarritoClienteService carritoService;
 	// http://localhost:8080/apiCliente/clientes
+	
 	@GetMapping("/clientes")
 	public ResponseEntity<?> clientes(){
 		List<ClienteVo> clientes = null; 
@@ -102,13 +116,20 @@ public class ClienteRestController {
 		
 		Map<String, Object> response = new HashMap<>();
 		try {
-
-			System.out.println(cliente);
-			clienteNew = clienteService.save(cliente);
 			CarritoClienteVo carrito = new CarritoClienteVo();
-			carrito.setCliente(clienteNew);
-			clienteNew.setCarrito(carrito);
-			carritoService.save(carrito);
+			cliente.setCarrito(carrito);
+			carrito.setCliente(cliente);
+			String passwordBcrypt = passwordEncoder.encode(cliente.getPasswordCliente());
+			cliente.setPasswordCliente(passwordBcrypt);
+			clienteNew = clienteService.save(cliente);
+			Usuario user = new Usuario();
+			user.setUsername(clienteNew.getCorreoCliente());
+			user.setPassword(clienteNew.getPasswordCliente());
+			user.setRol(Rol.ROLE_CLIENTE);
+			Usuario userNew = usuarioCrud.registrarUsuario(user);
+			clienteNew.setUser(userNew);
+			clienteNew = clienteService.save(clienteNew);
+			
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -131,7 +152,6 @@ public class ClienteRestController {
 			clienteActual.setApellidoCliente(cliente.getApellidoCliente());
 			clienteActual.setDireccionCliente(cliente.getDireccionCliente());
 			clienteActual.setTelefonoCliente(cliente.getTelefonoCliente());
-			clienteActual.setPasswordCliente(cliente.getPasswordCliente());
 			
 			clienteUpdated = clienteService.save(clienteActual);
 		}catch(DataAccessException e) {
