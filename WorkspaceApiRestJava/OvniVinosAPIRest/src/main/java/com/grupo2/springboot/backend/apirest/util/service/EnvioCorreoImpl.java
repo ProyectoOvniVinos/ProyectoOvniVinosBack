@@ -43,4 +43,27 @@ public class EnvioCorreoImpl implements IEnviosCorreo {
 		}
 
 	}
+
+	@Override
+	public void enviarVerificacion(RecuperarClass data) {
+		CorreoDTO dto = new CorreoDTO();
+
+		String subject = "Recuperacion contraseña ovnivinos";
+		String body = "Apreciado cliente  para recuperar su contraseña debe: \n" + 
+				" - Darle click al siguiente enlace " + data.getUrl()+"/recuperacion/" + data.getCorreoEncrypt();
+		List<File> adjuntos = null;
+		try {
+
+			dto.getDestinatarios().add(data.getCorreo());
+			dto.setContenido(body);
+			dto.setTitulo(subject);
+			if (adjuntos != null && !adjuntos.isEmpty())
+				dto.setAdjuntos(adjuntos);
+
+			EnviarCorreo enviarCorreo = new EnviarCorreo(dto);
+			enviarCorreo.start();
+		} catch (Exception e) {
+		}
+		
+	}
 }
