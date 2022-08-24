@@ -66,7 +66,7 @@ ADD COLUMN `cantidad_venta` INT NULL DEFAULT NULL AFTER `fecha_venta`;
 create table producto 
 (
 	codigo_producto int primary key not null auto_increment,
-	nombre_producto char(25),
+	nombre_producto varchar(50),
 	precio_producto double,
 	precio_producto_proveedor double,
 	descripcion_producto varchar(200),
@@ -186,11 +186,19 @@ INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_client
 
 http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg
 
+<<<<<<< HEAD
+INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino santuario', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
+INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino Sano', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
+INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino Anco', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
+INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino Xs', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
+
+=======
 
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino abocado', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('Vino tinto', '13000', '10000', 'delicioso vino poco dulce', '1');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('nectar de uva', '10000', '7000', 'delicioso zumo de uva sin alcohol', '1');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('nectar de manzana', '12000', '8000', 'delicioso zumo de manzana sin alcohol', '1');
+>>>>>>> fbfa91f4094b8c4551a44687f0122a8e644a1107
 
 
 
