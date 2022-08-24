@@ -1,6 +1,6 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
->>>>>>>=e57db7974138c8dea472691bd98dde0531769bd2
+>>>>>>>=dc89a1f74227a1ce70d82999f947ec799d4b6d7a
 content_assist_add_import=true
 content_assist_autoactivation=true
 content_assist_autoactivation_delay=0
@@ -8,11 +8,9 @@ content_assist_autoactivation_triggers_java=.abcdefghijklmn\u00F1opqrstuvwxyzABC
 content_assist_autoactivation_triggers_javadoc=@\#
 content_assist_autoinsert=true
 content_assist_case_sensitivity=false
+content_assist_category_order=org.eclipse.jdt.ui.javaPostfixProposalCategory\:65547\u0000org.eclipse.jdt.ui.spellingProposalCategory\:65545\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\:65540\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\:65539\u0000org.eclipse.jdt.ui.textProposalCategory\:65541\u0000org.eclipse.jdt.ui.javaAllProposalCategory\:65542\u0000org.eclipse.jdt.ui.templateProposalCategory\:2\u0000org.eclipse.jdt.ui.swtProposalCategory\:3\u0000org.eclipse.jdt.ui.javaChainProposalCategory\:4
 content_assist_disable_completion_trigger_chars=false
-<<<<<<< HEAD
-=======
-content_assist_disabled_computers=org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.jdt.ui.javaPostfixProposalCategory\u0000org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaChainProposalCategory\u0000
->>>>>>> dc89a1f74227a1ce70d82999f947ec799d4b6d7a
+content_assist_disabled_computers=org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.jdt.ui.javaChainProposalCategory\u0000org.eclipse.jdt.ui.javaPostfixProposalCategory\u0000
 content_assist_fill_method_arguments=true
 content_assist_guess_method_arguments=true
 content_assist_insert_completion=false
