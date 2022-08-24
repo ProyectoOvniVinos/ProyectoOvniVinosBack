@@ -66,7 +66,7 @@ ADD COLUMN `cantidad_venta` INT NULL DEFAULT NULL AFTER `fecha_venta`;
 create table producto 
 (
 	codigo_producto int primary key not null auto_increment,
-	nombre_producto char(25),
+	nombre_producto varchar(50),
 	precio_producto double,
 	precio_producto_proveedor double,
 	descripcion_producto varchar(200),
