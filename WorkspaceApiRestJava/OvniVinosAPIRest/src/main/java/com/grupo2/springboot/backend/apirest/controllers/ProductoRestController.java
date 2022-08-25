@@ -57,7 +57,7 @@ public class ProductoRestController {
 		return new ResponseEntity<ProductoVo>(producto,HttpStatus.OK);
 	}
 	
-	// http://localhost:8080/apiProd/producto/nombre
+	// http://localhost:8080/apiProd/productoNombre/nombre
 	@GetMapping("/productoNombre/{nombre}")
 	public ResponseEntity<?>  getProductoNombre(@PathVariable String nombre){
 		List<ProductoVo> productos = new ArrayList<ProductoVo>();

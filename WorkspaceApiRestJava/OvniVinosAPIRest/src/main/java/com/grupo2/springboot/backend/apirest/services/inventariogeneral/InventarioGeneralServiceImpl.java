@@ -60,4 +60,9 @@ public class InventarioGeneralServiceImpl implements IinventarioGeneralService{
 		return inventarioGeneralDao.findByCantidadPositivaFiltrado(term);
 	}
 
+	@Override
+	public List<InventarioGeneralVo> findByCantidadPositivaFiltradoNombre(String term) {
+		return inventarioGeneralDao.findByCantidadPositivaFiltradoNombre(term);
+	}
+
 }
