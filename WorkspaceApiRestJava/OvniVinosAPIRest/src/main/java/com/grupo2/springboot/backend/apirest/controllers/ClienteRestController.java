@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.grupo2.springboot.backend.apirest.entity.CarritoClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
-import com.grupo2.springboot.backend.apirest.services.carritocliente.ICarritoClienteService;
 import com.grupo2.springboot.backend.apirest.services.cliente.IClienteService;
 import com.grupo2.springboot.backend.apirest.util.service.IEnviosCorreo;
 import com.grupo2.springboot.backend.apirest.util.service.RecuperarClass;
@@ -32,9 +31,6 @@ public class ClienteRestController {
 	
 	@Autowired
 	private IClienteService clienteService;
-	
-	@Autowired
-	private ICarritoClienteService carritoService;
 	
 	@Autowired
 	private IEnviosCorreo envioCorreo;
@@ -103,18 +99,15 @@ public class ClienteRestController {
 	//http://localhost:8080/apiCliente/registro
 	@PostMapping("/registro")
 	public ResponseEntity<?> registro(@RequestBody ClienteVo cliente){
-		System.out.println("KKKKKKKKKKKKK");
 		ClienteVo clienteNew = null;
 		
 		Map<String, Object> response = new HashMap<>();
 		try {
-
-			System.out.println(cliente);
-			clienteNew = clienteService.save(cliente);
 			CarritoClienteVo carrito = new CarritoClienteVo();
-			carrito.setCliente(clienteNew);
-			clienteNew.setCarrito(carrito);
-			carritoService.save(carrito);
+			cliente.setCarrito(carrito);
+			carrito.setCliente(cliente);
+			clienteNew = clienteService.save(cliente);
+			
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
