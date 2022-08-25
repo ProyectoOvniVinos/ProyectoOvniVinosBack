@@ -1,5 +1,6 @@
 package com.grupo2.springboot.backend.apirest.controllers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -190,4 +191,40 @@ public class InventarioGeneralRestController {
 		return new ResponseEntity<List<InventarioGeneralVo>>(inventarioGeneral,HttpStatus.OK);
 	}
 
+	@GetMapping("/inventarioGeneralCompleto/destacado")
+	public ResponseEntity<?> findDestacado(){
+		InventarioGeneralVo inventarioGeneralIndividual=null;
+		List<Integer> destacado = null; 
+		List<InventarioGeneralVo> inventarioDestacados = new ArrayList<>(); 
+		Map<String, Object> response = new HashMap<>();
+		try {
+			destacado = inventarioGeneralService.findDestacado();
+			System.out.println(destacado.get(0));
+			for(int i=0; i<destacado.size(); i++) {
+
+				inventarioGeneralIndividual = inventarioGeneralService.findByProducto(destacado.get(i));
+				if(inventarioDestacados.size()==3) {
+					break;
+				}else {
+					if(inventarioGeneralIndividual.getCantidadProducto()!=0) {
+						inventarioDestacados.add(inventarioGeneralIndividual);
+					}
+
+					inventarioGeneralIndividual=null;
+				}
+
+			}
+			//inventarioGeneralIndividual = inventarioGeneralService.findByProducto(destacado.get(0));
+			//System.out.println(inventarioGeneralIndividual.toString());
+			System.out.println(inventarioDestacados);
+		
+		}catch(DataAccessException e){
+			response.put("mensaje","error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<List<InventarioGeneralVo>>(inventarioDestacados,HttpStatus.OK);
+	}
+	
 }
