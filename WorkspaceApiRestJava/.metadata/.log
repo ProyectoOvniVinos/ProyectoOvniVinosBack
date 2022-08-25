@@ -11228,6 +11228,7 @@ Binding(CTRL+SHIFT+C,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> cb017fec5f82b4f81b7573542fb7c605340efbcc
 !SESSION 2022-08-24 19:26:00.605 -----------------------------------------------
 eclipse.buildId=4.14.0.202203131612
@@ -11323,6 +11324,8 @@ java.lang.Exception
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 !SESSION 2022-08-24 20:14:09.571 -----------------------------------------------
 eclipse.buildId=4.14.0.202203131612
 java.version=17.0.2
@@ -11336,6 +11339,9 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springfra
 !SUBENTRY 1 org.eclipse.jface 2 0 2022-08-24 20:15:56.834
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11349,7 +11355,11 @@ Binding(CTRL+SHIFT+T,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@291028d7,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@280c3dc0,
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@280c3dc0,
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11369,12 +11379,15 @@ Binding(CTRL+SHIFT+T,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2b4954a4,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 !SUBENTRY 1 org.eclipse.jface 2 0 2022-08-24 19:28:51.289
 =======
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
@@ -11386,6 +11399,9 @@ Binding(CTRL+SHIFT+T,
 !SUBENTRY 1 org.eclipse.jface 2 0 2022-08-24 20:15:56.834
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11399,7 +11415,11 @@ Binding(ALT+SHIFT+R,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2f2f92f,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@f287a4e,
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@f287a4e,
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11419,7 +11439,11 @@ Binding(ALT+SHIFT+R,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@cfc4601,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3879feec,
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3879feec,
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11433,6 +11457,7 @@ Binding(ALT+SHIFT+R,
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -11499,6 +11524,8 @@ org.eclipse.ui.WorkbenchException: El contenido de los elementos debe constar de
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 !ENTRY org.eclipse.ui 4 4 2022-08-24 20:16:30.109
 !MESSAGE Unable to create part
 !STACK 1
@@ -11509,6 +11536,9 @@ org.eclipse.ui.PartInitException: Cannot determine URI for '/OvniVinosAPIRest/sr
 	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:344)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11523,6 +11553,7 @@ org.eclipse.ui.PartInitException: Cannot determine URI for '/OvniVinosAPIRest/sr
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	at org.eclipse.e4.core.internal.di.InjectorImpl.internalInject(InjectorImpl.java:140)
 	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:403)
 	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:344)
@@ -11532,6 +11563,8 @@ org.eclipse.ui.PartInitException: Cannot determine URI for '/OvniVinosAPIRest/sr
 	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:37)
 	at org.eclipse.e4.ui.workbench.renderers.swt.ToolControlRenderer.createWidget(ToolControlRenderer.java:129)
 =======
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
@@ -11566,6 +11599,9 @@ org.eclipse.ui.PartInitException: Cannot determine URI for '/OvniVinosAPIRest/sr
 	at org.eclipse.e4.ui.workbench.renderers.swt.ElementReferenceRenderer.createWidget(ElementReferenceRenderer.java:73)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11581,6 +11617,7 @@ org.eclipse.ui.PartInitException: Cannot determine URI for '/OvniVinosAPIRest/sr
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	at org.eclipse.e4.ui.workbench.renderers.swt.TrimBarRenderer.processContents(TrimBarRenderer.java:109)
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$1.run(PartRenderingEngine.java:544)
@@ -11588,6 +11625,8 @@ org.eclipse.ui.PartInitException: Cannot determine URI for '/OvniVinosAPIRest/sr
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:528)
 	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer.processContents(WBWRenderer.java:680)
 =======
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
@@ -11638,6 +11677,9 @@ org.eclipse.ui.PartInitException: Cannot determine URI for '/OvniVinosAPIRest/sr
 	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer.processContents(WBWRenderer.java:658)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11669,6 +11711,7 @@ org.eclipse.ui.PartInitException: Cannot determine URI for '/OvniVinosAPIRest/sr
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -11766,6 +11809,8 @@ org.xml.sax.SAXParseException; lineNumber: 10; columnNumber: 2; El contenido de 
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 Caused by: org.eclipse.core.runtime.CoreException: Cannot determine URI for '/OvniVinosAPIRest/src/main/resources/application.properties'.
 	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.create(ResourceFileBuffer.java:239)
 	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:115)
@@ -11801,6 +11846,9 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/OvniVinosAPIR
 	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:344)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11815,6 +11863,7 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/OvniVinosAPIR
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	at org.eclipse.e4.core.internal.di.InjectorImpl.internalInject(InjectorImpl.java:140)
 	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:403)
 	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:344)
@@ -11824,6 +11873,8 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/OvniVinosAPIR
 	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:37)
 	at org.eclipse.e4.ui.workbench.renderers.swt.ToolControlRenderer.createWidget(ToolControlRenderer.java:129)
 =======
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
@@ -11858,6 +11909,9 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/OvniVinosAPIR
 	at org.eclipse.e4.ui.workbench.renderers.swt.ElementReferenceRenderer.createWidget(ElementReferenceRenderer.java:73)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11873,6 +11927,7 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/OvniVinosAPIR
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	at org.eclipse.e4.ui.workbench.renderers.swt.TrimBarRenderer.processContents(TrimBarRenderer.java:109)
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$1.run(PartRenderingEngine.java:544)
@@ -11880,6 +11935,8 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/OvniVinosAPIR
 	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:528)
 	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer.processContents(WBWRenderer.java:680)
 =======
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
@@ -11930,6 +11987,9 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/OvniVinosAPIR
 	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer.processContents(WBWRenderer.java:658)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11964,11 +12024,14 @@ org.eclipse.core.runtime.CoreException: Cannot determine URI for '/OvniVinosAPIR
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 !ENTRY org.eclipse.egit.ui 2 0 2022-08-24 19:29:22.904
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\Ivan'. If this is
 =======
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
@@ -11981,6 +12044,9 @@ user global configuration and to define the default location to store repositori
 user global configuration and to define the default location to store repositories: 'C:\Users\Cristian'. If this is
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -11990,6 +12056,7 @@ not correct please set the HOME environment variable and restart Eclipse. Otherw
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -12126,6 +12193,8 @@ java.util.concurrent.TimeoutException
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 !ENTRY org.eclipse.ui 2 2 2022-08-24 20:17:44.964
 !MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
 
@@ -12146,6 +12215,9 @@ java.util.concurrent.TimeoutException
 !SUBENTRY 1 org.eclipse.jface 2 0 2022-08-24 20:19:28.148
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -12159,7 +12231,11 @@ Binding(CTRL+SHIFT+C,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@103d64a0,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2e300294,
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@2e300294,
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -12179,7 +12255,11 @@ Binding(CTRL+SHIFT+C,
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@ba8d7c7,
+=======
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7890189,
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7890189,
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -12193,6 +12273,7 @@ Binding(CTRL+SHIFT+C,
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.textEditorScope,,,system)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -12211,6 +12292,8 @@ java.lang.InterruptedException
 !ENTRY org.eclipse.lsp4e 2 0 2022-08-24 20:27:17.624
 !MESSAGE Javadoc unavailable. Failed to obtain it.
 =======
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
@@ -12423,6 +12506,9 @@ java.util.concurrent.TimeoutException
 !MESSAGE InterruptedException
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
+=======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -12432,6 +12518,7 @@ java.util.concurrent.TimeoutException
 java.lang.InterruptedException
 	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:386)
 	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -12453,6 +12540,8 @@ java.lang.InterruptedException
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
 =======
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
@@ -12507,6 +12596,7 @@ java.lang.InterruptedException
 !MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.HlXGyIYr => OK
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
 =======
 >>>>>>> e4efaa14f850e32477d08c69deea043525828733
@@ -12527,3 +12617,5 @@ java.lang.InterruptedException
 
 !ENTRY org.eclipse.ui 2 2 2022-08-24 22:10:34.160
 !MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+=======
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
