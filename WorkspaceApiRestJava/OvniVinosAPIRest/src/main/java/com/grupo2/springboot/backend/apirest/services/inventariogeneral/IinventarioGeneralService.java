@@ -22,9 +22,8 @@ public interface IinventarioGeneralService {
 	
 	public List<InventarioGeneralVo> findAllPositvosFiltrado(String term);
 	
-<<<<<<< HEAD
 	public List<Integer> findDestacado();
-=======
+
 	public List<InventarioGeneralVo> findByCantidadPositivaFiltradoNombre(String term);
->>>>>>> e4efaa14f850e32477d08c69deea043525828733
+
 }
