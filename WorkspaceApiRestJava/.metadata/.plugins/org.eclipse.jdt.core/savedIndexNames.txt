@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.131+D:\Documentos\Proyecto\Backend\ProyectoOvniVinosBack\WorkspaceApiRestJava\.metadata\.plugins\org.eclipse.jdt.core
 1482073260.index
 3660841282.index
@@ -92,3 +93,9 @@ INDEX VERSION 1.131+D:\Documentos\Proyecto\Backend\ProyectoOvniVinosBack\Workspa
 829791418.index
 3760823469.index
 4179128554.index
+=======
+INDEX VERSION 1.131+C:\Users\Cristian\OneDrive\Documentos\sena\Tareas\trim5\PROYECTOdev\Back\ProyectoOvniVinosBack\WorkspaceApiRestJava\.metadata\.plugins\org.eclipse.jdt.core
+225793664.index
+1865797976.index
+3011447997.index
+>>>>>>> e4efaa14f850e32477d08c69deea043525828733
