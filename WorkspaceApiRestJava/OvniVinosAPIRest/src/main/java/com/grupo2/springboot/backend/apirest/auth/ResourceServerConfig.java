@@ -18,10 +18,12 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
-
+	
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(HttpMethod.GET,"/apiCliente/clientes","/apiAdmin/admins").permitAll()
+		http.authorizeRequests().antMatchers(HttpMethod.GET,"/apiCliente/cliente/**","/apiProd/productoNombre/**","/apiInventario/inventarioGeneralCompleto/positivo","/apiInventario/inventarioGeneralCompleto/positivoFiltrado/**","/apiInventario/inventarioGeneralCompleto/positvoFiltradoNombre/**","/apiInventario/inventarioGeneralCompleto/destacado").permitAll()
+		.antMatchers(HttpMethod.POST,"/apiCliente/registro","/apiCliente/recuperar").permitAll()
+		.antMatchers(HttpMethod.PUT, "/apiCliente/cliente/**").permitAll()
 		/*.antMatchers("/api/clientes/{id}").permitAll()
 		.antMatchers("/api/facturas/**").permitAll()*/
 		/*.antMatchers(HttpMethod.GET, "/api/clientes/{id}").hasAnyRole("USER","ADMIN")

@@ -144,7 +144,7 @@ public class InventarioGeneralRestController {
 	}
 	
 	//http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo
-	@GetMapping("/inventarioGeneralCompleto/positvo")
+	@GetMapping("/inventarioGeneralCompleto/positivo")
 	public ResponseEntity<?>inventarioGeneralPositivo(){
 		List<InventarioGeneralVo> inventarioGeneral = null; 
 		Map<String, Object> response = new HashMap<>();
