@@ -21,4 +21,9 @@ public interface IinventarioGeneralService {
 	public List<InventarioGeneralVo> findAllPositvos();
 	
 	public List<InventarioGeneralVo> findAllPositvosFiltrado(String term);
+	
+	public List<Integer> findDestacado();
+
+	public List<InventarioGeneralVo> findByCantidadPositivaFiltradoNombre(String term);
+
 }
