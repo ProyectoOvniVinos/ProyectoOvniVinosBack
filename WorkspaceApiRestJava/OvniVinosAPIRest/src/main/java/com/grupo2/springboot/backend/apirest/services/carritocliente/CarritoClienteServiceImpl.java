@@ -29,6 +29,7 @@ public class CarritoClienteServiceImpl implements ICarritoClienteService{
 	@Override
 	@Transactional
 	public CarritoClienteVo save(CarritoClienteVo carrito) {
+		System.out.println("2222222222");
 		return carritoDao.save(carrito);
 	}
 

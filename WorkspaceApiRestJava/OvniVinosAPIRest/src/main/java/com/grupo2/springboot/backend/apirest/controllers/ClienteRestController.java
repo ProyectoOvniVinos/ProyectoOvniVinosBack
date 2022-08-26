@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.grupo2.springboot.backend.apirest.entity.CarritoClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
+
 import com.grupo2.springboot.backend.apirest.entity.Rol;
 import com.grupo2.springboot.backend.apirest.entity.Usuario;
 import com.grupo2.springboot.backend.apirest.services.carritocliente.ICarritoClienteService;
+
 import com.grupo2.springboot.backend.apirest.services.cliente.IClienteService;
 
 import com.grupo2.springboot.backend.apirest.services.usuarios.IUsuarioCrud;
@@ -43,6 +45,7 @@ public class ClienteRestController {
 	private IClienteService clienteService;
 	
 	@Autowired
+
 	private IUsuarioCrud usuarioCrud;
 	
 	@Autowired
@@ -53,6 +56,7 @@ public class ClienteRestController {
 	private ICarritoClienteService carritoService;
 	
 	@Autowired
+
 	private IEnviosCorreo envioCorreo;
 	
 	// http://localhost:8080/apiCliente/clientes
@@ -120,7 +124,6 @@ public class ClienteRestController {
 	//http://localhost:8080/apiCliente/registro
 	@PostMapping("/registro")
 	public ResponseEntity<?> registro(@RequestBody ClienteVo cliente){
-		System.out.println("KKKKKKKKKKKKK");
 		ClienteVo clienteNew = null;
 		
 		Map<String, Object> response = new HashMap<>();
@@ -128,6 +131,7 @@ public class ClienteRestController {
 			CarritoClienteVo carrito = new CarritoClienteVo();
 			cliente.setCarrito(carrito);
 			carrito.setCliente(cliente);
+
 			String passwordBcrypt = passwordEncoder.encode(cliente.getPasswordCliente());
 			cliente.setPasswordCliente(passwordBcrypt);
 			clienteNew = clienteService.save(cliente);
