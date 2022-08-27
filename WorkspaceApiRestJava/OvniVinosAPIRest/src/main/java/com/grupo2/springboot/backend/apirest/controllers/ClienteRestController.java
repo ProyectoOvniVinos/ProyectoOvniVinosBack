@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,9 +22,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.grupo2.springboot.backend.apirest.entity.CarritoClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
+
+import com.grupo2.springboot.backend.apirest.entity.Rol;
+import com.grupo2.springboot.backend.apirest.entity.Usuario;
+import com.grupo2.springboot.backend.apirest.services.carritocliente.ICarritoClienteService;
+
 import com.grupo2.springboot.backend.apirest.services.cliente.IClienteService;
+
+import com.grupo2.springboot.backend.apirest.services.usuarios.IUsuarioCrud;
+import com.grupo2.springboot.backend.apirest.services.usuarios.IUsuarioService;
 import com.grupo2.springboot.backend.apirest.util.service.IEnviosCorreo;
 import com.grupo2.springboot.backend.apirest.util.service.RecuperarClass;
+
 
 
 @CrossOrigin(origins= {"http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089"})
@@ -33,6 +45,21 @@ public class ClienteRestController {
 	private IClienteService clienteService;
 	
 	@Autowired
+	private IUsuarioService usuarioService;
+	
+	@Autowired
+
+	private IUsuarioCrud usuarioCrud;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	
+	@Autowired
+	private ICarritoClienteService carritoService;
+	
+	@Autowired
+
 	private IEnviosCorreo envioCorreo;
 	
 	// http://localhost:8080/apiCliente/clientes
@@ -48,7 +75,6 @@ public class ClienteRestController {
 			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		System.out.println(clientes);
 		
 		return new ResponseEntity<List<ClienteVo>>(clientes,HttpStatus.OK);
 	}
@@ -81,7 +107,6 @@ public class ClienteRestController {
 		Map<String,Object>response = new HashMap<>();
 		try {
 			cliente = clienteService.findByNombre(nombre);
-			System.out.println(cliente);
 			if(cliente==null) {
 				response.put("mensaje","no se encontro el cliente");
 				return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
@@ -106,7 +131,17 @@ public class ClienteRestController {
 			CarritoClienteVo carrito = new CarritoClienteVo();
 			cliente.setCarrito(carrito);
 			carrito.setCliente(cliente);
+
+			String passwordBcrypt = passwordEncoder.encode(cliente.getPasswordCliente());
+			cliente.setPasswordCliente(passwordBcrypt);
 			clienteNew = clienteService.save(cliente);
+			Usuario user = new Usuario();
+			user.setUsername(clienteNew.getCorreoCliente());
+			user.setPassword(clienteNew.getPasswordCliente());
+			user.setRol(Rol.ROLE_CLIENTE);
+			Usuario userNew = usuarioCrud.registrarUsuario(user);
+			clienteNew.setUser(userNew);
+			clienteNew = clienteService.save(clienteNew);
 			
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al realizar el insert en la base de datos");
@@ -130,9 +165,13 @@ public class ClienteRestController {
 			clienteActual.setApellidoCliente(cliente.getApellidoCliente());
 			clienteActual.setDireccionCliente(cliente.getDireccionCliente());
 			clienteActual.setTelefonoCliente(cliente.getTelefonoCliente());
-			clienteActual.setPasswordCliente(cliente.getPasswordCliente());
-			
+			String passwordBcrypt = passwordEncoder.encode(cliente.getPasswordCliente());
+			clienteActual.setPasswordCliente(passwordBcrypt);
+			Usuario usuarioActual  = new Usuario();
+			usuarioActual= usuarioService.findByUsername(correo);
 			clienteUpdated = clienteService.save(clienteActual);
+			usuarioActual.setPassword(passwordBcrypt);
+			usuarioService.save(usuarioActual);
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al actualizar en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -147,7 +186,6 @@ public class ClienteRestController {
 	// http://localhost:8080/apiCliente/recuperar/{data}
 	@PostMapping("/recuperar")
 	public void mandarCorreo( @RequestBody RecuperarClass data) {
-		System.out.println("AAAAAAAAAAAAAAAAAAA");
 		envioCorreo.enviarVerificacion( data);
 	}
 	

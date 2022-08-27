@@ -60,7 +60,11 @@ public class InventarioGeneralServiceImpl implements IinventarioGeneralService{
 		return inventarioGeneralDao.findByCantidadPositivaFiltrado(term);
 	}
 
-	@Override
+	public List<Integer> findDestacado() {
+		// TODO Auto-generated method stub
+		return inventarioGeneralDao.findDestacado();
+	}
+
 	public List<InventarioGeneralVo> findByCantidadPositivaFiltradoNombre(String term) {
 		return inventarioGeneralDao.findByCantidadPositivaFiltradoNombre(term);
 	}

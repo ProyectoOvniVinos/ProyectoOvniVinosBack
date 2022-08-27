@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -43,6 +46,13 @@ public class AdministradorVo implements Serializable {
 	@Column(name = "estado")
 	private String estado;
 	
+
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user")
+	private Usuario user;
+	
+
 	@JsonIgnoreProperties(value={"administradorCompra","hibernateLazyInitializer","handler"},allowSetters = true)
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="administradorCompra", cascade=CascadeType.ALL)
 	private List<CompraVo> comprasAdmin;
@@ -111,4 +121,12 @@ public class AdministradorVo implements Serializable {
 		this.comprasAdmin = comprasAdmin;
 	}
 
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
+	
 }
