@@ -29,7 +29,7 @@ create table cliente
 	apellido_cliente char(30),
 	direccion_cliente varchar(100),
 	telefono_cliente char(12),
-	password_cliente char(20)
+	password_cliente VARCHAR(255)
 );
 
 create table carrito_cliente
@@ -178,11 +178,10 @@ ADD CONSTRAINT `fk_item_carrito_carrito`
 /*
 drop schema basededatos_ovni_vinos
 
-
+INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('correoClienteOvni@gmail.com', 'cliente', 'cliente', 'cliente', '323', '12345');
 INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
 
 INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('crissis2004@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
-INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('correoClienteOvni@gmail.com', 'cliente', 'cliente', 'cliente', '323', '12345');
 
 http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg
 

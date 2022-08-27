@@ -28,7 +28,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				"/apiInventario/inventarioGeneralCompleto/positivoFiltrado/**",
 				"/apiInventario/inventarioGeneralCompleto/positvoFiltradoNombre/**",
 				"/apiInventario/inventarioGeneralCompleto/destacado",
-				"/clienteNombre/")
+				"/clienteNombre/",
+				"/apiInventario/inventarioGeneralCompleto/positivo")
 					.permitAll()
 					
 		.antMatchers(HttpMethod.POST,
@@ -89,7 +90,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				"/apiInventario/InvenarioDetallesId/**",
 				"/apiInventario/InvenarioGeneralProducto/**",
 				"/apiInventario/inventarioGeneralCompleto/cantidad",
-				"/apiInventario/inventarioGeneralCompleto/positivo",
 				"/apiInventario/inventarioGeneralCompleto/positvoFiltrado/**",
 				"/apiInventario/inventarioGeneralCompleto/positvoFiltradoNombre/**",
 				"/inventarioGeneralCompleto/destacado",
