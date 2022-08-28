@@ -49,6 +49,9 @@ public class ClienteRestController {
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private IUsuarioService usuarioService;
 
 	@Autowired
 	private ICarritoClienteService carritoService;
@@ -163,6 +166,7 @@ public class ClienteRestController {
 			String passwordBcrypt = passwordEncoder.encode(cliente.getPasswordCliente());
 			clienteActual.setPasswordCliente(passwordBcrypt);
 			Usuario usuarioActual = new Usuario();
+			
 			usuarioActual = usuarioService.findByUsername(correo);
 
 			clienteUpdated = clienteService.save(clienteActual);

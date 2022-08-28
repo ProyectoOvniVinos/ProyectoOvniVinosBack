@@ -18,7 +18,6 @@ import org.springframework.web.filter.CorsFilter;
 @Configuration
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
-<<<<<<< HEAD
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
@@ -36,7 +35,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		.antMatchers(HttpMethod.POST,
 				"/apiCliente/registro",
 				"/apiCliente/recuperar",
-				"/apiProd/producto",
 				"/apiCompra/registro")
 					.permitAll()
 					
@@ -116,14 +114,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				"/apiProd/producto/**",
 				"/apiProd/producto/estado/**")
 					.hasAnyRole("ADMIN")
-=======
-	
-	@Override
-	public void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(HttpMethod.GET,"/apiCliente/cliente/**","/apiAdmin/usuario/**","/apiProd/productoNombre/**","/apiInventario/inventarioGeneralCompleto/positivo","/apiInventario/inventarioGeneralCompleto/positivoFiltrado/**","/apiInventario/inventarioGeneralCompleto/positvoFiltradoNombre/**","/apiInventario/inventarioGeneralCompleto/destacado").permitAll()
-		.antMatchers(HttpMethod.POST,"/apiCliente/registro","/apiCliente/recuperar").permitAll()
-		.antMatchers(HttpMethod.PUT, "/apiCliente/cliente/**").permitAll()
->>>>>>> 9d6a3224f68c2dd9220b7514512cf65e86df1fb9
+
 		/*.antMatchers("/api/clientes/{id}").permitAll()
 		.antMatchers("/api/facturas/**").permitAll()*/
 		/*.antMatchers(HttpMethod.GET, "/api/clientes/{id}").hasAnyRole("USER","ADMIN")

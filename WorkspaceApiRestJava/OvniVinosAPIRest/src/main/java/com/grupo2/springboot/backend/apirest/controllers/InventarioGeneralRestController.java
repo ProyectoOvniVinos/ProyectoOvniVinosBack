@@ -160,7 +160,7 @@ public class InventarioGeneralRestController {
 	}
 	
 	//http://localhost:8080/apiInventario/inventarioGeneralCompleto/positvoFiltrado/{term}
-	@GetMapping("/inventarioGeneralCompleto/positivoFiltrado/{term}")
+	@GetMapping("/inventarioGeneralCompleto/positvoFiltrado/{term}")
 	public ResponseEntity<?>inventarioGeneralPositivoFiltrado(@PathVariable String term){
 		System.out.println("AAAAAAAAAAAAAAAA");
 		List<InventarioGeneralVo> inventarioGeneral = null; 
@@ -200,7 +200,7 @@ public class InventarioGeneralRestController {
 		Map<String, Object> response = new HashMap<>();
 		try {
 			destacado = inventarioGeneralService.findDestacado();
-			System.out.println(destacado.get(0));
+			System.out.println(destacado.size());
 			for(int i=0; i<destacado.size(); i++) {
 
 				inventarioGeneralIndividual = inventarioGeneralService.findByProducto(destacado.get(i));

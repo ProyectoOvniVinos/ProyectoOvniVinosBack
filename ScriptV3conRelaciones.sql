@@ -31,12 +31,8 @@ create table cliente
 	apellido_cliente char(30),
 	direccion_cliente varchar(100),
 	telefono_cliente char(12),
-<<<<<<< HEAD
-	password_cliente VARCHAR(255)
-=======
 	password_cliente varchar(250),
     user int
->>>>>>> 9d6a3224f68c2dd9220b7514512cf65e86df1fb9
 );
 
 create table carrito_cliente
@@ -205,29 +201,14 @@ ADD CONSTRAINT `fk_item_carrito_carrito`
 
 /*
 drop schema basededatos_ovni_vinos
-
-<<<<<<< HEAD
-INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('correoClienteOvni@gmail.com', 'cliente', 'cliente', 'cliente', '323', '12345');
-INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
-=======
-
 INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`, `estado`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345', '1');
->>>>>>> 9d6a3224f68c2dd9220b7514512cf65e86df1fb9
-
 INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('crissis2004@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
-
+INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('correoClienteOvni@gmail.com', 'cliente', 'cliente', 'cliente', '323', '12345');
 http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg
-
-
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino santuario', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino Sano', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino Anco', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino Xs', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
-
-
-
-
-
 */
 
 ALTER TABLE `basededatos_ovni_vinos`.`compra_admin` 
