@@ -52,7 +52,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 					
 		.antMatchers(HttpMethod.POST,
 				"/apiVenta/venta")
-					.hasAnyRole("CLIENTE")
+					.hasAnyRole("CLIENTE","ADMIN")
 		
 		.antMatchers(HttpMethod.PUT,
 				"/apiCliente/cliente/**",
@@ -104,8 +104,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		.antMatchers(HttpMethod.POST,
 				"/apiAdmin/registro",
 				"/apiCompra/registro",
-				"/apiProd/producto",
-				"/apiVenta/venta")
+				"/apiProd/producto")
 					.hasAnyRole("ADMIN")
 		
 		.antMatchers(HttpMethod.PUT,
