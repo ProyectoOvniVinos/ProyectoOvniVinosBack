@@ -12,18 +12,18 @@ import com.grupo2.springboot.backend.apirest.dao.IUsuarioDao;
 import com.grupo2.springboot.backend.apirest.entity.Usuario;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService, IUsuarioService{
-	
+public class UserDetailsServiceImpl implements UserDetailsService, IUsuarioService {
+
 	@Autowired
 	private IUsuarioDao usuarioDao;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		return usuarioDao.findByUsername(username);
 	}
-	
+
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public Usuario findByUsername(String username) {
 		return usuarioDao.findByUsername(username);
 	}

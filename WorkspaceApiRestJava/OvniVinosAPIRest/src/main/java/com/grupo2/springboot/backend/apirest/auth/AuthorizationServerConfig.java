@@ -1,7 +1,5 @@
 package com.grupo2.springboot.backend.apirest.auth;
 
-
-
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,14 +20,14 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter{
-	
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+
 	@Autowired
 	private InfoAdicionalToken infoAdicionalToken;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
+
 	@Autowired
 	@Qualifier("authenticationManager")
 	private AuthenticationManager authenticationManager;
@@ -37,30 +35,30 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 		security.tokenKeyAccess("permitAll()")
-		.checkTokenAccess("isAuthenticated()");
+				.checkTokenAccess("isAuthenticated()");
 	}
 
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 		clients.inMemory().withClient("ovniVinos")
-		.secret(passwordEncoder.encode("12345"))
-		.scopes("read","write")
-		.authorizedGrantTypes("password","refresh_token")
-		.accessTokenValiditySeconds(3600)
-		.refreshTokenValiditySeconds(3600);
+				.secret(passwordEncoder.encode("12345"))
+				.scopes("read", "write")
+				.authorizedGrantTypes("password", "refresh_token")
+				.accessTokenValiditySeconds(3600)
+				.refreshTokenValiditySeconds(3600);
 	}
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
-		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoAdicionalToken,accessTokenConverter()));
-		
+		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoAdicionalToken, accessTokenConverter()));
+
 		endpoints.authenticationManager(authenticationManager)
-		.tokenStore(tokenStore())
-		.accessTokenConverter(accessTokenConverter())
-		.tokenEnhancer(tokenEnhancerChain);
+				.tokenStore(tokenStore())
+				.accessTokenConverter(accessTokenConverter())
+				.tokenEnhancer(tokenEnhancerChain);
 	}
-	
+
 	@Bean
 	public JwtTokenStore tokenStore() {
 		return new JwtTokenStore(accessTokenConverter());
@@ -73,5 +71,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLICA);
 		return jwtAccessTokenConverter;
 	}
-	
+
 }
