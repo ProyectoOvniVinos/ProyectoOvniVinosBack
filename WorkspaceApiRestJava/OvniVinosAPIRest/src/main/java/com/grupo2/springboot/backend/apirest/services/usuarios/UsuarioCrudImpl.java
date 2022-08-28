@@ -16,5 +16,10 @@ public class UsuarioCrudImpl implements IUsuarioCrud{
 	public Usuario registrarUsuario(Usuario usuario) {
 		return usuarioDao.save(usuario);
 	}
+
+	@Override
+	public Usuario findByUsername(String username) {
+		return usuarioDao.findByUsername(username);
+	}
 	
 }

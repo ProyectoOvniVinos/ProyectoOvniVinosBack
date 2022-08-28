@@ -340,3 +340,7 @@ ADD CONSTRAINT `fk_venta_cliente_codigo_venta`
   REFERENCES `basededatos_ovni_vinos`.`venta` (`codigo_venta`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+insert into `basededatos_ovni_vinos`.`usuario` (`username`,`password`, `rol`) values ('cristian@gmail.com','$2a$10$.sbX5U1q5TKubK.hoUHzMeuN2r9dE9Z8eRQrrwMzidnRNIkW3uWua','ROLE_ADMIN');
+INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`, `estado`, `user`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345', '1','1');
+INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('correoclienteovni@gmail.com', 'cliente', 'cliente', 'cliente', '3005208221', '$2a$10$.sbX5U1q5TKubK.hoUHzMeuN2r9dE9Z8eRQrrwMzidnRNIkW3uWua');

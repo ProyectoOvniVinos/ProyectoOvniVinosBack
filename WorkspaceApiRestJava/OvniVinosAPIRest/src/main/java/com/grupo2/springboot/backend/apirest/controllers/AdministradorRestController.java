@@ -167,5 +167,24 @@ public class AdministradorRestController {
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.OK);
 	}
 	
+	@GetMapping("/usuario/{correo}")
+	public ResponseEntity<?>  getUsuario(@PathVariable String correo){
+		Usuario usuario=null;
+		
+		Map<String,Object>response = new HashMap<>();
+		try {
+			usuario = usuarioCrud.findByUsername(correo);
+			if(usuario==null) {
+				response.put("mensaje","no se encontro el usuario");
+				return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		} catch(DataAccessException e) {
+			response.put("mensaje","error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String,Object>>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<Usuario>(usuario,HttpStatus.OK);
+	}
 
 }

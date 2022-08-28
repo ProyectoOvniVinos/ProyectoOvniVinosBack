@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_6VJpgCV_Ee2_L6vR5-V63Q" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_6VJpgSV_Ee2_L6vR5-V63Q" bindingContexts="_6VKSviV_Ee2_L6vR5-V63Q">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ResourceServerConfig.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/auth/ResourceServerConfig.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/auth/ResourceServerConfig.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;InventarioGeneralRestController.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/InventarioGeneralRestController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/InventarioGeneralRestController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor&quot; name=&quot;application.properties&quot; tooltip=&quot;OvniVinosAPIRest/src/main/resources/application.properties&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/resources/application.properties&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.datatools.sqltools.sqlscrapbook.SQLScrapbookEditor&quot; name=&quot;import.sql&quot; tooltip=&quot;OvniVinosAPIRest/src/main/resources/import.sql&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/resources/import.sql&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ResourceServerConfig.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/auth/ResourceServerConfig.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/auth/ResourceServerConfig.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UsuarioCrudImpl.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/services/usuarios/UsuarioCrudImpl.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/services/usuarios/UsuarioCrudImpl.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;IUsuarioCrud.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/services/usuarios/IUsuarioCrud.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/services/usuarios/IUsuarioCrud.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;AdministradorRestController.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/AdministradorRestController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/AdministradorRestController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;InventarioGeneralRestController.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/InventarioGeneralRestController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/InventarioGeneralRestController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ClienteRestController.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/ClienteRestController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/ClienteRestController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ClienteVo.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/entity/ClienteVo.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/entity/ClienteVo.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor&quot; name=&quot;application.properties&quot; tooltip=&quot;OvniVinosAPIRest/src/main/resources/application.properties&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/resources/application.properties&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.datatools.sqltools.sqlscrapbook.SQLScrapbookEditor&quot; name=&quot;import.sql&quot; tooltip=&quot;OvniVinosAPIRest/src/main/resources/import.sql&quot;>&#xD;&#xA;&lt;persistable path=&quot;/OvniVinosAPIRest/src/main/resources/import.sql&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_6VJpgSV_Ee2_L6vR5-V63Q" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_6VJpgiV_Ee2_L6vR5-V63Q" label="%trimmedwindow.label.eclipseSDK" x="0" y="0" width="1024" height="768">
     <persistedState key="coolBarVisible" value="true"/>
@@ -115,6 +115,7 @@
               </children>
               <children xsi:type="basic:PartStack" xmi:id="_6VJpjCV_Ee2_L6vR5-V63Q" elementId="PartStack@13428b9d" containerData="5000" selectedElement="_6VJpjSV_Ee2_L6vR5-V63Q">
                 <tags>active</tags>
+                <tags>noFocus</tags>
                 <children xsi:type="advanced:Placeholder" xmi:id="_6VJpjSV_Ee2_L6vR5-V63Q" elementId="org.springframework.ide.eclipse.boot.dash.views.BootDashView" ref="_6VJswiV_Ee2_L6vR5-V63Q" closeable="true">
                   <tags>View</tags>
                   <tags>categoryTag:Other</tags>
@@ -123,9 +124,7 @@
             </children>
             <children xsi:type="basic:PartSashContainer" xmi:id="_6VJpjiV_Ee2_L6vR5-V63Q" containerData="7500" selectedElement="_6VJplSV_Ee2_L6vR5-V63Q">
               <children xsi:type="basic:PartSashContainer" xmi:id="_6VJpjyV_Ee2_L6vR5-V63Q" containerData="7000" selectedElement="_6VJpkCV_Ee2_L6vR5-V63Q" horizontal="true">
-                <children xsi:type="advanced:Placeholder" xmi:id="_6VJpkCV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.editorss" visible="false" containerData="7000" ref="_6VJr_yV_Ee2_L6vR5-V63Q">
-                  <tags>Minimized</tags>
-                </children>
+                <children xsi:type="advanced:Placeholder" xmi:id="_6VJpkCV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.editorss" containerData="7000" ref="_6VJr_yV_Ee2_L6vR5-V63Q"/>
                 <children xsi:type="basic:PartStack" xmi:id="_6VJpkSV_Ee2_L6vR5-V63Q" elementId="topRight" containerData="3000" selectedElement="_6VJpkiV_Ee2_L6vR5-V63Q">
                   <children xsi:type="advanced:Placeholder" xmi:id="_6VJpkiV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.views.ContentOutline" ref="_6VJsmyV_Ee2_L6vR5-V63Q" closeable="true">
                     <tags>View</tags>
@@ -216,8 +215,14 @@
     <sharedElements xsi:type="basic:Part" xmi:id="_6VJr_SV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.internal.introview" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Welcome" iconURI="platform:/plugin/org.eclipse.ui/icons/full/eview16/defaultview_misc.png" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewClass" value="org.eclipse.ui.internal.ViewIntroAdapterPart"/>
       <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.ui"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view>&#xD;&#xA;&lt;presentation currentPage=&quot;qroot&quot; restore=&quot;true&quot;/>&#xD;&#xA;&lt;standbyPart/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:General</tags>
+      <menus xmi:id="_hlkZQCWeEe2lDd8_vmPKqA" elementId="org.eclipse.ui.internal.introview">
+        <tags>ViewMenu</tags>
+        <tags>menuContribution:menu</tags>
+      </menus>
+      <toolbar xmi:id="_hlkZQSWeEe2lDd8_vmPKqA" elementId="org.eclipse.ui.internal.introview" visible="false"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_6VJr_iV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.cheatsheets.views.CheatSheetView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Cheat Sheets" iconURI="platform:/plugin/org.eclipse.ui.cheatsheets/icons/view16/cheatsheet_view.png" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewClass" value="org.eclipse.ui.internal.cheatsheets.views.CheatSheetView"/>
@@ -226,29 +231,29 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_6VJr_yV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.editorss" selectedElement="_6VJsACV_Ee2_L6vR5-V63Q">
-      <children xsi:type="basic:PartStack" xmi:id="_6VJsACV_Ee2_L6vR5-V63Q" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_6VJsASV_Ee2_L6vR5-V63Q">
+      <children xsi:type="basic:PartStack" xmi:id="_6VJsACV_Ee2_L6vR5-V63Q" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_C0h1cCaEEe2kvvOj--Nksw">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
-        <children xsi:type="basic:Part" xmi:id="_6VJsASV_Ee2_L6vR5-V63Q" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="import.sql" iconURI="platform:/plugin/org.eclipse.datatools.sqltools.sqlscrapbook/images/qrydoc.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.datatools.sqltools.sqlscrapbook.SQLScrapbookEditor&quot; name=&quot;import.sql&quot; partName=&quot;import.sql&quot; title=&quot;import.sql&quot; tooltip=&quot;OvniVinosAPIRest/src/main/resources/import.sql&quot;>&#xD;&#xA;&lt;input connInfoName=&quot;Undefined:::&quot; editorInputType=&quot;SQLScrapbookEditorInput&quot; factoryID=&quot;org.eclipse.datatools.sqltools.internal.sqlscrapbook.editor.SQLScrapbookEditorInputFactory&quot; path=&quot;/OvniVinosAPIRest/src/main/resources/import.sql&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>removeOnHide</tags>
-          <tags>org.eclipse.datatools.sqltools.sqlscrapbook.SQLScrapbookEditor</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_6VJsAiV_Ee2_L6vR5-V63Q" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="application.properties" iconURI="platform:/plugin/org.jboss.tools.common.model.ui/images/xstudio/editors/properties.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor&quot; name=&quot;application.properties&quot; partName=&quot;application.properties&quot; title=&quot;application.properties&quot; tooltip=&quot;OvniVinosAPIRest/src/main/resources/application.properties&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.jboss.tools.common.core.resources.XModelObjectEditorInputFactory&quot; path=&quot;/OvniVinosAPIRest/src/main/resources/application.properties&quot;/>&#xD;&#xA;&lt;/editor>"/>
-          <tags>Editor</tags>
-          <tags>removeOnHide</tags>
-          <tags>org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor</tags>
-        </children>
-        <children xsi:type="basic:Part" xmi:id="_6VJsAyV_Ee2_L6vR5-V63Q" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="ResourceServerConfig.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ResourceServerConfig.java&quot; partName=&quot;ResourceServerConfig.java&quot; title=&quot;ResourceServerConfig.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/auth/ResourceServerConfig.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/auth/ResourceServerConfig.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;704&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1258&quot; selectionTopPixel=&quot;22&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_feVEQCaAEe2kvvOj--Nksw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="AdministradorRestController.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;AdministradorRestController.java&quot; partName=&quot;AdministradorRestController.java&quot; title=&quot;AdministradorRestController.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/AdministradorRestController.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/AdministradorRestController.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;7786&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
         </children>
-        <children xsi:type="basic:Part" xmi:id="_6VJsCCV_Ee2_L6vR5-V63Q" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="InventarioGeneralRestController.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;InventarioGeneralRestController.java&quot; partName=&quot;InventarioGeneralRestController.java&quot; title=&quot;InventarioGeneralRestController.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/InventarioGeneralRestController.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/controllers/InventarioGeneralRestController.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;0&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+        <children xsi:type="basic:Part" xmi:id="_MJAY4CaBEe2kvvOj--Nksw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="UsuarioCrudImpl.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UsuarioCrudImpl.java&quot; partName=&quot;UsuarioCrudImpl.java&quot; title=&quot;UsuarioCrudImpl.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/services/usuarios/UsuarioCrudImpl.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/services/usuarios/UsuarioCrudImpl.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;595&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>removeOnHide</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_NYY9ICaBEe2kvvOj--Nksw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="IUsuarioCrud.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;IUsuarioCrud.java&quot; partName=&quot;IUsuarioCrud.java&quot; title=&quot;IUsuarioCrud.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/services/usuarios/IUsuarioCrud.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/services/usuarios/IUsuarioCrud.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;268&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <tags>Editor</tags>
+          <tags>removeOnHide</tags>
+          <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
+        </children>
+        <children xsi:type="basic:Part" xmi:id="_C0h1cCaEEe2kvvOj--Nksw" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="ResourceServerConfig.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ResourceServerConfig.java&quot; partName=&quot;ResourceServerConfig.java&quot; title=&quot;ResourceServerConfig.java&quot; tooltip=&quot;OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/auth/ResourceServerConfig.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/OvniVinosAPIRest/src/main/java/com/grupo2/springboot/backend/apirest/auth/ResourceServerConfig.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1555&quot; selectionTopPixel=&quot;391&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
@@ -306,8 +311,14 @@
     <sharedElements xsi:type="basic:Part" xmi:id="_6VJsgCV_Ee2_L6vR5-V63Q" elementId="org.eclipse.wst.server.ui.ServersView" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Servers" iconURI="platform:/plugin/org.eclipse.wst.server.ui/icons/cview16/servers_view.gif" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewClass" value="org.eclipse.wst.server.ui.internal.cnf.ServersView2"/>
       <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.wst.server.ui"/>
+      <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view CommonNavigator.LINKING_ENABLED=&quot;0&quot;>&#xD;&#xA;&lt;lastRecentlyUsedFilters/>&#xD;&#xA;&lt;/view>"/>
       <tags>View</tags>
       <tags>categoryTag:Server</tags>
+      <menus xmi:id="_kDdYACWeEe2lDd8_vmPKqA" elementId="org.eclipse.wst.server.ui.ServersView">
+        <tags>ViewMenu</tags>
+        <tags>menuContribution:menu</tags>
+      </menus>
+      <toolbar xmi:id="_kDdYASWeEe2lDd8_vmPKqA" elementId="org.eclipse.wst.server.ui.ServersView" visible="false"/>
     </sharedElements>
     <sharedElements xsi:type="basic:Part" xmi:id="_6VJsgSV_Ee2_L6vR5-V63Q" elementId="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView" label="Data Source Explorer" iconURI="platform:/plugin/org.eclipse.datatools.connectivity.ui.dse/icons/full/cview16/enterprise_explorer.gif" tooltip="" closeable="true">
       <persistedState key="originalCompatibilityViewClass" value="org.eclipse.datatools.connectivity.ui.dse.views.DataSourceExplorerView"/>
@@ -408,7 +419,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_6VJs7SV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_4hX6kCWGEe2Y4N4jHi4BKw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_6VMIhSV_Ee2_L6vR5-V63Q"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_lRgfQCY9Ee2kvvOj--Nksw" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_6VMIhSV_Ee2_L6vR5-V63Q"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_6VJs-iV_Ee2_L6vR5-V63Q" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -421,7 +432,7 @@
         <tags>toolbarSeparator</tags>
         <children xsi:type="menu:ToolBarSeparator" xmi:id="_6VJtASV_Ee2_L6vR5-V63Q" elementId="additions" toBeRendered="false"/>
       </children>
-      <children xsi:type="menu:ToolBar" xmi:id="_6VJtVyV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.edit.text.actionSet.presentation" visible="false">
+      <children xsi:type="menu:ToolBar" xmi:id="_6VJtVyV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.edit.text.actionSet.presentation">
         <tags>Draggable</tags>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_6VJtYiV_Ee2_L6vR5-V63Q" elementId="org.eclipse.debug.ui.launchActionSet">
@@ -448,10 +459,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_6VJtgSV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_4hZIsiWGEe2Y4N4jHi4BKw" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_6VMIIyV_Ee2_L6vR5-V63Q"/>
-      </children>
-      <children xsi:type="menu:ToolBar" xmi:id="_6VJtjCV_Ee2_L6vR5-V63Q" elementId="org.jboss.tools.common.propertieseditor.PropertiesCompoundEditor" visible="false">
-        <tags>Draggable</tags>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_lRlXwyY9Ee2kvvOj--Nksw" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" enabled="false" type="Check" command="_6VMIIyV_Ee2_L6vR5-V63Q"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_6VJtjyV_Ee2_L6vR5-V63Q" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -485,9 +493,14 @@
         <tags>Draggable</tags>
       </children>
     </trimBars>
-    <trimBars xmi:id="_6VJtsyV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.trim.vertical1" contributorURI="platform:/plugin/org.eclipse.platform" side="Left"/>
-    <trimBars xmi:id="_6VJttCV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.trim.vertical2" contributorURI="platform:/plugin/org.eclipse.platform" side="Right">
-      <children xsi:type="menu:ToolControl" xmi:id="_werV0CWOEe2Y4N4jHi4BKw" elementId="org.eclipse.ui.editorss(IDEWindow).(org.eclipse.jst.j2ee.J2EEPerspective)" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
+    <trimBars xmi:id="_6VJtsyV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.trim.vertical1" contributorURI="platform:/plugin/org.eclipse.platform" toBeRendered="false" side="Left">
+      <children xsi:type="menu:ToolControl" xmi:id="_hxShECWeEe2lDd8_vmPKqA" elementId="org.eclipse.ui.ide.perspectivestack(minimized)" toBeRendered="false" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
+        <tags>TrimStack</tags>
+        <tags>Draggable</tags>
+      </children>
+    </trimBars>
+    <trimBars xmi:id="_6VJttCV_Ee2_L6vR5-V63Q" elementId="org.eclipse.ui.trim.vertical2" contributorURI="platform:/plugin/org.eclipse.platform" toBeRendered="false" side="Right">
+      <children xsi:type="menu:ToolControl" xmi:id="_werV0CWOEe2Y4N4jHi4BKw" elementId="org.eclipse.ui.editorss(IDEWindow).(org.eclipse.jst.j2ee.J2EEPerspective)" toBeRendered="false" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.TrimStack">
         <tags>TrimStack</tags>
         <tags>Draggable</tags>
       </children>
