@@ -1,29 +1,5 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>>=e2efc4aef505aa7116934a90d779390f32c45ed6
+>>>>>>>=e4efaa14f850e32477d08c69deea043525828733
 eclipse.preferences.version=1
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1661309858505" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1661309858505" name\="jre" path\="C\:\\sts-4.14.0.RELEASE\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
-=======
->>>>>>>=dc89a1f74227a1ce70d82999f947ec799d4b6d7a
-eclipse.preferences.version=1
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1661390224976" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1660669825474" name\="jdk-17.0.1" path\="C\:\\Program Files\\Java\\jdk-17.0.1"/>\r\n        <vm id\="1661390224976" javadocURL\="https\://docs.oracle.com/en/java/javase/17/docs/api/" name\="jre" path\="C\:\\Users\\Cristian\\OneDrive\\Documentos\\sena\\Tareas\\trim5\\java\\spring\\sts-4.14.0.RELEASE\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
->>>>>>> e4efaa14f850e32477d08c69deea043525828733
-=======
->>>>>>>=dc89a1f74227a1ce70d82999f947ec799d4b6d7a
-eclipse.preferences.version=1
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1661390224976" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1660669825474" name\="jdk-17.0.1" path\="C\:\\Program Files\\Java\\jdk-17.0.1"/>\r\n        <vm id\="1661390224976" javadocURL\="https\://docs.oracle.com/en/java/javase/17/docs/api/" name\="jre" path\="C\:\\Users\\Cristian\\OneDrive\\Documentos\\sena\\Tareas\\trim5\\java\\spring\\sts-4.14.0.RELEASE\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
->>>>>>> e4efaa14f850e32477d08c69deea043525828733
-=======
->>>>>>>=dc89a1f74227a1ce70d82999f947ec799d4b6d7a
-eclipse.preferences.version=1
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1661390224976" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1660669825474" name\="jdk-17.0.1" path\="C\:\\Program Files\\Java\\jdk-17.0.1"/>\r\n        <vm id\="1661390224976" javadocURL\="https\://docs.oracle.com/en/java/javase/17/docs/api/" name\="jre" path\="C\:\\Users\\Cristian\\OneDrive\\Documentos\\sena\\Tareas\\trim5\\java\\spring\\sts-4.14.0.RELEASE\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
->>>>>>> e4efaa14f850e32477d08c69deea043525828733
-=======
->>>>>>>=dc89a1f74227a1ce70d82999f947ec799d4b6d7a
-eclipse.preferences.version=1
-org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1661390224976" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1660669825474" name\="jdk-17.0.1" path\="C\:\\Program Files\\Java\\jdk-17.0.1"/>\r\n        <vm id\="1661390224976" javadocURL\="https\://docs.oracle.com/en/java/javase/17/docs/api/" name\="jre" path\="C\:\\Users\\Cristian\\OneDrive\\Documentos\\sena\\Tareas\\trim5\\java\\spring\\sts-4.14.0.RELEASE\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
->>>>>>> e4efaa14f850e32477d08c69deea043525828733
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1660669825474" defaultVMConnector\="">\r\n    <vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n        <vm id\="1660669825474" name\="jdk-17.0.1" path\="C\:\\Program Files\\Java\\jdk-17.0.1"/>\r\n        <vm id\="1661390224976" name\="jre" path\="C\:\\Users\\Cristian\\OneDrive\\Documentos\\sena\\Tareas\\trim5\\java\\spring\\sts-4.14.0.RELEASE\\plugins\\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\\jre"/>\r\n    </vmType>\r\n</vmSettings>\r\n
