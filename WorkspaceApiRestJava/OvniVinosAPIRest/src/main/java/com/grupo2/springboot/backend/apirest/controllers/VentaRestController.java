@@ -108,11 +108,11 @@ public class VentaRestController {
 	// http://localhost:8080/apiVenta/venta
 	@PostMapping("/venta")
 	public ResponseEntity<?> create(@RequestBody VentaVo venta) {
+		System.out.println("AAAAAAAAAA");
 		VentaVo ventaNew = null;
 		VentaVo ventaReto = null;
 
 		Map<String, Object> response = new HashMap<>();
-		System.out.println(venta.getCorreoCliente().getCorreoCliente());
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 		try {
 			

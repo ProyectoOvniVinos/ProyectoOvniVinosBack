@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
+<<<<<<< HEAD
     <fullyQualifiedTypeName name="antlr.collections.List"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.ContabilidadMensualVo"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
@@ -54,4 +55,10 @@
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.InventarioGeneralVo"/>
 >>>>>>> 74f5ae146d2d5b44e3111b560746282ab95fd37d
+=======
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.usuarios.IUsuarioCrud"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.Usuario"/>
+>>>>>>> e49d401b3507bd7715aedef3dd1a8964cca9797b
 </qualifiedTypeNameHistroy>

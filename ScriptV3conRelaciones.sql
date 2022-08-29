@@ -8,7 +8,9 @@ create table administrador
 	apellido_admin char(30),
 	direccion_admin varchar(100),
 	telefono_admin char(12),
-	password_admin char(20)
+	password_admin varchar(250),
+    estado char(1),
+    user int
 );
 
 create table compra
@@ -29,7 +31,8 @@ create table cliente
 	apellido_cliente char(30),
 	direccion_cliente varchar(100),
 	telefono_cliente char(12),
-	password_cliente char(20)
+	password_cliente varchar(250),
+    user int
 );
 
 create table carrito_cliente
@@ -102,6 +105,13 @@ create table contabilidad_mensual
   fecha date
 );
 
+create table usuario(
+	id int primary key not null auto_increment,
+    username char(30),
+    password varchar(250),
+    rol char(20)
+);
+
 create table contabilidad_anual
 (
 	id_registro_contabilidad_anual int primary key not null auto_increment, 
@@ -137,6 +147,20 @@ ALTER TABLE `basededatos_ovni_vinos`.`carrito_cliente`
 ADD CONSTRAINT `fk_carrito_cliente_cliente`
   FOREIGN KEY (`cliente`)
   REFERENCES `basededatos_ovni_vinos`.`cliente` (`correo_cliente`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `basededatos_ovni_vinos`.`administrador` 
+ADD CONSTRAINT `fk_administrador_id`
+  FOREIGN KEY (`user`)
+  REFERENCES `basededatos_ovni_vinos`.`usuario` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+ALTER TABLE `basededatos_ovni_vinos`.`cliente` 
+ADD CONSTRAINT `fk_cliente_id`
+  FOREIGN KEY (`user`)
+  REFERENCES `basededatos_ovni_vinos`.`usuario` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
@@ -177,31 +201,14 @@ ADD CONSTRAINT `fk_item_carrito_carrito`
 
 /*
 drop schema basededatos_ovni_vinos
-
-
-INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
-
+INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`, `estado`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345', '1');
 INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('crissis2004@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345');
 INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('correoClienteOvni@gmail.com', 'cliente', 'cliente', 'cliente', '323', '12345');
-
 http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg
-
-<<<<<<< HEAD
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino santuario', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino Sano', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino Anco', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
 INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino Xs', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
-
-=======
-
-INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`,`foto_producto`) VALUES ('Vino abocado', '13000', '10000', 'delicioso vino dulce', '1','http://res.cloudinary.com/dqbrhsn8x/image/upload/v1660433864/images_ovnivinos/efiguf1otkgvnvknomtg.jpg');
-INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('Vino tinto', '13000', '10000', 'delicioso vino poco dulce', '1');
-INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('nectar de uva', '10000', '7000', 'delicioso zumo de uva sin alcohol', '1');
-INSERT INTO `basededatos_ovni_vinos`.`producto` (`nombre_producto`, `precio_producto`, `precio_producto_proveedor`, `descripcion_producto`, `estado`) VALUES ('nectar de manzana', '12000', '8000', 'delicioso zumo de manzana sin alcohol', '1');
->>>>>>> fbfa91f4094b8c4551a44687f0122a8e644a1107
-
-
-
 */
 
 ALTER TABLE `basededatos_ovni_vinos`.`compra_admin` 
@@ -322,3 +329,7 @@ ADD CONSTRAINT `fk_venta_cliente_codigo_venta`
   REFERENCES `basededatos_ovni_vinos`.`venta` (`codigo_venta`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+insert into `basededatos_ovni_vinos`.`usuario` (`username`,`password`, `rol`) values ('cristian@gmail.com','$2a$10$.sbX5U1q5TKubK.hoUHzMeuN2r9dE9Z8eRQrrwMzidnRNIkW3uWua','ROLE_ADMIN');
+INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`, `estado`, `user`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345', '1','1');
+INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('correoclienteovni@gmail.com', 'cliente', 'cliente', 'cliente', '3005208221', '$2a$10$.sbX5U1q5TKubK.hoUHzMeuN2r9dE9Z8eRQrrwMzidnRNIkW3uWua');

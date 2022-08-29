@@ -36,35 +36,13 @@
 		<item value="org.sonatype.m2e.buildhelper.feature:0.15.0.201207090124"/>
 		<item value="org.sonatype.m2e.mavenarchiver.feature:0.17.5.202002191804"/>
 	</list>
-	<section name="ChooseWorkspaceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="585"/>
-		<item key="DIALOG_Y_ORIGIN" value="274"/>
-	</section>
 	<section name="SmartImportWizard">
 		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
 		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
-<<<<<<< HEAD
-			<item value="D:\Documentos\Proyecto\Backend\ProyectoOvniVinosBack\WorkspaceApiRestJava\OvniVinosAPIRest"/>
-=======
-			<item value="C:\Users\SENA\Documents\ivan Daniel HIncapie S\ProyectoOvniVinos\ProyectoOvniVinosBack\ProyectoOvniVinosBack\WorkspaceApiRestJava\OvniVinosAPIRest"/>
->>>>>>> cb017fec5f82b4f81b7573542fb7c605340efbcc
 			<item value="C:\Users\lenovo\Desktop\jScrip\proyectoFinal\ProyectoOvniVinosBack\WorkspaceApiRestJava\OvniVinosAPIRest"/>
-			<item value="C:\Users\SENA\Documents\2278879_2\workSpace\spring-boot-backend-apirest"/>
-			<item value="C:\Users\SENA\Documents\CristianAmadorADSI2\6trimestre\Proyecto\ProyectoOvniVinosBack\WorkspaceApiRestJava"/>
-			<item value="C:\Users\SENA\Documents\2278879_2\proyectoFinal\ProyectoOvniVinosBack\WorkspaceApiRestJava\OvniVinosAPIRest"/>
-			<item value="C:\Users\Cristian\OneDrive\Documentos\sena\Tareas\trim5\PROYECTOdev\Back\ProyectoOvniVinosBack\WorkspaceApiRestJava"/>
-		</list>
-	</section>
-	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jdt.ui.wizards.JavaProjectWizard"/>
-		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-		</list>
-	</section>
-	<section name="WORKBENCH_SETTINGS">
-		<list key="ENABLED_TRANSFERS">
 		</list>
 	</section>
 </section>

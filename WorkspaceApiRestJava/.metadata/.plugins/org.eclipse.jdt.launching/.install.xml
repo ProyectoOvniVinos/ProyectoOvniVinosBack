@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dirs>
+<<<<<<< HEAD
     <entry loc="C:\Program Files\Java\jdk-17.0.1" stamp="1632764949000"/>
     <entry loc="C:\sts-4.14.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208" stamp="1656649763183"/>
     <entry loc="C:\sts-4.14.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\jre" stamp="1656649761628"/>
+=======
+    <entry loc="C:\Users\Cristian\OneDrive\Documentos\sena\Tareas\trim5\java\spring\sts-4.14.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\jre" stamp="1652982679135"/>
+    <entry loc="C:\Users\Cristian\OneDrive\Documentos\sena\Tareas\trim5\java\spring\sts-4.14.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208" stamp="1652982679683"/>
+>>>>>>> e49d401b3507bd7715aedef3dd1a8964cca9797b
 </dirs>

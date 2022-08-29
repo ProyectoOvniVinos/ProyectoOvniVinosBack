@@ -20,7 +20,6 @@ public interface IInventarioGeneralDao extends CrudRepository<InventarioGeneralV
 	
 	@Query("select inventario from InventarioGeneralVo inventario where inventario.cantidadProducto > 0 and inventario.codigoProducto.estado = 1 and  inventario.codigoProducto.descripcionProducto like %?1%")
 	public List<InventarioGeneralVo> findByCantidadPositivaFiltrado(String term);
-	
 
 	@Query(value="SELECT producto.codigo_producto, SUM(venta_cliente.cantidad_producto) as cantidad FROM venta_cliente JOIN producto ON venta_cliente.codigo_producto = producto.codigo_producto GROUP BY producto.codigo_producto ORDER BY SUM(venta_cliente.cantidad_producto) DESC LIMIT 10;", nativeQuery = true)
 	public List<Integer> findDestacado();
