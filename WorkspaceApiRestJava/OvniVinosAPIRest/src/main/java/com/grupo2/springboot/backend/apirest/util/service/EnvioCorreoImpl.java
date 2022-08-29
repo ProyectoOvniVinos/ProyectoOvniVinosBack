@@ -50,7 +50,7 @@ public class EnvioCorreoImpl implements IEnviosCorreo {
 
 		String subject = "Recuperacion contraseña ovnivinos";
 		String body = "Apreciado cliente  para recuperar su contraseña debe: \n" + 
-				" - Darle click al siguiente enlace " + data.getUrl()+" /recuperacion/" + data.getCorreoEncrypt();
+				" - Darle click al siguiente enlace " + data.getUrl()+"/recuperacion/" + data.getCorreoEncrypt();
 
 		List<File> adjuntos = null;
 		try {
