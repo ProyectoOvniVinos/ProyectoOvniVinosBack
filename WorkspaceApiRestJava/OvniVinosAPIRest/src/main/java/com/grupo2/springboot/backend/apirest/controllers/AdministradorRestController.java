@@ -28,6 +28,7 @@ import com.grupo2.springboot.backend.apirest.entity.Rol;
 import com.grupo2.springboot.backend.apirest.entity.Usuario;
 import com.grupo2.springboot.backend.apirest.services.administrador.IAdministradorService;
 import com.grupo2.springboot.backend.apirest.services.usuarios.IUsuarioCrud;
+import com.grupo2.springboot.backend.apirest.services.usuarios.IUsuarioService;
 
 @CrossOrigin(origins= {"http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089"})
 @RestController
@@ -42,6 +43,9 @@ public class AdministradorRestController {
 	
 	@Autowired
 	private IUsuarioCrud usuarioCrud;
+	
+	@Autowired
+	private IUsuarioService usuarioService;
 	
 	@GetMapping("/admins")
 	public ResponseEntity<?> admins(){
@@ -126,7 +130,15 @@ public class AdministradorRestController {
 			adminActual.setDireccionAdmin(admin.getDireccionAdmin());
 			adminActual.setTelefonoAdmin(admin.getTelefonoAdmin());
 			
+			String passwordBcrypt = passwordEncoder.encode(admin.getPasswordAdmin());
+			adminActual.setPasswordAdmin(passwordBcrypt);
+			Usuario usuarioActual = new Usuario();
+			
+			usuarioActual = usuarioService.findByUsername(correo);
+			
 			adminUpdated = adminService.save(adminActual);
+			usuarioActual.setPassword(passwordBcrypt);
+			usuarioService.save(usuarioActual);
 		}catch(DataAccessException e) {
 			response.put("mensaje","Error al actualizar en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -186,5 +198,6 @@ public class AdministradorRestController {
 		
 		return new ResponseEntity<Usuario>(usuario,HttpStatus.OK);
 	}
+
 
 }
