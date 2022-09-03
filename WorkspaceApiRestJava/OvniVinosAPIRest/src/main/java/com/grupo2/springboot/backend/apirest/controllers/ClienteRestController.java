@@ -44,14 +44,14 @@ public class ClienteRestController {
 	private IClienteService clienteService;
 
 	@Autowired
+	private IUsuarioService usuarioService;
+	
+	@Autowired
 
 	private IUsuarioCrud usuarioCrud;
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
-	@Autowired
-	private IUsuarioService usuarioService;
 
 	@Autowired
 	private ICarritoClienteService carritoService;
@@ -61,7 +61,6 @@ public class ClienteRestController {
 	private IEnviosCorreo envioCorreo;
 
 	// http://localhost:8080/apiCliente/clientes
-
 	@GetMapping("/clientes")
 	public ResponseEntity<?> clientes() {
 		List<ClienteVo> clientes = null;
@@ -105,6 +104,7 @@ public class ClienteRestController {
 		Map<String, Object> response = new HashMap<>();
 		try {
 			cliente = clienteService.findByNombre(nombre);
+
 			if (cliente == null) {
 				response.put("mensaje", "no se encontro el cliente");
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -187,6 +187,24 @@ public class ClienteRestController {
 	@PostMapping("/recuperar")
 	public void mandarCorreo(@RequestBody RecuperarClass data) {
 		envioCorreo.enviarVerificacion(data);
+	}
+	
+	@GetMapping("/ayuda/{email}/{problema}/{descripcion}")
+	public ResponseEntity<?> envioAyuda(@PathVariable String email,@PathVariable String problema, @PathVariable String descripcion ){
+		Map<String, Object> response = new HashMap<>();
+		String status= "";
+		try {
+			envioCorreo.enviarAyuda(email,problema,descripcion);
+		}catch(DataAccessException e) {
+			response.put("status", "Error");
+			response.put("mensaje", "No se le ha podido enviar el correo al administrador, favor intente mas tarde.");
+
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+		}
+		response.put("status", "Enviado");
+		response.put("mensaje", "Se le notifico al administrador el cual le enviara un correo pronto.");
+
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 
 }

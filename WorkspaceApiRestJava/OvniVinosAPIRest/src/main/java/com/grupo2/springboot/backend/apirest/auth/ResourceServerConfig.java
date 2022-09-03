@@ -25,16 +25,18 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				"/apiCliente/cliente/**",
 				"/apiProd/productoNombre/**",
 				"/apiInventario/inventarioGeneralCompleto/positivo",
-				"/apiInventario/inventarioGeneralCompleto/positivoFiltrado/**",
+				"/apiInventario/inventarioGeneralCompleto/positvoFiltrado/**",
 				"/apiInventario/inventarioGeneralCompleto/positvoFiltradoNombre/**",
 				"/apiInventario/inventarioGeneralCompleto/destacado",
 				"/clienteNombre/",
-				"/apiInventario/inventarioGeneralCompleto/positivo")
+				"/apiInventario/inventarioGeneralCompleto/positivo",
+				"/apiCliente/ayuda/**")
 					.permitAll()
 					
 		.antMatchers(HttpMethod.POST,
 				"/apiCliente/registro",
 				"/apiCliente/recuperar",
+				"/apiProd/producto",
 				"/apiCompra/registro")
 					.permitAll()
 					
@@ -43,7 +45,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 					.permitAll()
 					
 		.antMatchers(HttpMethod.GET,
-				"/apiCliente/cliente/**",
 				"/apiCarrito/carrito/**",
 				"/apiVenta/ventas",
 				"/apiVenta/venta/**",
@@ -51,11 +52,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 					.hasAnyRole("CLIENTE")
 					
 		.antMatchers(HttpMethod.POST,
-				"/apiVenta/venta")
+				"/apiVenta/venta/**")
 					.hasAnyRole("CLIENTE","ADMIN")
 		
 		.antMatchers(HttpMethod.PUT,
-				"/apiCliente/cliente/**",
 				"/apiCarrito/carrito/**",
 				"/apiCarrito/VaciarCarrito/**")
 					.hasAnyRole("CLIENTE")
@@ -89,7 +89,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				"/apiInventario/InvenarioDetallesId/**",
 				"/apiInventario/InvenarioGeneralProducto/**",
 				"/apiInventario/inventarioGeneralCompleto/cantidad",
-				"/apiInventario/inventarioGeneralCompleto/positvoFiltrado/**",
 				"/apiInventario/inventarioGeneralCompleto/positvoFiltradoNombre/**",
 				"/inventarioGeneralCompleto/destacado",
 				"/apiProd/productos",
@@ -113,7 +112,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				"/apiProd/producto/**",
 				"/apiProd/producto/estado/**")
 					.hasAnyRole("ADMIN")
-
 		/*.antMatchers("/api/clientes/{id}").permitAll()
 		.antMatchers("/api/facturas/**").permitAll()*/
 		/*.antMatchers(HttpMethod.GET, "/api/clientes/{id}").hasAnyRole("USER","ADMIN")

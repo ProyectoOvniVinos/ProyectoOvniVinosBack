@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.grupo2.springboot.backend.apirest.entity.ClienteVo;
+import com.grupo2.springboot.backend.apirest.entity.VentaClienteVo;
 import com.grupo2.springboot.backend.apirest.entity.VentaVo;
 import com.grupo2.springboot.backend.apirest.util.CorreoDTO;
 import com.grupo2.springboot.backend.apirest.util.EnviarCorreo;
@@ -56,6 +57,63 @@ public class EnvioCorreoImpl implements IEnviosCorreo {
 		try {
 
 			dto.getDestinatarios().add(data.getCorreo());
+			dto.setContenido(body);
+			dto.setTitulo(subject);
+			if (adjuntos != null && !adjuntos.isEmpty())
+				dto.setAdjuntos(adjuntos);
+
+			EnviarCorreo enviarCorreo = new EnviarCorreo(dto);
+			enviarCorreo.start();
+		} catch (Exception e) {
+		}
+		
+	}
+
+	@Override
+	public void enviarCorreoAdmin(VentaVo venta, String tipo) {
+		CorreoDTO dto = new CorreoDTO();
+
+		String subject = "Venta ovnivinos";
+		String body = "Se ha realizado una venta en el aplicativo de " + tipo + " del cliente " + venta.getCorreoCliente().getCorreoCliente()
+				+ " para " + venta.getCorreoCliente().getDireccionCliente() + " pidio \n";
+		
+		for (VentaClienteVo itemVenta : venta.getVentas()) {
+			body = body +itemVenta.getCantidadProducto()+ itemVenta.getCodigoProducto().getNombreProducto() + "\n";
+		}
+		// List<File> adjuntos = Collections.singletonList(new File("PATH_TO_FILE"));
+		List<File> adjuntos = null;
+		try {
+
+			dto.getDestinatarios().add("crissis2004@gmail.com");
+			dto.setContenido(body);
+			dto.setTitulo(subject);
+			if (adjuntos != null && !adjuntos.isEmpty())
+				dto.setAdjuntos(adjuntos);
+
+			EnviarCorreo enviarCorreo = new EnviarCorreo(dto);
+			enviarCorreo.start();
+		} catch (Exception e) {
+
+		}
+		
+	}
+
+	@Override
+	public void enviarAyuda(String correo, String problema, String descripcion) {
+		CorreoDTO dto = new CorreoDTO();
+
+		String subject = "Notificacion problema cliente";
+		String body = "";
+		if(descripcion.equals("no")) {
+			body = "El cliente "+ correo +" ha presentado la anomalia de "+ problema +" : \n";
+		}else {
+			body = "El cliente "+ correo +" ha presentado una anomalia con la descripcion: \n"+ descripcion+" ";
+		}
+
+		List<File> adjuntos = null;
+		try {
+
+			dto.getDestinatarios().add("crissis2004@gmail.com");
 			dto.setContenido(body);
 			dto.setTitulo(subject);
 			if (adjuntos != null && !adjuntos.isEmpty())
