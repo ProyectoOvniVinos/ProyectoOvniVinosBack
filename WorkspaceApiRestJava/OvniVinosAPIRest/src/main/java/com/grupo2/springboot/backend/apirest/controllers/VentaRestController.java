@@ -105,9 +105,9 @@ public class VentaRestController {
 		return new ResponseEntity<VentaVo>(venta, HttpStatus.OK);
 	}
 
-	// http://localhost:8080/apiVenta/venta
-	@PostMapping("/venta")
-	public ResponseEntity<?> create(@RequestBody VentaVo venta) {
+	// http://localhost:8080/apiVenta/venta/tipo
+	@PostMapping("/venta/{tipo}")
+	public ResponseEntity<?> create(@RequestBody VentaVo venta, @PathVariable String tipo) {
 		System.out.println("AAAAAAAAAA");
 		VentaVo ventaNew = null;
 		VentaVo ventaReto = null;
@@ -144,6 +144,7 @@ public class VentaRestController {
 
 			ventaReto.setFechaVenta(LocalDateTime.parse(dtf.format(LocalDateTime.now()), dtf));
 			envioCorreo.enviarCorreo(ventaReto.getCorreoCliente(), ventaReto);
+			envioCorreo.enviarCorreoAdmin(ventaReto,tipo);
 
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");

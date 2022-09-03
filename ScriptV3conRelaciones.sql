@@ -330,6 +330,6 @@ ADD CONSTRAINT `fk_venta_cliente_codigo_venta`
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
-insert into `basededatos_ovni_vinos`.`usuario` (`username`,`password`, `rol`) values ('cristian@gmail.com','$2a$10$.sbX5U1q5TKubK.hoUHzMeuN2r9dE9Z8eRQrrwMzidnRNIkW3uWua','ROLE_ADMIN');
-INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`, `estado`, `user`) VALUES ('cristian@gmail.com', 'Cristian', 'Amador', 'centenario', '323', '12345', '1','1');
+insert into `basededatos_ovni_vinos`.`usuario` (`username`,`password`, `rol`) values ('crissis2004@gmail.com','$2a$10$nwSGQIIOvdG7Q8UoiWFo4udhhrgQ5SiGQ8s1FR1XIlOTl6lcC7/rm','ROLE_ADMIN');
+INSERT INTO `basededatos_ovni_vinos`.`administrador` (`correo_admin`, `nombre_admin`, `apellido_admin`, `direccion_admin`, `telefono_admin`, `password_admin`, `estado`, `user`) VALUES ('crissis2004@gmail.com', 'Administrador', 'Administrador', 'OvniVinos', '3233827738', '$2a$10$nwSGQIIOvdG7Q8UoiWFo4udhhrgQ5SiGQ8s1FR1XIlOTl6lcC7/rm', '1','1');
 INSERT INTO `basededatos_ovni_vinos`.`cliente` (`correo_cliente`, `nombre_cliente`, `apellido_cliente`, `direccion_cliente`, `telefono_cliente`, `password_cliente`) VALUES ('correoclienteovni@gmail.com', 'cliente', 'cliente', 'cliente', '3005208221', '$2a$10$.sbX5U1q5TKubK.hoUHzMeuN2r9dE9Z8eRQrrwMzidnRNIkW3uWua');

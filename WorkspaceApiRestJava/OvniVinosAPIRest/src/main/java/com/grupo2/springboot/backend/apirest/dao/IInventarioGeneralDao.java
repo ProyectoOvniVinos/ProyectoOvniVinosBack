@@ -26,6 +26,5 @@ public interface IInventarioGeneralDao extends CrudRepository<InventarioGeneralV
 
 	@Query("select inventario from InventarioGeneralVo inventario where inventario.cantidadProducto > 0 and inventario.codigoProducto.estado = 1 and  inventario.codigoProducto.nombreProducto like %?1%")
 	public List<InventarioGeneralVo> findByCantidadPositivaFiltradoNombre(String term);
-
 	
 }
