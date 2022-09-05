@@ -110,6 +110,57 @@ public class InventarioDetallesServiceImpl implements IinventarioDetallesService
 		*/
 	}
 	
+	@Transactional
+	@Override
+	public void ventaDevuelta(VentaVo venta) {
+		
+		List<VentaClienteVo> listaItems = venta.getVentas();
+		
+		InventarioGeneralVo InventarioGeneral = null;
+		
+		
+		//List<InventarioGeneralVo> inventarios = new ArrayList<>();
+		
+		for (VentaClienteVo detalle : listaItems) {
+			
+			List<InventarioDetallesVo> detallesAnteriores = new ArrayList<>();
+			
+			ProductoVo producto = detalle.getCodigoProducto();
+			int cantidad = detalle.getCantidadProducto();
+			LocalDate fecha = LocalDate.now();
+			InventarioDetallesVo nuevoInventarioDetalle = new InventarioDetallesVo();
+			
+			nuevoInventarioDetalle.setCantidadProducto(cantidad);
+			nuevoInventarioDetalle.setFechaUltimoIngresoInventario(Date.valueOf(fecha));
+			
+			
+			InventarioGeneral = inventarioGeneralDao.findByProducto(producto.getCodigoProducto());
+			
+
+		
+			detallesAnteriores = InventarioGeneral.getDetalles();
+			
+			
+			 
+			detallesAnteriores.add(nuevoInventarioDetalle);
+			InventarioGeneral.setDetalles(detallesAnteriores);
+			
+			InventarioGeneral.setCantidadProducto();
+			
+			//inventarios.add(nuevoInventarioGeneral);
+			
+			
+			inventarioGeneralDao.save(InventarioGeneral);
+			
+		}
+		/*
+		for(InventarioGeneralVo inventario : inventarios) {
+			System.out.println(inventario);
+			inventarioGeneralDao.save(inventario);
+		}
+		*/
+	}
+	
 	@Transactional(readOnly=true)
 	public EstadoProducto validacionCantidad(List<VentaClienteVo> detallesVenta) {
 		

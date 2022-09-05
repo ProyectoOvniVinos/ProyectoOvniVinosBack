@@ -180,5 +180,10 @@ public class VentaServiceImpl implements IVentaService{
 		}
 	}
 
+	@Override
+	public void eliminar(int id) {
+		ventaDao.deleteById(id);
+	}
+
 
 }

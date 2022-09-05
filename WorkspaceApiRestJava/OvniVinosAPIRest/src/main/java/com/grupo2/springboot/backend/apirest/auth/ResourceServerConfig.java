@@ -30,7 +30,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				"/apiInventario/inventarioGeneralCompleto/destacado",
 				"/clienteNombre/",
 				"/apiInventario/inventarioGeneralCompleto/positivo",
-				"/apiCliente/ayuda/**")
+				"/apiCliente/ayuda/**",
+				"/alerta-back/**",
+				"/alerta",
+				"/topic/alerta",
+				"/app/alerta")
 					.permitAll()
 					
 		.antMatchers(HttpMethod.POST,

@@ -22,4 +22,6 @@ public interface IVentaService {
 	public void asignarContabilidadDiaMalo(VentaVo ventaNew, VentaVo venta);
 	
 	public void asignarContabilidadCrearTodo(VentaVo ventaNew, VentaVo venta);
+	
+	public void eliminar(int id);
 }
