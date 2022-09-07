@@ -123,7 +123,6 @@ public class VentaRestController {
 				venta.setCantidadVenta();
 				venta.setPrecioVenta();
 				ventaNew = ventaService.save(venta);
-				System.out.println(ventaNew.getCorreoCliente().getCorreoCliente());
 				if(ventaNew.getCorreoCliente().getCorreoCliente().equals("correoClienteOvni@gmail.com")) {
 					ventaService.gestorAsignarContabilidad(ventaNew, venta);
 				}
