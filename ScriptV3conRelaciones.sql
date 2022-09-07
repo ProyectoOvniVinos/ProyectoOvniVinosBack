@@ -153,7 +153,7 @@ create table pedido
 );
 
 ALTER TABLE `basededatos_ovni_vinos`.`pedido` 
-ADD CONSTRAINT `fk_pedido_cliente_cliente`
+ADD CONSTRAINT `fk_pedido_venta_codigo_venta`
   FOREIGN KEY (`venta`)
   REFERENCES `basededatos_ovni_vinos`.`venta` (`codigo_venta`)
   ON DELETE NO ACTION

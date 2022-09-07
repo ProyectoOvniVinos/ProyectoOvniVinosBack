@@ -20,8 +20,8 @@ public class PedidosSocketCotroller {
 	@SendTo("/topic/alerta")
 	public List<PedidoVo> pedidoPendientes(String entro){
 		System.out.println(entro);
+		System.out.println(pedidoService.findByPendientes());
 		return pedidoService.findByPendientes();
-		
 	}
 
 }

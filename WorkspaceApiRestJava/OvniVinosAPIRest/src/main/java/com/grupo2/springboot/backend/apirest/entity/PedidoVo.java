@@ -25,18 +25,18 @@ public class PedidoVo implements Serializable{
 	@Column
 	private String estado;
 	
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties(value = {"pedidos","user","comprasAdmin", "hibernateLazyInitializer", "handler" }, allowSetters = true)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "administrador")
 	private AdministradorVo administrador;
 	
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties(value={ "user","carrito","ventas","hibernateLazyInitializer", "handler" },allowSetters = true)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cliente")
 	private ClienteVo cliente;
 	
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties(value={"correoCliente", "hibernateLazyInitializer", "handler" },allowSetters = true)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "venta")
 	private VentaVo venta;
 
