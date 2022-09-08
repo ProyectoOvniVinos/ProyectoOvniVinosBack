@@ -169,6 +169,21 @@ public class PedidosRestController {
 		
 		return new ResponseEntity<List<PedidoVo>>(pedidos, HttpStatus.OK);
 	}
+
+	@GetMapping("/pedidosCancelados")
+	public ResponseEntity<?> todosCancelados(){
+		List<PedidoVo> pedidos = null;
+		Map<String, Object> response = new HashMap<>();
+		try {
+			pedidos = pedidoService.findByCancelado();
+		} catch (DataAccessException e) {
+			response.put("mensaje", "error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<List<PedidoVo>>(pedidos, HttpStatus.OK);
+	}
 	
 	@GetMapping("/pedidosCliente/{correo}")
 	public ResponseEntity<?> todosCliente(@PathVariable String correo){

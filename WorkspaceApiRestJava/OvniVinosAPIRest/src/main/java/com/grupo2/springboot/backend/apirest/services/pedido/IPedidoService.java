@@ -18,6 +18,8 @@ public interface IPedidoService {
 	
 	public List<PedidoVo> findByCompleto();
 	
+	public List<PedidoVo> findByCancelado();
+	
 	public List<PedidoVo> findByCliente(String term);
 
 }
