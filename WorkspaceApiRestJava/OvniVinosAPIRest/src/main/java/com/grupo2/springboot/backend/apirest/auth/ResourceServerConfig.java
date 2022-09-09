@@ -55,8 +55,18 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				"/apiVenta/factura/**")
 					.hasAnyRole("CLIENTE")
 					
+		.antMatchers(HttpMethod.GET,
+				"/apiPedidos/pedidos",
+				"/apiPedidos/pedidosPendientes",
+				"/apiPedidos/pedidosProceso",
+				"/apiPedidos/pedidosCompletados",
+				"/apiPedidos/pedidosCancelados",
+				"/apiPedidos/pedidosCliente/**")
+					.hasAnyRole("CLIENTE","ADMIN")
+					
 		.antMatchers(HttpMethod.POST,
-				"/apiVenta/venta/**")
+				"/apiVenta/venta/**",
+				"/apiPedidos/pedido")
 					.hasAnyRole("CLIENTE","ADMIN")
 		
 		.antMatchers(HttpMethod.PUT,
@@ -114,7 +124,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				"/apiAdmin/admin/**",
 				"/admin/estado/**",
 				"/apiProd/producto/**",
-				"/apiProd/producto/estado/**")
+				"/apiProd/producto/estado/**",
+				"/apiPedidos/update")
 					.hasAnyRole("ADMIN")
 		/*.antMatchers("/api/clientes/{id}").permitAll()
 		.antMatchers("/api/facturas/**").permitAll()*/

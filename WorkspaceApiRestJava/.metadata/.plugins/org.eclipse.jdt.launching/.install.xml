@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <dirs>
     <entry loc="C:\Users\lenovo\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208" stamp="1647310455316"/>
+<<<<<<< HEAD
     <entry loc="C:\Program Files\Java\jdk-17.0.1" stamp="1632764949000"/>
+=======
+    <entry loc="C:\Program Files\Java\jdk-17.0.1" stamp="1634845744397"/>
+    <entry loc="C:\Users\SENA\Documents\CristianAmadorADSI2\sts-4.14.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\jre" stamp="1658252216101"/>
+    <entry loc="C:\Users\SENA\Documents\CristianAmadorADSI2\sts-4.14.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208" stamp="1658252216536"/>
+>>>>>>> 73f17e821c544509bf806f16606d326075c6b164
     <entry loc="D:\sts-4.14.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208" stamp="1658252172332"/>
     <entry loc="D:\sts-4.14.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\jre" stamp="1658252172114"/>
     <entry loc="C:\Users\Cristian\OneDrive\Documentos\sena\Tareas\trim5\java\spring\sts-4.14.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\jre" stamp="1652982679135"/>

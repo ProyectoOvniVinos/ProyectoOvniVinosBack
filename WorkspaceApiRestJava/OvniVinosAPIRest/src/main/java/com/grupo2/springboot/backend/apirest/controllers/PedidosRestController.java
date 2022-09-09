@@ -1,5 +1,7 @@
 package com.grupo2.springboot.backend.apirest.controllers;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,16 +76,24 @@ public class PedidosRestController {
 	public ResponseEntity<?> update(@RequestBody PedidoVo pedido){
 		Map<String, Object> response = new HashMap<>();
 		PedidoVo pedidoActualizado = null;
+		VentaVo ventaEstable = pedido.getVenta();
 		try {
 			pedidoActualizado = pedidoService.create(pedido);
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH:mm:ss");
 			switch (pedidoActualizado.getEstado()) {
 				case "3": {
-					ventaService.gestorAsignarContabilidad(pedido.getVenta(), pedidoActualizado.getVenta());
+					ventaEstable.setFechaVenta(LocalDateTime.parse(dtf.format(LocalDateTime.now()),dtf));
+					ventaService.gestorAsignarContabilidad(pedidoActualizado.getVenta(),   pedido.getVenta());
+					pedidoActualizado.setVenta(ventaEstable);
+					pedidoService.create(pedidoActualizado);
+					break;
 				}
 				case "4": {
+
 					inventarioService.ventaDevuelta(pedidoActualizado.getVenta());
 					pedidoActualizado.setVenta(null);
 					ventaService.eliminar(pedido.getVenta().getCodigoVenta());
+					break;
 				}
 			}
 		} catch (DataAccessException e) {
@@ -91,6 +101,7 @@ public class PedidosRestController {
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		
 		
 		response.put("mensaje", "el pedido se actualizo con exito");
 
@@ -150,6 +161,21 @@ public class PedidosRestController {
 		Map<String, Object> response = new HashMap<>();
 		try {
 			pedidos = pedidoService.findByCompleto();
+		} catch (DataAccessException e) {
+			response.put("mensaje", "error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<List<PedidoVo>>(pedidos, HttpStatus.OK);
+	}
+
+	@GetMapping("/pedidosCancelados")
+	public ResponseEntity<?> todosCancelados(){
+		List<PedidoVo> pedidos = null;
+		Map<String, Object> response = new HashMap<>();
+		try {
+			pedidos = pedidoService.findByCancelado();
 		} catch (DataAccessException e) {
 			response.put("mensaje", "error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));

@@ -24,4 +24,5 @@
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IAdministradorDao"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.administrador.IAdministradorService"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.AdministradorVo"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.VentaVo"/>
 </qualifiedTypeNameHistroy>

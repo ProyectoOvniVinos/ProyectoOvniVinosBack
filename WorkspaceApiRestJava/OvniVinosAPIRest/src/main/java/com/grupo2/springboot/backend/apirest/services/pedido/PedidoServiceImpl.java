@@ -45,6 +45,11 @@ public class PedidoServiceImpl implements IPedidoService {
 	}
 
 	@Override
+	public List<PedidoVo> findByCancelado() {
+		return pedidoDao.findByEstadoCancelado();
+	}
+	
+	@Override
 	public List<PedidoVo> findByCliente(String term) {
 		return pedidoDao.findByCliente(term);
 	}
