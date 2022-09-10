@@ -12,7 +12,6 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.messaging.handler.annotation.MessageMapping"/>
     <fullyQualifiedTypeName name="org.springframework.messaging.handler.annotation.SendTo"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.pedido.IPedidoService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.PedidoVo"/>
@@ -25,4 +24,9 @@
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.administrador.IAdministradorService"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.AdministradorVo"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.VentaVo"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IVentaDao"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IVentaClienteDao"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.ventacliente.IVentaClienteService"/>
 </qualifiedTypeNameHistroy>

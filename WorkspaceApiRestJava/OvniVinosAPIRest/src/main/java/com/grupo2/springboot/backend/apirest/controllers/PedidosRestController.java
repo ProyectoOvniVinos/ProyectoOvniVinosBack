@@ -27,6 +27,7 @@ import com.grupo2.springboot.backend.apirest.services.administrador.IAdministrad
 import com.grupo2.springboot.backend.apirest.services.inventariodetalles.IinventarioDetallesService;
 import com.grupo2.springboot.backend.apirest.services.pedido.IPedidoService;
 import com.grupo2.springboot.backend.apirest.services.venta.IVentaService;
+import com.grupo2.springboot.backend.apirest.services.ventacliente.IVentaClienteService;
 
 @CrossOrigin(origins = { "http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089" })
 @RestController
@@ -38,6 +39,9 @@ public class PedidosRestController {
 	
 	@Autowired
 	private IVentaService ventaService;
+	
+	@Autowired
+	private IVentaClienteService ventaClienteService;
 
 	@Autowired
 	private IinventarioDetallesService inventarioService;
@@ -92,7 +96,9 @@ public class PedidosRestController {
 
 					inventarioService.ventaDevuelta(pedidoActualizado.getVenta());
 					pedidoActualizado.setVenta(null);
-					ventaService.eliminar(pedido.getVenta().getCodigoVenta());
+					ventaClienteService.eliminarVentaCliente(pedido.getVenta().getCodigoVenta());
+					ventaService.eliminarVenta(pedido.getVenta().getCodigoVenta());
+					
 					break;
 				}
 			}
