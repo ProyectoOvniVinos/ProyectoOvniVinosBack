@@ -27,6 +27,7 @@ import com.grupo2.springboot.backend.apirest.services.administrador.IAdministrad
 import com.grupo2.springboot.backend.apirest.services.inventariodetalles.IinventarioDetallesService;
 import com.grupo2.springboot.backend.apirest.services.pedido.IPedidoService;
 import com.grupo2.springboot.backend.apirest.services.venta.IVentaService;
+import com.grupo2.springboot.backend.apirest.services.ventacliente.IVentaClienteService;
 
 @CrossOrigin(origins = { "http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089" })
 @RestController
@@ -38,6 +39,9 @@ public class PedidosRestController {
 	
 	@Autowired
 	private IVentaService ventaService;
+	
+	@Autowired
+	private IVentaClienteService ventaClienteService;
 
 	@Autowired
 	private IinventarioDetallesService inventarioService;
@@ -53,12 +57,7 @@ public class PedidosRestController {
 		try {
 			admin = adminService.findByCorreo("crissis2004@gmail.com");
 			pedido.setAdministrador(admin);
-			System.out.println(pedido.getEstado());
-			System.out.println(pedido.getAdministrador().getCorreoAdmin());
-			System.out.println(pedido.getCliente().getCorreoCliente());
-			System.out.println(pedido.getVenta().getPrecioVenta());
 			pedidoNew = pedidoService.create(pedido);
-			System.out.println(pedidoNew.getId());
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -92,7 +91,9 @@ public class PedidosRestController {
 
 					inventarioService.ventaDevuelta(pedidoActualizado.getVenta());
 					pedidoActualizado.setVenta(null);
-					ventaService.eliminar(pedido.getVenta().getCodigoVenta());
+					ventaClienteService.eliminarVentaCliente(pedido.getVenta().getCodigoVenta());
+					ventaService.eliminarVenta(pedido.getVenta().getCodigoVenta());
+					
 					break;
 				}
 			}
@@ -191,6 +192,21 @@ public class PedidosRestController {
 		Map<String, Object> response = new HashMap<>();
 		try {
 			pedidos = pedidoService.findByCliente(correo);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		return new ResponseEntity<List<PedidoVo>>(pedidos, HttpStatus.OK);
+	}
+	
+	@GetMapping("/pedidosClienteEspecifico/{correo}")
+	public ResponseEntity<?> todosClienteEspecifico(@PathVariable String correo){
+		List<PedidoVo> pedidos = null;
+		Map<String, Object> response = new HashMap<>();
+		try {
+			pedidos = pedidoService.findByClienteEspecifico(correo);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
