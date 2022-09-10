@@ -16,7 +16,7 @@ public class VentaClienteVo implements Serializable {
 	private int idPuente;
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "codigo_producto")
 	private ProductoVo codigoProducto;
 

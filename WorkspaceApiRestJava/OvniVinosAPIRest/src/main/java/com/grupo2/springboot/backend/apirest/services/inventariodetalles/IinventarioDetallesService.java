@@ -19,5 +19,7 @@ public interface IinventarioDetallesService {
 	public void InsertarInventario(CompraVo compra);
 	
 	public EstadoProducto disminuirCantidad(VentaVo venta);
+	
+	public void ventaDevuelta(VentaVo venta);
 
 }

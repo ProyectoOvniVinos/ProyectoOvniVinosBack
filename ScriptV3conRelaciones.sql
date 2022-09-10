@@ -143,6 +143,37 @@ create table compra_admin
   cantidad_producto int
 );
 
+create table pedido
+(
+  id int primary key not null auto_increment,
+  estado char(1),
+  modo char(30),
+  administrador char(30),
+  cliente char(30),
+  venta int
+);
+
+ALTER TABLE `basededatos_ovni_vinos`.`pedido` 
+ADD CONSTRAINT `fk_pedido_venta_codigo_venta`
+  FOREIGN KEY (`venta`)
+  REFERENCES `basededatos_ovni_vinos`.`venta` (`codigo_venta`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `basededatos_ovni_vinos`.`pedido` 
+ADD CONSTRAINT `fk_pedido_cliente_cliente`
+  FOREIGN KEY (`cliente`)
+  REFERENCES `basededatos_ovni_vinos`.`cliente` (`correo_cliente`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+ALTER TABLE `basededatos_ovni_vinos`.`pedido` 
+ADD CONSTRAINT `fk_pedido_admin_admin`
+  FOREIGN KEY (`administrador`)
+  REFERENCES `basededatos_ovni_vinos`.`administrador` (`correo_admin`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
 ALTER TABLE `basededatos_ovni_vinos`.`carrito_cliente` 
 ADD CONSTRAINT `fk_carrito_cliente_cliente`
   FOREIGN KEY (`cliente`)

@@ -46,7 +46,6 @@ public class AdministradorVo implements Serializable {
 	@Column(name = "estado")
 	private String estado;
 	
-
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user")

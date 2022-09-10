@@ -40,7 +40,7 @@ public class VentaVo implements Serializable {
 	private ContabilidadDiariaVo idRegistroContabilidadDiaria;
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "venta")
 	private List<VentaClienteVo> ventas;
 

@@ -108,7 +108,6 @@ public class VentaRestController {
 	// http://localhost:8080/apiVenta/venta/tipo
 	@PostMapping("/venta/{tipo}")
 	public ResponseEntity<?> create(@RequestBody VentaVo venta, @PathVariable String tipo) {
-		System.out.println("AAAAAAAAAA");
 		VentaVo ventaNew = null;
 		VentaVo ventaReto = null;
 
@@ -124,7 +123,9 @@ public class VentaRestController {
 				venta.setCantidadVenta();
 				venta.setPrecioVenta();
 				ventaNew = ventaService.save(venta);
-				ventaService.gestorAsignarContabilidad(ventaNew, venta);
+				if(ventaNew.getCorreoCliente().getCorreoCliente().equals("correoClienteOvni@gmail.com")) {
+					ventaService.gestorAsignarContabilidad(ventaNew, venta);
+				}
 				ventaReto = ventaService.save(ventaNew);
 
 			} else {
