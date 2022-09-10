@@ -147,7 +147,7 @@ create table pedido
 (
   id int primary key not null auto_increment,
   estado char(1),
-  modo char(15),
+  modo char(30),
   administrador char(30),
   cliente char(30),
   venta int

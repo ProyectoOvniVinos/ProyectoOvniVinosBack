@@ -57,12 +57,7 @@ public class PedidosRestController {
 		try {
 			admin = adminService.findByCorreo("crissis2004@gmail.com");
 			pedido.setAdministrador(admin);
-			System.out.println(pedido.getEstado());
-			System.out.println(pedido.getAdministrador().getCorreoAdmin());
-			System.out.println(pedido.getCliente().getCorreoCliente());
-			System.out.println(pedido.getVenta().getPrecioVenta());
 			pedidoNew = pedidoService.create(pedido);
-			System.out.println(pedidoNew.getId());
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
