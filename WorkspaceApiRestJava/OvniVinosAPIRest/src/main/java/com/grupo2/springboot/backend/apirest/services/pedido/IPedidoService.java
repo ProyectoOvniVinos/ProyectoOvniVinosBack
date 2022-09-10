@@ -21,5 +21,7 @@ public interface IPedidoService {
 	public List<PedidoVo> findByCancelado();
 	
 	public List<PedidoVo> findByCliente(String term);
+	
+	public List<PedidoVo> findByClienteEspecifico(String term);
 
 }

@@ -54,4 +54,9 @@ public class PedidoServiceImpl implements IPedidoService {
 		return pedidoDao.findByCliente(term);
 	}
 
+	@Override
+	public List<PedidoVo> findByClienteEspecifico(String term) {
+		return pedidoDao.findByClienteEspecifico(term);
+	}
+
 }

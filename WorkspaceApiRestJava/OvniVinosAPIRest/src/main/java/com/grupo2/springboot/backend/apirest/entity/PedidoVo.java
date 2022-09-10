@@ -25,6 +25,9 @@ public class PedidoVo implements Serializable{
 	@Column
 	private String estado;
 	
+	@Column(name = "modo")
+	private String modoAdquirir;
+	
 	@JsonIgnoreProperties(value = {"pedidos","user","comprasAdmin", "hibernateLazyInitializer", "handler" }, allowSetters = true)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "administrador")
@@ -80,7 +83,13 @@ public class PedidoVo implements Serializable{
 		this.venta = venta;
 	}
 
+	public String getModoAdquirir() {
+		return modoAdquirir;
+	}
 
+	public void setModoAdquirir(String modoAdquirir) {
+		this.modoAdquirir = modoAdquirir;
+	}
 
 	private static final long serialVersionUID = 1L;
 }
