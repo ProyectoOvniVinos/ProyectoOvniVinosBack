@@ -34,7 +34,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 				"/alerta-back/**",
 				"/alerta",
 				"/topic/alerta",
-				"/app/alerta")
+				"/app/alerta",
+				"/apiVenta/factura/**",
+				"/apiAdmin/usuario/**")
 					.permitAll()
 					
 		.antMatchers(HttpMethod.POST,
@@ -51,8 +53,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		.antMatchers(HttpMethod.GET,
 				"/apiCarrito/carrito/**",
 				"/apiVenta/ventas",
-				"/apiVenta/venta/**",
-				"/apiVenta/factura/**")
+				"/apiVenta/venta/**")
 					.hasAnyRole("CLIENTE")
 					
 		.antMatchers(HttpMethod.GET,

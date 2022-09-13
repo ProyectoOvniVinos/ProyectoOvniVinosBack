@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.grupo2.springboot.backend.apirest.dao.IAdministradorDao;
 import com.grupo2.springboot.backend.apirest.entity.AdministradorVo;
+import com.grupo2.springboot.backend.apirest.entity.DireccionPedidoVo;
 import com.grupo2.springboot.backend.apirest.entity.PedidoVo;
 import com.grupo2.springboot.backend.apirest.entity.VentaVo;
 import com.grupo2.springboot.backend.apirest.services.administrador.IAdministradorService;
@@ -28,6 +29,7 @@ import com.grupo2.springboot.backend.apirest.services.inventariodetalles.Iinvent
 import com.grupo2.springboot.backend.apirest.services.pedido.IPedidoService;
 import com.grupo2.springboot.backend.apirest.services.venta.IVentaService;
 import com.grupo2.springboot.backend.apirest.services.ventacliente.IVentaClienteService;
+import com.grupo2.springboot.backend.apirest.util.service.direccionPedido.IDireccionPedidoService;
 
 @CrossOrigin(origins = { "http://localhost:4200", "**", "http://localhost:8090", "http://localhost:8089" })
 @RestController
@@ -49,15 +51,29 @@ public class PedidosRestController {
 	@Autowired
 	private IAdministradorService adminService;
 	
-	@PostMapping("/pedido")
-	public ResponseEntity<?> create(@RequestBody PedidoVo pedido) {
+	@Autowired
+	private IDireccionPedidoService direccionService;
+	
+	@PostMapping("/pedido/{direccion}")
+	public ResponseEntity<?> create(@RequestBody PedidoVo pedido, @PathVariable String direccion) {
 		Map<String, Object> response = new HashMap<>();
 		PedidoVo pedidoNew = null;
 		AdministradorVo admin = null;
 		try {
 			admin = adminService.findByCorreo("crissis2004@gmail.com");
 			pedido.setAdministrador(admin);
+			DireccionPedidoVo direccionP = new DireccionPedidoVo();
 			pedidoNew = pedidoService.create(pedido);
+			
+			if(pedido.getModoAdquirir().equals("domicilio")) {
+				direccionP.setDireccion(direccion);
+				direccionP.setId(pedidoNew.getId());
+				DireccionPedidoVo direcccionMela = direccionService.save(direccionP);
+				pedidoNew.setDireccion(direccionP);
+				pedidoNew = pedidoService.create(pedidoNew);
+			}
+			
+			System.out.println("paso");
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
