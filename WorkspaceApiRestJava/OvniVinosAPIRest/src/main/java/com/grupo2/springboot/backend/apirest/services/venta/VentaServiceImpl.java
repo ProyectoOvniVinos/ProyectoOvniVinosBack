@@ -181,8 +181,8 @@ public class VentaServiceImpl implements IVentaService{
 	}
 
 	@Override
-	public void eliminar(int id) {
-		ventaDao.deleteById(id);
+	public void eliminarVenta(int id) {
+		ventaDao.eliminarVenta(id);
 	}
 
 

@@ -2,6 +2,7 @@ package com.grupo2.springboot.backend.apirest.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -25,6 +27,9 @@ public class PedidoVo implements Serializable{
 	@Column
 	private String estado;
 	
+	@Column(name = "modo")
+	private String modoAdquirir;
+	
 	@JsonIgnoreProperties(value = {"pedidos","user","comprasAdmin", "hibernateLazyInitializer", "handler" }, allowSetters = true)
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "administrador")
@@ -39,6 +44,10 @@ public class PedidoVo implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "venta")
 	private VentaVo venta;
+	
+	@OneToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="id", referencedColumnName = "id")
+	private DireccionPedidoVo direccion;
 
 	public int getId() {
 		return id;
@@ -80,7 +89,21 @@ public class PedidoVo implements Serializable{
 		this.venta = venta;
 	}
 
+	public String getModoAdquirir() {
+		return modoAdquirir;
+	}
 
+	public void setModoAdquirir(String modoAdquirir) {
+		this.modoAdquirir = modoAdquirir;
+	}
+
+	public DireccionPedidoVo getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(DireccionPedidoVo direccion) {
+		this.direccion = direccion;
+	}
 
 	private static final long serialVersionUID = 1L;
 }

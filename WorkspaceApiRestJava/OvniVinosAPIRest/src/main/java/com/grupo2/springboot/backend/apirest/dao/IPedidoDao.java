@@ -23,4 +23,7 @@ public interface IPedidoDao extends CrudRepository<PedidoVo,Integer>{
 	
 	@Query("select p from PedidoVo p where p.cliente.correoCliente = ?1")
 	public List<PedidoVo> findByCliente(String term);
+	
+	@Query("select p from PedidoVo p where p.cliente.correoCliente = ?1 and p.estado = 1 or p.estado = 2")
+	public List<PedidoVo> findByClienteEspecifico(String term);
 }

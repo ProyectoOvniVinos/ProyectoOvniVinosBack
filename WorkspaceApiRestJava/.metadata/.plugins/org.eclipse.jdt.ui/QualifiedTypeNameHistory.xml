@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
-    <fullyQualifiedTypeName name="javax.persistence.Table"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IPedidoDao"/>
     <fullyQualifiedTypeName name="org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer"/>
     <fullyQualifiedTypeName name="org.springframework.messaging.simp.config.MessageBrokerRegistry"/>
@@ -12,7 +9,6 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="org.springframework.messaging.handler.annotation.MessageMapping"/>
     <fullyQualifiedTypeName name="org.springframework.messaging.handler.annotation.SendTo"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.pedido.IPedidoService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.PedidoVo"/>
@@ -20,9 +16,24 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IAdministradorDao"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.administrador.IAdministradorService"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.AdministradorVo"/>
     <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.VentaVo"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.Query"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IVentaDao"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IVentaClienteDao"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.services.ventacliente.IVentaClienteService"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Table"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="javax.persistence.OneToOne"/>
+    <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+    <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.dao.IDireccionPedido"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.util.service.direccionPedido.IDireccionPedidoService"/>
+    <fullyQualifiedTypeName name="com.grupo2.springboot.backend.apirest.entity.DireccionPedidoVo"/>
 </qualifiedTypeNameHistroy>

@@ -19,9 +19,19 @@ public class PedidosSocketCotroller {
 	@MessageMapping("/alerta")
 	@SendTo("/topic/alerta")
 	public List<PedidoVo> pedidoPendientes(String entro){
-		System.out.println(entro);
-		System.out.println(pedidoService.findByPendientes());
 		return pedidoService.findByPendientes();
+	}
+	
+	@MessageMapping("/alerta2")
+	@SendTo("/topic/alerta2")
+	public List<PedidoVo> pedidoPendientesP(String entro){
+		return pedidoService.findByProceso();
+	}
+	
+	@MessageMapping("/alerta3")
+	@SendTo("/topic/alerta3")
+	public List<PedidoVo> pedidoPendientesC(String entro){
+		return pedidoService.findByClienteEspecifico(entro);
 	}
 
 }

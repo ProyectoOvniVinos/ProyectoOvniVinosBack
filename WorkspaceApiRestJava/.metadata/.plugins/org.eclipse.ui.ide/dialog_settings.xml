@@ -42,7 +42,14 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+<<<<<<< HEAD
 			<item value="C:\Users\SENA\Documents\ivan Daniel HIncapie S\ProyectoOvniVinos\ProyectoOvniVinosBack\ProyectoOvniVinosBack\WorkspaceApiRestJava\OvniVinosAPIRest"/>
+=======
+			<item value="C:\Users\SENA\Documents\2278879_2\proyectoFinal\ProyectoOvniVinosBack\WorkspaceApiRestJava\OvniVinosAPIRest"/>
+			<item value="D:\Documentos\Proyecto\Backend\ProyectoOvniVinosBack\WorkspaceApiRestJava\OvniVinosAPIRest"/>
+			<item value="C:\Users\Cristian\OneDrive\Documentos\sena\Tareas\trim6\poryectoSockets\ProyectoOvniVinosBack\WorkspaceApiRestJava"/>
+			<item value="C:\Users\SENA\Documents\CristianAmadorADSI2\6trimestre\Proyecto\Sockets\ProyectoOvniVinosBack\WorkspaceApiRestJava"/>
+>>>>>>> 6ebd7168f4ad1305924b1d7dde5863c6ccd1fadf
 			<item value="C:\Users\SENA\Documents\2278879_2\proyectoFinal\spring-boot-backend-apirest"/>
 			<item value="C:\Users\lenovo\Desktop\jScrip\proyectoFinal\ProyectoOvniVinosBack\WorkspaceApiRestJava\OvniVinosAPIRest"/>
 		</list>
