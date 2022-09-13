@@ -153,6 +153,19 @@ create table pedido
   venta int
 );
 
+create table direccion_pedido
+(
+  id int primary key not null,
+  direccion varchar(100)
+);
+
+ALTER TABLE `basededatos_ovni_vinos`.`direccion_pedido` 
+ADD CONSTRAINT `fk_direccion_pedido_pedido_id`
+  FOREIGN KEY (`id`)
+  REFERENCES `basededatos_ovni_vinos`.`pedido` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
 ALTER TABLE `basededatos_ovni_vinos`.`pedido` 
 ADD CONSTRAINT `fk_pedido_venta_codigo_venta`
   FOREIGN KEY (`venta`)
