@@ -2,9 +2,9 @@ Ovni Vinos
 
 ¿Qué es ovni vinos? Ovni Vinos es un aplicativo web especializado para el emprendimiento Ovni Vinos de Armenia Quindío, el cual se dedica a la compra y venta de vinos 
 del valle. El aplicativo busca brindar optimización y un manejo fácil de funciones de negocio como lo son el gestionamiento de productos, de inventarios, pedidos, 
-compras, ventas, contabilidad y gestionamiento de clientes, el backend de ovni vinos fue desarrollado con el stack de programacion de Java, Springboot, mySQL y JWT
+compras, ventas, contabilidad y gestionamiento de clientes, el backend de ovni vinos fue desarrollado con el stack de programacion de Java, Springboot, mySQL y JWT.
 
-porfavor instalar la version 8 de java para el correcto funcionamiento
+Por favor instalar la versión 8 de java para el correcto funcionamiento.
 
 link del backend = https://github.com/ProyectoOvniVinos/ProyectoOvniVinosBack.git
 
